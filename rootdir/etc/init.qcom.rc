@@ -216,7 +216,9 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
+    # Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
+    chown root audio /sys/kernel/boot_adsp/boot
 
     # SSR Setup
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
