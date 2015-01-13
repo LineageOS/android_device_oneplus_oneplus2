@@ -166,6 +166,10 @@ TARGET_USES_INTERACTION_BOOST := true
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
+# Releasetools
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus2
+TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
+
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
