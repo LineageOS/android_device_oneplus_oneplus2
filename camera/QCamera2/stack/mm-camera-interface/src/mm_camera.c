@@ -293,7 +293,7 @@ int32_t mm_camera_open(mm_camera_obj_t *my_obj)
             CDBG("%s:  opened, break out while loop", __func__);
             break;
         }
-        CDBG("%s:failed with I/O error retrying after %d milli-seconds",
+        CDBG_HIGH("%s:failed with I/O error retrying after %d milli-seconds",
              __func__, sleep_msec);
         usleep(sleep_msec * 1000U);
     }while (n_try > 0);
