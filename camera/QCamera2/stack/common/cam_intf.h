@@ -402,6 +402,7 @@ typedef struct{
     size_t hal3_preview_video_sizes_tbl_cnt;                             /* video sizes table size */
     cam_dimension_t hal3_preview_video_sizes_tbl[MAX_SIZES_CNT];         /* video sizes table */
 #endif
+    uint8_t flash_dev_name[QCAMERA_MAX_FILEPATH_LENGTH];
 } cam_capability_t;
 
 typedef enum {
