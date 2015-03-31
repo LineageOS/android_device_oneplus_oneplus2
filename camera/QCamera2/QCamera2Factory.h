@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2014, The Linux Foundataion. All rights reserved.
+/* Copyright (c) 2012-2015, The Linux Foundataion. All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are
@@ -52,6 +52,7 @@ public:
     static int set_callbacks(const camera_module_callbacks_t *callbacks);
     static int open_legacy(const struct hw_module_t* module,
             const char* id, uint32_t halVersion, struct hw_device_t** device);
+    static int set_torch_mode(const char* camera_id, bool on);
 
 private:
     int getNumberOfCameras();
@@ -62,7 +63,7 @@ private:
                 struct hw_device_t **hw_device);
     static int openLegacy(
             int32_t cameraId, uint32_t halVersion, struct hw_device_t** hw_device);
-
+    int setTorchMode(const char* camera_id, bool on);
 public:
     static struct hw_module_methods_t mModuleMethods;
 
