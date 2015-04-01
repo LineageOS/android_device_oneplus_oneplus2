@@ -5985,8 +5985,16 @@ int QCamera3HardwareInterface::getCamInfo(uint32_t cameraId,
     info->device_version = CAMERA_DEVICE_API_VERSION_3_2;
     info->static_camera_characteristics = gStaticMetadata[cameraId];
 
-    pthread_mutex_unlock(&gCamLock);
+    //For now assume both cameras can operate independently.
+    info->conflicting_devices = NULL;
+    info->conflicting_devices_length = 0;
 
+    //For now assume default resource cost.
+    info->resource_cost = 100;
+    ALOGI("%s: camera %d resource cost is %d", __func__, cameraId,
+            info->resource_cost);
+
+    pthread_mutex_unlock(&gCamLock);
     return rc;
 }
 
