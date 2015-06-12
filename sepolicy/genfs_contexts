@@ -9,6 +9,7 @@ genfscon proc /sys/kernel/sched_init_task_load        u:object_r:proc_kernel_sch
 genfscon proc /sys/kernel/sched_min_runtime           u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_window_stats_policy   u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_ravg_hist_size        u:object_r:proc_kernel_sched:s0
+genfscon proc /sys/kernel/sched_upmigrate_min_nice    u:object_r:proc_kernel_sched:s0
 genfscon proc /s1302                                  u:object_r:proc_touchpanel:s0
 genfscon proc /sys/vm/swappiness                      u:object_r:proc_swap:s0
 genfscon proc /tri-state-key                          u:object_r:proc_touchpanel:s0
