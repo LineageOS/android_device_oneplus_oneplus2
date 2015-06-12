@@ -124,6 +124,9 @@ get-set-forall /sys/devices/system/cpu/*/sched_mostly_idle_nr_run 3
 write /proc/sys/kernel/sched_freq_inc_notify 400000
 write /proc/sys/kernel/sched_freq_dec_notify 400000
 
+# android background processes are set to nice 10. Never schedule these on the a57s.
+write /proc/sys/kernel/sched_upmigrate_min_nice 9
+
 # Enable rps static configuration
 write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus 8
 
