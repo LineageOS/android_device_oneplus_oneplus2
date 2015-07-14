@@ -38,6 +38,8 @@ extern "C" {
 
 namespace qcamera {
 
+#define QCAMERA_TORCH_CURRENT_VALUE 200
+
 class QCameraFlash {
 public:
     static QCameraFlash& getInstance();
