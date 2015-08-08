@@ -397,6 +397,7 @@ service per_mgr /vendor/bin/pm-service
     class late_start
     user system
     group system net_raw
+    ioprio rt 4
     writepid /dev/cpuset/system-background/tasks
 
 service per_proxy /vendor/bin/pm-proxy
