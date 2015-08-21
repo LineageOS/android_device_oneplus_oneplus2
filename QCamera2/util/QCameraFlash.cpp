@@ -192,6 +192,9 @@ int32_t QCameraFlash::initFlash(const int camera_id)
                 close(m_flashFds[camera_id]);
                 m_flashFds[camera_id] = -1;
             }
+
+            /* wait for PMIC to init */
+            usleep(5000);
         }
     }
 
