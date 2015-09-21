@@ -186,3 +186,9 @@ BOARD_HARDWARE_CLASS := device/oneplus/oneplus2/cmhw
 
 # inherit from the proprietary version
 -include vendor/oneplus/oneplus2/BoardConfigVendor.mk
+
+# TWRP
+TW_THEME := portrait_hdpi
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_NO_SCREEN_TIMEOUT := true
+TW_BOARD_CUSTOM_GRAPHICS := ../../../device/oneplus/oneplus2/graphics.c

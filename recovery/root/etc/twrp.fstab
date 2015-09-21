@@ -1,0 +1,11 @@
+/boot           emmc        /dev/block/bootdevice/by-name/boot              
+/recovery       emmc        /dev/block/bootdevice/by-name/recovery          flags=backup=1
+/misc           emmc        /dev/block/bootdevice/by-name/misc
+/devinfo        emmc        /dev/block/bootdevice/by-name/devinfo
+
+/system         ext4        /dev/block/bootdevice/by-name/system            
+/data           ext4        /dev/block/bootdevice/by-name/userdata          length=-16384
+/cache          ext4        /dev/block/bootdevice/by-name/cache             
+
+/oem_stanvbk    emmc        /dev/block/bootdevice/by-name/oem_stanvbk       flags=backup=1;display="EFS"
+/usbstorage     vfat        /dev/block/sda1         /dev/block/sda          flags=fsflags=utf8;display="USB Storage";storage;removable
