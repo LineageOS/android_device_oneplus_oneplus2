@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf8cb3f7_db6224d9",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 848
+      },
+      "writtenOn": "2015-12-04T09:00:12Z",
+      "side": 1,
+      "message": "split this out",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 29
+      },
+      "revId": "2e871a32d342b4fada9b3ba7c930e5c0d7c340a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf8cb3f7_fb5fe80b",
+        "filename": "rootdir/etc/ueventd.qcom.rc",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 848
+      },
+      "writtenOn": "2015-12-04T09:00:12Z",
+      "side": 1,
+      "message": "move to init commit",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 50
+      },
+      "revId": "2e871a32d342b4fada9b3ba7c930e5c0d7c340a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf8cb3f7_9b9a5cc3",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 848
+      },
+      "writtenOn": "2015-12-04T09:00:12Z",
+      "side": 1,
+      "message": "derp",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "2e871a32d342b4fada9b3ba7c930e5c0d7c340a4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
