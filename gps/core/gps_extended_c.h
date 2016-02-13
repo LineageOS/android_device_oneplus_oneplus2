@@ -217,6 +217,12 @@ typedef uint16_t GpsLocationExtendedFlags;
 #define GPS_LOCATION_EXTENDED_HAS_HOR_RELIABILITY 0x0080
 /** GpsLocationExtended has valid vertical reliability */
 #define GPS_LOCATION_EXTENDED_HAS_VERT_RELIABILITY 0x0100
+/** GpsLocationExtended has valid Horizontal Elliptical Uncertainty (Semi-Major Axis) */
+#define GPS_LOCATION_EXTENDED_HAS_HOR_ELIP_UNC_MAJOR 0x0200
+/** GpsLocationExtended has valid Horizontal Elliptical Uncertainty (Semi-Minor Axis) */
+#define GPS_LOCATION_EXTENDED_HAS_HOR_ELIP_UNC_MINOR 0x0400
+/** GpsLocationExtended has valid Elliptical Horizontal Uncertainty Azimuth */
+#define GPS_LOCATION_EXTENDED_HAS_HOR_ELIP_UNC_AZIMUTH 0x0800
 
 typedef enum {
     LOC_RELIABILITY_NOT_SET = 0,
@@ -252,6 +258,12 @@ typedef struct {
     LocReliability  horizontal_reliability;
     /** vertical reliability. */
     LocReliability  vertical_reliability;
+    /*  Horizontal Elliptical Uncertainty (Semi-Major Axis) */
+    float           horUncEllipseSemiMajor;
+    /*  Horizontal Elliptical Uncertainty (Semi-Minor Axis) */
+    float           horUncEllipseSemiMinor;
+    /*    Elliptical Horizontal Uncertainty Azimuth */
+    float           horUncEllipseOrientAzimuth;
 } GpsLocationExtended;
 
 /** Represents SV status. */
