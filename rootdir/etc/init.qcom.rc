@@ -44,6 +44,9 @@ on early-init
     write /proc/sys/vm/page-cluster 0
 
 on fs
+    wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
+
     mount_all /fstab.qcom
     restorecon_recursive /persist
 
