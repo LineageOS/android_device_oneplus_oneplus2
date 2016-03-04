@@ -119,7 +119,8 @@ typedef struct loc_eng_data_s
 
     // For nmea generation
     boolean generateNmea;
-    uint32_t sv_used_mask;
+    uint32_t gps_used_mask;
+    uint32_t glo_used_mask;
     float hdop;
     float pdop;
     float vdop;
