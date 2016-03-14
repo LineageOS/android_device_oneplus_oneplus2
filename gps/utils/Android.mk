@@ -23,8 +23,7 @@ LOCAL_SRC_FILES += \
 
 LOCAL_CFLAGS += \
     -fno-short-enums \
-    -D_ANDROID_ \
-    -std=c++11
+    -D_ANDROID_
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
     LOCAL_CFLAGS += -DTARGET_BUILD_VARIANT_USER
