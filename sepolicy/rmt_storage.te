@@ -1,1 +1,1 @@
-allow rmt_storage self:capability { dac_override net_raw };
+allow rmt_storage self:capability net_raw;
