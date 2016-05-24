@@ -92,8 +92,12 @@ int loc_eng_nmea_put_checksum(char *pNmea, int maxSize)
         length++;
     }
 
+    // length now contains nmea sentence string length not including $ sign.
     int checksumLength = snprintf(pNmea,(maxSize-length-1),"*%02X\r\n", checksum);
-    return (length + checksumLength);
+
+    // total length of nmea sentence is length of nmea sentence inc $ sign plus
+    // length of checksum (+1 is to cover the $ character in the length).
+    return (length + checksumLength + 1);
 }
 
 /*===========================================================================
