@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_68df0ed6",
+        "filename": "doze/src/com/cyanogenmod/settings/doze/TiltSensor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2016-06-06T11:40:41Z",
+      "side": 1,
+      "message": "So you know, you have tabs instead of spaces here.",
+      "revId": "60c764ee3f3ae158cf19ff461abebabc120595b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_08f21a71",
+        "filename": "doze/src/com/cyanogenmod/settings/doze/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 13589
+      },
+      "writtenOn": "2016-06-06T11:40:41Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "60c764ee3f3ae158cf19ff461abebabc120595b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
