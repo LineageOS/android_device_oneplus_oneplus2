@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5faad753_8805aa48",
+        "filename": "doze/src/com/cyanogenmod/settings/doze/DozeService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-06-06T12:08:32Z",
+      "side": 1,
+      "message": "Why not do this in onCreate()? Doing so would make multiple invocations perfectly safe.\n\n(BTW, the \u0027this.\u0027 is useless here and below)",
+      "revId": "60c764ee3f3ae158cf19ff461abebabc120595b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5faad753_68df0ed6",
         "filename": "doze/src/com/cyanogenmod/settings/doze/TiltSensor.java",
         "patchSetId": 2
@@ -13,6 +30,40 @@
       "writtenOn": "2016-06-06T11:40:41Z",
       "side": 1,
       "message": "So you know, you have tabs instead of spaces here.",
+      "revId": "60c764ee3f3ae158cf19ff461abebabc120595b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_e8ec5e90",
+        "filename": "doze/src/com/cyanogenmod/settings/doze/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-06-06T12:08:32Z",
+      "side": 1,
+      "message": "Should prefix statics with s instead of m. But why have those variables in the first place?",
+      "revId": "60c764ee3f3ae158cf19ff461abebabc120595b9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5faad753_c8e722ac",
+        "filename": "doze/src/com/cyanogenmod/settings/doze/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1063
+      },
+      "writtenOn": "2016-06-06T12:08:32Z",
+      "side": 1,
+      "message": "What\u0027s the point of doing this check instead of starting/stopping unconditionally?",
       "revId": "60c764ee3f3ae158cf19ff461abebabc120595b9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
