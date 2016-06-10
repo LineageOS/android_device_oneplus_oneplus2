@@ -253,15 +253,16 @@ void LocApiBase::reportPosition(UlpLocation &location,
     );
 }
 
-void LocApiBase::reportSv(GpsSvStatus &svStatus,
+void LocApiBase::reportSv(GnssSvStatus &svStatus,
                   GpsLocationExtended &locationExtended,
                   void* svExt)
 {
     // print the SV info before delivering
-    LOC_LOGV("num sv: %d\n  ephemeris mask: %dxn  almanac mask: %x\n  used"
-             " in fix mask: %x\n      sv: prn         snr       elevation      azimuth",
+    LOC_LOGV("num sv: %d\n  ephemeris mask: %dxn  almanac mask: %x\n  gps/glo/bds in use"
+             " mask: %x/%x/%x\n      sv: prn         snr       elevation      azimuth",
              svStatus.num_svs, svStatus.ephemeris_mask,
-             svStatus.almanac_mask, svStatus.used_in_fix_mask);
+             svStatus.almanac_mask, svStatus.gps_used_in_fix_mask,
+             svStatus.glo_used_in_fix_mask, svStatus.bds_used_in_fix_mask);
     for (int i = 0; i < svStatus.num_svs && i < GPS_MAX_SVS; i++) {
         LOC_LOGV("   %d:   %d    %f    %f    %f",
                  i,
@@ -488,16 +489,23 @@ enum loc_api_adapter_err LocApiBase::
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
-   getWwanZppFix(GpsLocation & zppLoc)
+   getWwanZppFix(GpsLocation& zppLoc)
 DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
 
 enum loc_api_adapter_err LocApiBase::
-   getBestAvailableZppFix(GpsLocation & zppLoc)
-DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
+   getBestAvailableZppFix(GpsLocation& zppLoc)
+{
+   memset(&zppLoc, 0, sizeof(zppLoc));
+   DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
+}
 
 enum loc_api_adapter_err LocApiBase::
    getBestAvailableZppFix(GpsLocation & zppLoc, LocPosTechMask & tech_mask)
-DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
+{
+   memset(&zppLoc, 0, sizeof(zppLoc));
+   memset(&tech_mask, 0, sizeof(tech_mask));
+   DEFAULT_IMPL(LOC_API_ADAPTER_ERR_SUCCESS)
+}
 
 int LocApiBase::
     initDataServiceClient()

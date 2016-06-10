@@ -1,0 +1,4 @@
+allow system_server persist_file:dir { read write };
+allow system_server proc_touchpanel:dir search;
+allow system_server proc_touchpanel:file { write open getattr read };
+allow system_server stm_sensor:chr_file { read write ioctl open };
