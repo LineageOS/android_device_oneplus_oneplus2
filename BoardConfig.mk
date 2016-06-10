@@ -20,9 +20,6 @@
 # definition file).
 #
 
-# Inherit from oppo-common
--include device/oppo/common/BoardConfigCommon.mk
-
 TARGET_OTA_ASSERT_DEVICE := OnePlus2,oneplus2
 
 PLATFORM_PATH := device/oneplus/oneplus2
@@ -232,5 +229,6 @@ TW_THEME := portrait_hdpi
 BOARD_HAS_NO_REAL_SDCARD := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_DEFAULT_LANGUAGE := en-US
 TW_EXTRA_LANGUAGES := true
 TW_INCLUDE_CRYPTO := true
