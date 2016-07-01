@@ -21,6 +21,7 @@ vendor.tunnel.audio.encode=false
 audio.offload.passthrough=false
 audio.deep_buffer.media=true
 audio.offload.min.duration.secs=30
+ro.config.vc_call_vol_steps=7
 
 # Bluetooth
 bluetooth.enable_timeout_ms=12000
@@ -63,6 +64,11 @@ persist.dpm.feature=0
 dalvik.vm.boot-dex2oat-threads=4
 dalvik.vm.dex2oat-threads=2
 dalvik.vm.image-dex2oat-threads=4
+
+# GPS
+persist.gps.qc_nlp_in_use=0
+ro.gps.agps_provider=1
+ro.pip.gated=0
 
 # Graphics
 dev.pm.dyn_samplingrate=1
