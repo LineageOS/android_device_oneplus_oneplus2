@@ -34,6 +34,24 @@
       "revId": "c2cf875eb54aa0a077201c5a0281708cb7296ae9",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_8e520367",
+        "filename": "init/init_oneplus2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-07-13T18:05:53Z",
+      "side": 1,
+      "message": "strncmp returns 0 if and only if the string matches, which means it will not exit if the device matches.",
+      "parentUuid": "3fa7e38b_0e67f34f",
+      "revId": "c2cf875eb54aa0a077201c5a0281708cb7296ae9",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
