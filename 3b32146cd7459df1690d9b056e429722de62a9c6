@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "3fa7e38b_8c9c245e",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 10258
+      },
+      "writtenOn": "2016-07-30T04:00:52Z",
+      "side": 0,
+      "message": "This enables QC SW flac decoder, but 8992/8994 SoC supports HW flac decoding, we don\u0027t make use of it.",
+      "parentUuid": "3fa7e38b_e9e4aaae",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 47
+      },
+      "revId": "3b32146cd7459df1690d9b056e429722de62a9c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa7e38b_09e02696",
         "filename": "BoardConfig.mk",
         "patchSetId": 2
