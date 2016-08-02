@@ -49,3 +49,5 @@
 48:4294967295:1000:3004
 /* DIAG */
 4097:4294967295:2002:2950:3009
+/* <WLFW QMI Service ID - 0x45>:<WLFW QMI Instance ID - all instances>:<Client Group ID> */
+69:4294967295:1000
