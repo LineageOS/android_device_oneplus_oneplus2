@@ -4804,7 +4804,10 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
     staticInfo.update(ANDROID_STATISTICS_INFO_MAX_FACE_COUNT,
                       (int32_t *)&maxFaces, 1);
 
-    uint8_t timestampSource = ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE_UNKNOWN;
+    // SOF timestamp is based on monotonic_boottime. So advertize REALTIME timesource
+    // REALTIME defined in HAL3 API is same as linux's CLOCK_BOOTTIME
+    // Ref: kernel/...../msm_isp_util.c: msm_isp_get_timestamp: get_monotonic_boottime
+    uint8_t timestampSource = ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE_REALTIME;
     staticInfo.update(ANDROID_SENSOR_INFO_TIMESTAMP_SOURCE,
             &timestampSource, 1);
 
