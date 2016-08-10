@@ -203,7 +203,6 @@ on boot
     write /dev/cpuset/restricted/cpus 0-3
 
     start rmt_storage
-    start rfs_access
 
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/type
@@ -596,12 +595,6 @@ service rmt_storage /system/vendor/bin/rmt_storage
     group root system wakelock
     shutdown critical
     ioprio rt 0
-    writepid /dev/cpuset/system-background/tasks
-
-service rfs_access /system/vendor/bin/rfs_access
-    class core
-    user root
-    group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
 on property:vendor.wc_transport.start_hci=true
