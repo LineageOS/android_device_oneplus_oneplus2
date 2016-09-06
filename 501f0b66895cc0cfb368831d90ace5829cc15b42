@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_bf2b4780",
+        "filename": "sensors/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-06T15:19:39Z",
+      "side": 1,
+      "message": "?",
+      "revId": "501f0b66895cc0cfb368831d90ace5829cc15b42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_9f28cb86",
+        "filename": "sensors/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-06T15:19:39Z",
+      "side": 1,
+      "message": "Is the -std\u003dc99 switch needed here or can we fix the code instead?",
+      "revId": "501f0b66895cc0cfb368831d90ace5829cc15b42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_5f2253a6",
+        "filename": "sensors/sensors_proxy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-06T15:19:39Z",
+      "side": 1,
+      "message": "?",
+      "revId": "501f0b66895cc0cfb368831d90ace5829cc15b42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_1f3cdbc6",
+        "filename": "sensors/sensors_proxy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-06T15:19:39Z",
+      "side": 1,
+      "message": "This should be NULL I think",
+      "revId": "501f0b66895cc0cfb368831d90ace5829cc15b42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_7f25cfaa",
+        "filename": "sensors/sensors_proxy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-06T15:19:39Z",
+      "side": 1,
+      "message": "Do you really need to initialize the void pointer here?\nIf yes, should probably use NULL instead.",
+      "revId": "501f0b66895cc0cfb368831d90ace5829cc15b42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa4df85_3f3757e6",
+        "filename": "sensors/sensors_proxy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 7155
+      },
+      "writtenOn": "2016-09-06T15:19:39Z",
+      "side": 1,
+      "message": "Use strncmp please",
+      "revId": "501f0b66895cc0cfb368831d90ace5829cc15b42",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
