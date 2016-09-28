@@ -233,10 +233,7 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libxml2 \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += telephony-ext
+    libxml2
 
 # Sensors
 PRODUCT_PACKAGES += \
