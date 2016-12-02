@@ -74,6 +74,7 @@ PRODUCT_PACKAGES += \
     com.dsi.ant.antradio_library \
     libantradio
 
+<<<<<<< HEAD
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
@@ -87,6 +88,33 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     tinymix
+=======
+# GPS: QCT MODULES
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/gps/qct/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/qct/SuplRootCert:system/etc/SuplRootCert \
+    $(LOCAL_PATH)/gps/qct/lib/libgeofence.so:system/lib/libgeofence.so \
+    $(LOCAL_PATH)/gps/qct/lib/libgps.utils.so:system/lib/libgps.utils.so \
+    $(LOCAL_PATH)/gps/qct/lib/libloc_api_v02.so:system/lib/libloc_api_v02.so \
+    $(LOCAL_PATH)/gps/qct/lib/libloc_core.so:system/lib/libloc_core.so \
+    $(LOCAL_PATH)/gps/qct/lib/libloc_ds_api.so:system/lib/libloc_ds_api.so \
+    $(LOCAL_PATH)/gps/qct/lib/libloc_eng.so:system/lib/libloc_eng.so \
+    $(LOCAL_PATH)/gps/qct/lib/hw/gps.default.so:system/lib/hw/gps.default.so \
+    $(LOCAL_PATH)/gps/qct/lib64/libgeofence.so:system/lib64/libgeofence.so \
+    $(LOCAL_PATH)/gps/qct/lib64/libgps.utils.so:system/lib64/libgps.utils.so \
+    $(LOCAL_PATH)/gps/qct/lib64/libloc_api_v02.so:system/lib64/libloc_api_v02.so \
+    $(LOCAL_PATH)/gps/qct/lib64/libloc_core.so:system/lib64/libloc_core.so \
+    $(LOCAL_PATH)/gps/qct/lib64/libloc_ds_api.so:system/lib64/libloc_ds_api.so \
+    $(LOCAL_PATH)/gps/qct/lib64/libloc_eng.so:system/lib64/libloc_eng.so \
+    $(LOCAL_PATH)/gps/qct/lib64/hw/gps.default.so:system/lib64/hw/gps.default.so
+
+# NFC feature + config files
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    device/htc/flounder/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/htc/flounder/nfc/libnfc-brcm-20795a10.conf:system/etc/libnfc-brcm-20795a10.conf
+>>>>>>> 3f2158e... flounder: Add default GNSS HAL impl to device build
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
@@ -159,6 +187,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fs_config_files
 
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl
+
+# GNSS HAL
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl
+
 # GPS
 PRODUCT_PACKAGES += \
     gps.msm8994 \
@@ -169,10 +205,6 @@ PRODUCT_PACKAGES += \
     quipc.conf \
     sap.conf \
     xtwifi.conf
-
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl
 
 # IPv6
 PRODUCT_PACKAGES += \
