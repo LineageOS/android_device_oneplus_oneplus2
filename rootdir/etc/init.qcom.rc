@@ -100,17 +100,28 @@ on init
     chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
 
     # Touchscreen
-    chown system radio /proc/touchpanel/double_tap_enable
-    chmod 0660 /proc/touchpanel/double_tap_enable
-
-    chown root system /proc/touchpanel/camera_enable
-    chmod 0660 /proc/touchpanel/camera_enable
-
-    chown root system /proc/touchpanel/music_enable
-    chmod 0660 /proc/touchpanel/music_enable
-
-    chown root system /proc/touchpanel/flashlight_enable
-    chmod 0660 /proc/touchpanel/flashlight_enable
+    chown root system /proc/touchpanel/double_swipe
+    chmod 0660 /proc/touchpanel/double_swipe
+    chown root system /proc/touchpanel/double_tap
+    chmod 0660 /proc/touchpanel/double_tap
+    chown root system /proc/touchpanel/down_swipe
+    chmod 0660 /proc/touchpanel/down_swipe
+    chown root system /proc/touchpanel/draw_circle
+    chmod 0660 /proc/touchpanel/draw_circle
+    chown root system /proc/touchpanel/draw_left_v
+    chmod 0660 /proc/touchpanel/draw_left_v
+    chown root system /proc/touchpanel/draw_reversed_v
+    chmod 0660 /proc/touchpanel/draw_reversed_v
+    chown root system /proc/touchpanel/draw_right_v
+    chmod 0660 /proc/touchpanel/draw_right_v
+    chown root system /proc/touchpanel/draw_v
+    chmod 0660 /proc/touchpanel/draw_v
+    chown root system /proc/touchpanel/left_swipe
+    chmod 0660 /proc/touchpanel/left_swipe
+    chown root system /proc/touchpanel/right_swipe
+    chmod 0660 /proc/touchpanel/right_swipe
+    chown root system /proc/touchpanel/up_swipe
+    chmod 0660 /proc/touchpanel/up_swipe
 
     # Buttons
     chown root system /proc/s1302/key_rep
