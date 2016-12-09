@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_1aefe284",
+        "filename": "cm.dependencies",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2016-12-09T16:13:41Z",
+      "side": 1,
+      "message": "This comma shouldn\u0027t be there, that\u0027s why this commit breaks things.",
+      "range": {
+        "startLine": 8,
+        "startChar": 42,
+        "endLine": 8,
+        "endChar": 43
+      },
+      "revId": "286e6b875cf3f97211a367bda02bdc2d4be9af3a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
