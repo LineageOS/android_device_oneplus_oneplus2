@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f681702_9fd74d50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 11122
+      },
+      "writtenOn": "2016-12-14T14:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f681702_bfae89e4",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 78
+      },
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f681702_df5ee510",
         "filename": "gps/etc/gps.conf",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2016-12-14T14:45:10Z",
       "side": 1,
       "message": "whitespace",
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_dfe1c52c",
+        "filename": "gps/etc/gps.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 11122
+      },
+      "writtenOn": "2016-12-14T14:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f681702_df5ee510",
       "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "5f681702_5f81354a",
+        "filename": "gps/etc/gps.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 11122
+      },
+      "writtenOn": "2016-12-14T14:58:57Z",
+      "side": 1,
+      "message": "It was just copied from h2os, because with this gps.conf file we have no GPS issues.\nIf it\u0027s really important to remove that author - i\u0027ll do it, but I think it doesn\u0027t matter.",
+      "parentUuid": "5f681702_9f646de7",
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f681702_ff63e1da",
         "filename": "gps/etc/gps.conf",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2016-12-14T14:45:10Z",
       "side": 1,
       "message": "whitespace",
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_3fd2795d",
+        "filename": "gps/etc/gps.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 11122
+      },
+      "writtenOn": "2016-12-14T14:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f681702_ff63e1da",
       "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
