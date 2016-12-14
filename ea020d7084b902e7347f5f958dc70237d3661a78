@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f681702_bfae89e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-12-14T14:45:10Z",
+      "side": 1,
+      "message": "This is really unecessary. If anything make him the author of the patch.",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 78
+      },
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_df5ee510",
+        "filename": "gps/etc/gps.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-12-14T14:45:10Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_9f646de7",
+        "filename": "gps/etc/gps.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-12-14T14:45:10Z",
+      "side": 1,
+      "message": "wat? ifdef doesn\u0027t work in a conf file...wtf lol",
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f681702_ff63e1da",
+        "filename": "gps/etc/gps.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-12-14T14:45:10Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "ea020d7084b902e7347f5f958dc70237d3661a78",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
