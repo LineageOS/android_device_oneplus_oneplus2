@@ -396,7 +396,7 @@ service perfd /vendor/bin/perfd
 service per_mgr /vendor/bin/pm-service
     class late_start
     user system
-    group system net_raw
+    group system
     ioprio rt 4
     writepid /dev/cpuset/system-background/tasks
 
