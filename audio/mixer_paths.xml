@@ -1350,6 +1350,7 @@
     <!-- #ifdef VENDOR_EDIT-->
     <!-- zhiguang.su@MultiMedia.AudioDrv 2015-05-13 add for volte call speaker  -->
     <path name="volte-call speaker">
+        <ctl name="VOC_EXT_EC MUX" value="QUAT_MI2S_TX" />
         <ctl name="QUAT_MI2S_RX_Voice Mixer VoLTE" value="1" />
         <ctl name="VoLTE_Tx Mixer SLIM_0_TX_VoLTE" value="1" />
     </path>
@@ -1844,6 +1845,10 @@
         <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
         <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
+        <!-- #ifdef VENDOR_EDIT-->
+        <!-- guoguangyi@MultiMedia,2016/4/7,use 24bits to get rid of 16bits innate noise  -->
+        <ctl name="SLIM_0_RX Format" value="S24_LE" />
+        <!-- #endif VENDOR_EDIT-->
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="CLASS_H_DSM MUX" value="DSM_HPHL_RX1" />
