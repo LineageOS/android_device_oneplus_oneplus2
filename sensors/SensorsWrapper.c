@@ -1,4 +1,4 @@
-/* Copyright (C) 2016, The CyanogenMod Project
+/* Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ struct sensors_module_t HAL_MODULE_INFO_SYM = {
         .version_minor = 0,
         .id = SENSORS_HARDWARE_MODULE_ID,
         .name = "Sensors wrapper",
-        .author = "The CyanogenMod Project",
+        .author = "The LineageOS Project",
         .methods = &sensors_module_methods,
         .dso = NULL,
         .reserved = {0}
