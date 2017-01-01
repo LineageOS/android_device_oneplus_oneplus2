@@ -1,4 +1,4 @@
-/* Copyright (C) 2016, The CyanogenMod Project
+/* Copyright (C) 2017 The LineageOS Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
          .hal_api_version = HARDWARE_HAL_API_VERSION,
          .id = CAMERA_HARDWARE_MODULE_ID,
          .name = "OnePlus 2 Camera Wrapper",
-         .author = "The CyanogenMod Project",
+         .author = "The LineageOS Project",
          .methods = &camera_module_methods,
          .dso = NULL, /* remove compilation warnings */
          .reserved = {0}, /* remove compilation warnings */
