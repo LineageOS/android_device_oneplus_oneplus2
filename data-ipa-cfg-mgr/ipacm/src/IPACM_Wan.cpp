@@ -1024,7 +1024,7 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 		break;
 	}
 
-	//if(tx_prop->tx[cnt].hdr_name != NULL)
+	if(tx_prop->tx[cnt].hdr_name[0] != '\0')
 	{
 	    memset(&sCopyHeader, 0, sizeof(sCopyHeader));
 	    memcpy(sCopyHeader.name,
@@ -1104,7 +1104,7 @@ int IPACM_Wan::handle_route_add_evt(ipa_ip_type iptype)
 	    		strcpy(rt_rule->rt_tbl_name, IPACM_Iface::ipacmcfg->rt_tbl_v6.name);
 			}
 
-			//if (tx_prop->tx[tx_index].hdr_name !=  NULL)
+			if (tx_prop->tx[tx_index].hdr_name[0] != '\0')
 			{
 				IPACMDBG_H(" TX- header hdl %s \n", tx_prop->tx[tx_index].hdr_name);
 				memset(&sRetHeader, 0, sizeof(sRetHeader));
@@ -1686,8 +1686,6 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 	memset(&firewall_config, 0, sizeof(firewall_config));
 	strncpy(firewall_config.firewall_config_file, "/etc/mobileap_firewall.xml", sizeof(firewall_config.firewall_config_file));
 
-	//if (firewall_config.firewall_config_file)
-	{
 		IPACMDBG_H("Firewall XML file is %s \n", firewall_config.firewall_config_file);
 		if (IPACM_SUCCESS == IPACM_read_firewall_xml(firewall_config.firewall_config_file, &firewall_config))
 		{
@@ -1710,12 +1708,6 @@ int IPACM_Wan::config_dft_firewall_rules(ipa_ip_type iptype)
 		{
 			IPACMERR("QCMAP Firewall XML read failed, no that file, use default configuration \n");
 		}
-	}
-	/*else
-	{
-		IPACMERR("No firewall xml mentioned \n");
-		return IPACM_FAILURE;
-	}*/
 
 	/* construct ipa_ioc_add_flt_rule with N firewall rules */
 	ipa_ioc_add_flt_rule *m_pFilteringTable = NULL;
