@@ -1,1 +1,2 @@
 ﻿allow sysinit rootfs:lnk_file getattr;
+allow sysinit system_data_file:file { getattr read open};

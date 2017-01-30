@@ -1,0 +1,6 @@
+#============= sudaemon ==============
+allow sudaemon activity_service:service_manager find;
+allow sudaemon alarm_service:service_manager find;
+allow sudaemon display_service:service_manager find;
+allow sudaemon registry_service:service_manager find;
+allow sudaemon user_service:service_manager add;
