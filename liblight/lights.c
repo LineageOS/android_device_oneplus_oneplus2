@@ -101,14 +101,8 @@ char const*const GREEN_RAMP_STEP_MS_FILE
 char const*const BLUE_RAMP_STEP_MS_FILE
         = "/sys/class/leds/blue/ramp_step_ms";
 
-char const*const RED_BLINK_FILE
-        = "/sys/class/leds/red/blink";
-
-char const*const GREEN_BLINK_FILE
-        = "/sys/class/leds/green/blink";
-
-char const*const BLUE_BLINK_FILE
-        = "/sys/class/leds/blue/blink";
+char const*const RGB_BLINK_FILE
+        = "/sys/class/leds/rgb/rgb_blink";
 
 #define RAMP_SIZE 8
 static int BRIGHTNESS_RAMP[RAMP_SIZE]
@@ -272,9 +266,7 @@ set_speaker_light_locked(struct light_device_t* dev,
     blink = onMS > 0 && offMS > 0;
 
     // disable all blinking to start
-    write_int(RED_BLINK_FILE, 0);
-    write_int(GREEN_BLINK_FILE, 0);
-    write_int(BLUE_BLINK_FILE, 0);
+    write_int(RGB_BLINK_FILE, 0);
 
     if (blink) {
         stepDuration = RAMP_STEP_DURATION;
@@ -318,9 +310,7 @@ set_speaker_light_locked(struct light_device_t* dev,
         free(duty);
 
         // start the party
-        write_int(RED_BLINK_FILE, red);
-        write_int(GREEN_BLINK_FILE, green);
-        write_int(BLUE_BLINK_FILE, blue);
+        write_int(RGB_BLINK_FILE, 1);
 
     } else {
         write_int(RED_LED_FILE, red);
