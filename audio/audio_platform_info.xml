@@ -38,6 +38,8 @@
     <backend_names>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
         <device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker" />
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO" backend="speaker-and-bt-sco" interface="QUAT_MI2S_RX-and-SEC_AUX_PCM_RX"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_BT_SCO_WB" backend="speaker-and-bt-sco-wb" interface="QUAT_MI2S_RX-and-SEC_AUX_PCM_RX"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" />
     </backend_names>
     <bit_width_configs>
