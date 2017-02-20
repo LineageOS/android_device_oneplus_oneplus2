@@ -1,0 +1,1 @@
+allow rmt_storage self:capability { dac_override net_raw };
