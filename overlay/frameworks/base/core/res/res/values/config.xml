@@ -404,4 +404,7 @@
     <!-- Enable blur support -->
     <bool name="config_uiBlurEnabled">true</bool>
 
+     <!-- Enable One-hand UI Mode --> 
+    <bool name="single_hand_mode">true</bool> 
+
 </resources>
