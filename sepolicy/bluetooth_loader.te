@@ -1,0 +1,5 @@
+allow bluetooth_loader self:capability dac_override;
+allow bluetooth_loader btnvtool_exec:file { execute execute_no_trans getattr open read };
+allow bluetooth_loader persist_bluetooth_file:dir search;
+allow bluetooth_loader persist_bluetooth_file:file { getattr open read };
+allow bluetooth_loader smem_log_device:chr_file { ioctl open read write };
