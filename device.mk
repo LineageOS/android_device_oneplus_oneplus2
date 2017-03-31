@@ -103,6 +103,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth@1.0-impl
 
+PRODUCT_PACKAGES += \
+    libbt-vendor
+
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8994 \
