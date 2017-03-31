@@ -177,6 +177,10 @@ PRODUCT_PACKAGES += \
     sap.conf \
     xtwifi.conf
 
+# HIDL
+PRODUCT_PACKAGES += \
+    android.hidl.manager@1.0-java
+
 # IPv6
 PRODUCT_PACKAGES += \
     ebtables \
