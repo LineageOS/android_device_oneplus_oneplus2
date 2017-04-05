@@ -19,6 +19,8 @@ $(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+PRODUCT_ENFORCE_RRO_TARGETS := framework-res
+
 # Permissions
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
