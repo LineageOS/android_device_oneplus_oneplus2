@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
+$(call inherit-product, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -45,6 +45,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.vr.high_performance.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vr.high_performance.xml \
     frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.level.xml \
     frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.vulkan.version.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
@@ -135,8 +136,7 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service
+    android.hardware.memtrack@1.0-impl
 
 PRODUCT_PACKAGES += \
     copybit.msm8994 \
@@ -189,6 +189,11 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
 
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common \
+    libshims_ims
+
 # IRQ Balance
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
@@ -204,8 +209,7 @@ PRODUCT_COPY_FILES += \
 
 # Keymaster
 PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl \
-    android.hardware.keymaster@3.0-service
+    android.hardware.keymaster@3.0-impl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -299,6 +303,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# VR
+PRODUCT_PACKAGES += \
+    vr.msm8994
 
 # Vibrator
 PRODUCT_PACKAGES += \
