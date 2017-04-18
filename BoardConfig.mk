@@ -205,4 +205,4 @@ endif
 TARGET_RECOVERY_FSTAB := $(PLATFORM_PATH)/rootdir/etc/fstab.qcom
 
 # inherit from the proprietary version
--include vendor/oneplus/oneplus2/BoardConfigVendor.mk
+include vendor/oneplus/oneplus2/BoardConfigVendor.mk
