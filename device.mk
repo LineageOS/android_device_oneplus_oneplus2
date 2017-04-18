@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product-if-exists, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
+$(call inherit-product, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
