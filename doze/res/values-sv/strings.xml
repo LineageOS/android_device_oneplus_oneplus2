@@ -14,10 +14,12 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="ambient_display_summary">Väck skärmen när du tar emot notifikationer</string>
+  <string name="always_enabled_title">Alltid aktiverad</string>
   <!-- Tilt sensor -->
   <string name="pick_up_title">Plocka upp</string>
   <!-- Proximity sensor -->
   <string name="priximity_sensor_title">Närhetscensor</string>
+  <string name="pocket_gesture_title">Ficka</string>
   <!-- Help text -->
   <string name="dlg_ok">OK</string>
   <string name="doze_settings_help_title">Hjälp</string>
