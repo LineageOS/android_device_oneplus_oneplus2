@@ -1,4 +1,5 @@
-allow bluetooth_loader self:capability dac_override;
+allow bluetooth_loader self:capability { dac_override fsetid };
+allow bluetooth_loader self:socket create;
 allow bluetooth_loader btnvtool_exec:file { execute execute_no_trans getattr open read };
 allow bluetooth_loader persist_bluetooth_file:dir search;
 allow bluetooth_loader persist_bluetooth_file:file { getattr open read };
