@@ -98,6 +98,8 @@ persist.radio.sw_mbn_update=0
 persist.radio.start_ota_daemon=1
 persist.radio.rat_on=combine
 persist.data.qmi.adb_logmask=0
+ro.ril.svlte1x=false
+ro.ril.svdo=false
 
 # Sensors
 ro.qc.sdk.sensors.gestures=true
