@@ -366,9 +366,13 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     swapon_all /fstab.qcom
+
+    setprop vendor.post_boot.parsed 1
     start perfd
+
     start tfa-sh
     restart cameraserver
+
     write /dev/kmsg "Boot completed "
 
     # Set Memory parameters
