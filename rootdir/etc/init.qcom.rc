@@ -365,6 +365,7 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
 on property:sys.boot_completed=1
+    setprop vendor.post_boot.parsed 1
     swapon_all /fstab.qcom
     start perfd
     start tfa-sh
