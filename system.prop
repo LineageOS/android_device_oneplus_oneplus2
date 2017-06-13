@@ -107,6 +107,9 @@ ro.qc.sdk.camera.facialproc=false
 # Storage
 ro.sys.sdcardfs=true
 
+# Tethering
+net.tethering.noprovisioning=true
+
 # Time services
 persist.timed.enable=true
 
