@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_69969496",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 5774
+      },
+      "writtenOn": "2017-06-18T10:31:29Z",
+      "side": 0,
+      "message": "This is more descriptive and should be kept",
+      "range": {
+        "startLine": 465,
+        "startChar": 25,
+        "endLine": 465,
+        "endChar": 31
+      },
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_8993d8a2",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 5774
+      },
+      "writtenOn": "2017-06-18T10:31:29Z",
+      "side": 0,
+      "message": "Same for this",
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_29908c94",
+        "filename": "rootdir/etc/init.qcom.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5774
+      },
+      "writtenOn": "2017-06-18T10:31:29Z",
+      "side": 0,
+      "message": "As well as here",
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_498dd07a",
+        "filename": "rootdir/etc/ueventd.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5774
+      },
+      "writtenOn": "2017-06-18T10:31:29Z",
+      "side": 0,
+      "message": "And again",
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
