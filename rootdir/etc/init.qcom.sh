@@ -35,8 +35,6 @@ fi
 #
 # Function to start sensors for DSPS enabled platforms
 #
-# VENDOR_EDIT
-# qiuchangping@BSP 2015-04-16 add begin for gyro sensitity calibration
 start_sensors()
 {
     if [ -c /dev/msm_dsps -o -c /dev/sensors ]; then
@@ -53,7 +51,6 @@ start_sensors()
         start sensors
     fi
 }
-# qiucahngping@BSP add end
 
 start_battery_monitor()
 {
@@ -117,6 +114,14 @@ start_msm_irqbalance()
 	fi
 }
 
+start_copying_prebuilt_qcril_db()
+{
+    if [ -f /system/vendor/qcril.db -a ! -f /data/misc/radio/qcril.db ]; then
+        cp /system/vendor/qcril.db /data/misc/radio/qcril.db
+        chown -h radio.radio /data/misc/radio/qcril.db
+    fi
+}
+
 baseband=`getprop ro.baseband`
 #
 # Suppress default route installation during RA for IPV6; user space will take
@@ -135,6 +140,7 @@ case "$baseband" in
 esac
 
 start_sensors
+start_copying_prebuilt_qcril_db
 
 case "$target" in
     "msm7630_surf" | "msm7630_1x" | "msm7630_fusion")
