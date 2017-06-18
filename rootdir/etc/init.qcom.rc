@@ -241,6 +241,8 @@ on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
+    mkdir /persist/bluetooth 0770 bluetooth bluetooth
+
     # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
@@ -260,6 +262,7 @@ on boot
 
     # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
+
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
     setprop net.tcp.2g_init_rwnd 10
@@ -462,6 +465,7 @@ on post-fs-data
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
 
+# start services from here
 # start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
@@ -706,7 +710,7 @@ on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
 service cnd /system/bin/cnd
-    class main
+    class late_start
     socket cnd stream 660 root inet
 
 service dpmd /system/bin/dpmd
@@ -1010,7 +1014,7 @@ on property:sys.qbcharger.enable=false
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
-    class main
+    class core
     user root
     group root
     disabled
