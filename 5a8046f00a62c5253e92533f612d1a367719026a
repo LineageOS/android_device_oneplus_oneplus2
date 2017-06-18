@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "da87b5cf_89c19882",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-06-18T10:55:59Z",
+      "side": 0,
+      "message": "also removed from stock",
+      "parentUuid": "da87b5cf_8993d8a2",
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da87b5cf_29908c94",
         "filename": "rootdir/etc/init.qcom.sh",
         "patchSetId": 1
@@ -59,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "da87b5cf_a9ca5c9f",
+        "filename": "rootdir/etc/init.qcom.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-06-18T10:55:59Z",
+      "side": 0,
+      "message": "this is no more in stock so why keep it here?",
+      "parentUuid": "da87b5cf_29908c94",
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da87b5cf_498dd07a",
         "filename": "rootdir/etc/ueventd.qcom.rc",
         "patchSetId": 1
@@ -70,6 +106,24 @@
       "writtenOn": "2017-06-18T10:31:29Z",
       "side": 0,
       "message": "And again",
+      "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da87b5cf_c9cfa0af",
+        "filename": "rootdir/etc/ueventd.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-06-18T10:55:59Z",
+      "side": 0,
+      "message": "same here",
+      "parentUuid": "da87b5cf_498dd07a",
       "revId": "5a8046f00a62c5253e92533f612d1a367719026a",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
