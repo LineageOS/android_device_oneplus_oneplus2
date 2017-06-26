@@ -113,7 +113,6 @@ BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/lineagehw
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 
 # Cpusets
-ENABLE_CPUSETS := true
 ENABLE_SCHED_BOOST := true
 
 # Filesystem
