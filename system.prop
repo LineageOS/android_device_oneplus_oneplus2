@@ -127,4 +127,4 @@ ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
 
 # Time services
-persist.timed.enable=true
+persist.delta_time.enable=true
