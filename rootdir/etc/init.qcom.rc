@@ -958,10 +958,6 @@ service ims_regmanager /system/bin/exe-ims-regmanagerprocessnative
 on property:persist.ims.regmanager.mode=1
     start ims_regmanager
 
-on property:ro.data.large_tcp_window_size=true
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  2
-
 service battery_monitor /system/bin/battery_monitor
     user system
     group system
