@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a318abd7_5252bd2b",
+        "filename": "configs/media_profiles.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2017-07-12T00:47:57Z",
+      "side": 1,
+      "message": "This need test. Better let framework determine this time window in case anything weird happen imo.",
+      "revId": "50a86e1b851f94c765560598d0874de72c516c11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12205059_19726cc7",
+        "filename": "configs/media_profiles.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2017-07-12T00:47:57Z",
+      "side": 1,
+      "message": "Idk if we support higher rate?",
+      "revId": "50a86e1b851f94c765560598d0874de72c516c11",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
