@@ -7,3 +7,5 @@ on recovery
     write /sys/devices/system/cpu/cpu5/cpufreq/scaling_max_freq 960000
     write /sys/devices/system/cpu/cpu6/cpufreq/scaling_max_freq 960000
     write /sys/devices/system/cpu/cpu7/cpufreq/scaling_max_freq 960000
+
+    setprop sys.usb.ffs.aio_compat 1
