@@ -81,6 +81,7 @@ LocEngAdapter::LocEngAdapter(LOC_API_ADAPTER_EVENT_MASK_T mask,
 {
     memset(&mFixCriteria, 0, sizeof(mFixCriteria));
     mFixCriteria.mode = LOC_POSITION_MODE_INVALID;
+    clearGnssSvUsedListData();
     LOC_LOGD("LocEngAdapter created");
 }
 
@@ -101,7 +102,6 @@ void LocEngAdapter::setXtraUserAgent() {
             char release[PROPERTY_VALUE_MAX];
             char manufacture[PROPERTY_VALUE_MAX];
             char model[PROPERTY_VALUE_MAX];
-            char carrier[PROPERTY_VALUE_MAX];
             char board[PROPERTY_VALUE_MAX];
             char brand[PROPERTY_VALUE_MAX];
             char chipsetsn[CHIPSET_SERIAL_NUMBER_MAX_LEN];
@@ -111,13 +111,18 @@ void LocEngAdapter::setXtraUserAgent() {
             property_get("ro.build.version.release", release,     defVal);
             property_get("ro.product.manufacturer",  manufacture, defVal);
             property_get("ro.product.model", model,   defVal);
-            property_get("ro.carrier",       carrier, defVal);
             property_get("ro.product.board", board,   defVal);
             property_get("ro.product.brand", brand,   defVal);
             getChipsetSerialNo(chipsetsn, sizeof(chipsetsn), defVal);
 
-            snprintf(userAgent, sizeof(userAgent), "A/%s/%s/%s/%s/%s/QCX3/s%u/-/%s/-/%s/-/-/-",
-                     release, manufacture, model, board, carrier,
+            encodeInPlace(release, PROPERTY_VALUE_MAX);
+            encodeInPlace(manufacture, PROPERTY_VALUE_MAX);
+            encodeInPlace(model, PROPERTY_VALUE_MAX);
+            encodeInPlace(board, PROPERTY_VALUE_MAX);
+            encodeInPlace(brand, PROPERTY_VALUE_MAX);
+
+            snprintf(userAgent, sizeof(userAgent), "A/%s/%s/%s/%s/-/QCX3/s%u/-/%s/-/%s/-/-/-",
+                     release, manufacture, model, board,
                      mContext->getIzatDevId(), chipsetsn, brand);
 
             for (int i = 0; i < sizeof(userAgent) && userAgent[i]; i++) {
@@ -199,6 +204,56 @@ void LocEngAdapter::setXtraUserAgent() {
             return;
         }
 
+        /**
+         *  encode the given string value such that all separator characters ('/','+','|','%')
+         *  in the string are repaced by their corresponding encodings (%2F","%2B","%7C", "%25")
+         */
+        static void encodeInPlace(char value[], const int size) {
+            char buffer[size];
+
+            struct ENCODE {
+                const char ch;
+                const char *code;
+            };
+
+            const ENCODE encodings[] = { {'/', "%2F"}, {'+', "%2B"}, {'|', "%7C",}, {'%', "%25"} };
+            const int nencodings = (int)sizeof(encodings) / sizeof(encodings[0]);
+
+            int inpos = 0, outpos = 0;
+            while(value[inpos] != '\0' && outpos < size - 1) {
+                // check if escaped character
+                int escchar = 0;
+                while(escchar < nencodings && encodings[escchar].ch != value[inpos]) {
+                    escchar++;
+                }
+
+                if (escchar == nencodings) {
+                    // non escaped character
+                    buffer[outpos++] = value[inpos++];
+                    continue;
+                }
+
+                // escaped character
+                int codepos = 0;
+                #define NUM_CHARS_IN_CODE 3
+
+                if (outpos + NUM_CHARS_IN_CODE >= size) {
+                    // skip last character if there is insufficient space
+                    break;
+                }
+
+                while(outpos < size - 1 && codepos < NUM_CHARS_IN_CODE) {
+                    buffer[outpos++] = encodings[escchar].code[codepos++];
+                }
+                inpos++;
+            }
+
+            // copy to ouput
+            value[outpos] = '\0';
+            while(--outpos >= 0) {
+                value[outpos] = buffer[outpos];
+            }
+        }
     };
 
     sendMsg(new LocSetXtraUserAgent(mContext));
@@ -321,14 +376,14 @@ void LocEngAdapter::reportPosition(UlpLocation &location,
     }
 }
 
-void LocInternalAdapter::reportSv(QcomSvStatus &svStatus,
+void LocInternalAdapter::reportSv(GnssSvStatus &svStatus,
                                   GpsLocationExtended &locationExtended,
                                   void* svExt){
     sendMsg(new LocEngReportSv(mLocEngAdapter, svStatus,
                                locationExtended, svExt));
 }
 
-void LocEngAdapter::reportSv(QcomSvStatus &svStatus,
+void LocEngAdapter::reportSv(GnssSvStatus &svStatus,
                              GpsLocationExtended &locationExtended,
                              void* svExt)
 {
@@ -478,9 +533,8 @@ enum loc_api_adapter_err LocEngAdapter::setTime(GpsUtcTime time,
     if (mSupportsTimeInjection) {
         LOC_LOGD("%s:%d]: Injecting time", __func__, __LINE__);
         result = mLocApi->setTime(time, timeReference, uncertainty);
-    } else {
-        mSupportsTimeInjection = true;
     }
+
     return result;
 }
 
@@ -510,10 +564,10 @@ enum loc_api_adapter_err LocEngAdapter::setXtraVersionCheck(int check)
     return ret;
 }
 
-void LocEngAdapter::reportGpsMeasurementData(GpsData &gpsMeasurementData)
+void LocEngAdapter::reportGnssMeasurementData(GnssData &gnssMeasurementData)
 {
-    sendMsg(new LocEngReportGpsMeasurement(mOwner,
-                                           gpsMeasurementData));
+    sendMsg(new LocEngReportGnssMeasurement(mOwner,
+                                           gnssMeasurementData));
 }
 
 /*
