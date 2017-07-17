@@ -717,6 +717,7 @@ service cnd /system/bin/cnd
 service dpmd /system/bin/dpmd
     class late_start
     socket dpmd stream 660 root system
+    group system readproc
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -744,7 +745,7 @@ on property:wc_transport.start_hci=false
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth qcom_diag
+    group bluetooth qcom_diag system wakelock
     disabled
 
 on property:wc_transport.start_root=true
@@ -926,7 +927,7 @@ service cnss-daemon /system/bin/cnss-daemon -n -l
 service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet net_raw diag net_admin wifi
+    group gps inet net_raw diag net_admin wifi qcom_diag
 
 service drmdiag /system/bin/drmdiagapp
     class late_start
