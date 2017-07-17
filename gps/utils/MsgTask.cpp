@@ -63,9 +63,9 @@ MsgTask::~MsgTask() {
 }
 
 void MsgTask::destroy() {
+    LocThread* thread = mThread;
     msg_q_unblock((void*)mQ);
-    if (mThread) {
-        LocThread* thread = mThread;
+    if (thread) {
         mThread = NULL;
         delete thread;
     } else {
@@ -83,7 +83,7 @@ void MsgTask::prerun() {
 }
 
 bool MsgTask::run() {
-    LOC_LOGD("MsgTask::loop() listening ...\n");
+    LOC_LOGV("MsgTask::loop() listening ...\n");
     LocMsg* msg;
     msq_q_err_type result = msg_q_rcv((void*)mQ, (void **)&msg);
     if (eMSG_Q_SUCCESS != result) {
