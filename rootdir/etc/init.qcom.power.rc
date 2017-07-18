@@ -132,11 +132,20 @@ service charger /charger
     seclabel u:r:healthd:s0
 
 on charger
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+   write /sys/devices/system/cpu/cpu4/online 1
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+   write /sys/devices/soc.0/qcom,bcl.62/mode disable
+   write /sys/devices/soc.0/qcom,bcl.62/hotplug_mask 0
+   write /sys/devices/soc.0/qcom,bcl.62/hotplug_soc_mask 0
+   write /sys/devices/soc.0/qcom,bcl.62/mode enable
+   write /sys/devices/system/cpu/cpu1/online 0
+   write /sys/devices/system/cpu/cpu2/online 0
+   write /sys/devices/system/cpu/cpu3/online 0
+   write /sys/devices/system/cpu/cpu4/online 0
+   write /sys/devices/system/cpu/cpu5/online 0
+   write /sys/devices/system/cpu/cpu6/online 0
+   write /sys/devices/system/cpu/cpu7/online 0
+   write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
 on class_start:late_start
     trigger enable-low-power
