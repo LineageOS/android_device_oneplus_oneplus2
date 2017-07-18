@@ -18,7 +18,6 @@ on boot
     write /dev/cpuset/camera-daemon/cpus 0-3
 
 on enable-low-power
-
     # Ensure at most one A57 is online when thermal hotplug is disabled
     write /sys/devices/system/cpu/cpu5/online 0
     write /sys/devices/system/cpu/cpu6/online 0
@@ -147,7 +146,7 @@ on charger
    write /sys/devices/system/cpu/cpu7/online 0
    write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
-on class_start:late_start
+on class_start:sys.boot_completed=1
     trigger enable-low-power
 
 on property:init.svc.recovery=running
