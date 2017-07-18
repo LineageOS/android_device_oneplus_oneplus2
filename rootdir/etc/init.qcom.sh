@@ -278,8 +278,9 @@ rm -rf /data/misc/radio/modem_config
 mkdir /data/misc/radio/modem_config
 #ifdef VENDOR_EDIT
 # Modify /data/misc/radio/modem_config authority to 770 from 660, and modify the target path to /system/etc/firmware/mbn_ota/, by hanqingpu@oneplus.cn, 20150530
+# Because we removed symlinks we have to copy from firmware partition /firmware/image/modem_pr/mcfg/configs/
 chmod 770 /data/misc/radio/modem_config
-cp -r /system/etc/firmware/mbn_ota/* /data/misc/radio/modem_config
+cp -r /firmware/image/modem_pr/mcfg/configs/* /data/misc/radio/modem_config
 #endif /*VENDOR_EDIT*/
 chown -hR radio.radio /data/misc/radio/modem_config
 echo 1 > /data/misc/radio/copy_complete
