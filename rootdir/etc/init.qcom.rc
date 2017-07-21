@@ -213,6 +213,28 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
+    # execute script to set initial CPU settings
+    # don't run as a service to avoid race conditions
+    exec - root system -- /system/etc/init.oneplus2.power.sh
+    
+    # add a cpuset for the camera daemon
+    # we want all the little cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0
+    write /dev/cpuset/camera-daemon/mems 0
+    chown system system /dev/cpuset/camera-daemon
+    chown system system /dev/cpuset/camera-daemon/tasks
+    chmod 0664 /dev/cpuset/camera-daemon/tasks
+
+    # update foreground cpuset now that processors are up
+    # reserve CPU 3 for the top app and camera daemon
+    write /dev/cpuset/foreground/cpus 0-2,4-7
+    write /dev/cpuset/foreground/boost/cpus 4-7
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/camera-daemon/cpus 0-3
+
     start rmt_storage
     start rfs_access
 
@@ -713,6 +735,7 @@ on property:persist.env.fastdorm.enabled=true
 service cnd /system/bin/cnd
     class late_start
     socket cnd stream 660 root inet
+    writepid /dev/cpuset/system-background/tasks
 
 service dpmd /system/bin/dpmd
     class late_start
@@ -733,6 +756,7 @@ service rfs_access /system/bin/rfs_access
     class core
     user root
     group system net_raw
+    writepid /dev/cpuset/system-background/tasks
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -828,13 +852,14 @@ service ipacm /system/bin/ipacm
     class main
     user net_admin
     group net_admin inet
+    writepid /dev/cpuset/system-background/tasks
 
 service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw qcom_diag usb net_admin
-    writepid /dev/cpuset/system-background/tasks
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service sensors /system/bin/sensors.qcom
     class late_start
@@ -927,6 +952,7 @@ service loc_launcher /system/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw diag net_admin wifi
+    writepid /dev/cpuset/system-background/tasks
 
 service drmdiag /system/bin/drmdiagapp
     class late_start
