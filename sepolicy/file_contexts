@@ -12,3 +12,6 @@
 /dev/input/event2                                               u:object_r:stm_sensor:s0
 
 /data/oemnvitems(/.*)?                                          u:object_r:nv_data_file:s0
+
+# Core_ctl
+/system/etc/init.qcom.power.sh                                  u:object_r:init-power-sh_exec:s0
