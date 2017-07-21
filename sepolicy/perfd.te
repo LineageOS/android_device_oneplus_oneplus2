@@ -1,3 +1,6 @@
 allow perfd system_data_file:sock_file write;
 allow perfd system_data_file:dir { add_name remove_name write };
 allow perfd system_data_file:sock_file { create setattr unlink };
+allow perfd sysfs_performance:dir search;
+allow perfd sysfs_performance:file rw_file_perms;
+allow perfd proc_kernel_sched:file rw_file_perms;
