@@ -62,9 +62,6 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
 
-    # Insert core_ctl module and use conservative paremeters
-    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 1
-
     # Re-enable thermal and BCL hotplug
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/devices/soc.0/qcom,bcl.62/mode "disable"
@@ -84,12 +81,18 @@ on enable-low-power
 
     # Configure core_ctl module parameters
     write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
-    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
     write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 70
     write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 20
     write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms  100
-    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
     write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
+    write /sys/devices/system/cpu/cpu0/core_ctl/max_cpus 4
+    write /sys/devices/system/cpu/cpu0/core_ctl/min_cpus 0
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 20
+    write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 5
+    write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 5000
+    write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred 1
 
     # Setting big.LITTLE scheduler parameters
     write /proc/sys/kernel/sched_migration_fixup 1
@@ -116,19 +119,31 @@ on enable-low-power
     setprop ro.min_freq_4 384000
     start perfd
 
-service charger /charger
+service charger /sbin/healthd -c
     class charger
     group log
     seclabel u:r:healthd:s0
+    writepid /dev/cpuset/system-background/tasks
 
 on charger
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"
-    write /sys/devices/system/cpu/cpu1/online 0
-    write /sys/devices/system/cpu/cpu2/online 0
-    write /sys/devices/system/cpu/cpu3/online 0
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+   write /sys/devices/system/cpu/cpu4/online 1
+   write /sys/module/msm_thermal/core_control/enabled 0
+   write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+   write /sys/devices/soc.0/qcom,bcl.62/mode disable
+   write /sys/devices/soc.0/qcom,bcl.62/hotplug_mask 0
+   write /sys/devices/soc.0/qcom,bcl.62/hotplug_soc_mask 0
+   write /sys/devices/soc.0/qcom,bcl.62/mode enable
+   write /sys/devices/system/cpu/cpu1/online 0
+   write /sys/devices/system/cpu/cpu2/online 0
+   write /sys/devices/system/cpu/cpu3/online 0
+   write /sys/devices/system/cpu/cpu4/online 0
+   write /sys/devices/system/cpu/cpu5/online 0
+   write /sys/devices/system/cpu/cpu6/online 0
+   write /sys/devices/system/cpu/cpu7/online 0
+   write /sys/module/msm_thermal/core_control/enabled 1
+   write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
-on class_start:late_start
+on class_start:sys.boot_completed=1
     trigger enable-low-power
 
 on property:init.svc.recovery=running
