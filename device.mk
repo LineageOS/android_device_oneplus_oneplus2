@@ -218,16 +218,15 @@ PRODUCT_PACKAGES += \
 
 # Ramdisk
 PRODUCT_PACKAGES += \
-    init.qcom.bt.sh \
-    init.zram.sh
-
-PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.oneplus2.power.sh \
+    init.qcom.bt.sh \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+    init.zram.sh \
     ueventd.qcom.rc
 
 # RIL
@@ -242,6 +241,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
+
+# Thermal-Engine
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal-engine.conf:system/etc/thermal-engine.conf
 
 # USB
 PRODUCT_PACKAGES += \
