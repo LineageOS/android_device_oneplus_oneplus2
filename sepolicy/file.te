@@ -4,3 +4,5 @@ type cam_sysfs, fs_type;
 type cam_blob, file_type;
 type nv_data_file, file_type;
 type stm_sensor, file_type;
+type proc_kernel_sched, fs_type;
+type sysfs_performance, sysfs_type, fs_type;
