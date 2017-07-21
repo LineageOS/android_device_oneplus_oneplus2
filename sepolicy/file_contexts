@@ -12,3 +12,8 @@
 /dev/input/event2                                               u:object_r:stm_sensor:s0
 
 /data/oemnvitems(/.*)?                                          u:object_r:nv_data_file:s0
+
+# Core_ctl
+/system/bin/init.oneplus2.power.sh                              u:object_r:init-power-sh_exec:s0
+
+/sys/devices/soc\.0/qcom,bcl[^/]*(/.*)?                         u:object_r:sysfs_thermal:s0
