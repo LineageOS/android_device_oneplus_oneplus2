@@ -1,14 +1,26 @@
 # We have a couple of non-standard NV partitions
-/dev/block/bootdevice/by-name/oem_dycnvbk                       u:object_r:modem_efs_partition_device:s0
-/dev/block/bootdevice/by-name/oem_stanvbk                       u:object_r:modem_efs_partition_device:s0
+/dev/block/bootdevice/by-name/oem_dycnvbk                               u:object_r:modem_efs_partition_device:s0
+/dev/block/bootdevice/by-name/oem_stanvbk                               u:object_r:modem_efs_partition_device:s0
 
 # FRP partition
-/dev/block/bootdevice/by-name/config                            u:object_r:frp_block_device:s0
+/dev/block/bootdevice/by-name/config                                    u:object_r:frp_block_device:s0
 
-/persist/.genmac                                                u:object_r:wifi_data_file:s0
+/sys/devices/soc\.0/f9928000\.i2c/i2c-6/6-0029/enable_ps_sensor         u:object_r:cam_sysfs:s0
+/sys/devices/soc\.0/f9928000\.i2c/i2c-6/6-0029/set_delay_ms             u:object_r:cam_sysfs:s0
+/dev/input/event2                                                       u:object_r:stm_sensor:s0
 
-/sys/devices/soc.0/f9928000.i2c/i2c-6/6-0029/enable_ps_sensor   u:object_r:cam_sysfs:s0
-/sys/devices/soc.0/f9928000.i2c/i2c-6/6-0029/set_delay_ms       u:object_r:cam_sysfs:s0
-/dev/input/event2                                               u:object_r:stm_sensor:s0
+/data/oemnvitems(/.*)?                                                  u:object_r:nv_data_file:s0
 
-/data/oemnvitems(/.*)?                                          u:object_r:nv_data_file:s0
+# Core_ctl
+/system/bin/init\.oneplus2\.power\.sh                                   u:object_r:init-power-sh_exec:s0
+
+/sys/devices/soc\.0/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+(/.*)? u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/soc\.0/qcom,mincpubw\.[0-9]+/devfreq/qcom,mincpubw\.[0-9]+(/.*)?        u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/virtual/net/rmnet_ipa0/queues/rx-0/rps_cpus                u:object_r:sysfs_devices_system_cpu:s0
+/sys/module/cpu_boost(/.*)?                                             u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/soc\.0/qcom,gpubw\.[0-9]+/devfreq/qcom,gpubw\.[0-9]+(/.*)? u:object_r:sysfs_thermal:s0
+/sys/devices/soc\.0/qcom,bcl[^/]*(/.*)?                                 u:object_r:sysfs_thermal:s0
+/sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/devfreq/fdb00000\.qcom,kgsl-3d0/governor u:object_r:sysfs_thermal:s0
+/sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel           u:object_r:sysfs_thermal:s0
+/sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk    u:object_r:sysfs_thermal:s0
+/sys/module/msm_performance(/.*)?                                       u:object_r:sysfs_performance:s0

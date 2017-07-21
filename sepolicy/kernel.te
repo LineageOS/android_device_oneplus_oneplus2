@@ -1,1 +1,3 @@
 allow kernel sysfs:file write;
+allow kernel domain:process setsched;
+
