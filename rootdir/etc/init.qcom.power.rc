@@ -26,8 +26,5 @@ service charger /charger
     seclabel u:r:healthd:s0
     writepid /dev/cpuset/system-background/tasks
 
-on property:init.svc.recovery=running
-    trigger enable-low-power
-
 on property:dev.bootcomplete=1
     setprop sys.io.scheduler "bfq"
