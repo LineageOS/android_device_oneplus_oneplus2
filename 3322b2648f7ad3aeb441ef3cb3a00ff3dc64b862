@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8eb127c_5e2d8c01",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2017-07-30T20:48:14Z",
+      "side": 1,
+      "message": "\u0027.\u0027 is a regex, escape to prevent labeling invalid files.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "3322b2648f7ad3aeb441ef3cb3a00ff3dc64b862",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a89bae65_e10c7d5e",
+        "filename": "sepolicy/init-power-sh.te",
+        "patchSetId": 28
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2017-07-30T20:48:14Z",
+      "side": 1,
+      "message": "r_file_perms",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "3322b2648f7ad3aeb441ef3cb3a00ff3dc64b862",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bec2689_38f47dc6",
+        "filename": "sepolicy/kernel.te",
+        "patchSetId": 28
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2017-07-30T20:48:14Z",
+      "side": 1,
+      "message": "Maybe just allow setsched on a domain instead of listing everything manually?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "3322b2648f7ad3aeb441ef3cb3a00ff3dc64b862",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
