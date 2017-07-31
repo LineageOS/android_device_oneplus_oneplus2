@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a826ce8_97536a3f",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-07-31T14:47:46Z",
+      "side": 1,
+      "message": "i did it analog to clark, hima and angler. i know this not a good argument but all inits i saq are named like this",
+      "parentUuid": "b8eb127c_5e2d8c01",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "3322b2648f7ad3aeb441ef3cb3a00ff3dc64b862",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a89bae65_e10c7d5e",
         "filename": "sepolicy/init-power-sh.te",
         "patchSetId": 28
@@ -59,6 +83,30 @@
       "writtenOn": "2017-07-30T20:48:14Z",
       "side": 1,
       "message": "Maybe just allow setsched on a domain instead of listing everything manually?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "3322b2648f7ad3aeb441ef3cb3a00ff3dc64b862",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6181008c_fe6a00c6",
+        "filename": "sepolicy/kernel.te",
+        "patchSetId": 28
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-07-31T14:47:46Z",
+      "side": 1,
+      "message": "maybe. same as above but will think about when this is ready.",
+      "parentUuid": "7bec2689_38f47dc6",
       "range": {
         "startLine": 2,
         "startChar": 0,
