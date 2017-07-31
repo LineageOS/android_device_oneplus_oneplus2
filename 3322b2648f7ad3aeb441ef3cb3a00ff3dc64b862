@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "59b872c7_7f92ccba",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 28
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2017-07-31T14:49:59Z",
+      "side": 1,
+      "message": "This is not about naming the file, it\u0027s about labeling it. Look at /sys/devices/soc.0 stuff, it\u0027s properly escaped.\nAlso you could fix the label for genmac stuff as well.",
+      "parentUuid": "5a826ce8_97536a3f",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "3322b2648f7ad3aeb441ef3cb3a00ff3dc64b862",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a89bae65_e10c7d5e",
         "filename": "sepolicy/init-power-sh.te",
         "patchSetId": 28
