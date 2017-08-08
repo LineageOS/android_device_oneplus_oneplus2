@@ -1,1 +1,8 @@
 allow rfs_access self:capability net_raw;
+
+#debugfs access
+userdebug_or_eng(`
+typeattribute rfs_access qti_debugfs_domain;
+allow rfs_access debugfs:dir r_dir_perms;
+allow rfs_access debugfs:file rw_file_perms;
+')
