@@ -3,3 +3,8 @@ allow mm-qcamerad vendor_file:file execmod;
 
 allow mm-qcamerad sysfs_laser:dir search;
 allow mm-qcamerad sysfs_laser:lnk_file read;
+
+# Allow camera Eztune library to create/bind/listen socket
+userdebug_or_eng(`
+  allow mm-qcamerad self:tcp_socket { bind create setopt };
+')
