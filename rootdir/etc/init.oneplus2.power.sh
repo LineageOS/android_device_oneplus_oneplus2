@@ -114,6 +114,20 @@ write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred 1
 chown system:system /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
 chown system:system /sys/devices/system/cpu/cpu4/core_ctl/max_cpus
 
+
+# re-enable retention idle state
+# fix-up is merged in the Kernel
+write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a53/cpu2/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a53/cpu3/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a57/cpu4/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a57/cpu6/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a57/cpu7/retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 1
+write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 1
+
 # Setting B.L scheduler parameters
 write /proc/sys/kernel/sched_migration_fixup 1
 write /proc/sys/kernel/sched_small_task 30
