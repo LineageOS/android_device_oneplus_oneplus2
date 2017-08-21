@@ -1,1 +1,2 @@
+allow rfs_access debugfs:file write;
 allow rfs_access self:capability net_raw;
