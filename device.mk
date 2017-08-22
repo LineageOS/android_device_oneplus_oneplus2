@@ -287,6 +287,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vr.msm8994
 
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
+
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
