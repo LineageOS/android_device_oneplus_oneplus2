@@ -520,6 +520,7 @@ service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
+    seclabel u:r:qseecomd:s0
     writepid /dev/cpuset/system-background/tasks
 
 service perfd /system/vendor/bin/perfd
@@ -567,6 +568,7 @@ service thermal-engine /system/vendor/bin/thermal-engine
     socket thermal-recv-client stream 0660 system system
     socket thermal-recv-passive-client stream 0666 system system
     group root
+    seclabel u:r:thermal-engine:s0
     writepid /dev/cpuset/system-background/tasks
 
 service time_daemon /system/bin/time_daemon
@@ -767,6 +769,7 @@ service rmt_storage /system/bin/rmt_storage
     class core
     user root
     group root system wakelock
+    seclabel u:r:rmt_storage:s0
     writepid /dev/cpuset/system-background/tasks
 
 service rfs_access /system/bin/rfs_access

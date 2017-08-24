@@ -1,0 +1,7 @@
+allow toolbox system_data_file:dir { add_name create setattr };
+allow toolbox modem_firmware_file:file { getattr open };
+allow toolbox self:udp_socket { create ioctl };
+allow toolbox init:fifo_file { read write };
+
+set_prop(toolbox, bluetooth_prop);
+set_prop(toolbox, ctl_default_prop);

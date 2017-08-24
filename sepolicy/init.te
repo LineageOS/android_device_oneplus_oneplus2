@@ -1,3 +1,13 @@
-allow init cam_sysfs:file relabelto;
-allow init proc_dirty_ratio:file write;
-allow init proc_kernel_sched:file write;
+allow init qseecomd:file execute_no_trans;
+allow init shell_exec:file execute_no_trans;
+allow init uio_device:chr_file { open read write };
+allow init block_device:blk_file write;
+allow init debugfs:file write;
+allow init self:socket { read bind create ioctl };
+allow init socket_device:sock_file { create setattr };
+allow init self:netlink_kobject_uevent_socket { bind create setopt };
+allow init vfat:dir { read open };
+allow init servicemanager:binder call;
+allow init ion_device:chr_file { ioctl read open };
+allow init video_device:chr_file { ioctl read open };
+allow init self:udp_socket ioctl
