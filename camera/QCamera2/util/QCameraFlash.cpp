@@ -156,7 +156,7 @@ int32_t QCameraFlash::initFlash(const int camera_id)
         ALOGE("%s: No flash available for camera id: %d",
                 __func__,
                 camera_id);
-        retVal = -EINVAL;
+        retVal = -ENOSYS;
     } else if (m_cameraOpen[camera_id]) {
         ALOGE("%s: Camera in use for camera id: %d",
                 __func__,
