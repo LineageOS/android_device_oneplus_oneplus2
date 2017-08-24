@@ -1,3 +1,0 @@
-allow init cam_sysfs:file relabelto;
-allow init proc_dirty_ratio:file write;
-allow init proc_kernel_sched:file write;
