@@ -89,6 +89,12 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.deprecated-V1.0-java \
     android.hardware.soundtrigger@2.0-impl
 
+PRODUCT_PACKAGES += \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
+    android.hardware.broadcastradio@1.0-impl \
+    android.hardware.soundtrigger@2.0-impl
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
@@ -106,8 +112,14 @@ PRODUCT_COPY_FILES += \
 #    com.dsi.ant.antradio_library \
 #    libantradio
 
+# Bluetooth HAL
+PRODUCT_PACKAGES += \
+    android.hardware.bluetooth@1.0-impl
+
 # Camera
 PRODUCT_PACKAGES += \
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl \
     camera.msm8994 \
     libshim_camera \
     libshim_ims-camera \
@@ -120,8 +132,8 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     services-ext
 
- # Display
- PRODUCT_PACKAGES += \
+# Display
+PRODUCT_PACKAGES += \
     copybit.msm8994 \
     gralloc.msm8994 \
     hwcomposer.msm8994 \
@@ -150,11 +162,16 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    fingerprintd
+    fingerprintd \
+    android.hardware.biometrics.fingerprint@2.1-service
 
 # For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+    android.hardware.gatekeeper@1.0-impl
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -166,6 +183,9 @@ PRODUCT_PACKAGES += \
     quipc.conf \
     sap.conf \
     xtwifi.conf
+
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl
 
 # HIDL
 PRODUCT_COPY_FILES += \
@@ -189,9 +209,16 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/fpc1020.kl:system/usr/keylayout/fpc1020.kl \
     $(LOCAL_PATH)/keylayout/synaptics.kl:system/usr/keylayout/synaptics.kl
 
+# Keymaster HAL
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.msm8994
+
+PRODUCT_PACKAGES += \
+    android.hardware.light@2.0-impl
 
 # LiveDisplay native
 PRODUCT_PACKAGES += \
@@ -228,6 +255,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm8994
 
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl
+
 # Ramdisk
 PRODUCT_PACKAGES += \
     fstab.qcom \
@@ -242,6 +272,10 @@ PRODUCT_PACKAGES += \
     init.zram.sh \
     ueventd.qcom.rc
 
+# RenderScript HAL
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
@@ -252,12 +286,22 @@ PRODUCT_PACKAGES += \
     sensors.msm8994 \
     sensors.ssc.wrapper
 
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/hals.conf:system/etc/sensors/hals.conf
 
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
 
 # VR
 PRODUCT_PACKAGES += \
@@ -269,6 +313,9 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
+
+PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
 
 #PRODUCT_PACKAGES += \
 #    ipacm \
