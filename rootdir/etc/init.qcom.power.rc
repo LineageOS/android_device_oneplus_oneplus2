@@ -23,7 +23,6 @@ on charger
 service charger /charger
     class charger
     group log
-    seclabel u:r:healthd:s0
     writepid /dev/cpuset/system-background/tasks
 
 on property:dev.bootcomplete=1
