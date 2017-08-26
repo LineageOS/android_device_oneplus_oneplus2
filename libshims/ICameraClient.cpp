@@ -46,12 +46,7 @@ public:
         data.writeInterfaceToken(ICameraClient::getInterfaceDescriptor());
         data.writeInt32(msgType);
         data.writeInt32(ext1);
-        if ((msgType == CAMERA_MSG_PREVIEW_FRAME) && (ext1 == CAMERA_FRAME_DATA_FD)) {
-            ALOGD("notifyCallback: CAMERA_MSG_PREVIEW_FRAME fd = %d", ext2);
-            data.writeFileDescriptor(ext2);
-        } else {
-            data.writeInt32(ext2);
-        }
+        data.writeInt32(ext2);
         remote()->transact(NOTIFY_CALLBACK, data, &reply, IBinder::FLAG_ONEWAY);
     }
 
@@ -96,14 +91,8 @@ status_t BnCameraClient::onTransact(
             ALOGV("NOTIFY_CALLBACK");
             CHECK_INTERFACE(ICameraClient, data, reply);
             int32_t msgType = data.readInt32();
-            int32_t ext1    = data.readInt32();
-            int32_t ext2    = 0;
-            if ((msgType == CAMERA_MSG_PREVIEW_FRAME) && (ext1 == CAMERA_FRAME_DATA_FD)) {
-                ext2 = data.readFileDescriptor();
-                ALOGD("onTransact: CAMERA_MSG_PREVIEW_FRAME fd = %d", ext2);
-            } else {
-                ext2 = data.readInt32();
-            }
+            int32_t ext1 = data.readInt32();
+            int32_t ext2 = data.readInt32();
             notifyCallback(msgType, ext1, ext2);
             return NO_ERROR;
         } break;
