@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b849b2a_f31e3f69",
+        "filename": "init/init_oneplus2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-08-26T08:35:30Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 37
+      },
+      "revId": "a871a37a51d02459a176fd44c8e600a5edf20ac8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a678f8aa_fc80d6e8",
+        "filename": "init/init_oneplus2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 16082
+      },
+      "writtenOn": "2017-08-26T08:35:30Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 39,
+        "startChar": 33,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "a871a37a51d02459a176fd44c8e600a5edf20ac8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
