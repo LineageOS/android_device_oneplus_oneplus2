@@ -28,21 +28,27 @@
  */
 
 #include <stdlib.h>
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
 
-#include "vendor_init.h"
+#include <android-base/properties.h>
+
 #include "property_service.h"
+#include "vendor_init.h"
 #include "log.h"
-#include "util.h"
+
+using android::base::GetProperty;
 
 void init_variant_properties() {
 
-    std::string device = property_get("ro.cm.device");
+    std::string platform;
     std::string rf_version;
 
-    if (device != "oneplus2")
+    platform = GetProperty("ro.board.platform", "");
+    if (platform != ANDROID_TARGET)
         return;
 
-    rf_version = property_get("ro.boot.rf_v1");
+    rf_version = GetProperty("ro.boot.rf_v1","");
 
     if (rf_version == "14") {
         /* Chinese */
