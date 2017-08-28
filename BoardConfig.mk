@@ -117,7 +117,7 @@ ENABLE_CPUSETS := true
 ENABLE_SCHED_BOOST := true
 
 # Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
+TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
 # GPS
 TARGET_NO_RPC := true

@@ -138,7 +138,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fingerprint.msm8994
 
-# For android_filesystem_config.h
+# For config.fs
 PRODUCT_PACKAGES += \
     fs_config_files
 
