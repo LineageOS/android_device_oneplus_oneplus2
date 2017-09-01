@@ -116,6 +116,10 @@ PRODUCT_PACKAGES += \
     libshim_ims-camera \
     sensors.hal.tof
 
+# DRM
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
+
 # Display
 PRODUCT_PACKAGES += \
     copybit.msm8994 \
