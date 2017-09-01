@@ -555,7 +555,7 @@ vendor/lib64/libvoice-svc.so
 
 # Sensors - OxygenOS 3.6.0
 bin/sensors.qcom
-etc/sensors/hals.conf
+etc/sensors/hals.conf:vendor/etc/sensors/hals.conf
 etc/sensors/sensor_def_qcomdev.conf
 vendor/lib/hw/activity_recognition.msm8994.so
 vendor/lib/libsensor1.so
