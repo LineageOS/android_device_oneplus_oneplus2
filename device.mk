@@ -249,7 +249,9 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    sensors.msm8994 \
+    android.hardware.sensors@1.0-impl
+
+PRODUCT_PACKAGES += \
     sensors.ssc.wrapper
 
 # Seccomp
