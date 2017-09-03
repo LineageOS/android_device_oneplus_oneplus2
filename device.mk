@@ -193,6 +193,28 @@ PRODUCT_PACKAGES += \
     libjni_livedisplay
 
 # Media
+PRODUCT_PACKAGES += \
+    libdashplayer \
+    libdivxdrmdecrypt \
+    libextmedia_jni \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libmm-omxcore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxSwVencMpeg4 \
+    libOmxSwVencHevc \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libOmxVidcCommon \
+    libstagefrighthw \
+    libstagefright_soft_flacdec
+
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
@@ -206,26 +228,6 @@ PRODUCT_COPY_FILES += \
 # MIDI feature
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml
-
-# OMX
-PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libdashplayer \
-    libdivxdrmdecrypt \
-    libextmedia_jni \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxSwVencMpeg4 \
-    libOmxSwVencHevc \
-    libOmxVdec \
-    libOmxVdecHevc \
-    libOmxVenc \
-    libOmxVidcCommon \
-    libstagefrighthw \
-    libstagefright_soft_flacdec
 
 # Power
 PRODUCT_PACKAGES += \
