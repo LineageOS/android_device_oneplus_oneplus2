@@ -67,3 +67,11 @@ LOCAL_32_BIT_ONLY := true
 LOCAL_SHARED_LIBRARIES := libgui libui libsensor
 
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := atomic.cpp
+LOCAL_MODULE := libshim_atomic
+LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+
+include $(BUILD_SHARED_LIBRARY)
