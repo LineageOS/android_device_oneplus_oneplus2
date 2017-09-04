@@ -286,7 +286,8 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     librmnetctl \
-    libxml2
+    libxml2 \
+    rild_socket
 
 # Sensors
 PRODUCT_PACKAGES += \
