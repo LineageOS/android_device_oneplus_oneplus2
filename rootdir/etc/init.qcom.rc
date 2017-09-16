@@ -60,6 +60,10 @@ on init
     mkdir /persist 0771 system system
     mkdir /persist/data 0700 system system
 
+    # Set permissions for persist partition
+    mkdir /persist 0771 system system
+    mkdir /persist/data 0700 system system
+
     # Slow Motion Scheduling Group
     mkdir /dev/cpuctl/smsg
     chown system system /dev/cpuctl/smsg/tasks
