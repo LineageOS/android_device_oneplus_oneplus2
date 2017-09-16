@@ -97,6 +97,7 @@ mmp.enable.3g2=true
 # Get camera working with mm blobs
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
+persist.media.treble_omx=false
 
 # QC vendor extension
 ro.vendor.extension_library=libqti-perfd-client.so
@@ -130,9 +131,6 @@ persist.data.qmi.adb_logmask=0
 ro.qc.sdk.sensors.gestures=true
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.camera.facialproc=false
-
-# Storage
-ro.sys.sdcardfs=true
 
 # Time services
 persist.timed.enable=true
