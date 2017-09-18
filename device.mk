@@ -193,7 +193,8 @@ PRODUCT_PACKAGES += \
 
 # IMS
 PRODUCT_PACKAGES += \
-    ims-ext-common
+    ims-ext-common \
+    libshims_ims
 
 # IRSC
 PRODUCT_COPY_FILES += \
