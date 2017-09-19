@@ -560,12 +560,6 @@ service zram-init /system/bin/sh /system/etc/init.zram.sh
     disabled
     oneshot
 
-service fingerprintd /system/bin/fingerprintd
-    class late_start
-    user system
-    group system
-    writepid /dev/cpuset/system-background/tasks
-
 service thermal-engine /system/vendor/bin/thermal-engine
     class main
     user root
