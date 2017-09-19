@@ -272,9 +272,9 @@ etc/firmware/fingerprints.b01
 etc/firmware/fingerprints.b02
 etc/firmware/fingerprints.b03
 etc/firmware/fingerprints.mdt
-lib/hw/fingerprint.msm8994.so
+lib/hw/fingerprint.msm8994.so:lib/hw/fingeprint.vendor.msm8994.so
 lib/lib_fpc_tac_shared.so
-lib64/hw/fingerprint.msm8994.so
+lib64/hw/fingerprint.msm8994.so:lib64/hw/fingeprint.vendor.msm8994.so
 lib64/lib_fpc_tac_shared.so
 
 # Gatekeeper - OxygenOS 3.6.0
