@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The CyanogenMod Project
+ * Copyright (C) 2017 Lineage Android
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,8 +14,4 @@
  * limitations under the License.
  */
 
-#define CAMERA_PARAMETERS_EXTRA_C \
-const char CameraParameters::KEY_APP_MASK[] = "app-mask";
-
-#define CAMERA_PARAMETERS_EXTRA_H \
-    static const char KEY_APP_MASK[];
+const char _ZN7android16CameraParameters12KEY_APP_MASKE[] = "app-mask";
