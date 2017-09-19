@@ -121,7 +121,8 @@ PRODUCT_PACKAGES += \
     libshim_camera \
     libshim_ims-camera \
     sensors.hal.tof \
-    libshim_atomic
+    libshim_atomic \
+    libop2_cam
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
