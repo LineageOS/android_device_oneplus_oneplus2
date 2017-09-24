@@ -1,6 +1,3 @@
-ifneq ($(BUILD_TINY_ANDROID),true)
-#Compile this library only for builds with the latest modem image
-
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -36,8 +33,8 @@ LOCAL_SRC_FILES += \
     loc_eng_dmn_conn_glue_pipe.c
 
 LOCAL_CFLAGS += \
-     -fno-short-enums \
-     -D_ANDROID_
+    -fno-short-enums \
+    -D_ANDROID_
 
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
@@ -47,16 +44,14 @@ LOCAL_C_INCLUDES:= \
 
 LOCAL_COPY_HEADERS_TO:= libloc_eng/
 LOCAL_COPY_HEADERS:= \
-   LocEngAdapter.h \
-   loc.h \
-   loc_eng.h \
-   loc_eng_xtra.h \
-   loc_eng_ni.h \
-   loc_eng_agps.h \
-   loc_eng_msg.h \
-   loc_eng_log.h
-
-LOCAL_PRELINK_MODULE := false
+    LocEngAdapter.h \
+    loc.h \
+    loc_eng.h \
+    loc_eng_xtra.h \
+    loc_eng_ni.h \
+    loc_eng_agps.h \
+    loc_eng_msg.h \
+    loc_eng_log.h
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -69,7 +64,6 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_TAGS := optional
 
 ## Libs
-
 LOCAL_SHARED_LIBRARIES := \
     libutils \
     libcutils \
@@ -79,9 +73,6 @@ LOCAL_SHARED_LIBRARIES := \
     libgps.utils \
     libdl
 
-ifneq ($(filter $(TARGET_DEVICE), apq8084 msm8960), false)
-endif
-
 LOCAL_SRC_FILES += \
     loc.cpp \
     gps.c
@@ -90,19 +81,12 @@ LOCAL_CFLAGS += \
     -fno-short-enums \
     -D_ANDROID_ \
 
-ifeq ($(TARGET_USES_QCOM_BSP), true)
-LOCAL_CFLAGS += -DTARGET_USES_QCOM_BSP
-endif
-
 ## Includes
 LOCAL_C_INCLUDES:= \
     $(TARGET_OUT_HEADERS)/gps.utils \
     $(TARGET_OUT_HEADERS)/libloc_core \
     $(TARGET_OUT_HEADERS)/libflp
 
-LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_RELATIVE_PATH := hw
 
 include $(BUILD_SHARED_LIBRARY)
-
-endif # not BUILD_TINY_ANDROID
