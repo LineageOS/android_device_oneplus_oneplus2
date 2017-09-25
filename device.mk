@@ -111,16 +111,19 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.device@1.0-impl \
-    android.hardware.camera.provider@2.4-impl-legacy
+    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-impl
 
 PRODUCT_PACKAGES += \
     camera.msm8994 \
-    libshim_camera \
-    libshim_ims-camera \
+    mm-qcamera-app \
+    libmmcamera_interface \
+    libmmjpeg_interface \
+    libqomx_core \
     libshim_atomic \
+    libshim_camera \
     libshim_cameraparameters \
-    Snap \
+    libshim_ims-camera \
     sensors.hal.tof
 
 # DRM
