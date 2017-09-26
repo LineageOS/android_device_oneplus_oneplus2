@@ -4,3 +4,6 @@ allow init firmware_file:blk_file read;
 allow init self:netlink_route_socket { create nlmsg_read read write };
 allow init ipa_dev:chr_file { ioctl open read };
 allow init proc_kernel_sched:file write;
+
+# required for LD_SHIM_LIBS
+allow init { domain -lmkd -crash_dump }:process noatsecure;
