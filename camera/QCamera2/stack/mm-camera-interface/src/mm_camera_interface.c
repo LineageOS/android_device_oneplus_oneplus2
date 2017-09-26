@@ -40,6 +40,8 @@
 #include <cutils/properties.h>
 #include <stdlib.h>
 
+#define EXTRA_ENTRY 6
+
 #include "mm_camera_dbg.h"
 #include "mm_camera_interface.h"
 #include "mm_camera_sock.h"
@@ -1605,7 +1607,7 @@ uint8_t get_num_of_cameras()
     cfg.cfg.setting = NULL;
     if (ioctl(sd_fd, VIDIOC_MSM_SENSOR_INIT_CFG, &cfg) < 0) {
         CDBG("failed...Camera Daemon may not up so try again");
-        for(i = 0; i < MM_CAMERA_EVT_ENTRY_MAX; i++) {
+        for(i = 0; i < (MM_CAMERA_EVT_ENTRY_MAX + EXTRA_ENTRY); i++) {
             if (ioctl(sd_fd, VIDIOC_MSM_SENSOR_INIT_CFG, &cfg) < 0) {
                 CDBG("failed...Camera Daemon may not up so try again");
                 continue;
