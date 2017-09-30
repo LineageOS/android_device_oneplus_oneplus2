@@ -633,9 +633,6 @@ on property:init.svc.surfaceflinger=stopped
 on property:init.svc.surfaceflinger=running
     start ppd
 
-on property:vold.decrypt=trigger_restart_framework
-    start config_bluetooth
-
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
 
@@ -682,18 +679,11 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
     group bluetooth oem_2950 system
     disabled
 
-service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
-    class core
-    user root
-    seclabel u:r:bluetooth_loader:s0
-    oneshot
-
-service hciattach /vendor/bin/init.qcom.bt.sh
+service hciattach /system/vendor/bin/hci_qcomm_init -e
     class late_start
     user bluetooth
-    group bluetooth net_bt_admin
+    group bluetooth net_bt_admin oem_2950 diag radio
     disabled
-    seclabel u:r:bluetooth_loader:s0
     oneshot
 
 on property:bluetooth.hciattach=true
