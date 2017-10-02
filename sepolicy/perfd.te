@@ -4,3 +4,5 @@ allow perfd system_data_file:sock_file { create setattr unlink };
 allow perfd sysfs_performance:dir search;
 allow perfd sysfs_performance:file rw_file_perms;
 allow perfd proc_kernel_sched:file rw_file_perms;
+allow perfd sysfs_power_management:dir search;
+allow perfd sysfs_power_management:file rw_file_perms;

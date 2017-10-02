@@ -6,3 +6,4 @@ type nv_data_file, file_type;
 type stm_sensor, file_type;
 type proc_kernel_sched, fs_type;
 type sysfs_performance, sysfs_type, fs_type;
+type sysfs_power_management, fs_type, sysfs_type;

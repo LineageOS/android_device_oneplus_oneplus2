@@ -24,3 +24,4 @@
 /sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel           u:object_r:sysfs_thermal:s0
 /sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk    u:object_r:sysfs_thermal:s0
 /sys/module/msm_performance(/.*)?                                       u:object_r:sysfs_performance:s0
+/sys/module/lpm_levels(/.*)?                                            u:object_r:sysfs_power_management:s0
