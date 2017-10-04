@@ -202,6 +202,8 @@ case "$target" in
     ;;
     "msm8994" | "msm8992")
         echo BAM2BAM_IPA > /sys/class/android_usb/android0/f_rndis_qc/rndis_transports
+        echo 131072 > /sys/module/g_android/parameters/mtp_tx_req_len
+        echo 131072 > /sys/module/g_android/parameters/mtp_rx_req_len
     ;;
 esac
 
