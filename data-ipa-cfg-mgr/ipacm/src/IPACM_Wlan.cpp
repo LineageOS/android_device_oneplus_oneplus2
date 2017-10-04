@@ -4692,27 +4692,27 @@ int IPACM_Wlan::eth_bridge_del_wlan_client_rt_rule(uint8_t* mac, eth_bridge_src_
 
 eth_bridge_client_rt_info* IPACM_Wlan::eth_bridge_get_client_rt_info_ptr(uint8_t index, eth_bridge_src_iface src, ipa_ip_type iptype)
 {
-	void* result;
+	char* result;
 	if(src == SRC_WLAN)
 	{
 		if(iptype == IPA_IP_v4)
 		{
-			result = (void*)((char*)eth_bridge_wlan_client_rt_from_wlan_info_v4 + index * client_rt_info_size_v4);
+			result = (char *)eth_bridge_wlan_client_rt_from_wlan_info_v4 + index * client_rt_info_size_v4;
 		}
 		else
 		{
-			result = (void*)((char*)eth_bridge_wlan_client_rt_from_wlan_info_v6 + index * client_rt_info_size_v6);
+			result = (char *)eth_bridge_wlan_client_rt_from_wlan_info_v6 + index * client_rt_info_size_v6;
 		}
 	}
 	else
 	{
 		if(iptype == IPA_IP_v4)
 		{
-			result = (void*)((char*)eth_bridge_wlan_client_rt_from_usb_info_v4 + index * client_rt_info_size_v4);
+			result = (char *)eth_bridge_wlan_client_rt_from_usb_info_v4 + index * client_rt_info_size_v4;
 		}
 		else
 		{
-			result = (void*)((char*)eth_bridge_wlan_client_rt_from_usb_info_v6 + index * client_rt_info_size_v6);
+			result = (char *)eth_bridge_wlan_client_rt_from_usb_info_v6 + index * client_rt_info_size_v6;
 		}
 	}
 	return (eth_bridge_client_rt_info*)result;

@@ -1,3 +1,6 @@
+ifneq (,$(filter $(QCOM_BOARD_PLATFORMS),$(TARGET_BOARD_PLATFORM)))
+ifneq (, $(filter aarch64 arm arm64, $(TARGET_ARCH)))
+
 LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
@@ -14,5 +17,8 @@ LOCAL_CFLAGS := -DDEBUG
 LOCAL_MODULE := libipanat
 LOCAL_MODULE_TAGS := optional
 LOCAL_PRELINK_MODULE := false
-
+LOCAL_CLANG := true
 include $(BUILD_SHARED_LIBRARY)
+
+endif # $(TARGET_ARCH)
+endif
