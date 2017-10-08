@@ -22,6 +22,30 @@
       "revId": "2b7a6b2f2884a2bde75206789bb018a18323dbb7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a169927_dc50485b",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-08T11:39:06Z",
+      "side": 1,
+      "message": "Yes, anything else and the device enters sleep of death. Further power savings in deep sleep are achieved by enabling retention states.",
+      "parentUuid": "db244b88_9988ba4a",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "2b7a6b2f2884a2bde75206789bb018a18323dbb7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }

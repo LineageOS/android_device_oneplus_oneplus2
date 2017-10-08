@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b65e36d_c2acd536",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-08T11:39:06Z",
+      "side": 0,
+      "message": "It\u0027s already there in init.qcom.rc.",
+      "parentUuid": "3aec59e2_e2c418ae",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "c685ecd50d81833bda2f8b8256e2efabfbe1e6c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f789f8a5_ec8bab56",
         "filename": "system.prop",
         "patchSetId": 1
