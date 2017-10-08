@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aec59e2_e2c418ae",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-10-08T10:09:00Z",
+      "side": 0,
+      "message": "why do you want to remove this?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 71
+      },
+      "revId": "c685ecd50d81833bda2f8b8256e2efabfbe1e6c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f789f8a5_ec8bab56",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-10-08T10:09:00Z",
+      "side": 0,
+      "message": "aren\u0027t these props almost used by perfd?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "c685ecd50d81833bda2f8b8256e2efabfbe1e6c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}

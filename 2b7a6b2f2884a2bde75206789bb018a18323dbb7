@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db244b88_9988ba4a",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2017-10-08T10:09:00Z",
+      "side": 1,
+      "message": "is this really needed that all small cores stay online even is device is in deep sleep?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 54
+      },
+      "revId": "2b7a6b2f2884a2bde75206789bb018a18323dbb7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
