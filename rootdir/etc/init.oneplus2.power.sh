@@ -102,8 +102,9 @@ write /sys/devices/system/cpu/cpu6/online 1
 write /sys/devices/system/cpu/cpu7/online 1
 
 # input boost configuration
-write /sys/module/cpu_boost/parameters/input_boost_freq "0:1344000"
-write /sys/module/cpu_boost/parameters/input_boost_ms 40
+write /sys/kernel/cpu_input_boost/ib_freqs "960000 960000"
+write /sys/kernel/cpu_input_boost/ib_duration_ms 1000
+write /sys/kernel/cpu_input_boost/enabled 1
 
 # Configure core_ctl module parameters
 write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
