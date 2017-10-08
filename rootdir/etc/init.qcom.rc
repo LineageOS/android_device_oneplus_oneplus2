@@ -659,19 +659,6 @@ service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
     disabled
     oneshot
 
-on property:init.svc.bootanim=running
-    write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/cpu2/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/cpu3/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/cpu4/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/cpu6/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/cpu7/retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 0
-    write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 0
-    write /sys/module/lpm_levels/parameters/sleep_disabled 0
-
 on property:init.svc.bootanim=stopped
     start usf-post-boot
 
@@ -688,19 +675,6 @@ on property:persist.debug.trace=1
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
     write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/bus/coresight/devices/coresight-etm0/enable 0
-    write /sys/bus/coresight/devices/coresight-etm1/enable 0
-    write /sys/bus/coresight/devices/coresight-etm2/enable 0
-    write /sys/bus/coresight/devices/coresight-etm3/enable 0
-    write /sys/bus/coresight/devices/coresight-etm0/reset 1
-    write /sys/bus/coresight/devices/coresight-etm1/reset 1
-    write /sys/bus/coresight/devices/coresight-etm2/reset 1
-    write /sys/bus/coresight/devices/coresight-etm3/reset 1
-    write /sys/bus/coresight/devices/coresight-etm0/enable 1
-    write /sys/bus/coresight/devices/coresight-etm1/enable 1
-    write /sys/bus/coresight/devices/coresight-etm2/enable 1
-    write /sys/bus/coresight/devices/coresight-etm3/enable 1
-    write /sys/module/coresight_event/parameters/event_abort_enable 1
 
 on property:bluetooth.isEnabled=true
     write /sys/class/bluetooth/hci0/idle_timeout 7000
