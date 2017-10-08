@@ -69,6 +69,30 @@
       "revId": "c685ecd50d81833bda2f8b8256e2efabfbe1e6c5",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "049c8195_143a18b4",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-08T11:43:30Z",
+      "side": 0,
+      "message": "We\u0027re already using core_ctl to handle hotplug, it\u0027s useless to have perfd do the same.",
+      "parentUuid": "f789f8a5_ec8bab56",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 21
+      },
+      "revId": "c685ecd50d81833bda2f8b8256e2efabfbe1e6c5",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
