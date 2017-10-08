@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e47265db_f0286253",
+        "filename": "rootdir/etc/init.qcom.usb.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-08T11:54:14Z",
+      "side": 1,
+      "message": "Mass storage is irrelevant to us.",
+      "revId": "7004bc52a33624446458f00be29fa286787ac9db",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
