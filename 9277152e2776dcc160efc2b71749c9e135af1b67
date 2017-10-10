@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eba9f9c_d3e4dd0d",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-10T15:22:51Z",
+      "side": 1,
+      "message": "The comment is wrong here, should be enable.",
+      "revId": "9277152e2776dcc160efc2b71749c9e135af1b67",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c07360b_11f7b4d5",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-10T15:22:51Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "9277152e2776dcc160efc2b71749c9e135af1b67",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
