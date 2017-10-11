@@ -249,7 +249,7 @@ int32_t mm_camera_open(mm_camera_obj_t *my_obj)
 {
     char dev_name[MM_CAMERA_DEV_NAME_LEN];
     int32_t rc = 0;
-    int8_t n_try=MM_CAMERA_DEV_OPEN_TRIES;
+    int32_t n_try=MM_CAMERA_DEV_OPEN_TRIES;
     uint8_t sleep_msec=MM_CAMERA_DEV_OPEN_RETRY_SLEEP;
     int cam_idx = 0;
     const char *dev_name_value = NULL;
