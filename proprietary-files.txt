@@ -290,7 +290,6 @@ framework/com.qti.location.sdk.jar|5f813d74715b42dc5175563cd5027269c5fe08fb
 -lib64/libloc_api_v02.so
 -lib64/libloc_ds_api.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk|11c5e4aacb2e346645b9ab37f7f01d08a16e9297
-vendor/bin/slim_daemon
 vendor/lib/hw/flp.default.so
 vendor/lib/libdataitems.so
 vendor/lib/libflp.so
