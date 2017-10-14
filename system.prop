@@ -71,7 +71,6 @@ ro.gps.agps_provider=1
 ro.pip.gated=0
 
 # Graphics
-dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
