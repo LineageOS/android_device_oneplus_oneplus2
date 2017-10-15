@@ -148,7 +148,7 @@ vendor/lib/libchromatix_ov5648_30fps_snapshot.so
 vendor/lib/libchromatix_ov5648_30fps_video.so
 vendor/lib/libchromatix_ov5648_common.so
 
-# Camera firmware
+# Camera firmware - 3.6.0
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
 etc/firmware/cpp_firmware_v1_2_0.fw
@@ -232,7 +232,7 @@ vendor/lib64/libvendorconn.so
 vendor/lib64/libwqe.so
 vendor/lib64/libxml.so
 
-# Display calibration
+# Display calibration - 3.6.0
 -etc/pp_calib_data_jd35695_1080p_cmd_mode_dsi_panel.xml
 
 # DPM
@@ -256,16 +256,16 @@ vendor/lib64/libdpmframework.so
 vendor/lib64/libdpmnsrm.so
 vendor/lib64/libdpmtcm.so
 
-# DRM
+# DRM - 3.6.0
 bin/qseecomd
 vendor/lib/libQSEEComAPI.so
-vendor/lib64/libQSEEComAPI.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
+vendor/lib64/libQSEEComAPI.so
 vendor/lib64/librpmb.so
 vendor/lib64/libssd.so
 
-# Fingerprint sensor
+# Fingerprint sensor - 3.6.0
 etc/firmware/fingerprints.b00
 etc/firmware/fingerprints.b01
 etc/firmware/fingerprints.b02
@@ -276,7 +276,7 @@ lib/lib_fpc_tac_shared.so
 lib64/hw/fingerprint.msm8994.so
 lib64/lib_fpc_tac_shared.so
 
-# Gatekeeper
+# Gatekeeper - 3.6.0
 vendor/lib/hw/gatekeeper.msm8994.so
 vendor/lib64/hw/gatekeeper.msm8994.so
 
@@ -370,15 +370,15 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscale.so
 vendor/lib64/libuiblur.so
 
-# Graphics firmware
+# Graphics firmware 3.6.0
 etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
-# Keystore
+# Keystore - 3.6.0
 vendor/lib/hw/keystore.msm8994.so
 vendor/lib64/hw/keystore.msm8994.so
 
-# Listen
+# Listen - 3.6.0
 vendor/lib/hw/sound_trigger.primary.msm8994.so
 
 # Media
@@ -401,7 +401,7 @@ vendor/lib64/libSHIMDivxDrm.so
 vendor/lib64/libmm-color-convertor.so
 vendor/lib64/libmmosal.so
 
-# Media firmware
+# Media firmware - 3.6.0
 etc/firmware/venus.b00
 etc/firmware/venus.b01
 etc/firmware/venus.b02
@@ -424,10 +424,11 @@ vendor/lib/libconnctrl.so
 vendor/lib64/libconnctrl.so
 vendor/lib64/libQtiTether.so
 
-# Perf
+# Perf - 3.6.0
 bin/energy-awareness
 bin/msm_irqbalance
 vendor/bin/perfd
+vendor/etc/msm_irqbalance.conf
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf
 vendor/etc/perf-profile2.conf
@@ -437,7 +438,7 @@ vendor/etc/perf-profile5.conf
 vendor/lib/libqti-perfd-client.so
 vendor/lib64/libqti-perfd-client.so
 
-# Peripheral manager
+# Peripheral manager - 3.6.0
 bin/pm-proxy
 bin/pm-service
 vendor/lib/libperipheral_client.so
@@ -558,8 +559,9 @@ vendor/lib64/libvoice-svc.so
 -vendor/app/ims/ims.apk|21f343af6b656ad1dc890b18fed940ad61e31fb0
 -vendor/app/imssettings/imssettings.apk|87ada7621f77f9cf8efa27ebb46157c98df3a7cc
 
-# Sensors
+# Sensors - 3.6.0
 bin/sensors.qcom
+etc/sensors/hals.conf
 etc/sensors/sensor_def_qcomdev.conf
 vendor/lib/hw/activity_recognition.msm8994.so
 vendor/lib/libsensor1.so
@@ -574,7 +576,7 @@ vendor/lib64/libsensor_thresh.so
 vendor/lib64/libsensor_user_cal.so
 vendor/lib64/sensors.ssc.so
 
-# Thermal
+# Thermal - 3.6.0
 etc/thermal-engine.conf
 vendor/bin/thermal-engine
 vendor/lib/libthermalclient.so
@@ -589,7 +591,7 @@ vendor/lib/libTimeService.so
 vendor/lib64/libTimeService.so
 -vendor/lib64/libtime_genoff.so
 
-# TP Firmware
+# TP Firmware - 3.6.0
 etc/firmware/tp/14049/14049_FW_S1302.img
 etc/firmware/tp/14049/14049_FW_S3320_jdi.img
 
