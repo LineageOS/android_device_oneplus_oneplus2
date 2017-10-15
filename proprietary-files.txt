@@ -1,4 +1,4 @@
-# ACDB
+# ACDB - OxygenOS 3.6.0
 etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
 etc/acdbdata/MTP/MTP_General_cal.acdb
 etc/acdbdata/MTP/MTP_Global_cal.acdb
@@ -7,13 +7,13 @@ etc/acdbdata/MTP/MTP_Hdmi_cal.acdb
 etc/acdbdata/MTP/MTP_Headset_cal.acdb
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
-# ADSP
+# ADSP - OxygenOS 3.6.0
 bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvopt.so
 vendor/lib64/libadsprpc.so
 
-# Audio
+# Audio - OxygenOS 3.6.0
 etc/firmware/tfa98xx.cnt
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
@@ -21,6 +21,7 @@ vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libhwdaphal.so
+vendor/lib/hw/sound_trigger.primary.msm8994.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
@@ -31,7 +32,7 @@ vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 vendor/lib64/libhwdaphal.so
 
-# Bluetooth
+# Bluetooth - OxygenOS 3.6.0
 bin/btnvtool
 bin/hci_qcomm_init
 bin/wcnss_filter
@@ -373,9 +374,6 @@ etc/firmware/a420_pm4.fw
 # Keystore - OxygenOS 3.6.0
 vendor/lib/hw/keystore.msm8994.so
 vendor/lib64/hw/keystore.msm8994.so
-
-# Listen - OxygenOS 3.6.0
-vendor/lib/hw/sound_trigger.primary.msm8994.so
 
 # Media
 vendor/lib/libDivxDrm.so
