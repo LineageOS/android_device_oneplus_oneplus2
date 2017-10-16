@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd91c1f_a92af997",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2017-10-16T16:53:02Z",
+      "side": 1,
+      "message": "What\u0027s the point of setting these if you\u0027re disabling the whole thing anyway?",
+      "revId": "e2bb3cb72cdc3455b9f88169c6668196c36bf252",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
