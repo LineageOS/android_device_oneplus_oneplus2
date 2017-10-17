@@ -49,7 +49,7 @@ etc/firmware/rampatch_tlv_3.2.tlv
 vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
-# Camera
+# Camera - OxygenOS 3.6.0
 bin/mm-qcamera-app
 bin/mm-qcamera-daemon
 lib/hw/camera.msm8994.so:lib/hw/camera.vendor.msm8994.so
@@ -108,12 +108,12 @@ vendor/lib64/libmmcamera2_q3a_core.so
 vendor/lib64/libmmcamera2_sensor_debug.so
 vendor/lib64/libmmcamera2_stats_algorithm.so
 
-# Camera actuators
+# Camera actuators - OxygenOS 3.6.0
 vendor/lib/libactuator_rohm_bu63165gwl.so
 vendor/lib/libactuator_rohm_bu63165gwl_camcorder.so
 vendor/lib/libactuator_rohm_bu63165gwl_camera.so
 
-# Camera chromatix
+# Camera chromatix - OxygenOS 3.6.0
 vendor/lib/libchromatix_ov13860_common.so
 vendor/lib/libchromatix_ov13860_cpp_hfr.so
 vendor/lib/libchromatix_ov13860_cpp_liveshot.so
@@ -157,7 +157,7 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 
-# Camera sensors
+# Camera sensors - OxygenOS 3.6.0
 vendor/lib/libmmcamera_isp_abf44.so
 vendor/lib/libmmcamera_isp_bcc44.so
 vendor/lib/libmmcamera_isp_be_stats44.so
@@ -375,7 +375,7 @@ etc/firmware/a420_pm4.fw
 vendor/lib/hw/keystore.msm8994.so
 vendor/lib64/hw/keystore.msm8994.so
 
-# Media
+# Media - OxygenOS 3.6.0
 vendor/lib/libDivxDrm.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libOmxAacDec.so
