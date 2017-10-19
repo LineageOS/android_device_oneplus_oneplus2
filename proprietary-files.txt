@@ -412,8 +412,8 @@ etc/firmware/mbn_ota/mcfg_sw_OEM_Overseas-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_Reliance-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_TMO-Commercial.mbn
 
-# Network
--priv-app/QtiTetherService/QtiTetherService.apk|1f88a499a74cff043a296637db1c1dcecaafdee7
+# Network - OxygenOS 3.6.0 + OP3 OB24 / OB15
+-priv-app/QtiTetherService/QtiTetherService.apk|be881927cd74d877ef1b5dcb82f6e6b1ef433a1e
 vendor/lib/libconnctrl.so
 vendor/lib64/libconnctrl.so
 vendor/lib64/libQtiTether.so
@@ -438,7 +438,7 @@ bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
-# Postprocessing
+# Postprocessing - OxygenOS 3.6.0
 bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl-oem.so
@@ -451,7 +451,7 @@ vendor/lib64/libmm-abl-oem.so
 vendor/lib64/libmm-als.so
 vendor/lib64/libmm-qdcm.so
 
-# QMI
+# QMI - OxygenOS 3.6.0
 bin/irsc_util
 etc/permissions/qti_permissions.xml
 -vendor/lib/libdiag.so
@@ -487,11 +487,11 @@ vendor/lib64/libqmi_encdec.so
 -vendor/lib64/libqmiservices.so
 vendor/lib64/libsmemlog.so
 
-# Radio
--app/datastatusnotification/datastatusnotification.apk|d5b8dbdfb9010758dffec92851937ded0bcca43b
--app/fastdormancy/fastdormancy.apk|3a7ba6ce1796fea35932b68a465071a1db72fef1
--app/QtiTelephonyService/QtiTelephonyService.apk|b3bd4921c583936d82d40582bde113fd58622efb
--app/shutdownlistener/shutdownlistener.apk|5423f30ebab40e4a5b6609048681e060531e1eea
+# Radio - OxygenOS 3.6.0 + OP3 OB24 / OB15
+-app/datastatusnotification/datastatusnotification.apk|17e5d0279cdd7edb2fd44a412ca1f6d98ff608b0
+-app/fastdormancy/fastdormancy.apk|988efae0c91db1e44dac2132986953a7c19e53ae
+-app/QtiTelephonyService/QtiTelephonyService.apk|768ce8bd9a373d7cda0b79d25c1d0417cb8727a6
+-app/shutdownlistener/shutdownlistener.apk|ecebc61b2ef92f47675ee093acacb872663751ad
 bin/ipacm-diag
 bin/netmgrd
 bin/qmuxd
@@ -504,12 +504,12 @@ etc/data/qmi_config.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
--framework/qcnvitems.jar|8f1a22639392cef4e62bde005430a14bfa42d17e
--framework/qcrilhook.jar|e94696ceea03cd31e159dc7fc10c5d694fe9fd94
-framework/qti-telephony-common.jar|fbd9aa168759bca89327643a23a7d32aaa78f79a
-framework/QtiTelephonyServicelibrary.jar|1d4ff53f9229caaa91fe3994757bcd359a18b756
+-framework/qcnvitems.jar|124cd6e6da26b0bd05f7add1e49bd1c5e039a2e2
+-framework/qcrilhook.jar|efd442eeb37c6286b84e97221a16a4884e695e25
+framework/qti-telephony-common.jar|3cea332c3cc179fae5691763c8e55027cc76ffc8
+framework/QtiTelephonyServicelibrary.jar|7c2370674e249cd9637a6b69429fc8362189b79d
 lib64/libparam.so
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|8d6a447cc4ee0ca78f6abb042b484c52775db9ed
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|7688dfdc612ce1515cbe001803d74c6e951b511b
 vendor/bin/qti
 -vendor/lib/libmdmdetect.so
 vendor/lib64/libconfigdb.so
@@ -523,7 +523,7 @@ vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libsystem_health_mon.so
 vendor/qcril.db
 
-# Radio - IMS
+# Radio - IMS - OxygenOS 3.6.0 + OP3 OB24 / OB15
 bin/ims_rtp_daemon
 bin/imscmservice
 bin/imsdatadaemon
@@ -550,8 +550,8 @@ vendor/lib64/libimscamera_jni.so
 vendor/lib64/libimsmedia_jni.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
--vendor/app/ims/ims.apk|21f343af6b656ad1dc890b18fed940ad61e31fb0
--vendor/app/imssettings/imssettings.apk|87ada7621f77f9cf8efa27ebb46157c98df3a7cc
+-vendor/app/ims/ims.apk|ec9d14a42c9aa4e7ee24cc6e02a13c02c84d94c5
+-vendor/app/imssettings/imssettings.apk|3e08617cbb63bd4169c90285598b2f54c4e41076
 
 # Sensors - OxygenOS 3.6.0
 bin/sensors.qcom
@@ -577,8 +577,8 @@ vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
-# Time services
--app/TimeService/TimeService.apk|5198efe6b554038a5c96962b381517a0274a26df
+# Time services - OxygenOS 3.6.0 + OP3 OB24 / OB15
+-app/TimeService/TimeService.apk|782a2b7082326404a5d6c2cbda156dc6c1c1f071
 bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
