@@ -108,6 +108,7 @@
 /dev/v4l-subdev*          0660   system     camera
 #changhua.li modify from 660 to 666 for alipay use tz
 /dev/qseecom              0666   system     drmrpc
+/dev/qce                  0660   system     drmrpc
 /dev/seemplog             0660   system     system
 /dev/pft                  0660   system     drmrpc
 /dev/gemini0              0660   system     camera
