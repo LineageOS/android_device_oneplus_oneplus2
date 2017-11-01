@@ -82,7 +82,6 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.0-impl
 
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
     audio.primary.msm8994 \
     audio.r_submix.default \
@@ -90,6 +89,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm8994 \
     libaudio-resampler \
     libqcompostprocbundle \
+    libqcomvoiceprocessingdescriptors \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     tinymix
