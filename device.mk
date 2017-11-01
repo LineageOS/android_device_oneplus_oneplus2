@@ -88,6 +88,7 @@ PRODUCT_PACKAGES += \
     audio_policy.msm8994 \
     libaudio-resampler \
     libqcompostprocbundle \
+    libqcomvoiceprocessingdescriptors \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     tinymix
