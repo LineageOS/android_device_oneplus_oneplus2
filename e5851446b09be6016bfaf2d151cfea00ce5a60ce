@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33cf3d0d_46dac9da",
+        "filename": "rootdir/etc/init.qcom.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2017-11-04T02:50:29Z",
+      "side": 1,
+      "message": "I don\u0027t think we ship the usb drivers as stock in /vendor.",
+      "revId": "e5851446b09be6016bfaf2d151cfea00ce5a60ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3172cc_a830e302",
+        "filename": "rootdir/etc/init.qcom.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2017-11-04T02:50:29Z",
+      "side": 1,
+      "message": "same",
+      "revId": "e5851446b09be6016bfaf2d151cfea00ce5a60ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4d7da79_04c50444",
+        "filename": "rootdir/etc/init.qcom.usb.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2017-11-04T02:50:29Z",
+      "side": 1,
+      "message": "This is not needed on M+.",
+      "revId": "e5851446b09be6016bfaf2d151cfea00ce5a60ce",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
