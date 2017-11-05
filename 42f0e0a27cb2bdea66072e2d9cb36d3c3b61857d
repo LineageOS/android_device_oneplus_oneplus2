@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05679312_8efecc0e",
+        "filename": "fingerprint/FingerprintWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 15450
+      },
+      "writtenOn": "2017-11-05T19:07:11Z",
+      "side": 1,
+      "message": "Huh? This wrapper is straight up copied from kenzo with switch for goodx and fpc. Thats what I meant. This is the right one even more up to date then this one. https://review.lineageos.org/#/c/188061/5..7",
+      "revId": "42f0e0a27cb2bdea66072e2d9cb36d3c3b61857d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
