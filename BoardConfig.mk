@@ -121,6 +121,7 @@ TARGET_LDPRELOAD := libNimsWrap.so
 
 # Cpusets
 ENABLE_CPUSETS := true
+ENABLE_SCHED_BOOST := true
 
 # Filesystem
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(PLATFORM_PATH)/android_filesystem_config.h
