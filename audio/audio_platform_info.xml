@@ -26,14 +26,90 @@
 <!-- IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                          -->
 <audio_platform_info>
     <acdb_ids>
+        <device name="SND_DEVICE_OUT_HANDSET" acdb_id="7"/>
+        <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_EXTERNAL_1" acdb_id="14"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_EXTERNAL_2" acdb_id="14"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_REVERSE" acdb_id="14"/>
+        <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="10"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" acdb_id="10"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_EXTERNAL_1" acdb_id="10"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES_EXTERNAL_2" acdb_id="10"/>
+        <device name="SND_DEVICE_OUT_VOICE_HANDSET" acdb_id="7"/>
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15"/>
+        <device name="SND_DEVICE_OUT_VOICE_HEADPHONES" acdb_id="10"/>
+        <device name="SND_DEVICE_OUT_HDMI" acdb_id="18"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" acdb_id="14"/>
+        <device name="SND_DEVICE_OUT_BT_SCO" acdb_id="22"/>
+        <device name="SND_DEVICE_OUT_BT_SCO_WB" acdb_id="39"/>
+        <device name="SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES" acdb_id="17"/>
+        <device name="SND_DEVICE_OUT_VOICE_TTY_VCO_HEADPHONES" acdb_id="17"/>
+        <device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" acdb_id="37"/>
+        <device name="SND_DEVICE_OUT_AFE_PROXY" acdb_id="45"/>
+        <device name="SND_DEVICE_OUT_USB_HEADSET" acdb_id="0"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_USB_HEADSET" acdb_id="45"/>
+        <device name="SND_DEVICE_OUT_TRANSMISSION_FM" acdb_id="14"/>
+        <device name="SND_DEVICE_OUT_ANC_HEADSET" acdb_id="0"/>
+        <device name="SND_DEVICE_OUT_ANC_FB_HEADSET" acdb_id="26"/>
+        <device name="SND_DEVICE_OUT_VOICE_ANC_HEADSET" acdb_id="27"/>
+        <device name="SND_DEVICE_OUT_VOICE_ANC_FB_HEADSET" acdb_id="26"/>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_ANC_HEADSET" acdb_id="27"/>
+        <device name="SND_DEVICE_OUT_ANC_HANDSET" acdb_id="26"/>
         <device name="SND_DEVICE_OUT_SPEAKER_PROTECTED" acdb_id="124"/>
-        <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="81" />
-        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15" />
-        <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="94" />
-        <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="42" />
-        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="35" />
-        <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="119" />
-        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" acdb_id="23" />
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED" acdb_id="124"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC" acdb_id="101"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC_EXTERNAL" acdb_id="42"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC" acdb_id="4"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC_NS" acdb_id="106"/>
+        <device name="SND_DEVICE_IN_HANDSET_MIC_AEC_NS" acdb_id="107"/>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC" acdb_id="108"/>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC" acdb_id="41"/>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_NS" acdb_id="109"/>
+        <device name="SND_DEVICE_IN_HANDSET_DMIC_AEC_NS" acdb_id="110"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="41"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC" acdb_id="11"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_NS" acdb_id="112"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC_AEC_NS" acdb_id="113"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC" acdb_id="114"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC" acdb_id="43"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS" acdb_id="115"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS" acdb_id="116"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC" acdb_id="42"/>
+        <device name="SND_DEVICE_IN_HEADSET_MIC_FLUENCE" acdb_id="8"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="47"/>
+        <device name="SND_DEVICE_IN_VOICE_HEADSET_MIC" acdb_id="11"/>
+        <device name="SND_DEVICE_IN_HDMI_MIC" acdb_id="8"/>
+        <device name="SND_DEVICE_IN_BT_SCO_MIC" acdb_id="8"/>
+        <device name="SND_DEVICE_IN_BT_SCO_MIC_NREC" acdb_id="21"/>
+        <device name="SND_DEVICE_IN_BT_SCO_MIC_WB" acdb_id="122"/>
+        <device name="SND_DEVICE_IN_BT_SCO_MIC_WB_NREC" acdb_id="38"/>
+        <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="123"/>
+        <device name="SND_DEVICE_IN_VOICE_DMIC" acdb_id="35"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="41"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_QMIC" acdb_id="43"/>
+        <device name="SND_DEVICE_IN_VOICE_TTY_FULL_HEADSET_MIC" acdb_id="19"/>
+        <device name="SND_DEVICE_IN_VOICE_TTY_VCO_HANDSET_MIC" acdb_id="16"/>
+        <device name="SND_DEVICE_IN_VOICE_TTY_HCO_HEADSET_MIC" acdb_id="36"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="16"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="119"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="107"/>
+        <device name="SND_DEVICE_IN_VOICE_REC_DMIC_FLUENCE" acdb_id="34"/>
+        <device name="SND_DEVICE_IN_USB_HEADSET_MIC" acdb_id="41"/>
+        <device name="SND_DEVICE_IN_CAPTURE_FM" acdb_id="44"/>
+        <device name="SND_DEVICE_IN_AANC_HANDSET_MIC" acdb_id="44"/>
+        <device name="SND_DEVICE_IN_QUAD_MIC" acdb_id="0"/>
+        <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" acdb_id="104"/>
+        <device name="SND_DEVICE_IN_SPEAKER_STEREO_DMIC" acdb_id="46"/>
+        <device name="SND_DEVICE_IN_CAPTURE_VI_FEEDBACK" acdb_id="34"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC_BROADSIDE" acdb_id="35"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_BROADSIDE" acdb_id="102"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_BROADSIDE" acdb_id="12"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_NS_BROADSIDE" acdb_id="12"/>
+        <device name="SND_DEVICE_IN_SPEAKER_DMIC_AEC_NS_BROADSIDE" acdb_id="119"/>
+        <device name="SND_DEVICE_IN_HANDSET_QMIC" acdb_id="121"/>
+        <device name="SND_DEVICE_IN_SPEAKER_QMIC_AEC" acdb_id="120"/>
+        <device name="SND_DEVICE_IN_SPEAKER_QMIC_NS" acdb_id="125"/>
+        <device name="SND_DEVICE_IN_SPEAKER_QMIC_AEC_NS" acdb_id="126"/>
     </acdb_ids>
     <backend_names>
         <device name="SND_DEVICE_OUT_SPEAKER" backend="speaker" />
