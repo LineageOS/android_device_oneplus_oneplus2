@@ -1843,7 +1843,7 @@
     <!-- #ifdef VENDOR_EDIT-->
     <!-- zhiguang.su@MultiMedia.AudioDrv,2015/4/3,change to pass test for qualcomm advise  -->
         <ctl name="RX1 Digital Volume" value="90" />
-    <!-- #endif VENDOR_EDIT--
+    <!-- #endif VENDOR_EDIT-->
     </path>
 
     <path name="handset-mic">
