@@ -97,16 +97,6 @@ on init
     # Scheduler
     chown system system /sys/module/cpu_boost/parameters/sysctl_thermal_aware_scheduling
 
-    # Display color calibration
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_enable
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_cont
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_hue
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_invert
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_min
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_sat
-    chown system system /sys/devices/platform/kcal_ctrl.0/kcal_val
-
     # Touchscreen
     chown root system /proc/touchpanel/double_swipe
     chmod 0660 /proc/touchpanel/double_swipe
