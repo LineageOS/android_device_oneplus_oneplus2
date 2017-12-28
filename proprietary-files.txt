@@ -205,57 +205,8 @@ vendor/lib/libmmcamera_ov13860_eeprom.so
 vendor/lib/libmmcamera_ov5648.so
 vendor/lib/libmmcamera_ov5648_eeprom.so
 
-# CNE - OxygenOS 3.6.0 + OP3 OB24 / OB15
-bin/cnd
-etc/cne/SwimConfig.xml
-etc/cne/andsfCne.xml
-etc/permissions/ConnectivityExt.xml
-etc/permissions/cneapiclient.xml
-etc/permissions/com.quicinc.cne.xml
-framework/ConnectivityExt.jar|67025d09bbc7bb87bca1d15ab9c133eeb1ef2b9d
-framework/cneapiclient.jar|3cb56a579341acfb16d2be2e41bac2c7b6ac34b4
-framework/com.quicinc.cne.jar|647d841a0d89b64daf6befa61747dc62ac757ba5
--priv-app/CNEService/CNEService.apk|e4a3bcf497bf1e2cc822205bc9adc59ac232cb6c
-vendor/lib/libNimsWrap.so
-vendor/lib/libcne.so
-vendor/lib/libcneapiclient.so
-vendor/lib/libcneconn.so
-vendor/lib/libcneqmiutils.so
-vendor/lib/libvendorconn.so
-vendor/lib/libwqe.so
-vendor/lib/libxml.so
-vendor/lib64/libNimsWrap.so
-vendor/lib64/libcne.so
-vendor/lib64/libcneapiclient.so
-vendor/lib64/libcneconn.so
-vendor/lib64/libcneqmiutils.so
-vendor/lib64/libvendorconn.so
-vendor/lib64/libwqe.so
-vendor/lib64/libxml.so
-
 # Display calibration - OxygenOS 3.6.0
 -etc/pp_calib_data_jd35695_1080p_cmd_mode_dsi_panel.xml
-
-# DPM - OxygenOS 3.6.0 + OP3 OB24 / OB15
-bin/dpmd
-etc/dpm/dpm.conf
-etc/dpm/nsrm/NsrmConfiguration.xml
-etc/permissions/com.qti.dpmframework.xml
-etc/permissions/dpmapi.xml
-framework/com.qti.dpmframework.jar|58be891df339d36f4ecd49dad4a19f16c6b237e3
-framework/dpmapi.jar|0015235ff71d52d1b340b10ce4fa737fa26975ef
-framework/tcmclient.jar|e7149c664f4b1841139ab816c0d4e0942df0583c
--priv-app/dpmserviceapp/dpmserviceapp.apk|f6b0e77918e7bdd00e67c95c65277b625e26d2a7
-vendor/lib/libdpmctmgr.so
-vendor/lib/libdpmfdmgr.so
-vendor/lib/libdpmframework.so
-vendor/lib/libdpmnsrm.so
-vendor/lib/libdpmtcm.so
-vendor/lib64/libdpmctmgr.so
-vendor/lib64/libdpmfdmgr.so
-vendor/lib64/libdpmframework.so
-vendor/lib64/libdpmnsrm.so
-vendor/lib64/libdpmtcm.so
 
 # DRM - OxygenOS 3.6.0
 bin/qseecomd
@@ -494,8 +445,11 @@ framework/QtiTelephonyServicelibrary.jar|7c2370674e249cd9637a6b69429fc8362189b79
 lib64/libparam.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|7688dfdc612ce1515cbe001803d74c6e951b511b
 vendor/bin/qti
+vendor/lib/libcneapiclient.so
 -vendor/lib/libmdmdetect.so
+vendor/lib/libxml.so
 vendor/lib64/libconfigdb.so
+vendor/lib64/libcneapiclient.so
 vendor/lib64/liblqe.so
 -vendor/lib64/libmdmdetect.so
 vendor/lib64/libnetmgr.so
@@ -504,6 +458,7 @@ vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib64/libsystem_health_mon.so
+vendor/lib64/libxml.so
 vendor/qcril.db
 
 # Radio - IMS - OxygenOS 3.6.0 + OP3 OB24 / OB15
