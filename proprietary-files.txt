@@ -426,7 +426,6 @@ vendor/lib64/libsmemlog.so
 # Radio - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
 -app/datastatusnotification/datastatusnotification.apk|deb8d063001a59b68c63c19bb437354d4396fe4b
 -app/QtiTelephonyService/QtiTelephonyService.apk|880d5c85178c4b3dd809a64e25f6108437c136fc
-bin/ipacm-diag
 bin/netmgrd
 bin/qmuxd
 bin/radish

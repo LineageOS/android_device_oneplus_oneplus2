@@ -809,12 +809,6 @@ service netmgrd /system/bin/netmgrd
     group root wifi wakelock radio inet oem_2950
     writepid /dev/cpuset/system-background/tasks
 
-service ipacm-diag /system/bin/ipacm-diag
-    class main
-    user system
-    socket ipacm_log_file dgram 660 system net_admin
-    group net_admin oem_2950
-
 service ipacm /system/bin/ipacm
     class main
     user net_admin
