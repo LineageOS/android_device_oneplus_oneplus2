@@ -893,18 +893,6 @@ service ftm_ffbm /system/bin/ftmdaemon
     disabled
     oneshot
 
-service cnss_diag /system/bin/cnss_diag -q -f
-    class main
-    user root
-    group root
-    disabled
-
-on property:cnss_diag.load=true
-    start cnss_diag
-
-on property:cnss_diag.load=false
-    stop cnss_diag
-
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
 
