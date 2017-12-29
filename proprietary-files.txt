@@ -532,5 +532,4 @@ vendor/lib/mediadrm/libwvdrmengine.so|75bec2ee570663dcce362883207ddd6fe7e20855
 
 # Wifi
 bin/cnss-daemon
-bin/cnss_diag
 -lib64/libwpa_qmi_eap_proxy.so
