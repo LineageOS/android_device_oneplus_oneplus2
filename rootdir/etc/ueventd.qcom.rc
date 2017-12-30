@@ -205,7 +205,7 @@
 /dev/uio2                 0660   system     system
 
 # SSR devices
-/dev/subsys_*         0640   system     system
+/dev/subsys_*             0640   system     system
 
 # Ultrasound device
 /dev/usf1                 0660   system     system
@@ -214,7 +214,7 @@
 /dev/ramdump*             0640   system     system
 
 # Add device block for FRP
-/dev/block/bootdevice/by-name/config    0660   system     system
+/dev/block/platform/soc.0/f9824900.sdhci/by-name/config    0660   system     system
 
 # Fingerprint sensor
-/dev/fpc1020		 0660	system	system
+/dev/fpc1020		      0660   system     system

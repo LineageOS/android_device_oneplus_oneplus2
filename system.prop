@@ -98,7 +98,7 @@ persist.media.treble_omx=false
 
 # QC vendor extension
 ro.vendor.extension_library=libqti-perfd-client.so
-ro.frp.pst=/dev/block/bootdevice/by-name/config
+ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/config
 drm.service.enabled=true
 
 # RIL
