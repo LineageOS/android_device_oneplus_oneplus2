@@ -80,7 +80,6 @@ PRODUCT_PACKAGES += \
     android.hardware.soundtrigger@2.0-impl
 
 PRODUCT_PACKAGES += \
-    audiod \
     audio.a2dp.default \
     audio.primary.msm8994 \
     audio.r_submix.default \
