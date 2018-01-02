@@ -217,11 +217,11 @@ PRODUCT_PACKAGES += \
     init.oneplus2.power.sh \
     init.qcom.bt.sh \
     init.qcom.power.rc \
-    init.qcom.recovery \
     init.qcom.rc \
     init.qcom.sh \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
+    init.recovery.oneplus2.rc \
     init.zram.sh \
     ueventd.qcom.rc
 
