@@ -190,6 +190,10 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
 
+# IMS
+PRODUCT_PACKAGES += \
+    ims-ext-common
+
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
