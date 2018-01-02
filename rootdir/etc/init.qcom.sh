@@ -102,7 +102,7 @@ start_vm_bms()
 
 start_msm_irqbalance_8939()
 {
-	if [ -f /system/bin/msm_irqbalance ]; then
+	if [ -f /system/vendor/bin/msm_irqbalance ]; then
 		case "$platformid" in
 		    "239")
 			start msm_irqbalance;;
@@ -112,7 +112,7 @@ start_msm_irqbalance_8939()
 
 start_msm_irqbalance()
 {
-	if [ -f /system/bin/msm_irqbalance ]; then
+	if [ -f /system/vendor/bin/msm_irqbalance ]; then
 		start msm_irqbalance
 	fi
 }
