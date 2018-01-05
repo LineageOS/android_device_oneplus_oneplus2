@@ -811,7 +811,7 @@ service ipacm-diag /system/vendor/bin/ipacm-diag
     socket ipacm_log_file dgram 660 system net_admin
     group net_admin oem_2950
 
-service ipacm /system/bin/ipacm
+service ipacm /system/vendor/bin/ipacm
     class main
     user net_admin
     group net_admin inet
