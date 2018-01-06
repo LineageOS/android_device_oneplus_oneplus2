@@ -1,0 +1,4 @@
+allow init proc_dirty_ratio:file write;
+allow init firmware_file:blk_file read;
+allow init self:netlink_route_socket read;
+allow init ipa_dev:chr_file { ioctl open read };
