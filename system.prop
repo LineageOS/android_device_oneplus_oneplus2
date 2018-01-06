@@ -47,6 +47,7 @@ qcom.hw.aac.encoder=true
 
 # CNE
 persist.cne.feature=0
+persist.env.fastdorm.enabled=true
 
 # Data modules
 ro.use_data_netmgrd=true
