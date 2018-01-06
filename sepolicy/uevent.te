@@ -1,0 +1,2 @@
+# Allow firmware_file access to load Non-HLOS images
+r_dir_file(ueventd, firmware_file)
