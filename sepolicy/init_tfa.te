@@ -1,0 +1,16 @@
+type init_tfa, domain;
+type init_tfa_exec, exec_type, vendor_file_type, file_type;
+
+# Allow for transition from init domain to init_tfa
+init_daemon_domain(init_tfa)
+
+# Allow read and write to sound card device
+allow init_tfa audio_device:chr_file rw_file_perms;
+allow init_tfa audio_device:dir search;
+
+# Allow executing tinyplay
+allow init_tfa system_file:file execute_no_trans;
+
+# Shell script needs to execute /vendor/bin/sh
+allow init_tfa vendor_shell_exec:file rx_file_perms;
+allow init_tfa vendor_toolbox_exec:file rx_file_perms;

@@ -1,0 +1,1 @@
+allow mm-pp-daemon ion_device:chr_file write;
