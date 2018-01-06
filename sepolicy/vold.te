@@ -1,0 +1,1 @@
+allow vold persist_file:dir { ioctl open read };

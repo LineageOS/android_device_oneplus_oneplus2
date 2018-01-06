@@ -1,0 +1,3 @@
+allow kernel sysfs_leds:dir search;
+allow kernel sysfs_graphics:dir search;
+allow kernel sysfs_graphics:file { open read write };
