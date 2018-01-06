@@ -1,0 +1,2 @@
+allow init proc_dirty_ratio:file write;
+allow init firmware_file:blk_file read;
