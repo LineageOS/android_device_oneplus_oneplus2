@@ -433,11 +433,10 @@ framework/QtiTelephonyServicelibrary.jar|7c1dd966c584e4f76cb9b7e14755d1f820bd3a9
 lib64/libparam.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|55eab7bdd59841e3622133eb736b536222231e82
 vendor/bin/qti
-vendor/lib/libcneapiclient.so
--vendor/lib/libmdmdetect.so
-vendor/lib/libxml.so
+vendor/lib64/com.quicinc.cne.api@1.0.so|503825cc8a3c0d422e16e04b398d2c1924e518ca
+vendor/lib64/com.quicinc.cne.constants@1.0.so|a60fde6f9328635bf43bb7008dd9517e4e749e8b
+vendor/lib64/libcneapiclient.so|33e7465996749a8823ac03e34a94e3112c88dda4
 vendor/lib64/libconfigdb.so
-vendor/lib64/libcneapiclient.so
 vendor/lib64/liblqe.so
 -vendor/lib64/libmdmdetect.so
 vendor/lib64/libnetmgr.so
@@ -445,6 +444,7 @@ vendor/lib64/libqcmaputils.so
 vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
 vendor/lib64/libril-qcril-hook-oem.so
+vendor/lib64/libsettings.so|3e459839d90a27d2eb23a3c9d030f46a5c4bfaf1
 vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
 vendor/qcril.db
