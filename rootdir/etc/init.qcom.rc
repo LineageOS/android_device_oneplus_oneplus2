@@ -431,6 +431,9 @@ on post-fs-data
     # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
+    # Generate bt mac
+    start bt-mac-generator
+    
     # Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
     chmod 2755 /data/misc/perfd
@@ -613,6 +616,14 @@ service rfs_access /system/vendor/bin/rfs_access
     user root
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
+
+service bt-mac-generator /system/vendor/bin/bt-mac-generator
+    class main
+    user bluetooth
+    group bluetooth
+    oneshot
+    disabled
+    seclabel u:r:bt_mac_generator:s0
 
 on property:wc_transport.start_hci=true
     start start_hci_filter

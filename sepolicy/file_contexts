@@ -6,7 +6,8 @@
 /(vendor|system/vendor)/bin/init\.tfa\.sh                               u:object_r:init_tfa_exec:s0
 
 # Bluetooth
-(vendor|system/vendor)/bin/init\.qcom\.bt\.sh                           u:object_r:bluetooth_loader_exec:s0
+/(vendor|system/vendor)/bin/init\.qcom\.bt\.sh                          u:object_r:bluetooth_loader_exec:s0
+/(vendor|system/vendor)/bin/bt-mac-generator                            u:object_r:bt_mac_generator_exec:s0
 /sys/devices/bt_qca6174\.85(/.*)?                                       u:object_r:sysfs_bluetooth:s0
 
 # Camera
