@@ -143,7 +143,7 @@ static void update_bt_mac(uint8_t *mac, bool random) {
         return;
     }
 
-    ALOGD("%s: writing bt mac to file %s", __func__, BDADDR_PATH);
+    ALOGD("%s: Writing bt mac to file %s", __func__, BDADDR_PATH);
     fwrite(bt_addr, strlen(bt_addr), 1, fb);
     fclose(fb);
 
@@ -159,15 +159,23 @@ void get_mac_from_nv() {
     FILE * fd;
     uint8_t buf[6] = {0};
     int len = 0;
+    int retries = 10;
     bool random = false;
 
+    // Wait till NV_MAC_FILE is available after factory reset
+    while (retries-- > 0) {
+        if (stat(NV_MAC_FILE, &st) == 0) break;
+        ALOGD("%s: NV mac file %s does not exist yet. Waiting... (%d)", __func__, NV_MAC_FILE, retries);
+        usleep(1000000);
+    }
+
     if (stat(NV_MAC_FILE, &st) != 0 || st.st_size < 6) {
-        ALOGE("%s: invalid nv mac file %s, will generate random mac", __func__, NV_MAC_FILE);
+        ALOGE("%s: Invalid NV mac file %s, will generate random mac", __func__, NV_MAC_FILE);
         random = true;
     } else {
         // read nv files in binary mode
         if ((fd = fopen(NV_MAC_FILE, "rb")) == NULL) {
-            ALOGE("%s: Could not open nv mac file %s", __func__, NV_MAC_FILE);
+            ALOGE("%s: Could not open NV mac file %s", __func__, NV_MAC_FILE);
             random = true;
         }
     }
