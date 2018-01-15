@@ -114,7 +114,6 @@ TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
 # GPS
-TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
 
 # Graphics
