@@ -21,10 +21,6 @@
      for different hardware and product builds. -->
 <resources>
 
-    <string-array translatable="false" name="config_default_vm_number">
-        <item>*86</item>
-    </string-array>
-
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
     <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
     <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
