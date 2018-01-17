@@ -16,6 +16,7 @@
 ** limitations under the License.
 */
 -->
+<<<<<<< HEAD
 
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
@@ -25,6 +26,13 @@
         <item>*86</item>
     </string-array>
 
+=======
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds. -->
+<resources>
+
+>>>>>>> e9df5ed... msm8996-common: overlays: Update carrier specific configs
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
     <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
     <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->

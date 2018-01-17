@@ -59,7 +59,10 @@
         <item>SUPL_ES=0</item>
     </string-array>
 
+<<<<<<< HEAD
     <!-- Sprint need a 3s delay for 3way call -->
     <integer name="config_cdma_3waycall_flash_delay">300</integer>
 
+=======
+>>>>>>> e9df5ed... msm8996-common: overlays: Update carrier specific configs
 </resources>
