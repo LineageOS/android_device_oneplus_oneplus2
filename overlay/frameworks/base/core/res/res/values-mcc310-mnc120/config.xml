@@ -61,7 +61,4 @@
     <!-- sms encoded as octet is decoded by utf8 decoder. if it is true -->
     <bool name="config_sms_utf8_support">true</bool>
 
-    <!-- Sprint need a 3s delay for 3way call -->
-    <integer name="config_cdma_3waycall_flash_delay">300</integer>
-
 </resources>
