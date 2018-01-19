@@ -1,0 +1,55 @@
+on init
+    # RGB lights
+    chown system system /sys/class/leds/red/pause_lo
+    chown system system /sys/class/leds/blue/pause_lo
+    chown system system /sys/class/leds/green/pause_lo
+    chmod 660 /sys/class/leds/red/pause_lo
+    chmod 660 /sys/class/leds/blue/pause_lo
+    chmod 660 /sys/class/leds/green/pause_lo
+
+    chown system system /sys/class/leds/red/pause_hi
+    chown system system /sys/class/leds/blue/pause_hi
+    chown system system /sys/class/leds/green/pause_hi
+    chmod 660 /sys/class/leds/red/pause_hi
+    chmod 660 /sys/class/leds/blue/pause_hi
+    chmod 660 /sys/class/leds/green/pause_hi
+
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/blue/blink
+    chown system system /sys/class/leds/green/blink
+    chmod 660 /sys/class/leds/red/blink
+    chmod 660 /sys/class/leds/blue/blink
+    chmod 660 /sys/class/leds/green/blink
+
+    chown system system /sys/class/leds/rgb/rgb_blink
+    chmod 660 /sys/class/leds/rgb/rgb_blink
+
+    chown system system /sys/class/leds/red/ramp_step_ms
+    chown system system /sys/class/leds/blue/ramp_step_ms
+    chown system system /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/red/ramp_step_ms
+    chmod 660 /sys/class/leds/green/ramp_step_ms
+    chmod 660 /sys/class/leds/blue/ramp_step_ms
+
+    chown system system /sys/class/leds/red/duty_pcts
+    chown system system /sys/class/leds/blue/duty_pcts
+    chown system system /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/red/duty_pcts
+    chmod 660 /sys/class/leds/green/duty_pcts
+    chmod 660 /sys/class/leds/blue/duty_pcts
+
+    chown system system /sys/class/leds/red/start_idx
+    chown system system /sys/class/leds/blue/start_idx
+    chown system system /sys/class/leds/green/start_idx
+    chmod 660 /sys/class/leds/red/start_idx
+    chmod 660 /sys/class/leds/green/start_idx
+    chmod 660 /sys/class/leds/blue/start_idx
+
+    # Button backlight permissions
+    chown system system /sys/class/leds/button-backlight/brightness
+    chmod 660 /sys/class/leds/button-backlight/brightness
+
+service light-hal-2-0 /vendor/bin/hw/android.hardware.light@2.0-service.oneplus2
+    class hal
+    user system
+    group system
