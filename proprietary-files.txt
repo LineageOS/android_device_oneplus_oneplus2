@@ -378,6 +378,7 @@ vendor/lib64/libmm-qdcm.so
 
 # QMI - OxygenOS 3.6.0
 bin/irsc_util:vendor/bin/irsc_util
+etc/permissions/qti_libpermissions.xml|ef3c88495f2f61a2d16e1445113a9d80f8db0e0a
 etc/permissions/qti_permissions.xml
 -vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
