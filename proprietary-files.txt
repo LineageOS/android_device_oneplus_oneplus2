@@ -349,8 +349,7 @@ etc/firmware/mbn_ota/mcfg_sw_OEM_Overseas-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_Reliance-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_TMO-Commercial.mbn
 
-# Network - OxygenOS 3.6.0 + OP3 OB24 / OB15
--priv-app/QtiTetherService/QtiTetherService.apk|be881927cd74d877ef1b5dcb82f6e6b1ef433a1e
+# Network - OxygenOS 3.6.0
 vendor/lib/libconnctrl.so
 vendor/lib64/libconnctrl.so
 vendor/lib64/libQtiTether.so
