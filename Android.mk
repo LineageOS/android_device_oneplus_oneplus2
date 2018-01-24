@@ -31,43 +31,30 @@ include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := wifi_symlinks
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := FAKE
-LOCAL_MODULE_SUFFIX := -timestamp
+WCNSS_FW := WCNSS_qcom_wlan_nv.bin WCNSS_cfg.dat
+WCNSS_FW_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/,$(notdir $(WCNSS_FW)))
+$(WCNSS_FW_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "WCNSS firmware links: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/etc/wifi/$(notdir $@) $@
 
-include $(BUILD_SYSTEM)/base_rules.mk
+WCNSS_CFG := WCNSS_qcom_cfg.ini
+WCNSS_CFG_SYMLINKS := $(addprefix $(TARGET_OUT_VENDOR)/firmware/wlan/qca_cld/,$(notdir $(WCNSS_CFG)))
+$(WCNSS_CFG_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "WCNSS configs and firmware links: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/etc/wifi/$(notdir $@) $@
 
-$(LOCAL_BUILT_MODULE): ACTUAL_INI_FILE := /system/etc/wifi/WCNSS_qcom_cfg.ini
-$(LOCAL_BUILT_MODULE): WCNSS_INI_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini
+WCNSS_MAC_SYMLINK := $(TARGET_OUT_ETC)/firmware/wlan/qca_cld/wlan_mac.bin
+$(WCNSS_MAC_SYMLINK): $(LOCAL_INSTALLED_MODULE)
+	@echo "WCNSS MAC bin link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /persist/$(notdir $@) $@
 
-$(LOCAL_BUILT_MODULE): ACTUAL_BIN_FILE := /system/etc/wifi/WCNSS_qcom_wlan_nv.bin
-$(LOCAL_BUILT_MODULE): WCNSS_BIN_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
-
-$(LOCAL_BUILT_MODULE): ACTUAL_DAT_FILE := /system/etc/wifi/WCNSS_cfg.dat
-$(LOCAL_BUILT_MODULE): WCNSS_DAT_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat
-
-$(LOCAL_BUILT_MODULE): ACTUAL_MAC_FILE := /persist/wlan_mac.bin
-$(LOCAL_BUILT_MODULE): WCNSS_MAC_SYMLINK := $(TARGET_OUT)/etc/firmware/wlan/qca_cld/wlan_mac.bin
-
-
-$(LOCAL_BUILT_MODULE): $(LOCAL_PATH)/Android.mk
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Making symlinks for wifi"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(WCNSS_BIN_SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(WCNSS_INI_SYMLINK)
-	$(hide) ln -sf $(ACTUAL_INI_FILE) $(WCNSS_INI_SYMLINK)
-	$(hide) rm -rf $(WCNSS_BIN_SYMLINK)
-	$(hide) ln -sf $(ACTUAL_BIN_FILE) $(WCNSS_BIN_SYMLINK)
-	$(hide) rm -rf $(WCNSS_DAT_SYMLINK)
-	$(hide) ln -sf $(ACTUAL_DAT_FILE) $(WCNSS_DAT_SYMLINK)
-	$(hide) rm -rf $(WCNSS_MAC_SYMLINK)
-	$(hide) ln -sf $(ACTUAL_MAC_FILE) $(WCNSS_MAC_SYMLINK)
-	$(hide) touch $@
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
+ALL_DEFAULT_INSTALLED_MODULES += $(WCNSS_CFG_SYMLINKS) $(WCNSS_MAC_SYMLINK) $(WCNSS_FW_SYMLINKS)
 
 IMS_LIBS := libimscamera_jni.so libimsmedia_jni.so
 
