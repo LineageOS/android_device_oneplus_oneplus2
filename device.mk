@@ -118,9 +118,10 @@ PRODUCT_PACKAGES += \
     camera.msm8994 \
     libshim_camera \
     libshim_ims-camera \
-    sensors.hal.tof \
     libshim_atomic \
-    libshim_cameraparameters
+    libshim_cameraparameters \
+    Snap \
+    sensors.hal.tof
 
 # DRM
 PRODUCT_PACKAGES += \
