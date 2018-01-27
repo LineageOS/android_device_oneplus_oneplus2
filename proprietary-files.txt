@@ -424,11 +424,9 @@ vendor/lib64/libqmi_encdec.so
 -vendor/lib64/libqmiservices.so
 vendor/lib64/libsmemlog.so
 
-# Radio - OxygenOS 3.6.0 + OP3 OB24 / OB15
--app/datastatusnotification/datastatusnotification.apk|17e5d0279cdd7edb2fd44a412ca1f6d98ff608b0
--app/fastdormancy/fastdormancy.apk|988efae0c91db1e44dac2132986953a7c19e53ae
--app/QtiTelephonyService/QtiTelephonyService.apk|768ce8bd9a373d7cda0b79d25c1d0417cb8727a6
--app/shutdownlistener/shutdownlistener.apk|ecebc61b2ef92f47675ee093acacb872663751ad
+# Radio - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
+-app/datastatusnotification/datastatusnotification.apk|deb8d063001a59b68c63c19bb437354d4396fe4b
+-app/QtiTelephonyService/QtiTelephonyService.apk|880d5c85178c4b3dd809a64e25f6108437c136fc
 bin/ipacm-diag:vendor/bin/ipacm-diag
 bin/netmgrd:vendor/bin/netmgrd
 bin/qmuxd:vendor/bin/qmuxd
@@ -441,12 +439,12 @@ etc/data/qmi_config.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
--framework/qcnvitems.jar|124cd6e6da26b0bd05f7add1e49bd1c5e039a2e2
--framework/qcrilhook.jar|efd442eeb37c6286b84e97221a16a4884e695e25
-framework/qti-telephony-common.jar|3cea332c3cc179fae5691763c8e55027cc76ffc8
-framework/QtiTelephonyServicelibrary.jar|7c2370674e249cd9637a6b69429fc8362189b79d
+-framework/qcnvitems.jar|1ddb327e1a0afa103024f123ac618e6b89f9044d
+-framework/qcrilhook.jar|77cb99dce9917a8b80f1f89cd6feac344bff8909
+framework/qti-telephony-common.jar|2eba987ae297a892e895ec1e9a302b41dbe0232e
+framework/QtiTelephonyServicelibrary.jar|7c1dd966c584e4f76cb9b7e14755d1f820bd3a90
 lib64/libparam.so
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|7688dfdc612ce1515cbe001803d74c6e951b511b
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|55eab7bdd59841e3622133eb736b536222231e82
 vendor/bin/qti
 vendor/lib/libcneapiclient.so
 -vendor/lib/libmdmdetect.so
@@ -464,7 +462,7 @@ vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
 vendor/qcril.db
 
-# Radio - IMS - OxygenOS 3.6.0 + OP3 OB24 / OB15
+# Radio - IMS - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
 bin/ims_rtp_daemon:vendor/bin/ims_rtp_daemon
 bin/imscmservice:vendor/bin/imscmservice
 bin/imsdatadaemon:vendor/bin/imsdatadaemon
@@ -491,8 +489,8 @@ vendor/lib64/libimscamera_jni.so
 vendor/lib64/libimsmedia_jni.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
--vendor/app/ims/ims.apk|ec9d14a42c9aa4e7ee24cc6e02a13c02c84d94c5
--vendor/app/imssettings/imssettings.apk|3e08617cbb63bd4169c90285598b2f54c4e41076
+-vendor/app/ims/ims.apk|d255b5dfe08b0287b338edde796b9a533b28fd81
+-vendor/app/imssettings/imssettings.apk|57e06727c13dbdfd37e78135e944bf78e97d6495
 
 # Sensors - OxygenOS 3.6.0
 bin/sensors.qcom:vendor/bin/sensors.qcom
