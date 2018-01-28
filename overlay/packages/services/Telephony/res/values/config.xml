@@ -19,6 +19,7 @@
 <!-- Phone app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
+
     <!-- Determine whether we should show the "listen for instructions" screen after
          successfully placing the OTA call -->
     <integer name="OtaShowListeningScreen">1</integer>
@@ -43,7 +44,7 @@
     <!-- Show Preferred Network Type options in No SIM case -->
     <bool name="config_no_sim_display_network_modes">true</bool>
 
-    <!-- Flag indicating if hac is enabled -->
+      <!-- Flag indicating if hac is enabled -->
     <bool name="hac_enabled">true</bool>
 
     <!-- Show enabled lte option for lte device -->
@@ -54,4 +55,5 @@
 
     <!-- Allows the telephony HFA logic to run even if we're not in setup wizard. -->
     <bool name="config_allow_hfa_outside_of_setup_wizard">false</bool>
+
 </resources>
