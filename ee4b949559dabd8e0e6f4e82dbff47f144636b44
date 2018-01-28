@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24d5d9a8_68604bbf",
+        "filename": "overlay/frameworks/base/core/res/res/values-mcc311-mnc480/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-01-28T13:31:04Z",
+      "side": 1,
+      "message": "also this is duplicate and will break build",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 11
+      },
+      "revId": "ee4b949559dabd8e0e6f4e82dbff47f144636b44",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
