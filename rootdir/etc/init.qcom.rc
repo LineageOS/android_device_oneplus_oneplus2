@@ -313,20 +313,11 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
-    mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
     mkdir /persist/data/sfs 0700 system system
     mkdir /persist/data/tz 0700 system system
-    mkdir /data/usf 0700 system system
-    mkdir /data/misc/sfs/sfs 0700 system system
-    mkdir /data/misc/sfs/tz 0700 system system
-    mkdir /data/misc/dts 0770 media audio
     mkdir /data/oemnvitems 0771 radio radio
 
-    # Fingerint
+    # Fingeprint
     mkdir /data/misc/fp 0700 system system
     mkdir /data/fpc_images 0770 system system
     mkdir /data/fpc_images/verify 0770 system system
@@ -336,11 +327,9 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # We will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/misc/camera 0770 camera camera
-
-    # Create folder for mm-qcamera-daemon
+    # Create directories for camera
     mkdir /data/camera 0770 media camera
+    mkdir /data/misc/camera 0770 camera camera
 
     # Create directory for IPA
     mkdir /data/misc/ipa 0770 radio radio
@@ -364,9 +353,6 @@ on post-fs-data
     chown radio radio /data/misc/radio/copy_complete
     chmod 0660 /data/misc/radio/copy_complete
 
-    # Create directory used by the DASH client
-    mkdir /data/misc/dash 0770 media audio
-
     # Create directory used by display clients
     mkdir /data/misc/display 0770 system graphics
     mkdir /persist/display 0770 system graphics
@@ -385,14 +371,6 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
-
-    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
-    mkdir /data/system 0775 system system
-    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
-
-    # Create directory for FOTA
-    mkdir /data/fota 0771
-    chown system system /data/fota
 
     # Create /data/time folder for time-services
     mkdir /data/time 0700 system system
