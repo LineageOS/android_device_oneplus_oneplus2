@@ -44,7 +44,7 @@ on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
 
-    mount_all /fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
 
 on init
