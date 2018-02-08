@@ -429,6 +429,17 @@ RET IPACM_OffloadManager::setUpstream(const char *upstream_name, const Prefix& g
 		/* reset the stats when switch from LTE->STA */
 		if (index != default_gw_index) {
 			IPACMDBG_H(" interface switched to %s\n", upstream_name);
+			if (upstream_v4_up == true) {
+				IPACMDBG_H("clean upstream for ipv4-fam(%d) upstream_v4_up(%d)\n", gw_addr_v4.fam, upstream_v4_up);
+				post_route_evt(IPA_IP_v4, default_gw_index, IPA_WAN_UPSTREAM_ROUTE_DEL_EVENT, gw_addr_v4);
+				upstream_v4_up = false;
+			}
+			if (upstream_v6_up == true) {
+				IPACMDBG_H("clean upstream for ipv6-fam(%d) upstream_v6_up(%d)\n", gw_addr_v6.fam, upstream_v6_up);
+				post_route_evt(IPA_IP_v6, default_gw_index, IPA_WAN_UPSTREAM_ROUTE_DEL_EVENT, gw_addr_v6);
+				upstream_v6_up = false;
+			}
+			default_gw_index = INVALID_IFACE;
 			if(memcmp(upstream_name, "wlan0", sizeof("wlan0")) == 0)
 			{
 				IPACMDBG_H("switch to STA mode, need reset wlan-fw stats\n");
@@ -535,7 +546,7 @@ RET IPACM_OffloadManager::stopAllOffload()
 RET IPACM_OffloadManager::setQuota(const char * upstream_name /* upstream */, uint64_t mb/* limit */)
 {
 	wan_ioctl_set_data_quota quota;
-	int fd = -1;
+	int fd = -1,rc = 0;
 
 	if ((fd = open(DEVICE_NAME, O_RDWR)) < 0)
 	{
@@ -555,12 +566,20 @@ RET IPACM_OffloadManager::setQuota(const char * upstream_name /* upstream */, ui
 
 	IPACMDBG_H("SET_DATA_QUOTA %s %llu", quota.interface_name, (long long)mb);
 
-	if (ioctl(fd, WAN_IOC_SET_DATA_QUOTA, &quota) < 0) {
-        IPACMERR("IOCTL WAN_IOCTL_SET_DATA_QUOTA call failed: %s", strerror(errno));
-		close(fd);
-		return FAIL_TRY_AGAIN;
-	}
+	rc = ioctl(fd, WAN_IOC_SET_DATA_QUOTA, &quota);
 
+	if(rc != 0)
+	{
+		close(fd);
+        	IPACMERR("IOCTL WAN_IOCTL_SET_DATA_QUOTA call failed: %s rc: %d\n", strerror(errno),rc);
+		if (errno == ENODEV) {
+			IPACMDBG_H("Invalid argument.\n");
+			return FAIL_UNSUPPORTED;
+		}
+		else {
+			return FAIL_TRY_AGAIN;
+		}
+	}
 	close(fd);
 	return SUCCESS;
 }
