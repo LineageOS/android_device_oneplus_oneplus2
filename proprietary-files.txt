@@ -8,7 +8,7 @@ etc/acdbdata/MTP/MTP_Headset_cal.acdb
 etc/acdbdata/MTP/MTP_Speaker_cal.acdb
 
 # ADSP - OxygenOS 3.6.0
-bin/adsprpcd
+bin/adsprpcd:vendor/bin/adsprpcd
 vendor/lib/libadsprpc.so
 vendor/lib/libfastcvopt.so
 vendor/lib64/libadsprpc.so
@@ -36,9 +36,9 @@ vendor/lib64/libhwdaphal.so
 etc/silence_short.wav
 
 # Bluetooth - OxygenOS 3.6.0
-bin/btnvtool
-bin/hci_qcomm_init
-bin/wcnss_filter
+bin/btnvtool:vendor/bin/btnvtool
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
+bin/wcnss_filter:vendor/bin/wcnss_filter
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin
@@ -53,8 +53,8 @@ vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
 # Camera - OxygenOS 3.6.0
-bin/mm-qcamera-app
-bin/mm-qcamera-daemon
+bin/mm-qcamera-app:vendor/bin/mm-qcamera-app
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.msm8994.so:lib/hw/camera.vendor.msm8994.so
 lib/libFNVfbEngineLib.so
 lib/libmm-qcamera.so
@@ -212,7 +212,7 @@ vendor/lib/libmmcamera_ov5648_eeprom.so
 -etc/pp_calib_data_jd35695_1080p_cmd_mode_dsi_panel.xml
 
 # DRM - OxygenOS 3.6.0
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libQSEEComAPI.so
 vendor/lib64/libdrmfs.so
 vendor/lib64/libdrmtime.so
@@ -236,7 +236,7 @@ vendor/lib/hw/gatekeeper.msm8994.so
 vendor/lib64/hw/gatekeeper.msm8994.so
 
 # GPS
-bin/loc_launcher
+bin/loc_launcher:vendor/bin/loc_launcher
 etc/permissions/com.qti.location.sdk.xml
 etc/permissions/com.qualcomm.location.xml
 framework/com.qti.location.sdk.jar|ef91b72b4d99f9666a6699e12a095e66caa3b490
@@ -350,13 +350,13 @@ etc/firmware/mbn_ota/mcfg_sw_Reliance-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_TMO-Commercial.mbn
 
 # Network - OxygenOS 3.6.0
-vendor/lib/libconnctrl.so
-vendor/lib64/libconnctrl.so
+vendor/lib/libconnctrl.so|29d3279033028fb71c4a54dd7c5cb504a01077cb
+vendor/lib64/libconnctrl.so|43aa99bd4a1c235b44118a22e7993b9742aa90cb
 vendor/lib64/libQtiTether.so
 
 # Perf - OxygenOS 3.6.0
-bin/energy-awareness
-bin/msm_irqbalance
+bin/energy-awareness:vendor/bin/energy-awareness
+bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
 vendor/etc/msm_irqbalance.conf
 vendor/etc/perf-profile0.conf
@@ -369,13 +369,13 @@ vendor/lib/libqti-perfd-client.so
 vendor/lib64/libqti-perfd-client.so
 
 # Peripheral manager - OxygenOS 3.6.0
-bin/pm-proxy
-bin/pm-service
+bin/pm-proxy:vendor/bin/pm-proxy
+bin/pm-service:vendor/bin/pm-service
 vendor/lib/libperipheral_client.so
 vendor/lib64/libperipheral_client.so
 
 # Postprocessing - OxygenOS 3.6.0
-bin/mm-pp-daemon
+bin/mm-pp-daemon:vendor/bin/mm-pp-daemon
 vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl-oem.so
 -vendor/lib/libmm-abl.so
@@ -388,7 +388,7 @@ vendor/lib64/libmm-als.so
 vendor/lib64/libmm-qdcm.so
 
 # QMI - OxygenOS 3.6.0
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_util
 etc/permissions/qti_permissions.xml
 -vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
@@ -426,11 +426,11 @@ vendor/lib64/libsmemlog.so
 # Radio - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
 -app/datastatusnotification/datastatusnotification.apk|deb8d063001a59b68c63c19bb437354d4396fe4b
 -app/QtiTelephonyService/QtiTelephonyService.apk|880d5c85178c4b3dd809a64e25f6108437c136fc
-bin/netmgrd
-bin/qmuxd
-bin/radish
-bin/rfs_access
-bin/rmt_storage
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmuxd:vendor/bin/qmuxd
+bin/radish:vendor/bin/radish
+bin/rfs_access:vendor/bin/rfs_access
+bin/rmt_storage:vendor/bin/rmt_storage
 etc/data/dsi_config.xml
 etc/data/netmgr_config.xml
 etc/data/qmi_config.xml
@@ -461,10 +461,10 @@ vendor/lib64/libxml.so
 vendor/qcril.db
 
 # Radio - IMS - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
-bin/ims_rtp_daemon
-bin/imscmservice
-bin/imsdatadaemon
-bin/imsqmidaemon
+bin/ims_rtp_daemon:vendor/bin/ims_rtp_daemon
+bin/imscmservice:vendor/bin/imscmservice
+bin/imsdatadaemon:vendor/bin/imsdatadaemon
+bin/imsqmidaemon:vendor/bin/imsqmidaemon
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imsSDP.so
@@ -491,7 +491,7 @@ vendor/lib64/libvoice-svc.so
 -vendor/app/imssettings/imssettings.apk|57e06727c13dbdfd37e78135e944bf78e97d6495
 
 # Sensors - OxygenOS 3.6.0
-bin/sensors.qcom
+bin/sensors.qcom:vendor/bin/sensors.qcom
 etc/sensors/hals.conf:vendor/etc/sensors/hals.conf
 etc/sensors/sensor_def_qcomdev.conf
 vendor/lib/hw/activity_recognition.msm8994.so
@@ -516,7 +516,7 @@ vendor/lib64/libthermalioctl.so
 
 # Time services - OxygenOS 3.6.0 + OP3 OB24 / OB15
 -app/TimeService/TimeService.apk|782a2b7082326404a5d6c2cbda156dc6c1c1f071
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_genoff.so
 vendor/lib64/libTimeService.so
@@ -530,5 +530,5 @@ etc/firmware/tp/14049/14049_FW_S3320_jdi.img
 vendor/lib/mediadrm/libwvdrmengine.so|75bec2ee570663dcce362883207ddd6fe7e20855
 
 # Wifi
-bin/cnss-daemon
+bin/cnss-daemon:vendor/bin/cnss-daemon
 -lib64/libwpa_qmi_eap_proxy.so
