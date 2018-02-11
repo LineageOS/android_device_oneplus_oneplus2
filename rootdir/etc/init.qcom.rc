@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.power.rc
-import init.qcom.usb.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.qcom.usb.rc
 
 on early-init
     symlink /data/tombstones /tombstones
@@ -536,7 +536,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service zram-init /system/bin/sh /system/etc/init.zram.sh
+service zram-init /vendor/etc/init.zram.sh
     class late_start
     user root
     disabled
@@ -748,13 +748,13 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
     group bluetooth oem_2950 system
     disabled
 
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
+service config_bluetooth /vendor/etc/init.qcom.bt.sh "onboot"
     class core
     user root
     seclabel u:r:bluetooth_loader:s0
     oneshot
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
+service hciattach /vendor/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
@@ -858,7 +858,7 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service tfa-sh /system/bin/init.tfa.sh /etc/silence_short.wav 15 1
+service tfa-sh /vendor/bin/init.tfa.sh /etc/silence_short.wav 15 1
     class main
     user system
     group system
@@ -908,7 +908,7 @@ on property:drmdiag.load=1
 on property:drmdiag.load=0
     stop drmdiag
 
-service qcom-sh /system/bin/sh /init.qcom.sh
+service qcom-sh /vendor/bin/init.qcom.sh
     class late_start
     user root
     oneshot

@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/vendor/bin/sh
 
 # $1: wave file to read
 # $2: volume(0-15)
