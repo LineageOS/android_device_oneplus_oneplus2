@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/vendor/bin/sh
 
 echo 536870912 > /sys/block/zram0/disksize
 mkswap /dev/block/zram0

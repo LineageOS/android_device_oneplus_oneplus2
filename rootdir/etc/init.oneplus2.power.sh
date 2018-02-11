@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/vendor/bin/sh
 
 ################################################################################
 # helper functions to allow Android init like script
