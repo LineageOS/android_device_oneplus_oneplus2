@@ -526,8 +526,8 @@ vendor/lib64/libTimeService.so
 etc/firmware/tp/14049/14049_FW_S1302.img
 etc/firmware/tp/14049/14049_FW_S3320_jdi.img
 
-# Widevine - kanged from Angler N2G48C
-vendor/lib/mediadrm/libwvdrmengine.so|75bec2ee570663dcce362883207ddd6fe7e20855
+# Widevine - kanged from Angler OPM5.171019.015
+vendor/lib/mediadrm/libwvdrmengine.so|fb276a490ee3d630f9ba5ba751b00397a2f6dca0
 
 # Wifi
 bin/cnss-daemon:vendor/bin/cnss-daemon
