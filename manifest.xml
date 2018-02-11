@@ -1,4 +1,4 @@
-<manifest version="1.0" type="framework">
+<manifest version="1.0" type="device">
     <hal format="hidl">
         <name>android.frameworks.displayservice</name>
         <transport>hwbinder</transport>
@@ -68,6 +68,21 @@
         <version>2.4</version>
         <interface>
             <name>ICameraProvider</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.drm</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>ICryptoFactory</name>
+            <instance>widevine</instance>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IDrmFactory</name>
+            <instance>widevine</instance>
             <instance>default</instance>
         </interface>
     </hal>
