@@ -64,14 +64,11 @@ LOCAL_STATIC_LIBRARIES := \
     liblogwrap \
     libcutils \
     libbase \
-    libext4_utils_static \
     libutils \
     liblog \
     libselinux \
-    libmincrypt \
     libc++_static \
     libdl \
-    libsparse_static \
     libz
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils liblog
