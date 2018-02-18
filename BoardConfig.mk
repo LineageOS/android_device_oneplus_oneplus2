@@ -178,6 +178,16 @@ include device/qcom/sepolicy/sepolicy.mk
 include device/qcom/sepolicy/legacy-sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/lib/hw/camera.vendor.msm8994.so|libshim_cameraparameters.so \
+    /system/lib/libFNVfbEngineLib.so|libshim_camera.so \
+    /system/lib/libopcamerahw_interface.so|libshim_camera.so \
+    /system/vendor/lib64/lib-imscamera.so|libshim_ims-camera.so \
+    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
+    /system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so \
+    /system/vendor/lib/libmmcamera2_stats_algorithm.so|libshim_atomic.so
+
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
