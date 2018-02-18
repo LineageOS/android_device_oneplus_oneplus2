@@ -29,6 +29,7 @@
  */
 
 #include <stdlib.h>
+#include <sys/sysinfo.h>
 
 #include <android-base/properties.h>
 
@@ -38,7 +39,16 @@
 using android::base::GetProperty;
 using android::init::property_set;
 
+std::string heapstartsize;
+std::string heapgrowthlimit;
+std::string heapsize;
+std::string heapminfree;
+
 void init_variant_properties() {
+
+    struct sysinfo sys;
+
+    sysinfo(&sys);
 
     std::string platform;
     std::string rf_version;
@@ -67,8 +77,30 @@ void init_variant_properties() {
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "9,9");
     }
+
+    /* Dalvik props */
+    if (sys.totalram > 3072ull * 1024 * 1024) {
+        /* Values for 4GB RAM vatiants */
+        heapstartsize = "8m";
+        heapgrowthlimit = "288m";
+        heapsize = "768m";
+        heapminfree = "2m";
+    } else {
+        /* Values for 3GB RAM vatiants */
+        heapstartsize = "16m";
+        heapgrowthlimit = "192m";
+        heapsize = "512m";
+        heapminfree = "2m";
+    }
 }
 
 void vendor_load_properties() {
     init_variant_properties();
+
+    property_set("dalvik.vm.heapstartsize", heapstartsize);
+    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+    property_set("dalvik.vm.heapsize", heapsize);
+    property_set("dalvik.vm.heaptargetutilization", "0.75");
+    property_set("dalvik.vm.heapminfree", heapminfree);
+    property_set("dalvik.vm.heapmaxfree", "8m");
 }
