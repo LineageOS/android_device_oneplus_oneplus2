@@ -69,6 +69,16 @@ TARGET_KERNEL_SOURCE := kernel/oneplus/msm8994
 TARGET_KERNEL_CONFIG := oneplus2_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
+# Shims
+TARGET_LD_SHIM_LIBS := \
+    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
+    /system/vendor/lib64/lib-imscamera.so|libshim_ims-camera.so \
+    /system/lib/libopcamerahw_interface.so|libshim_camera.so \
+    /system/lib/libFNVfbEngineLib.so|libshim_camera.so \
+    /system/vendor/lib/libmmcamera2_stats_algorithm.so|libshim_atomic.so \
+    /system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so \
+    /system/lib/hw/camera.vendor.msm8994.so|libshim_cameraparameters.so"
+
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-uart"
 
