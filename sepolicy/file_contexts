@@ -41,6 +41,10 @@
 # IPACM
 /system/bin/ipacm                                                       u:object_r:ipacm_exec:s0
 
+# Sys files
+/sys/devices/virtual/graphics/fb0/dci_p3                        u:object_r:sysfs_livedisplay:s0
+/sys/devices/virtual/graphics/fb0/srgb                          u:object_r:sysfs_livedisplay:s0
+
 # RIL
 /data/oemnvitems(/.*)?                                                  u:object_r:nv_data_file:s0
 /sys/devices/soc\.0/6200000\.qcom,nvbackup_sharedmem/uio/uio4(/.*)?     u:object_r:sysfs_nv:s0

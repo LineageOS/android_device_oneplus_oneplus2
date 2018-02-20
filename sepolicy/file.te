@@ -7,3 +7,4 @@ type fpc_data_file, file_type;
 type sysfs_camera, sysfs_type, fs_type;
 type sysfs_nv, sysfs_type, fs_type;
 type sysfs_bluetooth, sysfs_type, fs_type;
+type sysfs_livedisplay, sysfs_type, fs_type;
