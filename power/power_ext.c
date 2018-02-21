@@ -22,9 +22,13 @@
 #define BIG_MIN_CPU_PATH "/sys/devices/system/cpu/cpu4/core_ctl/min_cpus"
 #define BIG_MAX_CPU_PATH "/sys/devices/system/cpu/cpu4/core_ctl/max_cpus"
 
-void cm_power_set_interactive_ext(int on)
+void power_set_interactive_ext(int on)
 {
     ALOGD("%sabling big CPU cluster", on ? "En" : "Dis");
     sysfs_write(BIG_MAX_CPU_PATH, on ? "4" : "0");
     sysfs_write(BIG_MIN_CPU_PATH, on ? "0" : "0");
+}
+
+void cm_power_set_interactive_ext(int on) {
+    power_set_interactive_ext(on);
 }
