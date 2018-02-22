@@ -1527,8 +1527,6 @@ int QCameraVideoMemory::closeNativeHandle(const void *data)
     if ((packet != NULL) && (packet->eType ==
             kMetadataBufferTypeNativeHandleSource)
             && (packet->pHandle)) {
-        native_handle_close(packet->pHandle);
-        native_handle_delete(packet->pHandle);
     } else {
         ALOGE("Invalid Data. Could not release");
         return BAD_VALUE;
