@@ -303,7 +303,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     ipacm \
     IPACM_cfg.xml \
-    wificond \
     hostapd \
     libwpa_client \
     wpa_supplicant \
