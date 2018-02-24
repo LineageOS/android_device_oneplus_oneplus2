@@ -1,1 +1,2 @@
 allow hal_fingerprint_default tee_device:chr_file ioctl;
+allow hal_fingerprint_default sysfs_fingerprint:file write;
