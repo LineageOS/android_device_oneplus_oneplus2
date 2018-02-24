@@ -51,6 +51,8 @@ on fs
     restorecon_recursive /persist
 
 on init
+    export LD_PRELOAD libshim_atomic.so
+
     chmod 0644 /proc/cmdline
     symlink /sdcard /storage/sdcard0
 
