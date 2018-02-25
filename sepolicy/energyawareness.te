@@ -1,0 +1,1 @@
+allow energyawareness sysfs_nv:file { getattr open read };
