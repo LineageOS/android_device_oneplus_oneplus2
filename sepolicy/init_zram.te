@@ -1,0 +1,4 @@
+type init_zram, domain;
+type init_zram_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(init_zram)
