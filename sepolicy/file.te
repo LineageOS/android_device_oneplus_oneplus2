@@ -1,5 +1,5 @@
-type proc_kernel_sched, fs_type;
+type nv_data_file, file_type;
 type sysfs_fingerprint, sysfs_type, fs_type;
-type sysfs_gestures, sysfs_type, fs_type;
-type sysfs_keys, sysfs_type, fs_type;
-type sysfs_tap2wake, sysfs_type, fs_type;
+type proc_kernel_sched, fs_type;
+type proc_touchpanel, fs_type;
+type debugfs_rmt; fs_type;
