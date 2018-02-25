@@ -1,1 +1,3 @@
 allow vold persist_file:dir { ioctl open read };
+allow vold proc_touchpanel:dir { open read };
+allow vold system_data_file:file { open unlink };
