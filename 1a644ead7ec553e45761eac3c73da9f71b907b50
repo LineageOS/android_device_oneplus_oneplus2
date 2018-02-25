@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40f99ada_389daf8e",
+        "filename": "system.prop",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-02-25T09:55:08Z",
+      "side": 1,
+      "message": "This prop is not in anywehere I think.",
+      "revId": "1a644ead7ec553e45761eac3c73da9f71b907b50",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
