@@ -455,11 +455,13 @@ vendor/lib64/libsystem_health_mon.so
 vendor/lib64/libxml.so
 vendor/qcril.db
 
-# Radio - IMS - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
+# Radio - IMS - OxygenOS 3.6.0 + OxygenOS 5.0 and OB32/OB22
 bin/ims_rtp_daemon:vendor/bin/ims_rtp_daemon
 bin/imscmservice:vendor/bin/imscmservice
 bin/imsdatadaemon:vendor/bin/imsdatadaemon
 bin/imsqmidaemon:vendor/bin/imsqmidaemon
+etc/permissions/qti-vzw-ims-internal.xml|a573a0eafbe94d7e9edeb4924a9604a1b6a208a8
+framework/qti-vzw-ims-internal.jar|9f0c22b5b7617b3d40985a9c01b760fe19947012
 vendor/lib64/lib-dplmedia.so
 vendor/lib64/lib-ims-rcscmjni.so
 vendor/lib64/lib-imsSDP.so
