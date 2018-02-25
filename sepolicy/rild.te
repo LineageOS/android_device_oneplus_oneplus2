@@ -1,0 +1,1 @@
+allow rild nv_data_file:file { open write };
