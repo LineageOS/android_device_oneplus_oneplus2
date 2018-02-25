@@ -1,0 +1,12 @@
+type init_zram, domain;
+type init_zram_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(init_zram)
+
+allow init_zram sysfs_zram:dir search;
+allow init_zram sysfs_zram:file { open write };
+allow init_zram swap_block_device:blk_file { getattr open read write };
+
+# Shell script needs to execute /vendor/bin/sh
+allow init_tfa vendor_shell_exec:file rx_file_perms;
+allow init_tfa vendor_toolbox_exec:file rx_file_perms;
