@@ -1,1 +1,7 @@
-allow system_app sysfs_keys:file write;
+allow system_app proc_touchpanel:file { getattr open write };
+allow system_app proc_touchpanel:dir search;
+
+binder_call(system_app, wificond)
+binder_call(system_app, storaged)
+binder_call(system_app, installd)
+binder_call(system_app, netd)

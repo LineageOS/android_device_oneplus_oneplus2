@@ -1,3 +1,4 @@
 allow perfd proc_kernel_sched:file { open read write };
 allow perfd self:capability kill;
 allow perfd system_server:process signull;
+allow perfd hal_power_default:process signull;
