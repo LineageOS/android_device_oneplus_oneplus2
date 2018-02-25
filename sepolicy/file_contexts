@@ -8,21 +8,18 @@
 # Core_ctl
 /(vendor|system/vendor)/bin/init\.oneplus2\.power\.sh                   u:object_r:init-power-sh_exec:s0
 
+# Fingerprint
+/sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
+
 # Gestures
-/proc/touchpanel(/.*)?                                                 u:object_r:sysfs_gestures:s0
+/proc/touchpanel(/.*)?                                                  u:object_r:sysfs_touchscreen:s0
 
 # HALs
 /system/vendor/bin/hw/android\.hardware\.usb@1\.0-service\.op2          u:object_r:hal_usb_default_exec:s0
 
-# Fingerprint
-/sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0/irq         u:object_r:sysfs_fingerprint:s0
-
 # Keys
-/proc/s1302(/.*)?                                                      u:object_r:sysfs_keys:s0
+/proc/s1302(/.*)?                                                       u:object_r:sysfs_keys:s0
 
 # Partitions
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/bluetooth            u:object_r:bt_firmware_file:s0
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/modem                u:object_r:firmware_file:s0
-
-# Power Hal
-/proc/touchpanel/double_tap                                             u:object_r:sysfs_tap2wake:s0
