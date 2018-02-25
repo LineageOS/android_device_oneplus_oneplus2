@@ -1,2 +1,5 @@
-allow hal_fingerprint_default tee_device:chr_file ioctl;
-allow hal_fingerprint_default sysfs_fingerprint:file write;
+allow hal_fingerprint_default firmware_file:dir search;
+allow hal_fingerprint_default firmware_file:file { getattr open read };
+allow hal_fingerprint_default tee_device:chr_file { ioctl open read write };
+allow hal_fingerprint_default sysfs_fingerprint:dir { open read search };
+allow hal_fingerprint_default sysfs_fingerprint:file { open read write };
