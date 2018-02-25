@@ -1,1 +1,1 @@
-allow system_app sysfs_keys:file write;
+allow system_app proc_touchpanel:file write;
