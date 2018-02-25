@@ -1,0 +1,1 @@
+allow mediaextractor sdcardfs:file { getattr read };

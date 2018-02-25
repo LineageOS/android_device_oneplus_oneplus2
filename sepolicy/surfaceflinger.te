@@ -1,0 +1,2 @@
+allow surfaceflinger display_prop:file { getattr open read };
+allow surfaceflinger display_prop:property_service set;
