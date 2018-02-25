@@ -1,0 +1,1 @@
+allow zram_loader init_zram_exec:file execute_no_trans;
