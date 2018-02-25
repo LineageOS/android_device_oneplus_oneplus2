@@ -1,0 +1,1 @@
+allow bluetooth_loader :qti_init_shell_exec:file entrypoint;

@@ -1,0 +1,1 @@
+allow hal_graphics_allocator_default sysfs_graphics:file { getattr open read };
