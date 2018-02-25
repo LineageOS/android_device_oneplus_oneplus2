@@ -1,0 +1,15 @@
+# Run init.qcom.bt.sh
+allow bluetooth_loader qti_init_shell_exec:file { entrypoint };
+allow bluetooth_loader bluetooth_loader_exec:file { getattr open execute_no_trans };
+
+allow bluetooth_loader toolbox_exec:file { execute execute_no_trans getattr open read };
+allow bluetooth_loader vendor_toolbox_exec:file execute_no_trans;
+allow bluetooth_loader btnvtool_exec:file execute_no_trans;
+allow bluetooth_loader smem_log_device:chr_file { ioctl open read write };
+allow bluetooth_loader persist_file:dir search;
+allow bluetooth_loader persist_bluetooth_file:dir search;
+allow bluetooth_loader persist_bluetooth_file:file { getattr open read };
+allow bluetooth_loader bluetooth_prop:property_service set;
+allow bluetooth_loader property_socket:sock_file write;
+allow bluetooth_loader init:unix_stream_socket connectto;
+allow bluetooth_loader sysfs_bluetooth:file write;
