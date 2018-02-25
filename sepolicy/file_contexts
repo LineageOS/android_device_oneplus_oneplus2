@@ -20,9 +20,5 @@
 # Keys
 /proc/s1302(/.*)?                                                      u:object_r:sysfs_keys:s0
 
-# Partitions
-/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/bluetooth            u:object_r:bt_firmware_file:s0
-/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/modem                u:object_r:firmware_file:s0
-
 # Power Hal
 /proc/touchpanel/double_tap                                             u:object_r:sysfs_tap2wake:s0
