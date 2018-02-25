@@ -1,0 +1,9 @@
+allow bluetooth_loader qti_init_shell_exec:file entrypoint;
+allow bluetooth_loader btnvtool_exec:file execute_no_trans;
+allow bluetooth_loader toolbox_exec:file { excute execute_no_trans getattr read open };
+allow bluetooth_loader init:unix_stream_socket connectto;
+allow bluetooth_loader smem_log_device:chr_file { open read write };
+allow bluetooth_loader persist_bluetooth_file:dir search;
+allow bluetooth_loader persist_bluetooth_file:file { getattr open read };
+allow bluetooth_loader bluetooth_prop:property_servie set;
+allow bluetooth_loader property_socket:sock_file write;
