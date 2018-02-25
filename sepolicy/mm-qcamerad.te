@@ -1,0 +1,1 @@
+allow mm-qcamerad camera_lib:fil execmod;
