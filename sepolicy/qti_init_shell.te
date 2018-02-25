@@ -1,0 +1,3 @@
+allow qti_init_shell kmsg_device:chr_file { write open };
+allow qti_init_shell proc_net:dir { open read };
+allow qti_init_shell sysfs:file write;
