@@ -1,3 +1,4 @@
-allow hal_power_default sysfs_tap2wake:file { open write };
 allow hal_power_default perfd:unix_stream_socket connectto;
 allow hal_power_default perfd:process signull;
+allow hal_power_default proc_touchpanel:file { open read write };
+allow hal_power_default proc_touchpanel:dir search;
