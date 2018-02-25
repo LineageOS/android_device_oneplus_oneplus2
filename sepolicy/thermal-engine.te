@@ -1,0 +1,2 @@
+allow thermal-engine property_socket:sock_file write;
+allow thermal-engine init:unix_stream_socket connectto;
