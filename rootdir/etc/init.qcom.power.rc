@@ -2,7 +2,6 @@ on boot
     # execute script to set initial CPU settings
     # don't run as a service to avoid race conditions
     exec - root root system -- /vendor/bin/init.oneplus2.power.sh
-    write /proc/sys/kernel/sched_boost 1
 
 on charger
     write /sys/devices/system/cpu/cpu4/online 1
