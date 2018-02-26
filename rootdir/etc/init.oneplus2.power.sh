@@ -141,8 +141,8 @@ get-set-forall  /sys/class/devfreq/qcom,cpubw*/governor bw_hwmon
 restorecon -R /sys/class/devfreq/qcom,cpubw*
 get-set-forall  /sys/class/devfreq/qcom,mincpubw.*/governor cpufreq
 
-# Disable sched_boost
-write /proc/sys/kernel/sched_boost 0
+# Enable sched_boost
+write /proc/sys/kernel/sched_boost 1
 
 # change GPU initial power level from 305MHz(level 4) to 180MHz(level 5) for power savings
 write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
