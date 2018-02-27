@@ -536,7 +536,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service zram-init /vendor/etc/init.zram.sh
+service zram-init /vendor/bin/init.zram.sh
     class late_start
     user root
     disabled
@@ -639,15 +639,6 @@ service usf_sw_calib /system/bin/usf_sw_calib
     group system inet
     disabled
 
-service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
-on property:init.svc.bootanim=stopped
-    start usf-post-boot
-
 service energy-awareness /system/vendor/bin/energy-awareness
     class main
     user root
@@ -748,13 +739,13 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
     group bluetooth oem_2950 system
     disabled
 
-service config_bluetooth /vendor/etc/init.qcom.bt.sh "onboot"
+service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     class core
     user root
     seclabel u:r:bluetooth_loader:s0
     oneshot
 
-service hciattach /vendor/etc/init.qcom.bt.sh
+service hciattach /vendor/bin/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
