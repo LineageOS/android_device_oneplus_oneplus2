@@ -536,9 +536,10 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service zram-init /vendor/etc/init.zram.sh
+service zram-init /vendor/bin/init.zram.sh
     class late_start
     user root
+    seclabel u:r:zram_loader:s0
     disabled
     oneshot
 
@@ -592,61 +593,6 @@ service imscmservice /system/vendor/bin/imscmservice
    class main
    user system
    group radio diag log
-
-service usf_tester /system/bin/usf_tester
-    user system
-    group system inet
-    disabled
-
-service usf_epos /system/bin/usf_epos
-    class main
-    user system
-    group system inet
-    disabled
-
-service usf_gesture /system/bin/usf_gesture
-    user system
-    group system inet
-    disabled
-
-service usf_sync_gesture /system/bin/usf_sync_gesture
-    user system
-    group system inet audio
-    disabled
-
-service usf_p2p /system/bin/usf_p2p
-    user system
-    group system inet
-    disabled
-
-service usf_hovering /system/bin/usf_hovering
-    user system
-    group system inet
-    disabled
-
-service usf_proximity /system/bin/usf_proximity
-    user system
-    group system inet
-    disabled
-
-service usf_pairing /system/bin/usf_pairing
-    user system
-    group system inet
-    disabled
-
-service usf_sw_calib /system/bin/usf_sw_calib
-    user system
-    group system inet
-    disabled
-
-service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
-on property:init.svc.bootanim=stopped
-    start usf-post-boot
 
 service energy-awareness /system/vendor/bin/energy-awareness
     class main
@@ -748,13 +694,13 @@ service hci_filter_root /system/vendor/bin/wcnss_filter
     group bluetooth oem_2950 system
     disabled
 
-service config_bluetooth /vendor/etc/init.qcom.bt.sh "onboot"
+service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     class core
     user root
     seclabel u:r:bluetooth_loader:s0
     oneshot
 
-service hciattach /vendor/etc/init.qcom.bt.sh
+service hciattach /vendor/bin/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
