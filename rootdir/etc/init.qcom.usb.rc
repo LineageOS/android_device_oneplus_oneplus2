@@ -39,7 +39,7 @@ on fs
     write /sys/class/android_usb/android0/f_ffs/aliases adb
     setprop persist.sys.usb.config adb
 
-service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh
+service qcom-usb-sh /vendor/bin/init.qcom.usb.sh
     class core
     user root
     oneshot
