@@ -639,15 +639,6 @@ service usf_sw_calib /system/bin/usf_sw_calib
     group system inet
     disabled
 
-service usf-post-boot /system/bin/sh /system/etc/usf_post_boot.sh
-    class late_start
-    user root
-    disabled
-    oneshot
-
-on property:init.svc.bootanim=stopped
-    start usf-post-boot
-
 service energy-awareness /system/vendor/bin/energy-awareness
     class main
     user root
