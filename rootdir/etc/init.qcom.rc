@@ -212,6 +212,12 @@ on early-boot
 
     write /sys/kernel/boot_adsp/boot 1
 
+    # SSR Setup
+    write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys1/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys2/restart_level "related"
+    write /sys/bus/msm_subsys/devices/subsys3/restart_level "related"
+
 on boot
     # add a cpuset for the camera daemon
     # we want all the little cores for camera
