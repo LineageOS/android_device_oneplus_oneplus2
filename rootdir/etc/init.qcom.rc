@@ -624,7 +624,7 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service tfa-sh /vendor/bin/init.tfa.sh /etc/silence_short.wav 15 1
+service tfa-sh /vendor/bin/init.tfa.sh /vendor/etc/silence_short.wav 15 1
     class main
     user system
     group system
