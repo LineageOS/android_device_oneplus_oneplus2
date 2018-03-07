@@ -33,7 +33,7 @@ vendor/lib64/libaudcal.so
 vendor/lib64/libhwdaphal.so
 
 # Audio amplifier calibration sound
-etc/silence_short.wav
+etc/silence_short.wav:vendor/etc/silence_short.wav
 
 # Bluetooth - OxygenOS 3.6.0
 bin/btnvtool:vendor/bin/btnvtool
