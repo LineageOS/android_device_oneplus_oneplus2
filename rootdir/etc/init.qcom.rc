@@ -756,7 +756,7 @@ service qti /system/vendor/bin/qti
 service sensors /system/vendor/bin/sensors.qcom
     class late_start
     user root
-    group root
+    group root system
     disabled
 
 on property:ro.use_data_netmgrd=false
