@@ -268,7 +268,6 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.recovery.oneplus2.rc \
-    init.zram.sh \
     ueventd.qcom.rc
 
 # RenderScript
