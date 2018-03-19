@@ -6050,16 +6050,29 @@ typedef struct {
 #define RIL_REQUEST_GET_ACTIVITY_INFO 135
 
 /**
- * RIL_REQUEST_SIM_GET_ATR
+ * RIL_REQUEST_SET_CARRIER_RESTRICTIONS
  *
- * Get the ATR from SIM Card
+ * Set carrier restrictions for this sim slot. Expected modem behavior:
+ *  If never receives this command
+ *  - Must allow all carriers
+ *  Receives this command with data being NULL
+ *  - Must allow all carriers. If a previously allowed SIM is present, modem must not reload
+ *    the SIM. If a previously disallowed SIM is present, reload the SIM and notify Android.
+ *  Receives this command with a list of carriers
+ *  - Only allow specified carriers, persist across power cycles and FDR. If a present SIM
+ *    is in the allowed list, modem must not reload the SIM. If a present SIM is *not* in
+ *    the allowed list, modem must detach from the registered network and only keep emergency
+ *    service, and notify Android SIM refresh reset with new SIM state being
+ *    RIL_CARDSTATE_RESTRICTED. Emergency service must be enabled.
  *
- * Only valid when radio state is "RADIO_STATE_ON"
+ * "data" is const RIL_CarrierRestrictions *
+ * A list of allowed carriers and possibly a list of excluded carriers.
+ * If data is NULL, means to clear previous carrier restrictions and allow all carriers
  *
- * "data" is const int *
- * ((const int *)data)[0] contains the slot index on the SIM from which ATR is requested.
- *
- * "response" is a const char * containing the ATR, See ETSI 102.221 8.1 and ISO/IEC 7816 3
+ * "response" is int *
+ * ((int *)data)[0] contains the number of allowed carriers which have been set correctly.
+ * On success, it should match the length of list data->allowed_carriers.
+ * If data is NULL, the value must be 0.
  *
  * Valid errors:
  *  RIL_E_SUCCESS
@@ -6071,21 +6084,18 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  */
-#define RIL_REQUEST_SIM_GET_ATR 136
+#define RIL_REQUEST_SET_CARRIER_RESTRICTIONS 136
 
 /**
- * RIL_REQUEST_CAF_SIM_OPEN_CHANNEL_WITH_P2
+ * RIL_REQUEST_GET_CARRIER_RESTRICTIONS
  *
- * Open a new logical channel and select the given application. This command
- * reflects TS 27.007 "open logical channel" operation (+CCHO). This request
- * also specifies the P2 parameter.
+ * Get carrier restrictions for this sim slot. Expected modem behavior:
+ *  Return list of allowed carriers, or null if all carriers are allowed.
  *
- * "data" is a const RIL_CafOpenChannelParam *
+ * "data" is NULL
  *
- * "response" is int *
- * ((int *)data)[0] contains the session id of the logical channel.
- * ((int *)data)[1] onwards may optionally contain the select response for the
- *     open channel command with one byte per integer.
+ * "response" is const RIL_CarrierRestrictions *.
+ * If response is NULL, it means all carriers are allowed.
  *
  * Valid errors:
  *  RIL_E_SUCCESS
@@ -6180,24 +6190,6 @@ typedef struct {
   *  NO_RESOURCES
   *  CANCELLED
   */
-#define RIL_REQUEST_SET_CARRIER_RESTRICTIONS 140
-
-/**
- * RIL_REQUEST_GET_CARRIER_RESTRICTIONS
- *
- * Get carrier restrictions for this sim slot. Expected modem behavior:
- *  Return list of allowed carriers, or null if all carriers are allowed.
- *
- * "data" is NULL
- *
- * "response" is const RIL_CarrierRestrictions *.
- * If response is NULL, it means all carriers are allowed.
- *
- * Valid errors:
- *  RIL_E_SUCCESS
- *  RIL_E_RADIO_NOT_AVAILABLE
- *  RIL_E_REQUEST_NOT_SUPPORTED
- */
 #define RIL_REQUEST_SET_SIM_CARD_POWER 140
 
 /**
