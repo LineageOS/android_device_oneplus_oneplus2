@@ -121,7 +121,6 @@ PRODUCT_PACKAGES += \
     libqomx_core \
     libshim_atomic \
     libshim_camera \
-    libshim_cameraparameters \
     libshim_ims-camera \
     sensors.hal.tof
 
