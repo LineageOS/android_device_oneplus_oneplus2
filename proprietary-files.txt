@@ -511,13 +511,11 @@ vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 vendor/lib64/libthermalioctl.so
 
-# Time services - OxygenOS 3.6.0 + OP3 OB24 / OB15
--app/TimeService/TimeService.apk|782a2b7082326404a5d6c2cbda156dc6c1c1f071
-bin/time_daemon:vendor/bin/time_daemon
-vendor/lib/libTimeService.so
--vendor/lib/libtime_genoff.so
-vendor/lib64/libTimeService.so
--vendor/lib64/libtime_genoff.so
+
+# Time services - from bardock-pro - OPM1.171019.011
+-vendor/app/TimeService/TimeService.apk|5055619766db32fe499cda86b892c9f3081219c5
+vendor/bin/time_daemon|8ea7d65a65c1d50afc6553ad52848b454c62563d
+vendor/lib64/libtime_genoff.so|7683a85cae9f17cd535e8960fceda1d6831074a0
 
 # TP Firmware - OxygenOS 3.6.0
 etc/firmware/tp/14049/14049_FW_S1302.img
