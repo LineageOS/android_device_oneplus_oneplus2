@@ -344,11 +344,6 @@ etc/firmware/mbn_ota/mcfg_sw_OEM_Overseas-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_Reliance-Commercial.mbn
 etc/firmware/mbn_ota/mcfg_sw_TMO-Commercial.mbn
 
-# Network - OxygenOS 3.6.0
-vendor/lib/libconnctrl.so|29d3279033028fb71c4a54dd7c5cb504a01077cb
-vendor/lib64/libconnctrl.so|43aa99bd4a1c235b44118a22e7993b9742aa90cb
-vendor/lib64/libQtiTether.so
-
 # Perf - OxygenOS 3.6.0
 bin/energy-awareness:vendor/bin/energy-awareness
 bin/msm_irqbalance:vendor/bin/msm_irqbalance
