@@ -186,8 +186,6 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
     /system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so
 
-TARGET_LDPRELOAD := libshim_atomic.so
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
