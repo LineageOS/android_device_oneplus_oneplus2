@@ -1,2 +1,4 @@
-allow system_app proc_touchpanel:file { getattr open write };
+allow system_app proc_touchpanel:file { getattr open read write };
 allow system_app proc_touchpanel:dir search;
+allow system_app installd_service:service_manager find;
+allow system_app netd_service:service_manager find;
