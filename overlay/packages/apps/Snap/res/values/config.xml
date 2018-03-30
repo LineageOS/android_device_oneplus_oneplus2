@@ -15,10 +15,6 @@
 <!-- Camera app resources that may need to be customized
      for different hardware or product builds. -->
 <resources>
-    <!-- This value may be tweaked to save memory on low RAM devices. The value
-         is the percentage of camera preview height/width to scale to. -->
-    <integer name="panorama_frame_size_reduction">100</integer>
-
     <!-- A list of scenemodes where Longshot should be enabled. Comma separated.
          An empty list will use the default restrictions. If defined, longshot
          will be enabled ONLY for these scenemodes and disabled for others. -->
@@ -26,4 +22,15 @@
         <item>sports</item>
     </string-array>
 
+    <!-- Opens back camera using openLegacy() and forces api v1 -->
+    <bool name="back_camera_open_legacy">false</bool>
+
+    <!-- Opens front camera using openLegacy() and forces api v1 -->
+    <bool name="front_camera_open_legacy">false</bool>
+
+    <!-- Restart preview for back camera onPictureTaken -->
+    <bool name="back_camera_restart_preview_onPictureTaken">true</bool>
+
+    <!-- Restart preview for front camera onPictureTaken -->
+    <bool name="front_camera_restart_preview_onPictureTaken">true</bool>
 </resources>
