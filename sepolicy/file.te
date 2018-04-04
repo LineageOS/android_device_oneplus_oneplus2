@@ -4,5 +4,6 @@ type proc_kernel_sched, fs_type;
 type proc_touchpanel, fs_type;
 type debugfs_rmt, fs_type;
 type fpc_data_file, file_type;
+type sysfs_camera, sysfs_type, fs_type;
 type sysfs_nv, sysfs_type, fs_type;
 type sysfs_bluetooth, sysfs_type, fs_type;
