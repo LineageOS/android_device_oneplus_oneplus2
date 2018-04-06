@@ -19,9 +19,10 @@
 
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Use ERI text for network name on CDMA LTE -->
-    <bool name="config_LTE_eri_for_network_name">false</bool>
+    <!-- Configure mobile network MTU. Carrier specific value is set here.
+    -->
+    <integer name="config_mobile_mtu">1422</integer>
 
 </resources>
