@@ -6253,25 +6253,12 @@ camera_metadata_t* QCamera3HardwareInterface::translateCapabilityToMetadata(int 
             i++) {
         float range = gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps -
             gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-        if (type == CAMERA3_TEMPLATE_PREVIEW ||
-                type == CAMERA3_TEMPLATE_STILL_CAPTURE ||
-                type == CAMERA3_TEMPLATE_ZERO_SHUTTER_LAG) {
-            if (range > max_range) {
-                fps_range[0] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-                fps_range[1] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-                max_range = range;
-            }
-        } else {
-            if (range < 0.01 && max_fixed_fps <
-                    gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps) {
-                fps_range[0] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
-                fps_range[1] =
-                    (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-                max_fixed_fps = gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
-            }
+        if (range > max_range) {
+            fps_range[0] =
+                (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].min_fps;
+            fps_range[1] =
+                (int32_t)gCamCapability[mCameraId]->fps_ranges_tbl[i].max_fps;
+            max_range = range;
         }
     }
     settings.update(ANDROID_CONTROL_AE_TARGET_FPS_RANGE, fps_range, 2);
