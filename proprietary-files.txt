@@ -254,7 +254,7 @@ vendor/lib64/libulp2.so
 vendor/lib64/libxtadapter.so
 vendor/lib64/libxtwifi_ulp_adaptor.so
 
-# Graphics - kanged from Angler N2G48C
+# Graphics - kanged from Angler OPM3.171019.019
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -297,7 +297,6 @@ vendor/lib64/libmm-disp-apis.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscale.so
-vendor/lib64/libuiblur.so
 
 # Graphics firmware - OxygenOS 3.6.0
 etc/firmware/a420_pfp.fw
