@@ -478,7 +478,7 @@ vendor/lib64/libimscamera_jni.so
 vendor/lib64/libimsmedia_jni.so
 vendor/lib64/librcc.so
 vendor/lib64/libvoice-svc.so
--vendor/app/ims/ims.apk|d255b5dfe08b0287b338edde796b9a533b28fd81
+-vendor/app/ims/ims.apk|f6f0b1e5161ae608830f01b7e4c7def3ed599eeb
 -vendor/app/imssettings/imssettings.apk|57e06727c13dbdfd37e78135e944bf78e97d6495
 
 # Sensors - OxygenOS 3.6.0
