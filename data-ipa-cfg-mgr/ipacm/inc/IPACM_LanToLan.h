@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2014, The Linux Foundation. All rights reserved.
+Copyright (c) 2014-2017, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -42,7 +42,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "IPACM_Iface.h"
 #include "IPACM_Defs.h"
 #include "IPACM_Lan.h"
-#include <unordered_map>
 
 #ifdef FEATURE_IPA_ANDROID
 #include <libxml/list.h>
@@ -50,125 +49,233 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <list>
 #endif /* ndefined(FEATURE_IPA_ANDROID)*/
 
-struct client_info;
+#define MAX_NUM_CACHED_CLIENT_ADD_EVENT 10
+#define MAX_NUM_IFACE 10
+#define MAX_NUM_CLIENT 16
 
-struct peer_info
+struct vlan_iface_info
 {
-	struct client_info* peer_pointer;
-	int num_connection;
+	char vlan_iface_name[IPA_RESOURCE_NAME_MAX];
+	uint8_t vlan_id;
+	uint32_t vlan_iface_ipv6_addr[4];
+	uint8_t vlan_client_mac[6];
+	uint32_t vlan_client_ipv6_addr[4];
 };
 
-//used to store rule handles for offload link (one direction)
-struct offload_link_info
+struct l2tp_vlan_mapping_info
 {
-	struct client_info* peer_pointer;
-	uint32_t flt_rule_hdl;
-	lan_to_lan_rt_rule_hdl rt_rule_hdl;
-	uint32_t hdr_hdl;
+	/* the following are l2tp iface info (name, session id) */
+	char l2tp_iface_name[IPA_RESOURCE_NAME_MAX];
+	uint8_t l2tp_session_id;
+	/* the following are mdm vlan iface info (name, vlan id, ipv6 addr) */
+	char vlan_iface_name[IPA_RESOURCE_NAME_MAX];
+	uint8_t vlan_id;
+	uint32_t vlan_iface_ipv6_addr[4];
+	/* the following are MIB3 vlan client info (mac, ipv6 addr) */
+	uint8_t vlan_client_mac[6];
+	uint32_t vlan_client_ipv6_addr[4];
+	/* the following is MIB3 l2tp client info (mac) */
+	uint8_t l2tp_client_mac[6];
 };
 
-typedef list<peer_info> peer_info_list;
-typedef list<offload_link_info> offload_link_info_list;
-typedef list<ipacm_event_connection> connection_list;
+struct rt_rule_info
+{
+	int num_hdl[IPA_IP_MAX];	/* one client may need more than one routing rules on the same routing table depending on tx_prop */
+	uint32_t  rule_hdl[IPA_IP_MAX][MAX_NUM_PROP];
+};
+
+struct l2tp_rt_rule_info
+{
+	uint32_t first_pass_hdr_hdl;	/* first pass hdr template (IPv4 and IPv6 use the same hdr template) */
+	uint32_t first_pass_hdr_proc_ctx_hdl[IPA_IP_MAX]; /* first pass hdr proc ctx */
+	uint32_t second_pass_hdr_hdl;	/* second pass hdr template (IPv4 and IPv6 use the same hdr template) */
+	int num_rt_hdl[IPA_IP_MAX];		/* number of TX properties for IPv4 and IPv6 respectively */
+	uint32_t  first_pass_rt_rule_hdl[IPA_IP_MAX][MAX_NUM_PROP];	/* first pass routing rule */
+	uint32_t  second_pass_rt_rule_hdl[MAX_NUM_PROP];	/*second pass routing rule (only ipv6 rt rule is needed) */
+};
 
 struct client_info
 {
-	union
-	{
-		uint32_t ipv4_addr;
-		uint32_t ipv6_addr[4];
-	} ip;
 	uint8_t mac_addr[6];
-	bool is_active;
-	bool is_powersave;
-	IPACM_Lan* p_iface;
-	peer_info_list peer;
-	offload_link_info_list link;
+	rt_rule_info inter_iface_rt_rule_hdl[IPA_HDR_L2_MAX];	/* routing rule handles of inter interface communication based on source l2 header type */
+	rt_rule_info intra_iface_rt_rule_hdl;	/* routing rule handles of inter interface communication */
+	bool is_l2tp_client;
+	l2tp_vlan_mapping_info *mapping_info;
+	l2tp_rt_rule_info l2tp_rt_rule_hdl[IPA_HDR_L2_MAX];
 };
 
-struct v6_addr
+struct flt_rule_info
 {
-	uint32_t ipv6_addr[4];
+	client_info *p_client;
+	uint32_t flt_rule_hdl[IPA_IP_MAX];
+	uint32_t l2tp_first_pass_flt_rule_hdl[IPA_IP_MAX];	/* L2TP filtering rules are destination MAC based */
+	uint32_t l2tp_second_pass_flt_rule_hdl;
 };
 
-typedef unordered_map<uint32_t, client_info> client_table_v4;
-typedef unordered_map<uint64_t, client_info> client_table_v6;
+struct peer_iface_info
+{
+	class IPACM_LanToLan_Iface *peer;
+	char rt_tbl_name_for_rt[IPA_IP_MAX][IPA_RESOURCE_NAME_MAX];
+	char rt_tbl_name_for_flt[IPA_IP_MAX][IPA_RESOURCE_NAME_MAX];
+	list<flt_rule_info> flt_rule;
+};
 
+class IPACM_LanToLan_Iface
+{
+public:
+	IPACM_LanToLan_Iface(IPACM_Lan *p_iface);
+	~IPACM_LanToLan_Iface();
+
+	void add_client_rt_rule_for_new_iface();
+
+	void add_all_inter_interface_client_flt_rule(ipa_ip_type iptype);
+
+	void add_all_intra_interface_client_flt_rule(ipa_ip_type iptype);
+
+	void handle_down_event();
+
+	void handle_wlan_scc_mcc_switch();
+
+	void handle_intra_interface_info();
+
+	void handle_new_iface_up(char rt_tbl_name_for_flt[][IPA_RESOURCE_NAME_MAX], char rt_tbl_name_for_rt[][IPA_RESOURCE_NAME_MAX],
+		IPACM_LanToLan_Iface *peer_iface);
+
+	void handle_client_add(uint8_t *mac, bool is_l2tp_client, l2tp_vlan_mapping_info *mapping_info);
+
+	void handle_client_del(uint8_t *mac);
+
+	void print_data_structure_info();
+
+	IPACM_Lan* get_iface_pointer();
+
+	bool get_m_is_ip_addr_assigned(ipa_ip_type iptype);
+
+	void set_m_is_ip_addr_assigned(ipa_ip_type iptype, bool value);
+
+	bool get_m_support_inter_iface_offload();
+
+	bool get_m_support_intra_iface_offload();
+
+	void increment_ref_cnt_peer_l2_hdr_type(ipa_hdr_l2_type peer_l2_type);
+
+	void decrement_ref_cnt_peer_l2_hdr_type(ipa_hdr_l2_type peer_l2_type);
+#ifdef FEATURE_L2TP
+	void switch_to_l2tp_iface();
+
+	bool set_l2tp_iface(char *vlan_iface_name);
+
+	bool is_l2tp_iface();
+
+	void handle_l2tp_enable();
+
+	void handle_l2tp_disable();
+#endif
+private:
+
+	IPACM_Lan *m_p_iface;
+	bool m_is_ip_addr_assigned[IPA_IP_MAX];
+	bool m_support_inter_iface_offload;
+	bool m_support_intra_iface_offload;
+	bool m_is_l2tp_iface;
+
+	int ref_cnt_peer_l2_hdr_type[IPA_HDR_L2_MAX];	/* reference count of l2 header type of peer interfaces */
+	uint32_t hdr_proc_ctx_for_inter_interface[IPA_HDR_L2_MAX];
+	uint32_t hdr_proc_ctx_for_intra_interface;
+	uint32_t hdr_proc_ctx_for_l2tp;		/* uc needs to remove 62 bytes IPv6 + L2TP + inner Ethernet header */
+
+	list<client_info> m_client_info;	/* client list */
+	list<peer_iface_info> m_peer_iface_info;	/* peer information list */
+
+	/* The following members are for intra-interface communication*/
+	peer_iface_info m_intra_interface_info;
+
+	void add_one_client_flt_rule(IPACM_LanToLan_Iface *peer_iface, client_info *client);
+
+	void add_client_flt_rule(peer_iface_info *peer, client_info *client, ipa_ip_type iptype);
+
+	void del_one_client_flt_rule(IPACM_LanToLan_Iface *peer_iface, client_info *client);
+
+	void del_client_flt_rule(peer_iface_info *peer, client_info *client);
+
+	void add_client_rt_rule(peer_iface_info *peer, client_info *client);
+
+	void del_client_rt_rule(peer_iface_info *peer, client_info *client);
+
+	void add_l2tp_client_rt_rule(peer_iface_info *peer, client_info *client);
+
+	void clear_all_flt_rule_for_one_peer_iface(peer_iface_info *peer);
+
+	void clear_all_rt_rule_for_one_peer_iface(peer_iface_info *peer);
+
+	void add_hdr_proc_ctx(ipa_hdr_l2_type peer_l2_type);
+
+	void del_hdr_proc_ctx(ipa_hdr_l2_type peer_l2_type);
+
+	void print_peer_info(peer_iface_info *peer_info);
+
+};
 
 class IPACM_LanToLan : public IPACM_Listener
 {
 
 public:
 
-		IPACM_LanToLan();
-		~IPACM_LanToLan();
-
-		void handle_new_connection(ipacm_event_connection* new_conn);
-		void handle_del_connection(ipacm_event_connection* del_conn);
-
-		static IPACM_LanToLan* getLan2LanInstance();
+	static IPACM_LanToLan* p_instance;
+	static IPACM_LanToLan* get_instance();
+#ifdef FEATURE_L2TP
+	bool has_l2tp_iface();
+#endif
 
 private:
 
-		uint8_t num_offload_pair_v4_;
-		uint8_t num_offload_pair_v6_;
-		client_table_v4 client_info_v4_;
-		client_table_v6 client_info_v6_;
+	IPACM_LanToLan();
 
-		connection_list connection_v4_;
-		connection_list connection_v6_;
+	~IPACM_LanToLan();
 
-		static IPACM_LanToLan* p_instance;
+	bool m_has_l2tp_iface;
 
-		void event_callback(ipa_cm_event_id event, void* param);
+	list<class IPACM_LanToLan_Iface> m_iface;
 
-		void handle_client_active(ipacm_event_lan_client* data);
+	list<ipacm_event_eth_bridge> m_cached_client_add_event;
 
-		void check_potential_link(ipa_ip_type iptype, client_info* client);
+	list<vlan_iface_info> m_vlan_iface;
 
-		int add_offload_link(ipa_ip_type iptype, client_info* client, client_info* peer);
+	list<l2tp_vlan_mapping_info> m_l2tp_vlan_mapping;
 
-		void handle_client_inactive(ipacm_event_lan_client* data);
+	void handle_iface_up(ipacm_event_eth_bridge *data);
 
-		int turnoff_offload_links(ipa_ip_type iptype, client_info* client);
+	void handle_iface_down(ipacm_event_eth_bridge *data);
 
-		int del_offload_link(ipa_ip_type iptype, IPACM_Lan* client, IPACM_Lan* peer, offload_link_info* link);
+	void handle_client_add(ipacm_event_eth_bridge *data);
 
-		void handle_client_disconnect(ipacm_event_lan_client* data);
+	void handle_client_del(ipacm_event_eth_bridge *data);
 
-		int clear_peer_list(client_info* client);
+	void handle_wlan_scc_mcc_switch(ipacm_event_eth_bridge *data);
 
-		void handle_client_power_save(ipacm_event_lan_client* data);
+#ifdef FEATURE_L2TP
+	void handle_add_vlan_iface(ipa_ioc_vlan_iface_info *data);
 
-		void handle_client_power_recover(ipacm_event_lan_client* data);
+	void handle_del_vlan_iface(ipa_ioc_vlan_iface_info *data);
 
-		int remove_flt_rules(ipa_ip_type iptype, client_info* client);
+	void handle_add_l2tp_vlan_mapping(ipa_ioc_l2tp_vlan_mapping_info *data);
 
-		int add_flt_rules(ipa_ip_type iptype, client_info* client);
+	void handle_del_l2tp_vlan_mapping(ipa_ioc_l2tp_vlan_mapping_info *data);
 
-//the following are for connections
+	void handle_vlan_client_info(ipacm_event_data_all *data);
 
-		void handle_new_lan2lan_connection(ipacm_event_connection* data);
+	void handle_vlan_iface_info(ipacm_event_data_all *data);
+#endif
 
-		bool add_connection(client_info* src_client, client_info* dst_client);
+	void handle_new_iface_up(IPACM_LanToLan_Iface *new_iface, IPACM_LanToLan_Iface *exist_iface);
 
-		void handle_del_lan2lan_connection(ipacm_event_connection* data);
+	void event_callback(ipa_cm_event_id event, void* param);
 
-		bool remove_connection(client_info* src_client, client_info* dst_client);
+	void handle_cached_client_add_event(IPACM_Lan *p_iface);
 
-		void erase_offload_link(ipa_ip_type iptype, client_info* src_client, client_info* dst_client);
+	void clear_cached_client_add_event(IPACM_Lan *p_iface);
 
-		void generate_new_connection(ipa_ip_type iptype, client_info* client);
-
-		bool is_lan2lan_connection(ipacm_event_connection* data);
-
-		bool is_potential_lan2lan_connection(ipacm_event_connection* new_conn);
-
-		void cache_new_connection(ipacm_event_connection* new_conn);
-
-		void remove_cache_connection(ipacm_event_connection* del_conn);
-
-		void check_cache_connection(ipa_ip_type iptype, client_info* client);
+	void print_data_structure_info();
 
 };
 

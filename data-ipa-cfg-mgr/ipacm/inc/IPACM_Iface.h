@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -59,9 +59,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define IPV4_DEFAULT_FILTERTING_RULES 3
 
 #ifdef FEATURE_IPA_ANDROID
-#define IPV6_DEFAULT_FILTERTING_RULES 6
+#define IPV6_DEFAULT_FILTERTING_RULES 7
 #else
-#define IPV6_DEFAULT_FILTERTING_RULES 3
+#define IPV6_DEFAULT_FILTERTING_RULES 4
 #endif
 
 #define IPV6_DEFAULT_LAN_FILTERTING_RULES 1
@@ -81,7 +81,7 @@ public:
 	int ipa_if_num;
 
 	/* IPACM interface category */
-	int ipa_if_cate;
+	ipacm_iface_type ipa_if_cate;
 
 	/* IPACM interface name */
 	char dev_name[IF_NAME_LEN];
@@ -92,14 +92,12 @@ public:
 	/* IPACM interface v6 ip-address*/
 	uint32_t ipv6_addr[MAX_DEFAULT_v6_ROUTE_RULES][4];
 
-	uint32_t header_hdl;
-
 	uint32_t software_routing_fl_rule_hdl[MAX_SOFTWAREROUTING_FILTERTING_RULES];
 
 	bool softwarerouting_act;
 
 	/* IPACM number of default route rules for ipv6*/
-	int num_dft_rt_v6;
+	uint32_t num_dft_rt_v6;
 
 	uint32_t dft_v4fl_rule_hdl[IPV4_DEFAULT_FILTERTING_RULES];
 	uint32_t dft_v6fl_rule_hdl[IPV6_DEFAULT_FILTERTING_RULES + IPV6_DEFAULT_LAN_FILTERTING_RULES];
@@ -128,14 +126,11 @@ public:
 	/*Query the IPA endpoint property */
 	int query_iface_property(void);
 
-	/*implement IPACM strlcpy */
-	size_t strlcpy(char *dest, const char *src, size_t size);
-
-	/*implement IPACM strlcat */
-	size_t strlcat(char *dest, const char *src, size_t n);
-
 	/*Configure the initial filter rules */
 	virtual int init_fl_rule(ipa_ip_type iptype);
+
+	/* Change IP Type.*/
+	void config_ip_type(ipa_ip_type iptype);
 
 	/* Get interface index */
 	virtual int ipa_get_if_index(char * if_name, int * if_index);
@@ -149,11 +144,6 @@ public:
 
 	/* software routing disable */
 	virtual int handle_software_routing_disable(void);
-
-	/* used to get filtering rule index in table */
-	int flt_rule_count_v4;
-
-	int flt_rule_count_v6;
 
 private:
 

@@ -54,11 +54,13 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #ifdef FEATURE_IPA_ANDROID
 #define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 6
+#define IPA_V2_NUM_TCP_WAN_FILTER_RULE_IPV6 3
+#define IPA_V2_NUM_MULTICAST_WAN_FILTER_RULE_IPV6 3
 #else
 #define IPA_V2_NUM_DEFAULT_WAN_FILTER_RULE_IPV6 3
 #endif
 
-#define NETWORK_STATS "%s %lu %lu %lu %lu"
+#define NETWORK_STATS "%s %llu %llu %llu %llu"
 #define IPA_NETWORK_STATS_FILE_NAME "/data/misc/ipa/network_stats"
 
 typedef struct _wan_client_rt_hdl
@@ -94,15 +96,22 @@ public:
 
 	static bool wan_up;
 	static bool wan_up_v6;
+	static uint8_t xlat_mux_id;
 	/* IPACM interface name */
 	static char wan_up_dev_name[IF_NAME_LEN];
+	static uint32_t curr_wan_ip;
 	IPACM_Wan(int, ipacm_wan_iface_type, uint8_t *);
 	virtual ~IPACM_Wan();
 
 	static bool isWanUP(int ipa_if_num_tether)
 	{
 #ifdef FEATURE_IPA_ANDROID
-		int i;
+#ifdef FEATURE_IPACM_HAL
+		/*To avoid -Wall -Werror error */
+		IPACMDBG_H("ipa_if_num_tether: %d\n",ipa_if_num_tether);
+		return wan_up;
+#else
+		uint32_t i;
 		for (i=0; i < ipa_if_num_tether_v4_total;i++)
 		{
 			if (ipa_if_num_tether_v4[i] == ipa_if_num_tether)
@@ -114,6 +123,7 @@ public:
 			}
 		}
 		return false;
+#endif
 #else
 		return wan_up;
 #endif
@@ -122,7 +132,12 @@ public:
 	static bool isWanUP_V6(int ipa_if_num_tether)
 	{
 #ifdef FEATURE_IPA_ANDROID
-		int i;
+#ifdef FEATURE_IPACM_HAL
+		/*To avoid -Wall -Werror error */
+		IPACMDBG_H("ipa_if_num_tether: %d\n",ipa_if_num_tether);
+		return wan_up_v6;
+#else
+		uint32_t i;
 		for (i=0; i < ipa_if_num_tether_v6_total;i++)
 		{
 			if (ipa_if_num_tether_v6[i] == ipa_if_num_tether)
@@ -134,11 +149,80 @@ public:
 			}
 		}
 		return false;
+#endif
 #else
 		return wan_up_v6;
 #endif
 	}
 
+#ifdef FEATURE_IPA_ANDROID
+	static int delete_tether_iface(ipa_ip_type iptype, int ipa_if_num_tether)
+	{
+		uint32_t i, j;
+
+		if (iptype == IPA_IP_v4)
+		{
+			/* delete support tether ifaces to its array*/
+			for (i=0; i < IPACM_Wan::ipa_if_num_tether_v4_total; i++)
+			{
+				if(IPACM_Wan::ipa_if_num_tether_v4[i] == ipa_if_num_tether)
+				{
+					IPACMDBG_H("Found tether client at position %d name(%s)\n", i,
+					IPACM_Iface::ipacmcfg->iface_table[ipa_if_num_tether].iface_name);
+					break;
+				}
+			}
+			if(i == IPACM_Wan::ipa_if_num_tether_v4_total)
+			{
+				IPACMDBG_H("Not finding the tethered ipv4 client.\n");
+				return IPACM_FAILURE;
+			}
+			for(j = i+1; j < IPACM_Wan::ipa_if_num_tether_v4_total; j++)
+			{
+				IPACM_Wan::ipa_if_num_tether_v4[j-1] = IPACM_Wan::ipa_if_num_tether_v4[j];
+			}
+			IPACM_Wan::ipa_if_num_tether_v4_total--;
+			IPACMDBG_H("Now the total num of ipa_if_num_tether_v4_total is %d\n",
+				IPACM_Wan::ipa_if_num_tether_v4_total);
+		}
+		else
+		{
+			/* delete support tether ifaces to its array*/
+			for (i=0; i < IPACM_Wan::ipa_if_num_tether_v6_total; i++)
+			{
+				if(IPACM_Wan::ipa_if_num_tether_v6[i] == ipa_if_num_tether)
+				{
+					IPACMDBG_H("Found tether client at position %d name(%s)\n", i,
+					IPACM_Iface::ipacmcfg->iface_table[ipa_if_num_tether].iface_name);
+					break;
+				}
+			}
+			if(i == IPACM_Wan::ipa_if_num_tether_v6_total)
+			{
+				IPACMDBG_H("Not finding the tethered ipv6 client.\n");
+				return IPACM_FAILURE;
+			}
+			for(j = i+1; j < IPACM_Wan::ipa_if_num_tether_v6_total; j++)
+			{
+				IPACM_Wan::ipa_if_num_tether_v6[j-1] = IPACM_Wan::ipa_if_num_tether_v6[j];
+			}
+			IPACM_Wan::ipa_if_num_tether_v6_total--;
+			IPACMDBG_H("Now the total num of ipa_if_num_tether_v6_total is %d\n",
+				IPACM_Wan::ipa_if_num_tether_v6_total);
+		}
+		return IPACM_SUCCESS;
+	}
+#endif
+
+	static uint32_t getWANIP()
+	{
+		return curr_wan_ip;
+	}
+
+	static bool getXlat_Mux_Id()
+	{
+		return xlat_mux_id;
+	}
 
 	void event_callback(ipa_cm_event_id event,
 											void *data);
@@ -155,16 +239,23 @@ public:
 	static uint32_t backhaul_ipv6_prefix[2];
 
 	static bool embms_is_on;
+	static bool backhaul_is_wan_bridge;
+
+	static bool isWan_Bridge_Mode()
+	{
+		return backhaul_is_wan_bridge;
+	}
 #ifdef FEATURE_IPA_ANDROID
 	/* IPACM interface id */
-	static int ipa_if_num_tether_v4_total;
+	static uint32_t ipa_if_num_tether_v4_total;
 	static int ipa_if_num_tether_v4[IPA_MAX_IFACE_ENTRIES];
-	static int ipa_if_num_tether_v6_total;
+	static uint32_t ipa_if_num_tether_v6_total;
 	static int ipa_if_num_tether_v6[IPA_MAX_IFACE_ENTRIES];
 #endif
 
 private:
 
+	bool is_ipv6_frag_firewall_flt_rule_installed;
 	uint32_t ipv6_frag_firewall_flt_rule_hdl;
 	uint32_t *wan_route_rule_v4_hdl;
 	uint32_t *wan_route_rule_v6_hdl;
@@ -179,6 +270,11 @@ private:
 	uint32_t ODU_fl_hdl[IPA_NUM_DEFAULT_WAN_FILTER_RULES];
 	int num_firewall_v4,num_firewall_v6;
 	uint32_t wan_v4_addr;
+	uint32_t wan_v4_addr_gw;
+	uint32_t wan_v6_addr_gw[4];
+	bool wan_v4_addr_set;
+	bool wan_v4_addr_gw_set;
+	bool wan_v6_addr_gw_set;
 	bool active_v4;
 	bool active_v6;
 	bool header_set_v4;
@@ -186,8 +282,7 @@ private:
 	bool header_partial_default_wan_v4;
 	bool header_partial_default_wan_v6;
 	uint8_t ext_router_mac_addr[IPA_MAC_ADDR_SIZE];
-	uint16_t eth2_ofst_v4;
-	uint16_t eth2_ofst_v6;
+	uint8_t netdev_mac[IPA_MAC_ADDR_SIZE];
 
 	static int num_ipv4_modem_pdn;
 
@@ -208,10 +303,14 @@ private:
 	int wan_client_len;
 	ipa_wan_client *wan_client;
 	int header_name_count;
-	int num_wan_client;
+	uint32_t num_wan_client;
 	uint8_t invalid_mac[IPA_MAC_ADDR_SIZE];
+	bool is_xlat;
+
 	/* update network stats for CNE */
 	int ipa_network_stats_fd;
+	uint32_t hdr_hdl_dummy_v6;
+	uint32_t hdr_proc_hdl_dummy_v6;
 
 	inline ipa_wan_client* get_client_memptr(ipa_wan_client *param, int cnt)
 	{
@@ -247,6 +346,82 @@ private:
 			}
 		}
 
+		return IPACM_INVALID_INDEX;
+	}
+
+	inline int get_wan_client_index_ipv4(uint32_t ipv4_addr)
+	{
+		int cnt;
+		int num_wan_client_tmp = num_wan_client;
+
+		IPACMDBG_H("Passed IPv4 %x\n", ipv4_addr);
+
+		for(cnt = 0; cnt < num_wan_client_tmp; cnt++)
+		{
+			if (get_client_memptr(wan_client, cnt)->ipv4_set)
+			{
+				IPACMDBG_H("stored IPv4 %x\n", get_client_memptr(wan_client, cnt)->v4_addr);
+
+				if(ipv4_addr == get_client_memptr(wan_client, cnt)->v4_addr)
+				{
+					IPACMDBG_H("Matched client index: %d\n", cnt);
+					IPACMDBG_H("The MAC is %02x:%02x:%02x:%02x:%02x:%02x\n",
+							get_client_memptr(wan_client, cnt)->mac[0],
+							get_client_memptr(wan_client, cnt)->mac[1],
+							get_client_memptr(wan_client, cnt)->mac[2],
+							get_client_memptr(wan_client, cnt)->mac[3],
+							get_client_memptr(wan_client, cnt)->mac[4],
+							get_client_memptr(wan_client, cnt)->mac[5]);
+					IPACMDBG_H("header set ipv4(%d) ipv6(%d)\n",
+							get_client_memptr(wan_client, cnt)->ipv4_header_set,
+							get_client_memptr(wan_client, cnt)->ipv6_header_set);
+					return cnt;
+				}
+			}
+		}
+		return IPACM_INVALID_INDEX;
+	}
+
+	inline int get_wan_client_index_ipv6(uint32_t* ipv6_addr)
+	{
+		int cnt, v6_num;
+		int num_wan_client_tmp = num_wan_client;
+
+		IPACMDBG_H("Get ipv6 address 0x%08x.0x%08x.0x%08x.0x%08x\n", ipv6_addr[0], ipv6_addr[1], ipv6_addr[2], ipv6_addr[3]);
+
+		for(cnt = 0; cnt < num_wan_client_tmp; cnt++)
+		{
+			if (get_client_memptr(wan_client, cnt)->ipv6_set)
+			{
+			    for(v6_num=0;v6_num < get_client_memptr(wan_client, cnt)->ipv6_set;v6_num++)
+	            {
+
+					IPACMDBG_H("stored IPv6 0x%08x.0x%08x.0x%08x.0x%08x\n", get_client_memptr(wan_client, cnt)->v6_addr[v6_num][0],
+						get_client_memptr(wan_client, cnt)->v6_addr[v6_num][1],
+						get_client_memptr(wan_client, cnt)->v6_addr[v6_num][2],
+						get_client_memptr(wan_client, cnt)->v6_addr[v6_num][3]);
+
+					if(ipv6_addr[0] == get_client_memptr(wan_client, cnt)->v6_addr[v6_num][0] &&
+					   ipv6_addr[1] == get_client_memptr(wan_client, cnt)->v6_addr[v6_num][1] &&
+					   ipv6_addr[2]== get_client_memptr(wan_client, cnt)->v6_addr[v6_num][2] &&
+					   ipv6_addr[3] == get_client_memptr(wan_client, cnt)->v6_addr[v6_num][3])
+					{
+						IPACMDBG_H("Matched client index: %d\n", cnt);
+						IPACMDBG_H("The MAC is %02x:%02x:%02x:%02x:%02x:%02x\n",
+								get_client_memptr(wan_client, cnt)->mac[0],
+								get_client_memptr(wan_client, cnt)->mac[1],
+								get_client_memptr(wan_client, cnt)->mac[2],
+								get_client_memptr(wan_client, cnt)->mac[3],
+								get_client_memptr(wan_client, cnt)->mac[4],
+								get_client_memptr(wan_client, cnt)->mac[5]);
+						IPACMDBG_H("header set ipv4(%d) ipv6(%d)\n",
+								get_client_memptr(wan_client, cnt)->ipv4_header_set,
+								get_client_memptr(wan_client, cnt)->ipv6_header_set);
+						return cnt;
+					}
+				}
+			}
+		}
 		return IPACM_INVALID_INDEX;
 	}
 
@@ -325,19 +500,23 @@ private:
 	/* wan default route/filter rule configuration */
 	int handle_route_add_evt(ipa_ip_type iptype);
 
-	/* construct complete ethernet header */
-	int handle_header_add_evt(uint8_t *mac_addr);
+	/* construct complete STA ethernet header */
+	int handle_sta_header_add_evt();
+
+	bool check_dft_firewall_rules_attr_mask(IPACM_firewall_conf_t *firewall_config);
+
+#ifdef FEATURE_IPA_ANDROID
 	/* wan posting supported tether_iface */
 	int post_wan_up_tether_evt(ipa_ip_type iptype, int ipa_if_num_tether);
 
+	int post_wan_down_tether_evt(ipa_ip_type iptype, int ipa_if_num_tether);
+#endif
 	int config_dft_firewall_rules(ipa_ip_type iptype);
 
 	/* configure the initial firewall filter rules */
 	int config_dft_embms_rules(ipa_ioc_add_flt_rule *pFilteringTable_v4, ipa_ioc_add_flt_rule *pFilteringTable_v6);
 
 	int handle_route_del_evt(ipa_ip_type iptype);
-
-	int post_wan_down_tether_evt(ipa_ip_type iptype, int ipa_if_num_tether);
 
 	int del_dft_firewall_rules(ipa_ip_type iptype);
 
@@ -370,17 +549,26 @@ private:
 
 	int add_dft_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset, ipa_ip_type iptype);
 
+	int add_tcpv6_filtering_rule(struct ipa_flt_rule_add* rules, int rule_offset);
+
 	int install_wan_filtering_rule(bool is_sw_routing);
 
 	void change_to_network_order(ipa_ip_type iptype, ipa_rule_attrib* attrib);
 
 	bool is_global_ipv6_addr(uint32_t* ipv6_addr);
 
+	void handle_wlan_SCC_MCC_switch(bool, ipa_ip_type);
+
+	void handle_wan_client_SCC_MCC_switch(bool, ipa_ip_type);
+
 	int handle_network_stats_evt();
 
 	int m_fd_ipa;
 
 	int handle_network_stats_update(ipa_get_apn_data_stats_resp_msg_v01 *data);
+
+	/* construct dummy ethernet header */
+	int add_dummy_rx_hdr();
 };
 
 #endif /* IPACM_WAN_H */

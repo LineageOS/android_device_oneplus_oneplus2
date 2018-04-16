@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013, The Linux Foundation. All rights reserved.
+Copyright (c) 2013 - 2017, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -170,6 +170,46 @@ int ipa_nat_query_timestamp(uint32_t  tbl_hdl,
   IPADBG("Passed Table: 0x%x and rule handle 0x%x\n", tbl_hdl, rule_hdl);
 
   return ipa_nati_query_timestamp(tbl_hdl, rule_hdl, time_stamp);
+}
+
+
+/**
+* ipa_nat_modify_pdn() - modify single PDN entry in the PDN config table
+* @table_handle: [in] handle of ipv4 nat table
+* @pdn_index : [in] the index of the entry to be modified
+* @pdn_info : [in] values for the PDN entry to be changed
+*
+* Modify a PDN entry
+*
+* Returns:	0  On Success, negative on failure
+*/
+int ipa_nat_modify_pdn(uint32_t  tbl_hdl,
+	uint8_t pdn_index,
+	ipa_nat_pdn_entry *pdn_info)
+{
+	struct ipa_ioc_nat_pdn_entry pdn_data;
+
+	if (0 == tbl_hdl || tbl_hdl > IPA_NAT_MAX_IP4_TBLS) {
+		IPAERR("invalid parameters passed \n");
+		return -EINVAL;
+	}
+
+	if (!pdn_info) {
+		IPAERR("pdn_info is NULL \n");
+		return -EINVAL;
+	}
+
+	if (pdn_index > IPA_MAX_PDN_NUM) {
+		IPAERR("PDN index is out of range %d", pdn_index);
+		return -EINVAL;
+	}
+
+	pdn_data.pdn_index = pdn_index;
+	pdn_data.public_ip = pdn_info->public_ip;
+	pdn_data.src_metadata = pdn_info->src_metadata;
+	pdn_data.dst_metadata = pdn_info->dst_metadata;
+
+	return ipa_nati_modify_pdn(&pdn_data);
 }
 
 

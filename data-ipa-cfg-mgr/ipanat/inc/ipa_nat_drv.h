@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013, The Linux Foundation. All rights reserved.
+Copyright (c) 2013 - 2017, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -38,6 +38,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * @target_port: destination port
  * @private_port: private port
  * @protocol: protocol of rule (tcp/udp)
+ * @pdn_index: PDN index in the PDN config table
  */
 typedef struct {
 	uint32_t target_ip;
@@ -46,7 +47,20 @@ typedef struct {
 	uint16_t private_port;
 	uint16_t public_port;
 	uint8_t  protocol;
+	uint8_t  pdn_index;
 } ipa_nat_ipv4_rule;
+
+/**
+* struct ipa_nat_pdn_entry - holds a PDN entry data
+* @public_ip: PDN's public ip address
+* @src_metadata: metadata to be used for source NAT metadata replacement
+* @dst_metadata: metadata to be used for destination NAT metadata replacement
+*/
+typedef struct {
+	uint32_t public_ip;
+	uint32_t src_metadata;
+	uint32_t dst_metadata;
+} ipa_nat_pdn_entry;
 
 /**
  * ipa_nat_add_ipv4_tbl() - create ipv4 nat table
@@ -114,3 +128,17 @@ int ipa_nat_query_timestamp(uint32_t  table_handle,
 				uint32_t  rule_handle,
 				uint32_t  *time_stamp);
 
+
+/**
+* ipa_nat_modify_pdn() - modify single PDN entry in the PDN config table
+* @table_handle: [in] handle of ipv4 nat table
+* @pdn_index : [in] the index of the entry to be modified
+* @pdn_info : [in] values for the PDN entry to be changed
+*
+* Modify a PDN entry
+*
+* Returns:	0  On Success, negative on failure
+*/
+int ipa_nat_modify_pdn(uint32_t  tbl_hdl,
+	uint8_t pdn_index,
+	ipa_nat_pdn_entry *pdn_info);
