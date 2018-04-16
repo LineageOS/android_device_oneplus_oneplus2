@@ -399,7 +399,7 @@ on post-fs-data
     mkdir /data/camera 0770 media camera
 
     # Create directory for IPA
-    mkdir /data/misc/ipa 0700 net_admin net_admin
+    mkdir /data/misc/ipa 0700 radio radio
 
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
