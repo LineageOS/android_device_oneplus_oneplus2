@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "046a4e9c_4cabe473",
+        "filename": "sepolicy/priv_app.te",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-04-16T09:22:28Z",
+      "side": 1,
+      "message": "Don\u0027t allow this. See https://review.lineageos.org/#/c/LineageOS/android_system_sepolicy/+/212821/",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 35
+      },
+      "revId": "62250111340e0ee165b7ce2f3ffd05a45c3e653f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
