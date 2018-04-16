@@ -1,0 +1,1 @@
+allow priv_app rfs_system_file:dir getattr;
