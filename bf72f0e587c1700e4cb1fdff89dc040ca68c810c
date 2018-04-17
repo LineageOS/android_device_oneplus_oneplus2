@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e8bc0ba_80a84696",
+        "filename": "data-ipa-cfg-mgr/ipacm/src/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-04-17T09:22:34Z",
+      "side": 1,
+      "message": "LOCAL_VENDOR_MODULE :\u003d true",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 53
+      },
+      "revId": "bf72f0e587c1700e4cb1fdff89dc040ca68c810c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
