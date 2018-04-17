@@ -45,7 +45,7 @@ LOCAL_SRC_FILES := IPACM_Main.cpp \
 		IPACM_Conntrack_NATApp.cpp\
 		IPACM_ConntrackClient.cpp \
 		IPACM_ConntrackListener.cpp \
-                IPACM_Log.cpp
+		IPACM_Log.cpp
 
 LOCAL_MODULE := ipacm
 LOCAL_MODULE_TAGS := optional
