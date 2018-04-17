@@ -748,7 +748,7 @@ service netmgrd /system/vendor/bin/netmgrd
     group root wifi wakelock radio inet oem_2950
     writepid /dev/cpuset/system-background/tasks
 
-service ipacm /system/bin/ipacm
+service ipacm /vendor/bin/ipacm
     class main
     user net_admin
     group net_admin inet
