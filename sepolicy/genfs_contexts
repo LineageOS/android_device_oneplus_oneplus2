@@ -11,5 +11,3 @@ genfscon proc /sys/kernel/sched_min_runtime           u:object_r:proc_kernel_sch
 genfscon proc /touchpanel                             u:object_r:proc_touchpanel:s0
 genfscon proc /s1302                                  u:object_r:proc_touchpanel:s0
 genfscon proc /tri-state-key                          u:object_r:proc_touchpanel:s0
-
-genfscon debugfs /rmt_storage                         u:object_r:debugfs_rmt:s0

@@ -1,9 +1,3 @@
 allow rmt_storage sysfs_nv:file { getattr open read };
 allow rmt_storage sysfs_nv:dir { search open read };
 allow rmt_storage self:capability net_raw;
-
-# debugfs access
-userdebug_or_eng(`
-  allow rmt_storage debugfs_rmt:dir search;
-  allow rmt_storage debugfs_rmt:file rw_file_perms;
-')
