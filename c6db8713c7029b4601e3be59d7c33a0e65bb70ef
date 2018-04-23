@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "01f7bab9_df99133c",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-04-23T12:01:24Z",
+      "side": 1,
+      "message": "This is HTC and Samsung 8974 specific.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 33
+      },
+      "revId": "c6db8713c7029b4601e3be59d7c33a0e65bb70ef",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "953d970f_631870d5",
         "filename": "system.prop",
         "patchSetId": 1
