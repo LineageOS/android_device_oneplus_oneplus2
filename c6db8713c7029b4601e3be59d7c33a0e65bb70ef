@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "953d970f_631870d5",
+        "filename": "system.prop",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-04-23T11:51:19Z",
+      "side": 1,
+      "message": "nope",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 37
+      },
+      "revId": "c6db8713c7029b4601e3be59d7c33a0e65bb70ef",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
