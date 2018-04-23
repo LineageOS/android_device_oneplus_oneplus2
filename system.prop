@@ -136,6 +136,7 @@ ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 telephony.lteOnGsmDevice=1
 persist.radio.multisim.config=dsds
+ro.telephony.call_ring.multiple=false
 persist.radio.apm_sim_not_pwdn=1
 persist.radio.sib16_support=1
 persist.radio.sw_mbn_update=0
