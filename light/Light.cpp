@@ -169,35 +169,7 @@ void Light::setBatteryLight(const LightState& state) {
 
 void Light::setNotificationLight(const LightState& state) {
     std::lock_guard<std::mutex> lock(mLock);
-
-    uint32_t brightness, color, rgb[3];
-    LightState localState = state;
-
-    // If a brightness has been applied by the user
-    brightness = (localState.color & 0xff000000) >> 24;
-    if (brightness > 0 && brightness < 255) {
-        // Retrieve each of the RGB colors
-        color = localState.color & 0x00ffffff;
-        rgb[0] = (color >> 16) & 0xff;
-        rgb[1] = (color >> 8) & 0xff;
-        rgb[2] = color & 0xff;
-
-        // Apply the brightness level
-        if (rgb[0] > 0) {
-            rgb[0] = (rgb[0] * brightness) / 0xff;
-        }
-        if (rgb[1] > 0) {
-            rgb[1] = (rgb[1] * brightness) / 0xff;
-        }
-        if (rgb[2] > 0) {
-            rgb[2] = (rgb[2] * brightness) / 0xff;
-        }
-
-        // Update with the new color
-        localState.color = (rgb[0] << 16) + (rgb[1] << 8) + rgb[2];
-    }
-
-    mNotificationState = localState;
+    mNotificationState = state;
     setSpeakerBatteryLightLocked();
 }
 
@@ -222,7 +194,22 @@ void Light::setSpeakerBatteryLightLocked() {
 void Light::setSpeakerLightLocked(const LightState& state) {
     int red, green, blue, blink;
     int onMs, offMs, stepDuration, pauseHi;
-    uint32_t colorRGB = state.color;
+    uint32_t alpha;
+
+    // Extract brightness from AARRGGBB
+    alpha = (state.color >> 24) & 0xff;
+
+    // Retrieve each of the RGB colors
+    red = (state.color >> 16) & 0xff;
+    green = (state.color >> 8) & 0xff;
+    blue = state.color & 0xff;
+
+    // Scale RGB colors if a brightness has been applied by the user
+    if (alpha != 0xff) {
+        red = (red * alpha) / 0xff;
+        green = (green * alpha) / 0xff;
+        blue = (blue * alpha) / 0xff;
+    }
 
     switch (state.flashMode) {
         case Flash::TIMED:
@@ -235,10 +222,6 @@ void Light::setSpeakerLightLocked(const LightState& state) {
             offMs = 0;
             break;
     }
-
-    red = (colorRGB >> 16) & 0xff;
-    green = (colorRGB >> 8) & 0xff;
-    blue = colorRGB & 0xff;
     blink = onMs > 0 && offMs > 0;
 
     // Disable all blinking to start
