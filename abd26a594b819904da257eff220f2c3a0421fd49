@@ -16,6 +16,24 @@
       "revId": "abd26a594b819904da257eff220f2c3a0421fd49",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72be7539_6eea2d51",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-04-29T08:59:43Z",
+      "side": 1,
+      "message": "e.g. https://github.com/LineageOS/android_device_oppo_msm8939-common/blob/lineage-15.1/rootdir/etc/init.qcom.power.v3.rc\n\nalso i think we really prefer small cluster. otherwise we wouldn\u0027t set  busy_up_tresh to 0",
+      "parentUuid": "9bf16a01_5987d52b",
+      "revId": "abd26a594b819904da257eff220f2c3a0421fd49",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
