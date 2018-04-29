@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd672aad_b4411290",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-04-29T15:06:27Z",
+      "side": 0,
+      "message": "This driver is disabled in kernel. OP2 currently has no input boost now.",
+      "parentUuid": "54fd4c76_8375d371",
+      "revId": "624ab3e51408090a72a82a548131245c78246fe0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a997e69_24e7ace4",
         "filename": "rootdir/etc/init.qcom.rc",
         "patchSetId": 11
