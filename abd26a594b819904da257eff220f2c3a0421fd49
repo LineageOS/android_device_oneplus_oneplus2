@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bf16a01_5987d52b",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-04-29T08:55:24Z",
+      "side": 1,
+      "message": "Also, I prefer keep what it is before. The little cluster is keeped not preferred in all other devices.",
+      "revId": "abd26a594b819904da257eff220f2c3a0421fd49",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
