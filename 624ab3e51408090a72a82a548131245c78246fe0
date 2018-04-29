@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a997e69_24e7ace4",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 11
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-04-29T09:50:49Z",
+      "side": 0,
+      "message": "can be moved to init.power as it is topic related and also big cores are already in deeper state than c0 before boot is completed",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 60
+      },
+      "revId": "624ab3e51408090a72a82a548131245c78246fe0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
