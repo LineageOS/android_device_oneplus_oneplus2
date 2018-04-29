@@ -32,9 +32,6 @@
 /sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
 /data/fpc(/.*)?                                                         u:object_r:fpc_data_file:s0
 
-# FRP partition
-/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/config               u:object_r:frp_block_device:s0
-
 # HALs
 /system/vendor/bin/hw/android\.hardware\.usb@1\.0-service\.op2          u:object_r:hal_usb_default_exec:s0
 
