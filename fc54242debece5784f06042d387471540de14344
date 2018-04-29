@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f125e0b_fbcbaf6a",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-04-29T09:32:20Z",
+      "side": 1,
+      "message": "Already in init.qcom.rc",
+      "revId": "fc54242debece5784f06042d387471540de14344",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
