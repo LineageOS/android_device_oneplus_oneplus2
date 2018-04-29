@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d88e34df_395bb804",
+        "filename": "system.prop",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 11801
+      },
+      "writtenOn": "2018-04-29T16:35:20Z",
+      "side": 1,
+      "message": "4",
+      "revId": "537d7cb388d3689d3ad27a05e8721f695b34c23c",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
