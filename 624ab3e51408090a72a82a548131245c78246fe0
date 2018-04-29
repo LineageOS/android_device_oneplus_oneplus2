@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6e041349_d685739f",
+        "filename": "rootdir/etc/init.oneplus2.power.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 13106
+      },
+      "writtenOn": "2018-04-29T15:08:04Z",
+      "side": 0,
+      "message": "Input boost has never made a difference on OP2.",
+      "parentUuid": "54fd4c76_8375d371",
+      "revId": "624ab3e51408090a72a82a548131245c78246fe0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a997e69_24e7ace4",
         "filename": "rootdir/etc/init.qcom.rc",
         "patchSetId": 11
