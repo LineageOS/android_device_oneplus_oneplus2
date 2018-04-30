@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc462be4_4a4dd90c",
+        "filename": "overlay/frameworks/base/core/res/res/xml/power_profile.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-04-30T13:58:45Z",
+      "side": 1,
+      "message": "1766 is correct",
+      "revId": "562aca52a148112c3a7e7c5560ed09b7683d0d37",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffce1193_0a7de834",
+        "filename": "overlay/frameworks/base/core/res/res/xml/power_profile.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-04-30T13:58:45Z",
+      "side": 1,
+      "message": "Remove these 2 lines since op2 does not have this freq",
+      "revId": "562aca52a148112c3a7e7c5560ed09b7683d0d37",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
