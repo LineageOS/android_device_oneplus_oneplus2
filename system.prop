@@ -32,24 +32,12 @@ ro.bluetooth.emb_wp_mode=true
 ro.bluetooth.wipower=true
 
 # Camera
-persist.camera.HAL3.enabled=1
 camera.disable_zsl_mode=1
-persist.camera.cpp.duplication=false
-vidc.debug.perf.mode=2
-vidc.enc.dcvs.extra-buff-count=2
-persist.camera.zsl.mode=0
+persist.camera.HAL3.enabled=1
 persist.camera.hal.debug.mask=0
-camera2.portability.force_api=1
-ro.camcorder.videoModes=true
 persist.camera.raw.format=16
-persist.camera.promode=true
-ro.config.hw_camera_hdr=true
-ro.config.hw_camera_bestShot=true
+persist.camera.zsl.mode=0
 persist.camera.tintless=enable
-persist.camera.4k2k.enable=1
-vidc.dec.120fps.enabled=1
-ro.media.enc.jpeg.quality=100
-ro.media.enc.hprof.vid.fps=60
 
 # CEC
 ro.hdmi.device_type=4
@@ -113,9 +101,9 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 media.stagefright.log-uri=1
 mmp.enable.3g2=true
-# Get camera working with mm blobs
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
+vidc.debug.perf.mode=2
+vidc.dec.120fps.enabled=1
+vidc.enc.dcvs.extra-buff-count=2
 
 # QC vendor extension
 ro.vendor.extension_library=libqti-perfd-client.so
