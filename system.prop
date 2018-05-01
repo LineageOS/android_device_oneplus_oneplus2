@@ -113,9 +113,6 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 media.stagefright.log-uri=1
 mmp.enable.3g2=true
-# Get camera working with mm blobs
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
 persist.media.treble_omx=false
 
 # QC vendor extension
