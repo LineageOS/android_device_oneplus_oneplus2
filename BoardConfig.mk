@@ -111,9 +111,6 @@ BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/lineagehw
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 
-# Cpusets
-ENABLE_SCHED_BOOST := true
-
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 
