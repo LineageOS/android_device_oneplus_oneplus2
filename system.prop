@@ -60,7 +60,7 @@ persist.spkr.cal.duration=0
 qcom.hw.aac.encoder=true
 
 # CNE
-persist.cne.feature=0
+persist.cne.feature=1
 
 # Data modules
 ro.use_data_netmgrd=true
