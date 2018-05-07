@@ -275,6 +275,7 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
     libxml2 \
+    qti-telephony-common \
     rild_socket \
     telephony-ext
 
