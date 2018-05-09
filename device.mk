@@ -272,10 +272,7 @@ PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     librmnetctl \
     libxml2 \
-    rild_socket \
-    telephony-ext
-
-PRODUCT_BOOT_JARS += telephony-ext
+    rild_socket
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -293,6 +290,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     init.tfa.sh \
     tinyplay
+
+# Telephony
+PRODUCT_PACKAGES += \
+    qti-telephony-common \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
 
 # TextClassifier
 PRODUCT_PACKAGES += \
