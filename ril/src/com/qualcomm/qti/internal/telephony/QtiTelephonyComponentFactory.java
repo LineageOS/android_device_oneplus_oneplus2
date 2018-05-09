@@ -32,7 +32,7 @@ public class QtiTelephonyComponentFactory extends TelephonyComponentFactory {
             Phone[] phones, CommandsInterface[] commandsInterfaces) {
         Rlog.d(LOG_TAG, "makeHwExtTelephonyClasses");
         try {
-            HwExtTelephony.init(context);
+            HwExtTelephony.init(context, phones, commandsInterfaces);
         } catch (NoClassDefFoundError e) {
             Rlog.e(LOG_TAG, "Error creating HwExtTelephony", e);
         }
