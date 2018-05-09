@@ -22,7 +22,12 @@ import android.os.AsyncResult;
 import android.os.Handler;
 import android.os.Message;
 import android.os.ServiceManager;
+import android.telecom.PhoneAccount;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
 import android.telephony.PhoneNumberUtils;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 
 import com.android.internal.telephony.CommandsInterface;
 import com.android.internal.telephony.Phone;
@@ -35,8 +40,12 @@ import org.codeaurora.internal.IDepersoResCallback;
 import org.codeaurora.internal.IDsda;
 import org.codeaurora.internal.IExtTelephony;
 
+import java.util.Iterator;
+
 import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_ACTIVATED;
 import static android.telephony.TelephonyManager.SIM_ACTIVATION_STATE_DEACTIVATED;
+
+import static android.telephony.SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
 import static com.android.internal.telephony.uicc.IccCardStatus.CardState.CARDSTATE_PRESENT;
 
@@ -69,6 +78,10 @@ public class HwExtTelephony extends IExtTelephony.Stub {
     private static Context sContext;
     private static HwExtTelephony sInstance;
     private static Phone[] sPhones;
+    private static SubscriptionManager sSubscriptionManager;
+    private static TelecomManager sTelecomManager;
+    private static TelephonyManager sTelephonyManager;
+    private static int sPreviousDataSlotId;
     private static int sUiccStatus[];
 
     private Handler mHandler;
@@ -79,6 +92,11 @@ public class HwExtTelephony extends IExtTelephony.Stub {
         sContext = context;
         sInstance = getInstance();
         sPhones = phones;
+        sSubscriptionManager = (SubscriptionManager) sContext.getSystemService(
+                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        sTelecomManager = TelecomManager.from(context);
+        sTelephonyManager = TelephonyManager.from(context);
+        sPreviousDataSlotId = -1;
 
         // Assume everything present is provisioned by default
         sUiccStatus = new int[sPhones.length];
@@ -137,8 +155,15 @@ public class HwExtTelephony extends IExtTelephony.Stub {
             return;
         }
 
-        sUiccStatus[slotId] = card.getCardState() == CARDSTATE_PRESENT
-                ? PROVISIONED : CARD_NOT_PRESENT;
+        if (sPreviousDataSlotId == slotId) {
+            sUiccStatus[slotId] = PROVISIONED;
+            deactivateUiccCard(slotId);
+            sPreviousDataSlotId = -1;
+        } else if (sUiccStatus[slotId] != NOT_PROVISIONED) {
+            sUiccStatus[slotId] = card.getCardState() == CARDSTATE_PRESENT
+                    ? PROVISIONED : CARD_NOT_PRESENT;
+        }
+
         broadcastUiccActivation(slotId);
     }
 
@@ -216,6 +241,38 @@ public class HwExtTelephony extends IExtTelephony.Stub {
 
         if (sUiccStatus[slotId] != PROVISIONED) {
             return INVALID_INPUT;
+        }
+
+        int subIdToDeactivate = sPhones[slotId].getSubId();
+        int subIdToMakeDefault = INVALID_SUBSCRIPTION_ID;
+
+        // Find first provisioned sub that isn't what we're deactivating
+        for (int i = 0; i < sPhones.length; i++) {
+            if (i == slotId) {
+                continue;
+            }
+            if (sUiccStatus[i] == PROVISIONED) {
+                subIdToMakeDefault = sPhones[i].getSubId();
+                break;
+            }
+        }
+
+        // Make sure defaults are now sane
+        PhoneAccountHandle accountHandle = sTelecomManager.getUserSelectedOutgoingPhoneAccount();
+        PhoneAccount account = sTelecomManager.getPhoneAccount(accountHandle);
+
+        if (sSubscriptionManager.getDefaultSmsSubscriptionId() == subIdToDeactivate) {
+            sSubscriptionManager.setDefaultSmsSubId(subIdToMakeDefault);
+        }
+
+        if (sSubscriptionManager.getDefaultDataSubscriptionId() == subIdToDeactivate) {
+            sPreviousDataSlotId = slotId;
+            sSubscriptionManager.setDefaultDataSubId(subIdToMakeDefault);
+        }
+
+        if (sTelephonyManager.getSubIdForPhoneAccount(account) == subIdToDeactivate) {
+            sTelecomManager.setUserSelectedOutgoingPhoneAccount(
+                    subscriptionIdToPhoneAccountHandle(subIdToMakeDefault));
         }
 
         sPhones[slotId].setVoiceActivationState(SIM_ACTIVATION_STATE_DEACTIVATED);
@@ -360,6 +417,21 @@ public class HwExtTelephony extends IExtTelephony.Stub {
     public int getCurrentPrimaryCardSlotId() {
         // I hope we don't use this
         return -1;
+    }
+
+    private PhoneAccountHandle subscriptionIdToPhoneAccountHandle(final int subId) {
+        final Iterator<PhoneAccountHandle> phoneAccounts =
+                sTelecomManager.getCallCapablePhoneAccounts().listIterator();
+
+        while (phoneAccounts.hasNext()) {
+            final PhoneAccountHandle phoneAccountHandle = phoneAccounts.next();
+            final PhoneAccount phoneAccount = sTelecomManager.getPhoneAccount(phoneAccountHandle);
+            if (subId == sTelephonyManager.getSubIdForPhoneAccount(phoneAccount)) {
+                return phoneAccountHandle;
+            }
+        }
+
+        return null;
     }
 
 }
