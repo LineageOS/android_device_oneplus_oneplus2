@@ -159,9 +159,14 @@ public class HwExtTelephony extends IExtTelephony.Stub {
             sUiccStatus[slotId] = PROVISIONED;
             deactivateUiccCard(slotId);
             sPreviousDataSlotId = -1;
-        } else if (sUiccStatus[slotId] != NOT_PROVISIONED) {
-            sUiccStatus[slotId] = card.getCardState() == CARDSTATE_PRESENT
-                    ? PROVISIONED : CARD_NOT_PRESENT;
+        } else if (sUiccStatus[slotId] != NOT_PROVISIONED ||
+                card.getCardState() != CARDSTATE_PRESENT) {
+            if (card.getCardState() == CARDSTATE_PRESENT) {
+                sUiccStatus[slotId] = NOT_PROVISIONED;
+                activateUiccCard(slotId);
+            } else {
+                sUiccStatus[slotId] = CARD_NOT_PRESENT;
+            }
         }
 
         broadcastUiccActivation(slotId);
