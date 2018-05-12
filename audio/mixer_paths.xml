@@ -75,16 +75,7 @@
     <ctl name="SLIMBUS_4_RX Audio Mixer MultiMedia2" value="0" />
     <ctl name="MultiMedia5 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia5 Mixer AFE_PCM_TX" value="0" />
-    <ctl name="MultiMedia4 Mixer MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia7 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia10 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia11 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia12 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia13 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia14 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia15 Mixer MI2S_TX" value="0" />
-    <ctl name="MultiMedia16 Mixer MI2S_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_0_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SLIM_4_TX" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
@@ -328,10 +319,6 @@
     <ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia6" value="0" />
     <ctl name="MultiMedia1 Mixer SEC_AUX_PCM_UL_TX" value="0" />
     <!-- anc headset -->
-    <!-- speaker anc combo -->
-    <ctl name="RX4 DSM MUX" value="CIC_OUT" />
-    <ctl name="RX6 DSM MUX" value="CIC_OUT" />
-    <!-- speaker anc combo end -->
     <!-- IIR/voice anc -->
     <ctl name="IIR1 Band1" id ="0" value="268435456" />
     <ctl name="IIR1 Band1" id ="1" value="0" />
@@ -401,7 +388,6 @@
     <!-- afe-proxy -->
     <ctl name="AFE_PCM_RX Audio Mixer MultiMedia2" value="0" />
     <!-- afe-proxy end-->
-    <ctl name="AFE_PCM_RX Port Mixer PRI_MI2S_TX" value="0" />
 
     <!-- surround sound record -->
     <ctl name="Input Num Channel" value="0" />
