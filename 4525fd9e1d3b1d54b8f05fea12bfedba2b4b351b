@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7153b1af_00e34618",
+        "filename": "camera/QCamera2/stack/mm-camera-interface/src/mm_camera_interface.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1608,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-05-12T08:21:45Z",
+      "side": 1,
+      "message": "is this defined anywhere?",
+      "range": {
+        "startLine": 1608,
+        "startChar": 23,
+        "endLine": 1608,
+        "endChar": 46
+      },
+      "revId": "4525fd9e1d3b1d54b8f05fea12bfedba2b4b351b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
