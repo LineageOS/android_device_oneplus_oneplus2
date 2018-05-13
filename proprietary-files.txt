@@ -148,11 +148,6 @@ vendor/lib/libchromatix_ov5648_30fps_video.so
 vendor/lib/libchromatix_ov5648_common.so
 
 # Camera firmware - OxygenOS 3.6.0
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/cpp_firmware_v1_4_0.fw
-etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 
 # Camera sensors - OxygenOS 3.6.0
