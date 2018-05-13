@@ -16,17 +16,17 @@ vendor/lib64/libadsprpc.so
 # Audio - OxygenOS 3.6.0
 etc/firmware/tfa98xx.cnt
 vendor/lib/libacdb-fts.so
-vendor/lib/libacdbloader.so
+vendor/lib/libacdbloader.so|7caecddacf8dc174cfd2d224238b2c88e2e36d9d
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib/libhwdaphal.so
-vendor/lib/hw/sound_trigger.primary.msm8994.so
+vendor/lib/hw/sound_trigger.primary.msm8994.so|069489910b22df85fe2b3dcf8a2d09dd12a2eed6
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 vendor/lib64/libacdb-fts.so
-vendor/lib64/libacdbloader.so
+vendor/lib64/libacdbloader.so|84eeda9e8ff8fdceebf40bb1e61cc076c0ac9a5b
 vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
