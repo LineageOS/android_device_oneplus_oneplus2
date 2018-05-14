@@ -176,7 +176,7 @@
                    channels="1" />
         </EncoderProfile>
 
-        <!--<EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="2160p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="42000000"
                    width="3840"
@@ -186,7 +186,7 @@
                    bitRate="96000"
                    sampleRate="48000"
                    channels="1" />
-        </EncoderProfile>-->
+        </EncoderProfile>
 
         <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
             <Video codec="h264"
@@ -253,18 +253,18 @@
                    channels="1" />
         </EncoderProfile>
 
-        <!--<EncoderProfile quality="timelapse2160p" fileFormat="mp4" duration="30">
+        <EncoderProfile quality="timelapse2160p" fileFormat="mp4" duration="30">
             <Video codec="h264"
                    bitRate="42000000"
                    width="3840"
                    height="2160"
-                   frameRate="30" /> -->
+                   frameRate="30" />
             <!-- audio setting is ignored -->
-            <!--<Audio codec="aac"
+            <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
                    channels="1" />
-        </EncoderProfile>-->
+        </EncoderProfile>
 
         <!-- CAMCORDER_QUALITY_HIGH_SPEED_LOW/720P : 720p@240fps; 55.0 Mbps -->
         <EncoderProfile quality="highspeedlow" fileFormat="mp4" duration="30">
