@@ -13,3 +13,4 @@ allow bluetooth_loader bluetooth_prop:property_service set;
 allow bluetooth_loader property_socket:sock_file write;
 allow bluetooth_loader init:unix_stream_socket connectto;
 allow bluetooth_loader sysfs_bluetooth:file write;
+allow bluetooth_loader self:capability { dac_override dac_read_search };
