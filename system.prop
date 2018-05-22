@@ -116,7 +116,6 @@ mmp.enable.3g2=true
 # Get camera working with mm blobs
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
-persist.media.treble_omx=false
 
 # QC vendor extension
 ro.vendor.extension_library=libqti-perfd-client.so
