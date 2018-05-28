@@ -30,8 +30,9 @@ def AddModemAssertion(info, input_zip):
   android_info = input_zip.read("OTA/android-info.txt")
   m = re.search(r'require\s+version-modem\s*=\s*(.+)', android_info)
   if m:
-    version = m.group(1).rstrip()
-    if len(version) and '*' not in version:
-      cmd = 'assert(oneplus2.verify_modem("' + version + '") == "1");'
-      info.script.AppendExtra(cmd)
+    timestamp, firmware_version = m.group(1).rstrip().split(',')
+    if ((len(timestamp) and '*' not in timestamp) and \
+        (len(firmware_version) and '*' not in firmware_version)):
+      cmd = 'assert(oneplus2.verify_modem("{}") == "1" || abort("ERROR: This package requires firmware from OOS {} or newer. Please upgrade firmware and retry!"););'
+      info.script.AppendExtra(cmd.format(timestamp, firmware_version))
   return
