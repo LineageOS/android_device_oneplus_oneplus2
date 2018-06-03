@@ -45,10 +45,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
 
     <carrier_config>
         <boolean name="apn_expand_bool" value="true" />
-        <boolean name="world_phone_bool" value="true" />
         <boolean name="allow_adding_apns_bool" value="true" />
         <boolean name="hide_preferred_network_type_bool" value="false" />
-        <boolean name="show_cdma_choices_bool" value="true" />
         <boolean name="allow_video_call_in_low_battery" value="true" />
         <boolean name="config_enable_display_14digit_imei" value="false" />
         <!-- Determines whether UI extensions for video calls should be used or not -->
@@ -908,7 +906,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="ascii_7_bit_support_for_long_message" value="true" />
-        <boolean name="cdma_cw_cf_enabled_bool" value="true" />
         <boolean name="allow_emergency_numbers_in_call_log_bool" value="true"/>
         <string-array name="apn_hide_rule_strings_array" num="2">
             <item value="type"/>
@@ -918,7 +915,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
             <string name="protocol">IPV4V6</string>
             <string name="roaming_protocol">IPV4V6</string>
         </map>
-        <boolean name="config_show_orig_dial_string_for_cdma" value="true" />
         <boolean name="ignore_data_enabled_changed_for_video_calls" value="true"/>
         <boolean name="config_hide_vt_callforward_option" value="true" />
         <boolean name="ignore_reset_ut_capability_bool" value="true" />
@@ -1069,9 +1065,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="ascii_7_bit_support_for_long_message" value="true" />
-        <boolean name="cdma_cw_cf_enabled_bool" value="true" />
         <boolean name="allow_emergency_numbers_in_call_log_bool" value="true"/>
-        <boolean name="config_show_orig_dial_string_for_cdma" value="true" />
         <string-array name="apn_hide_rule_strings_array" num="2">
             <item value="type"/>
             <item value="supl,mms"/>
@@ -1090,9 +1084,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <boolean name="carrier_vt_available_bool" value="true" />
         <boolean name="carrier_wfc_ims_available_bool" value="true" />
         <boolean name="ascii_7_bit_support_for_long_message" value="true" />
-        <boolean name="cdma_cw_cf_enabled_bool" value="true" />
         <boolean name="allow_emergency_numbers_in_call_log_bool" value="true"/>
-        <boolean name="config_show_orig_dial_string_for_cdma" value="true" />
         <string-array name="apn_hide_rule_strings_array" num="2">
             <item value="type"/>
             <item value="supl,mms"/>
