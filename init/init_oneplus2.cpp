@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
-   Copyright (C) 2017, The LineageOS Project
+   Copyright (C) 2017-2018, The LineageOS Project
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -42,7 +42,6 @@ using android::init::property_set;
 std::string heapstartsize;
 std::string heapgrowthlimit;
 std::string heapsize;
-std::string heapminfree;
 
 void init_variant_properties() {
 
@@ -84,23 +83,21 @@ void init_variant_properties() {
         heapstartsize = "8m";
         heapgrowthlimit = "288m";
         heapsize = "768m";
-        heapminfree = "2m";
     } else {
         /* Values for 3GB RAM vatiants */
         heapstartsize = "16m";
         heapgrowthlimit = "192m";
         heapsize = "512m";
-        heapminfree = "2m";
     }
 }
 
 void vendor_load_properties() {
     init_variant_properties();
 
-    property_set("dalvik.vm.heapstartsize", heapstartsize);
+    property_set("dalvik.vm.heapstartsize", "8m");
     property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
     property_set("dalvik.vm.heapsize", heapsize);
     property_set("dalvik.vm.heaptargetutilization", "0.75");
-    property_set("dalvik.vm.heapminfree", heapminfree);
+    property_set("dalvik.vm.heapminfree", "2m");
     property_set("dalvik.vm.heapmaxfree", "8m");
 }
