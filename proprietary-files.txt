@@ -412,10 +412,10 @@ vendor/lib64/libqmi_encdec.so
 -vendor/lib64/libqmiservices.so
 vendor/lib64/libsmemlog.so
 
-# Radio - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21
+# Radio - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21 + MIUI v6.11.24
 -app/datastatusnotification/datastatusnotification.apk|deb8d063001a59b68c63c19bb437354d4396fe4b
 -app/QtiTelephonyService/QtiTelephonyService.apk|880d5c85178c4b3dd809a64e25f6108437c136fc
-bin/netmgrd:vendor/bin/netmgrd
+bin/netmgrd:vendor/bin/netmgrd|01889f0a508a8de89df050d7e4cf65a4e944f9ce
 bin/qmuxd:vendor/bin/qmuxd
 bin/radish:vendor/bin/radish
 bin/rfs_access:vendor/bin/rfs_access
@@ -439,7 +439,7 @@ vendor/lib64/libcneapiclient.so|33e7465996749a8823ac03e34a94e3112c88dda4
 vendor/lib64/libconfigdb.so
 vendor/lib64/liblqe.so
 -vendor/lib64/libmdmdetect.so
-vendor/lib64/libnetmgr.so
+vendor/lib64/libnetmgr.so|0cae643d1d947c8f61bfab8ddd2b645645d31431
 vendor/lib64/libqcmaputils.so
 vendor/lib64/libril-qc-qmi-1.so
 vendor/lib64/libril-qc-radioconfig.so
