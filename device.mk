@@ -122,7 +122,6 @@ PRODUCT_PACKAGES += \
     libqomx_core \
     libshim_atomic \
     libshim_camera \
-    libshim_ims-camera \
     sensors.hal.tof \
     Snap
 
@@ -313,6 +312,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl
 
+# Vendor security patch level
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.lineage.build.vendor_security_patch=2017-10-01
+
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
@@ -331,10 +334,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/wifi/WCNSS_cfg.dat \
     $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
-
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2017-10-01
 
 # Inherit from oppo-common
 $(call inherit-product, device/oppo/common/common.mk)
