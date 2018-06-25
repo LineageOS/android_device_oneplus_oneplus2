@@ -284,9 +284,6 @@ PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl
 
-PRODUCT_PACKAGES += \
-    sensors.ssc.wrapper
-
 # Seccomp
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy \
