@@ -171,6 +171,9 @@ TARGET_USES_INTERACTION_BOOST := true
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
 
+# RIL
+BOARD_PROVIDES_LIBRIL := true
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 include device/qcom/sepolicy/legacy-sepolicy.mk
