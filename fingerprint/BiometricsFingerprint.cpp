@@ -174,7 +174,14 @@ Return<uint64_t> BiometricsFingerprint::getAuthenticatorId() {
 }
 
 Return<RequestStatus> BiometricsFingerprint::cancel() {
-    return ErrorFilter(mDevice->cancel(mDevice));
+    int ret = mDevice->cancel(mDevice);
+    if (ret == 0) {
+        fingerprint_msg_t msg{};
+        msg.type = FINGERPRINT_ERROR;
+        msg.data.error = FINGERPRINT_ERROR_CANCELED;
+        sInstance->notify(&msg);
+    }
+    return ErrorFilter(ret);
 }
 
 #define MAX_FINGERPRINTS 100
