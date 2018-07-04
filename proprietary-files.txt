@@ -428,7 +428,6 @@ etc/permissions/qcrilhook.xml
 etc/permissions/telephonyservice.xml
 -framework/qcnvitems.jar|1ddb327e1a0afa103024f123ac618e6b89f9044d
 -framework/qcrilhook.jar|77cb99dce9917a8b80f1f89cd6feac344bff8909
-framework/qti-telephony-common.jar|2eba987ae297a892e895ec1e9a302b41dbe0232e
 framework/QtiTelephonyServicelibrary.jar|7c1dd966c584e4f76cb9b7e14755d1f820bd3a90
 lib64/libparam.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk|55eab7bdd59841e3622133eb736b536222231e82
