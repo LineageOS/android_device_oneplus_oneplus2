@@ -49,7 +49,7 @@ import static android.telephony.SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
 import static com.android.internal.telephony.uicc.IccCardStatus.CardState.CARDSTATE_PRESENT;
 
-public class HwExtTelephony extends IExtTelephony.Stub {
+public class ExtTelephony extends IExtTelephony.Stub {
 
     class UiccStatus {
 
@@ -88,7 +88,7 @@ public class HwExtTelephony extends IExtTelephony.Stub {
 
     private static CommandsInterface[] sCommandsInterfaces;
     private static Context sContext;
-    private static HwExtTelephony sInstance;
+    private static ExtTelephony sInstance;
     private static Phone[] sPhones;
     private static SubscriptionManager sSubscriptionManager;
     private static TelecomManager sTelecomManager;
@@ -99,7 +99,8 @@ public class HwExtTelephony extends IExtTelephony.Stub {
     private Handler mHandler;
     private UiccController mUiccController;
 
-    public static void init(Context context, Phone[] phones, CommandsInterface[] commandsInterfaces) {
+    public static void init(Context context, Phone[] phones,
+            CommandsInterface[] commandsInterfaces) {
         sCommandsInterfaces = commandsInterfaces;
         sContext = context;
         sPhones = phones;
@@ -112,15 +113,15 @@ public class HwExtTelephony extends IExtTelephony.Stub {
         sInstance = getInstance();
     }
 
-    public static HwExtTelephony getInstance() {
+    public static ExtTelephony getInstance() {
         if (sInstance == null) {
-            sInstance = new HwExtTelephony();
+            sInstance = new ExtTelephony();
         }
 
         return sInstance;
     }
 
-    private HwExtTelephony() {
+    private ExtTelephony() {
         if (ServiceManager.getService(EXT_TELEPHONY_SERVICE_NAME) == null) {
             ServiceManager.addService(EXT_TELEPHONY_SERVICE_NAME, this);
         }
