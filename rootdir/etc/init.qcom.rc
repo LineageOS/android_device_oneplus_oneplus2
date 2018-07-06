@@ -193,8 +193,6 @@ on init
     mount cgroup none /sys/fs/cgroup/freezer  freezer
     chmod 777 /sys/fs/cgroup/freezer
 
-    write /sys/module/printk/parameters/print_wall_time 1
-
     # Access permission for secure touch
     chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
     chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
