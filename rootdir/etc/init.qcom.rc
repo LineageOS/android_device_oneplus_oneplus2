@@ -193,8 +193,6 @@ on init
     mount cgroup none /sys/fs/cgroup/freezer  freezer
     chmod 777 /sys/fs/cgroup/freezer
 
-    write /sys/module/printk/parameters/print_wall_time 1
-
     # Access permission for secure touch
     chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
     chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
@@ -216,9 +214,7 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
 
-    # Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
-    chown root audio /sys/kernel/boot_adsp/boot
 
     # SSR Setup
     write /sys/bus/msm_subsys/devices/subsys0/restart_level "related"
@@ -648,7 +644,6 @@ service rmt_storage /system/vendor/bin/rmt_storage
     user root
     group root system wakelock
     shutdown critical
-    ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
 service rfs_access /system/vendor/bin/rfs_access
@@ -759,7 +754,7 @@ service qti /system/vendor/bin/qti
 service sensors /system/vendor/bin/sensors.qcom
     class late_start
     user root
-    group root system
+    group root
     disabled
 
 on property:ro.use_data_netmgrd=false
