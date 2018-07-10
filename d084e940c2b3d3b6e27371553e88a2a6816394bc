@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea67aab9_df41367c",
+        "filename": "include/telephony/ril.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-07-10T09:34:36Z",
+      "side": 1,
+      "message": "this looks wrong because if sim_count and multi_sim is not defined the counter 1 won\u0027t be set",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 6
+      },
+      "revId": "d084e940c2b3d3b6e27371553e88a2a6816394bc",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
