@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85322b10_c91a8e47",
+        "filename": "system.prop",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-07-10T14:41:45Z",
+      "side": 0,
+      "message": "is in camera oss",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "ed02c5e617ce1525633d954900ab387ec42c8166",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5af5ba41_19f5d3bb",
+        "filename": "system.prop",
+        "patchSetId": 9
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-07-10T14:41:45Z",
+      "side": 0,
+      "message": "is in camera oss",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 30
+      },
+      "revId": "ed02c5e617ce1525633d954900ab387ec42c8166",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f01746d8_851deac9",
+        "filename": "system.prop",
+        "patchSetId": 9
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-07-10T14:41:45Z",
+      "side": 0,
+      "message": "is in hw/qcom",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "ed02c5e617ce1525633d954900ab387ec42c8166",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
