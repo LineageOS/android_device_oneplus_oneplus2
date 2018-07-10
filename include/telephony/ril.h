@@ -41,10 +41,10 @@ extern "C" {
 #else
 #define SIM_COUNT 1
 #endif
-#endif
 
 #ifndef ANDROID_MULTI_SIM
 #define SIM_COUNT 1
+#endif
 #endif
 
 /*
@@ -71,7 +71,7 @@ extern "C" {
  * RIL_VERSION = 14 : New data structures are added, namely RIL_CarrierMatchType,
  *                    RIL_Carrier, RIL_CarrierRestrictions and RIL_PCO_Data.
  *                    New commands added: RIL_REQUEST_SET_CARRIER_RESTRICTIONS,
- *                    RIL_REQUEST_SET_CARRIER_RESTRICTIONS and RIL_UNSOL_PCO_DATA
+ *                    RIL_REQUEST_SET_CARRIER_RESTRICTIONS and RIL_UNSOL_PCO_DATA.
  *
  * RIL_VERSION = 15 : New commands added:
  *                    RIL_UNSOL_MODEM_RESTART,
@@ -91,16 +91,8 @@ extern "C" {
  *                    RIL_REQUEST_STOP_NETWORK_SCAN
  *                    RIL_UNSOL_NETWORK_SCAN_RESULT
  */
-#if defined(USE_RIL_VERSION_10)
-#define RIL_VERSION 10
-#define LAST_IMPRECISE_RIL_VERSION 10
-#elif defined(USE_RIL_VERSION_11)
-#define RIL_VERSION 11
-#define LAST_IMPRECISE_RIL_VERSION 11
-#else
 #define RIL_VERSION 12
 #define LAST_IMPRECISE_RIL_VERSION 12 // Better self-documented name
-#endif
 #define RIL_VERSION_MIN 6 /* Minimum RIL_VERSION supported */
 
 #define CDMA_ALPHA_INFO_BUFFER_LENGTH 64
@@ -656,7 +648,7 @@ typedef struct {
 
     /* Following fields are used to derive the APDU ("command" and "length"
        values in TS 27.007 +CSIM and +CGLA commands). */
-    int cla;        /* OnePlus */
+    int cla;
     int instruction;
     int p1;
     int p2;
@@ -1968,18 +1960,29 @@ typedef struct {
 /* Tx Power Levels */
 #define RIL_NUM_TX_POWER_LEVELS     5
 
+/**
+ * Aggregate modem activity information
+ */
 typedef struct {
 
-  /* period (in ms) when modem is power collapsed */
+  /* total time (in ms) when modem is in a low power or
+   * sleep state
+   */
   uint32_t sleep_mode_time_ms;
 
-  /* period (in ms) when modem is awake and in idle mode*/
+  /* total time (in ms) when modem is awake but neither
+   * the transmitter nor receiver are active/awake */
   uint32_t idle_mode_time_ms;
 
-  /* period (in ms) for which Tx is active */
+  /* total time (in ms) during which the transmitter is active/awake,
+   * subdivided by manufacturer-defined device-specific
+   * contiguous increasing ranges of transmit power between
+   * 0 and the transmitter's maximum transmit power.
+   */
   uint32_t tx_mode_time_ms[RIL_NUM_TX_POWER_LEVELS];
 
-  /* period (in ms) for which Rx is active */
+  /* total time (in ms) for which receiver is active/awake and
+   * the transmitter is inactive */
   uint32_t rx_mode_time_ms;
 } RIL_ActivityStatsInfo;
 
@@ -2220,7 +2223,6 @@ typedef struct {
  *
  * SUCCESS
  * RADIO_NOT_AVAILABLE (radio resetting)
- * GENERIC_FAILURE
  * PASSWORD_INCORRECT
  * INTERNAL_ERR
  * NO_MEMORY
@@ -3647,8 +3649,6 @@ typedef struct {
  *
  * Note: Returns ILLEGAL_SIM_OR_ME when the failure is permanent and
  *       no retries needed, such as illegal SIM or ME.
- *       Returns GENERIC_FAILURE for all other causes that might be
- *       fixed by retries.
  *
  */
 #define RIL_REQUEST_SET_NETWORK_SELECTION_AUTOMATIC 46
@@ -4066,6 +4066,10 @@ typedef struct {
  * in an effort to conserve power.  These notifications should resume when the
  * screen is on.
  *
+ * Note this request is deprecated. Use RIL_REQUEST_SEND_DEVICE_STATE to report the device state
+ * to the modem and use RIL_REQUEST_SET_UNSOLICITED_RESPONSE_FILTER to turn on/off unsolicited
+ * response from the modem in different scenarios.
+ *
  * "data" is int *
  * ((int *)data)[0] is == 1 for "Screen On"
  * ((int *)data)[0] is == 0 for "Screen Off"
@@ -4218,7 +4222,6 @@ typedef struct {
  *  NO_MEMORY
  *  INTERNAL_ERR
  *  SYSTEM_ERR
- *  INVALID_ARGUMENTS
  *  MODEM_ERR
  *  REQUEST_NOT_SUPPORTED
  *  NO_RESOURCES
@@ -4475,8 +4478,8 @@ typedef struct {
  *  NO_MEMORY
  *  INTERNAL_ERR
  *  SYSTEM_ERR
+ *  INVALID_ARGUMENTS
  *  MODEM_ERR
- *  NO_NETWORK_FOUND
  *  REQUEST_NOT_SUPPORTED
  *  NO_RESOURCES
  *  CANCELLED
@@ -5419,7 +5422,7 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *
-*/
+ */
 #define RIL_REQUEST_GET_CELL_INFO_LIST 109
 
 /**
@@ -5451,6 +5454,8 @@ typedef struct {
 /**
  * RIL_REQUEST_SET_INITIAL_ATTACH_APN
  *
+ * Set an apn to initial attach network
+ *
  * "data" is a const char **
  * ((const char **)data)[0] is the APN to connect if radio technology is LTE
  * ((const char **)data)[1] is the connection type to request must be one of the
@@ -5464,8 +5469,6 @@ typedef struct {
  * ((const char **)data)[3] is the username for APN, or NULL
  * ((const char **)data)[4] is the password for APN, or NULL
  *
- *
- * Set an apn to initial attach network
  * "response" is NULL
  *
  * Valid errors:
@@ -5486,11 +5489,10 @@ typedef struct {
 #define RIL_REQUEST_SET_INITIAL_ATTACH_APN 111
 
 /**
+ * RIL_REQUEST_IMS_REGISTRATION_STATE
  *
  * This message is DEPRECATED and shall be removed in a future release (target: 2018);
  * instead, provide IMS registration status via an IMS Service.
- *
- * RIL_REQUEST_IMS_REGISTRATION_STATE
  *
  * Request current IMS registration state
  *
@@ -6026,11 +6028,11 @@ typedef struct {
 /**
  * RIL_REQUEST_GET_ACTIVITY_INFO
  *
- * Get modem activity statisitics info.
+ * Get modem activity information for power consumption estimation.
  *
- * There can be multiple RIL_REQUEST_GET_ACTIVITY_INFO calls to modem.
- * Once the response for the request is sent modem will clear
- * current statistics information.
+ * Request clear-on-read statistics information that is used for
+ * estimating the per-millisecond power consumption of the cellular
+ * modem.
  *
  * "data" is null
  * "response" is const RIL_ActivityStatsInfo *
@@ -6935,28 +6937,27 @@ typedef struct {
   */
 #define RIL_UNSOL_PCO_DATA 1046
 
-/**
- * RIL_UNSOL_MODEM_RESTART
- *
- * Called when there is a modem reset.
- *
- * "reason" is "const char *" containing the reason for the reset. It
- * could be a crash signature if the restart was due to a crash or some
- * string such as "user-initiated restart" or "AT command initiated
- * restart" that explains the cause of the modem restart.
- *
- * When modem restarts, one of the following radio state transitions will happen
- * 1) RADIO_STATE_ON->RADIO_STATE_UNAVAILABLE->RADIO_STATE_ON or
- * 2) RADIO_STATE_OFF->RADIO_STATE_UNAVAILABLE->RADIO_STATE_OFF
- * This message can be sent either just before the RADIO_STATE changes to RADIO_STATE_UNAVAILABLE
- * or just after but should never be sent after the RADIO_STATE changes from UNAVAILABLE to
- * AVAILABLE(RADIO_STATE_ON/RADIO_STATE_OFF) again.
- *
- * It should NOT be sent after the RADIO_STATE changes to AVAILABLE after the
- * modem restart as that could be interpreted as a second modem reset by the
- * framework.
- */
-
+ /**
+  * RIL_UNSOL_MODEM_RESTART
+  *
+  * Called when there is a modem reset.
+  *
+  * "reason" is "const char *" containing the reason for the reset. It
+  * could be a crash signature if the restart was due to a crash or some
+  * string such as "user-initiated restart" or "AT command initiated
+  * restart" that explains the cause of the modem restart.
+  *
+  * When modem restarts, one of the following radio state transitions will happen
+  * 1) RADIO_STATE_ON->RADIO_STATE_UNAVAILABLE->RADIO_STATE_ON or
+  * 2) RADIO_STATE_OFF->RADIO_STATE_UNAVAILABLE->RADIO_STATE_OFF
+  * This message can be sent either just before the RADIO_STATE changes to RADIO_STATE_UNAVAILABLE
+  * or just after but should never be sent after the RADIO_STATE changes from UNAVAILABLE to
+  * AVAILABLE(RADIO_STATE_ON/RADIO_STATE_OFF) again.
+  *
+  * It should NOT be sent after the RADIO_STATE changes to AVAILABLE after the
+  * modem restart as that could be interpreted as a second modem reset by the
+  * framework.
+  */
 #define RIL_UNSOL_MODEM_RESTART 1047
 
 /**
@@ -7137,16 +7138,16 @@ typedef struct {
 } RIL_SimAuthentication;
 
 typedef struct {
-    int cid;             	/* Context ID, uniquely identifies this call */
-    char *bearer_proto;  	/* One of the PDP_type values in TS 27.007 section 10.1.1.
-                            	For example, "IP", "IPV6", "IPV4V6" */
-    int pco_id;          	/* The protocol ID for this box.  Note that only IDs from
-                            	FF00H - FFFFH are accepted.  If more than one is included
-                            	from the network, multiple calls should be made to send all
-                            	of them. */
-    int contents_length; 	/* The number of octets in the contents. */
-    char *contents;      	/* Carrier-defined content.  It is binary, opaque and
-                            	loosely defined in LTE Layer 3 spec 24.008 */
+    int cid;                    /* Context ID, uniquely identifies this call */
+    char *bearer_proto;         /* One of the PDP_type values in TS 27.007 section 10.1.1.
+                                   For example, "IP", "IPV6", "IPV4V6". */
+    int pco_id;                 /* The protocol ID for this box.  Note that only IDs from
+                                   FF00H - FFFFH are accepted.  If more than one is included
+                                   from the network, multiple calls should be made to send all
+                                   of them. */
+    int contents_length;        /* The number of octets in the contents. */
+    char *contents;             /* Carrier-defined content.  It is binary, opaque and
+                                   loosely defined in LTE Layer 3 spec 24.008 */
 } RIL_PCO_Data;
 
 typedef enum {
@@ -7269,6 +7270,7 @@ const RIL_RadioFunctions *RIL_SAP_Init(const struct RIL_Env *env, int argc, char
 void RIL_register (const RIL_RadioFunctions *callbacks);
 
 void rilc_thread_pool();
+
 
 /**
  *
