@@ -270,6 +270,7 @@ PRODUCT_PACKAGES += \
 # RIL
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
+    libril-wrapper \
     librmnetctl \
     libxml2 \
     rild_socket
