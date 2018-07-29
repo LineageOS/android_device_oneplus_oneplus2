@@ -19,7 +19,7 @@
          An empty list will use the default restrictions. If defined, longshot
          will be enabled ONLY for these scenemodes and disabled for others. -->
     <string-array name="longshot_scenemodes">
-        <item>sports</item>
+        <item>placeholder</item>
     </string-array>
 
     <!-- Opens back camera using openLegacy() and forces api v1 -->
