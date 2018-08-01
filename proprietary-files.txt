@@ -204,7 +204,7 @@ vendor/lib/libmmcamera_ov5648.so
 vendor/lib/libmmcamera_ov5648_eeprom.so
 
 # Display calibration - OxygenOS 3.6.0
--etc/pp_calib_data_jd35695_1080p_cmd_mode_dsi_panel.xml
+-etc/pp_calib_data_jd35695_1080p_cmd_mode_dsi_panel.xml|9c4419c5b7fdb120e386f9a7b65e68fe2cdd4335
 
 # DRM - OxygenOS 3.6.0
 bin/qseecomd:vendor/bin/qseecomd
