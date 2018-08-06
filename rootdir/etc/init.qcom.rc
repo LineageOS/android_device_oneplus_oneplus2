@@ -454,7 +454,7 @@ service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
     group root
-    writepid /dev/cpuset/system-background/tasks
+    writepid /dev/cpuset/foreground/tasks
 
 service perfd /system/vendor/bin/perfd
     class main
@@ -501,6 +501,7 @@ service adsprpcd /system/vendor/bin/adsprpcd
     class main
     user media
     group media
+    writepid /dev/cpuset/system-background/tasks
 
 service imsqmidaemon /system/vendor/bin/imsqmidaemon
     class main
@@ -576,6 +577,7 @@ service ppd /system/vendor/bin/mm-pp-daemon
     user system
     socket pps stream 0660 system system
     group system graphics
+    writepid /dev/cpuset/system-background/tasks
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bluetooth
@@ -614,6 +616,7 @@ service start_hci_filter /system/vendor/bin/wcnss_filter
     user bluetooth
     group bluetooth oem_2950 system wakelock
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     class core
@@ -694,6 +697,7 @@ service sensors /system/vendor/bin/sensors.qcom
     user root
     group root system
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -754,6 +758,7 @@ service ftm_ffbm /system/bin/ftmdaemon
 
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
+    writepid /dev/cpuset/system-background/tasks
 
 service drmdiag /system/bin/drmdiagapp
     class late_start
