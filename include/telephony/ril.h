@@ -767,6 +767,7 @@ typedef struct {
   uint8_t * carrierKey;               /* Public Key from the Carrier used to encrypt the
                                        * IMSI/IMPI.
                                        */
+  int32_t carrierKeyLength;            /* Length of the Public Key. */
   char * keyIdentifier;               /* The keyIdentifier Attribute value pair that helps
                                        * a server locate the private key to decrypt the
                                        * permanent identity.
@@ -2181,6 +2182,7 @@ typedef struct {
     RIL_ScanStatus status;              // The status of the scan
     uint32_t network_infos_length;      // Total length of RIL_CellInfo
     RIL_CellInfo_v12* network_infos;    // List of network information
+    RIL_Errno error;
 } RIL_NetworkScanResult;
 
 /**
@@ -2400,6 +2402,7 @@ typedef struct {
  *  SUCCESS
  *  RADIO_NOT_AVAILABLE (radio resetting)
  *  PASSWORD_INCORRECT
+ *  SIM_ABSENT
  *     (code is invalid)
  *  INTERNAL_ERR
  *  NO_MEMORY
@@ -2926,6 +2929,8 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  MODE_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  * FIXME how do we specify TP-Message-Reference if we need to resend?
  */
@@ -2972,6 +2977,8 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  MODE_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  */
 #define RIL_REQUEST_SEND_SMS_EXPECT_MORE 26
@@ -3048,8 +3055,8 @@ typedef struct {
  *  Other errors could include:
  *    RADIO_NOT_AVAILABLE, OP_NOT_ALLOWED_BEFORE_REG_TO_NW,
  *    OP_NOT_ALLOWED_DURING_VOICE_CALL, REQUEST_NOT_SUPPORTED,
- *    INVALID_ARGUMENTS, INTERNAL_ERR, NO_MEMORY, NO_RESOURCES
- *    and CANCELLED
+ *    INVALID_ARGUMENTS, INTERNAL_ERR, NO_MEMORY, NO_RESOURCES,
+ *    CANCELLED and SIM_ABSENT
  *
  * See also: RIL_REQUEST_DEACTIVATE_DATA_CALL
  */
@@ -3475,6 +3482,7 @@ typedef struct {
  *  NO_MEMORY
  *  NO_RESOURCES
  *  CANCELLED
+ *  SIM_ABSENT
  *
  * See also: RIL_REQUEST_SETUP_DATA_CALL
  */
@@ -3977,6 +3985,7 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  * See also: RIL_UNSOL_DATA_CALL_LIST_CHANGED
  */
@@ -4142,6 +4151,7 @@ typedef struct {
  *  CANCELLED
  *  INVALID_MODEM_STATE
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  */
 #define RIL_REQUEST_WRITE_SMS_TO_SIM 63
@@ -4170,6 +4180,7 @@ typedef struct {
  *  CANCELLED
  *  INVALID_MODEM_STATE
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  */
 #define RIL_REQUEST_DELETE_SMS_ON_SIM 64
@@ -4800,6 +4811,8 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  MODE_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  */
 #define RIL_REQUEST_CDMA_SEND_SMS 87
@@ -5074,6 +5087,7 @@ typedef struct {
  *  CANCELLED
  *  INVALID_MODEM_STATE
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  */
 #define RIL_REQUEST_CDMA_WRITE_SMS_TO_RUIM 96
@@ -5102,7 +5116,7 @@ typedef struct {
  *  CANCELLED
  *  INVALID_MODEM_STATE
  *  REQUEST_NOT_SUPPORTED
- *
+ *  SIM_ABSENT
  */
 #define RIL_REQUEST_CDMA_DELETE_SMS_ON_RUIM 97
 
@@ -5193,6 +5207,7 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  *
  */
 #define RIL_REQUEST_GET_SMSC_ADDRESS 100
@@ -5219,7 +5234,7 @@ typedef struct {
  *  INTERNAL_ERR
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
- *
+ *  SIM_ABSENT
  */
 #define RIL_REQUEST_SET_SMSC_ADDRESS 101
 
@@ -5371,6 +5386,7 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  */
 #define RIL_REQUEST_STK_SEND_ENVELOPE_WITH_STATUS 107
 
@@ -5888,6 +5904,7 @@ typedef struct {
  *  NO_RESOURCES
  *  CANCELLED
  *  REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  */
 #define RIL_REQUEST_SET_DATA_PROFILE 128
 
@@ -5981,6 +5998,7 @@ typedef struct {
  * NO_MEMORY
  * NO_RESOURCES
  * CANCELLED
+ * SIM_ABSENT
  */
 #define RIL_REQUEST_START_LCE 132
 
@@ -6001,6 +6019,7 @@ typedef struct {
  * NO_RESOURCES
  * CANCELLED
  * REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  */
 #define RIL_REQUEST_STOP_LCE 133
 
@@ -6020,6 +6039,7 @@ typedef struct {
  * NO_RESOURCES
  * CANCELLED
  * REQUEST_NOT_SUPPORTED
+ *  SIM_ABSENT
  */
 #define RIL_REQUEST_PULL_LCEDATA 134
 
