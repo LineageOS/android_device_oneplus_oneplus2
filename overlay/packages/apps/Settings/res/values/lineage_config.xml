@@ -22,4 +22,7 @@
        3 = right side
   -->
   <integer name="config_fingerprintSensorLocation">1</integer>
+
+  <!-- Whether USB host mode is supported -->
+  <bool name="config_isUsbDataRoleHostSupported">false</bool>
 </resources>
