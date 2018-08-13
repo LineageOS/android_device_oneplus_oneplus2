@@ -39,7 +39,6 @@
 using android::base::GetProperty;
 using android::init::property_set;
 
-std::string heapstartsize;
 std::string heapgrowthlimit;
 std::string heapsize;
 
@@ -80,12 +79,10 @@ void init_variant_properties() {
     /* Dalvik props */
     if (sys.totalram > 3072ull * 1024 * 1024) {
         /* Values for 4GB RAM vatiants */
-        heapstartsize = "8m";
         heapgrowthlimit = "288m";
         heapsize = "768m";
     } else {
         /* Values for 3GB RAM vatiants */
-        heapstartsize = "16m";
         heapgrowthlimit = "192m";
         heapsize = "512m";
     }
@@ -94,7 +91,7 @@ void init_variant_properties() {
 void vendor_load_properties() {
     init_variant_properties();
 
-    property_set("dalvik.vm.heapstartsize", heapstartsize);
+    property_set("dalvik.vm.heapstartsize", "16m");
     property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
     property_set("dalvik.vm.heapsize", heapsize);
     property_set("dalvik.vm.heaptargetutilization", "0.75");
