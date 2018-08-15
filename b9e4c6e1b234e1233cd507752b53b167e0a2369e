@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "885a7ad2_e347c3e2",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-08-15T21:40:44Z",
+      "side": 0,
+      "message": "Unrelated with the original change.",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 409,
+        "endChar": 35
+      },
+      "revId": "b9e4c6e1b234e1233cd507752b53b167e0a2369e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06a7a7a_5fca2faf",
+        "filename": "rootdir/etc/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-08-15T21:40:44Z",
+      "side": 0,
+      "message": "Unrelated.",
+      "range": {
+        "startLine": 810,
+        "startChar": 0,
+        "endLine": 813,
+        "endChar": 30
+      },
+      "revId": "b9e4c6e1b234e1233cd507752b53b167e0a2369e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
