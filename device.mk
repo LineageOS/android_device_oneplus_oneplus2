@@ -301,7 +301,7 @@ PRODUCT_PACKAGES += \
 
 # USB
 PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service.op2
+    android.hardware.usb@1.0-service.basic
 
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
