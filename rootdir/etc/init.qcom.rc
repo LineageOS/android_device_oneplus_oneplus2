@@ -399,7 +399,8 @@ on post-fs-data
     # Create directory for IPA
     mkdir /data/misc/ipa 0770 radio radio
 
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+   mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+   mkdir /data/vendor/misc/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
