@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39618766_e25f294e",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-08-18T03:05:35Z",
+      "side": 1,
+      "message": "The paths needs to be adjusted for 8994",
+      "revId": "c049160ae555bf83fa77d22639567be7c864340e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
