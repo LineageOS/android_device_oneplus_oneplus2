@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98afb11c_1e8d09ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-08-28T12:56:51Z",
+      "side": 1,
+      "message": "Better yet: Matches rild.legacy.rc from Pie\u0027s CAF RIL.\n\nI don\u0027t see when they removed it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "1598b1ffc8bdb6ff98162a6d004091a0f119c82d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
