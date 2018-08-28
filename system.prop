@@ -1,22 +1,22 @@
 # system.prop for OnePlus2
 
 # Audio
-audio_hal.period_size=192
+vendoraudio_hal.period_size=192
 audio.offload.video=true
-persist.audio.fluence.voicecall=true
-persist.audio.fluence.voicerec=false
-persist.audio.fluence.speaker=true
+persist.vendor.audio.fluence.voicecall=true
+persist.vendor.audio.fluence.voicerec=false
+persist.vendor.audio.fluence.speaker=true
 ro.qc.sdk.audio.fluencetype=fluence
 ro.qc.sdk.audio.ssr=false
 persist.audio.ssr.3mic=false
 media.aac_51_output_enabled=true
 audio.offload.pcm.16bit.enable=false
 audio.offload.pcm.24bit.enable=true
-use.voice.path.for.pcm.voip=true
-audio.offload.multiple.enabled=true
-audio.offload.gapless.enabled=true
+vendor.voice.path.for.pcm.voip=true
+vendor.audio.offload.multiple.enabled=true
+vendor.audio.offload.gapless.enabled=true
 mm.enable.smoothstreaming=true
-audio.offload.buffer.size.kb=64
+vendor.audio.offload.buffer.size.kb=64
 tunnel.audio.encode=false
 audio.offload.passthrough=false
 audio.deep_buffer.media=true
