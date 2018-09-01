@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c72f1891_894c8bd4",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-09-01T08:00:56Z",
+      "side": 1,
+      "message": "no tabs pls",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 1
+      },
+      "revId": "473d54b25e1b729e570c69a7ebbca2a93a1b4959",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
