@@ -108,7 +108,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
 # Lineage Hardware
-BOARD_HARDWARE_CLASS += $(PLATFORM_PATH)/lineagehw
+JAVA_SOURCE_OVERLAYS := org.lineageos.hardware|$(PLATFORM_PATH)/lineagehw|**/*.java
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 
 # Filesystem
