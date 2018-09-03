@@ -462,12 +462,6 @@ service qcamerasvr /system/vendor/bin/mm-qcamera-daemon
     group camera system inet input graphics
     writepid /dev/cpuset/camera-daemon/tasks
 
-on property:init.svc.media=restarting
-    restart qcamerasvr
-
-on property:init.svc.servicemanager=restarting
-    restart qcamerasvr
-
 service qseecomd /system/vendor/bin/qseecomd
     class core
     user root
