@@ -237,7 +237,7 @@ etc/permissions/com.qualcomm.location.xml
 framework/com.qti.location.sdk.jar|ef91b72b4d99f9666a6699e12a095e66caa3b490
 -lib64/libloc_api_v02.so
 -lib64/libloc_ds_api.so
--priv-app/com.qualcomm.location/com.qualcomm.location.apk|ef867b7fcf6458696f082aa784d082e4531bc489
+#-priv-app/com.qualcomm.location/com.qualcomm.location.apk|ef867b7fcf6458696f082aa784d082e4531bc489
 vendor/lib64/hw/flp.default.so
 vendor/lib64/libalarmservice_jni.so
 vendor/lib64/libdataitems.so
