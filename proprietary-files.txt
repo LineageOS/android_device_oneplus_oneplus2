@@ -416,7 +416,7 @@ vendor/lib64/libsmemlog.so
 # Radio - OxygenOS 3.6.0 + OxygenOS 5.0 and OB30/OB21 + MIUI v6.11.24
 -app/datastatusnotification/datastatusnotification.apk|deb8d063001a59b68c63c19bb437354d4396fe4b
 -app/QtiTelephonyService/QtiTelephonyService.apk|880d5c85178c4b3dd809a64e25f6108437c136fc
-bin/netmgrd:vendor/bin/netmgrd|01889f0a508a8de89df050d7e4cf65a4e944f9ce
+bin/netmgrd:vendor/bin/netmgrd|6ca8f2e16d3078848808787c9a81cfc78dc27c58
 bin/qmuxd:vendor/bin/qmuxd
 bin/radish:vendor/bin/radish
 bin/rfs_access:vendor/bin/rfs_access
