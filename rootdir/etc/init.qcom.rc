@@ -614,17 +614,17 @@ service rfs_access /system/vendor/bin/rfs_access
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-on property:wc_transport.start_hci=true
+on property:vendor.wc_transport.start_hci=true
     start start_hci_filter
 
-on property:wc_transport.start_hci=false
+on property:vendor.wc_transport.start_hci=false
     stop start_hci_filter
 
 # begin qrd patch for bluetoot cts test 2015 06 23 zuoyonghua@oneplus.cn
 service start_hci_filter /system/vendor/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth oem_2950
+    group bluetooth oem_2950 system wakelock
     disabled
 
 on property:wc_transport.start_root=true
