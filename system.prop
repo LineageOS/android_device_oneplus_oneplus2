@@ -33,7 +33,7 @@ ro.bluetooth.wipower=true
 
 # Camera
 camera.disable_zsl_mode=1
-persist.camera.HAL3.enabled=1
+persist.camera.HAL3.enabled=0
 persist.camera.hal.debug.mask=0
 persist.camera.raw.format=16
 persist.camera.zsl.mode=0
