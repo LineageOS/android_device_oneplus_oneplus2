@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "659c8039_56edba82",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-09-12T22:31:01Z",
+      "side": 1,
+      "message": "PLATFORM_PATH",
+      "range": {
+        "startLine": 111,
+        "startChar": 49,
+        "endLine": 111,
+        "endChar": 60
+      },
+      "revId": "2f6cbcb94c38129045c05c349e39b2367ed8c679",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
