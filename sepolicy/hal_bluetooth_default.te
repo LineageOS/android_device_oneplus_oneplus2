@@ -1,0 +1,4 @@
+allow hal_bluetooth_default sysfs_bluetooth:file write;
+allow hal_bluetooth_default bluetooth_data_file:file { append create getattr open read write };
+allow hal_bluetooth_default wcnss_filter:unix_stream_socket connectto;
+allow hal_bluetooth_default bluetooth_data_file:dir { add_name write };
