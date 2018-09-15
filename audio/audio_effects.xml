@@ -53,4 +53,10 @@
         <effect name="aec" library="qcom_pre_processing" uuid="0f8d0d2a-59e5-45fe-b6e4-248c8a799109"/>
         <effect name="ns" library="qcom_pre_processing" uuid="1d97bb0b-9e2f-4403-9ae3-58c2554306f8"/>
     </effects>
+    <preprocess>
+        <stream type="voice_communication">
+            <apply effect="aec"/>
+            <apply effect="ns"/>
+        </stream>
+    </preprocess>
 </audio_effects_conf>
