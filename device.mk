@@ -263,6 +263,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.oneplus2.power.sh \
+    init.program_bdaddr.sh \
     init.qcom.bt.sh \
     init.qcom.power.rc \
     init.qcom.rc \
