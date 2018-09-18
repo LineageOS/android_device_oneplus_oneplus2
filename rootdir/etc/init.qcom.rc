@@ -52,6 +52,8 @@ on fs
 on init
     export LD_PRELOAD libshim_atomic.so
 
+    start program_bdaddr
+
     chmod 0644 /proc/cmdline
     symlink /sdcard /storage/sdcard0
 
@@ -854,3 +856,10 @@ service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     group root
     disabled
     writepid /dev/cpuset/system-background/tasks
+
+service program_bdaddr /system/vendor/bin/init.program_bdaddr.sh
+    user bluetooth
+    group bluetooth
+    seclabel u:r:bluetooth_loader:s0
+    disabled
+    oneshot
