@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d429aab_5df08ce5",
+        "filename": "rootdir/etc/init.program_bdaddr.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-09-21T08:32:26Z",
+      "side": 1,
+      "message": "don\u0027t use tabs pls",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "ad80b40db3bf2edf6dfd84b4f7789d3cafa43414",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
