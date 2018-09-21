@@ -55,7 +55,6 @@ on init
     start program_bdaddr
 
     chmod 0644 /proc/cmdline
-    symlink /sdcard /storage/sdcard0
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
