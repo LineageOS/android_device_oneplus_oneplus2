@@ -53,7 +53,6 @@ on init
     export LD_PRELOAD libshim_atomic.so
 
     chmod 0644 /proc/cmdline
-    symlink /sdcard /storage/sdcard0
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
