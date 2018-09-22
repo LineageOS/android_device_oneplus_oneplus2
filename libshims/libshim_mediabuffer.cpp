@@ -23,4 +23,8 @@ int _ZNK7android11MediaBuffer8refcountEv(android::MediaBuffer *thisptr) {
     return thisptr->refcount();
 }
 
+void _ZNK7android11MediaBuffer13graphicBufferEv(android::MediaBuffer *thisptr) {
+    return;
+}
+
 }
