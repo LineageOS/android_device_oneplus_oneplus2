@@ -174,7 +174,7 @@ TARGET_USES_INTERACTION_BOOST := true
 BOARD_USES_QCOM_HARDWARE := true
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
+include device/qcom/legacy-sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 
 # Shims
