@@ -1,6 +1,7 @@
 # We have a couple of non-standard NV partitions
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/oem_dycnvbk          u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/oem_stanvbk          u:object_r:modem_efs_partition_device:s0
+/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/persist              u:object_r:persist_block_device:s0
 
 # Audio calibration
 /(vendor|system/vendor)/bin/init\.tfa\.sh                               u:object_r:init_tfa_exec:s0
@@ -33,8 +34,9 @@
 /sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
 /data/fpc(/.*)?                                                         u:object_r:fpc_data_file:s0
 
-# IPACM
-/system/bin/ipacm                                                       u:object_r:ipacm_exec:s0
+# Graphics
+/sys/devices/virtual/graphics/fb0(/.*)?                                 u:object_r:sysfs_graphics:s0
+/sys/devices/virtual/graphics/fb1(/.*)?                                 u:object_r:sysfs_graphics:s0
 
 # Lights
 /sys/class/leds(/.*)?                                                   u:object_r:sysfs_leds:s0
@@ -42,6 +44,17 @@
 /sys/devices/soc\.0/qpnp-wled-(.*)?/leds(/.*)?                          u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/[a-z0-9]+.qcom,mdss_mdp/[a-z0-9]+.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight(/.*)?    u:object_r:sysfs_leds:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.oneplus2    u:object_r:hal_light_default_exec:s0
+
+# Net
+/sys/devices/virtual/net/rmnet_data[0-7]+/mtu                           u:object_r:sysfs_net:s0
+
+# Power
+/sys/devices/soc\.0/f9200000\.ssusb/power_supply/usb(/.*)?              u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/qpnp-smbcharger-18/power_supply/battery(/.*)?       u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/qpnp-smbcharger-18/power_supply/dc(/.*)?            u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/qpnp-fg-19/power_supply/bms(/.*)?                   u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/msm-bcl-16/power_supply/fg_adc(/.*)?                u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/qcom,bcl\.[0-9]+/power_supply/bcl(/.*)?             u:object_r:sysfs_battery_supply:s0
 
 # RIL
 /data/oemnvitems(/.*)?                                                  u:object_r:nv_data_file:s0
