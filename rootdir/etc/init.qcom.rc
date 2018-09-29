@@ -857,7 +857,7 @@ service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     writepid /dev/cpuset/system-background/tasks
 
 service program_bdaddr /system/vendor/bin/init.program_bdaddr.sh
-    user root
+    user bluetooth
     group bluetooth
     seclabel u:r:bluetooth_loader:s0
     disabled
