@@ -9,14 +9,16 @@ allow init-power-sh self:capability { chown net_admin };
 
 allow init-power-sh proc_kernel_sched:file w_file_perms;
 allow init-power-sh sysfs:dir { open read };
-allow init-power-sh sysfs_rqstats:dir r_dir_perms;
 allow init-power-sh sysfs_devices_system_cpu:file { setattr w_file_perms };
-allow init-power-sh sysfs_thermal:dir search;
-allow init-power-sh sysfs_thermal:file w_file_perms;
 allow init-power-sh sysfs_msm_perf:dir { search read open };
 allow init-power-sh sysfs_msm_perf:file { getattr w_file_perms };
 allow init-power-sh sysfs_msm_power:dir search;
 allow init-power-sh sysfs_msm_power:file w_file_perms;
+allow init-power-sh sysfs_net:dir search;
+allow init-power-sh sysfs_net:file read;
+allow init-power-sh sysfs_rqstats:dir r_dir_perms;
+allow init-power-sh sysfs_thermal:dir search;
+allow init-power-sh sysfs_thermal:file w_file_perms;
 
 # interactive files in /sys receive the default sysfs context when created
 # after the restorecon of /sys/. Allow init-power-sh to restorecon sysfs files
@@ -25,8 +27,8 @@ allow init-power-sh sysfs:file { relabelfrom getattr };
 allow init-power-sh sysfs:lnk_file { relabelfrom getattr };
 allow init-power-sh sysfs:dir relabelfrom;
 allow init-power-sh sysfs_devices_system_cpu:{ dir file lnk_file } relabelto;
+allow init-power-sh file_contexts_file:file r_file_perms;
+allow init-power-sh rootfs:file r_file_perms;
 
 # execute toybox/toolbox
 allow init-power-sh vendor_toolbox_exec:file rx_file_perms;
-
-allow init-power-sh rootfs:file r_file_perms;
