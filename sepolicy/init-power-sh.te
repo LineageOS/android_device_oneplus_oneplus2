@@ -25,6 +25,7 @@ allow init-power-sh sysfs:file { relabelfrom getattr };
 allow init-power-sh sysfs:lnk_file { relabelfrom getattr };
 allow init-power-sh sysfs:dir relabelfrom;
 allow init-power-sh sysfs_devices_system_cpu:{ dir file lnk_file } relabelto;
+allow init-power-sh file_contexts_file:file { getattr read };
 
 # execute toybox/toolbox
 allow init-power-sh vendor_toolbox_exec:file rx_file_perms;
