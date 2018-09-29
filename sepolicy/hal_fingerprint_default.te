@@ -1,3 +1,4 @@
+allow hal_fingerprint_default fingerprintd_data_file:dir { search write };
 allow hal_fingerprint_default firmware_file:dir search;
 allow hal_fingerprint_default firmware_file:file { getattr open read };
 allow hal_fingerprint_default fpc_data_file:dir { add_name remove_name search write };
