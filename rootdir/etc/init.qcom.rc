@@ -55,7 +55,6 @@ on init
     start program_bdaddr
 
     chmod 0644 /proc/cmdline
-    symlink /sdcard /storage/sdcard0
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
@@ -857,7 +856,7 @@ service msm_irqbalance /system/vendor/bin/msm_irqbalance -f /system/vendor/etc/m
     writepid /dev/cpuset/system-background/tasks
 
 service program_bdaddr /system/vendor/bin/init.program_bdaddr.sh
-    user root
+    user bluetooth
     group bluetooth
     seclabel u:r:bluetooth_loader:s0
     disabled
