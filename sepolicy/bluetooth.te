@@ -1,1 +1,0 @@
-allow bluetooth sysfs_bluetooth:file write;

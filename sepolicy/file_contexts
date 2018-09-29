@@ -7,7 +7,8 @@
 
 # Bluetooth
 (vendor|system/vendor)/bin/init\.qcom\.bt\.sh                           u:object_r:bluetooth_loader_exec:s0
-/sys/devices/bt_qca6174\.85(/.*)?                                       u:object_r:sysfs_bluetooth:s0
+(vendor|system/vendor)/bin/init\.program_bdaddr\.sh                     u:object_r:bluetooth_loader_exec:s0
+/(vendor|system/vendor)/bin/awk                                         u:object_r:awktool_exec:s0
 
 # Camera
 /sys/devices/soc\.0/fd8c0000\.qcom,msm-cam/video4linux(/.*)?            u:object_r:sysfs_camera:s0
@@ -33,15 +34,16 @@
 /sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
 /data/fpc(/.*)?                                                         u:object_r:fpc_data_file:s0
 
-# IPACM
-/system/bin/ipacm                                                       u:object_r:ipacm_exec:s0
-
 # Lights
 /sys/class/leds(/.*)?                                                   u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/leds-qpnp-(.*)?/leds(/.*)?                          u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/qpnp-wled-(.*)?/leds(/.*)?                          u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/[a-z0-9]+.qcom,mdss_mdp/[a-z0-9]+.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight(/.*)?    u:object_r:sysfs_leds:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.oneplus2    u:object_r:hal_light_default_exec:s0
+
+# Power
+/sys/devices/soc\.0/qpnp-smbcharger-18/power_supply/battery(/.*)?       u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/qpnp-smbcharger-18/power_supply/dc(/.*)?            u:object_r:sysfs_battery_supply:s0
 
 # RIL
 /data/oemnvitems(/.*)?                                                  u:object_r:nv_data_file:s0
