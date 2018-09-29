@@ -1,2 +1,3 @@
 allow mm-pp-daemon ion_device:chr_file write;
+allow mm-pp-daemon sysfs_graphics:lnk_file read;
 set_prop(mm-pp-daemon, display_prop);
