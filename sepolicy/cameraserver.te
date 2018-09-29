@@ -1,0 +1,1 @@
+allow cameraserver camera_data_file:dir search;
