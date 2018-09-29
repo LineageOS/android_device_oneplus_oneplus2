@@ -1,3 +1,4 @@
+genfscon proc /device-tree/firmware/android           u:object_r:sysfs_dt_firmware_android:s0
 genfscon proc /sys/kernel/sched_migration_fixup       u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_upmigrate             u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_downmigrate           u:object_r:proc_kernel_sched:s0
@@ -9,7 +10,10 @@ genfscon proc /sys/kernel/sched_init_task_load        u:object_r:proc_kernel_sch
 genfscon proc /sys/kernel/sched_min_runtime           u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_window_stats_policy   u:object_r:proc_kernel_sched:s0
 genfscon proc /sys/kernel/sched_ravg_hist_size        u:object_r:proc_kernel_sched:s0
-
-genfscon proc /touchpanel                             u:object_r:proc_touchpanel:s0
 genfscon proc /s1302                                  u:object_r:proc_touchpanel:s0
+genfscon proc /sys/vm/swappiness                      u:object_r:proc_swap:s0
 genfscon proc /tri-state-key                          u:object_r:proc_touchpanel:s0
+genfscon proc /touchpanel                             u:object_r:proc_touchpanel:s0
+genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/stat u:object_r:sysfs_disk_stat:s0
+genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/scheduler u:object_r:sysfs_scheduler:s0
+genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/iosched/slice_idle u:object_r:sysfs_scheduler:s0
