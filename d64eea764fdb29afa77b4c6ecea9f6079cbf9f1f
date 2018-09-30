@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3a8d3ec_79003f38",
+        "filename": "config.fs",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-09-30T08:07:03Z",
+      "side": 1,
+      "message": "[    4.855816] type\u003d1400 audit(1954127.047:18): avc: denied { chown } for pid\u003d335 comm\u003d\"btnvtool\" capability\u003d0 scontext\u003du:r:bluetooth_loader:s0 tcontext\u003du:r:bluetooth_loader:s0 tclass\u003dcapability permissive\u003d1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "d64eea764fdb29afa77b4c6ecea9f6079cbf9f1f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
