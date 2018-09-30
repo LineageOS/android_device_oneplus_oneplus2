@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b56543bc_40bcc31c",
+        "filename": "sepolicy/vendor_init.te",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-09-30T07:34:10Z",
+      "side": 1,
+      "message": "check https://review.lineageos.org/230444",
+      "revId": "418d37e9896722681df30181c9b27719d787d0fd",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
