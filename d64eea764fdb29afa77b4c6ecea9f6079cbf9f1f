@@ -22,6 +22,23 @@
       "revId": "d64eea764fdb29afa77b4c6ecea9f6079cbf9f1f",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4489266_4d31ae5a",
+        "filename": "config.fs",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-09-30T08:09:44Z",
+      "side": 1,
+      "message": "we need this cap?https://review.lineageos.org/#/c/LineageOS/android_device_lenovo_YTX703-common/+/229407/6/config.fs",
+      "revId": "d64eea764fdb29afa77b4c6ecea9f6079cbf9f1f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
