@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "940f3872_ea474105",
+        "filename": "sepolicy/file_contexts",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2018-09-30T03:11:26Z",
+      "side": 0,
+      "message": "we are abandoning ipacm?",
+      "revId": "e2a83187d219b60383dfd06c051ca0927ef16453",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
