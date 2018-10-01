@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad598c59_fa7650f5",
+        "filename": "config.fs",
+        "patchSetId": 15
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-10-01T16:37:47Z",
+      "side": 1,
+      "message": "Unrelated.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "9c59df12302cd3b40d236e7e9f5bb0d2e4a66124",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd869a21_fbfa6315",
+        "filename": "sepolicy/property_contexts",
+        "patchSetId": 15
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2018-10-01T16:37:47Z",
+      "side": 1,
+      "message": "Unrelated.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 61
+      },
+      "revId": "9c59df12302cd3b40d236e7e9f5bb0d2e4a66124",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
