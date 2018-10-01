@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
      Copyright (C) 2018 The LineageOS Project
 
@@ -16,4 +17,7 @@
 <resources>
     <!-- Whether notify fingerprint client of successful cancelled authentication -->
     <bool name="config_notifyClientOnFingerprintCancelSuccess">true</bool>
+
+   <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
+    <bool name="config_cleanupUnusedFingerprints">false</bool>
 </resources>
