@@ -29,7 +29,6 @@ import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 
 on early-init
-    symlink /data/tombstones /tombstones
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
