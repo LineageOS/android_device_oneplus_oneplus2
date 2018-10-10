@@ -414,7 +414,7 @@ service per_proxy /system/vendor/bin/pm-proxy
 on property:init.svc.per_mgr=running
     start per_proxy
 
-on property:sys.powerctl=*
+on property:sys.shutdown.requested=*
     stop per_proxy
 
 service thermal-engine /system/vendor/bin/thermal-engine
