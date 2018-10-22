@@ -177,12 +177,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8994 \
     flp.conf \
-    gps.conf \
-    izat.conf \
-    lowi.conf \
-    quipc.conf \
-    sap.conf \
-    xtwifi.conf
+    gps.conf
 
 # HIDL
 PRODUCT_PACKAGES += \
