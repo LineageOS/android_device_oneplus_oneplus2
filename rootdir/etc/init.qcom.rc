@@ -767,12 +767,6 @@ service ftm_ffbm /system/bin/ftmdaemon
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
 
-service loc_launcher /system/vendor/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
-    class late_start
-    group gps inet net_raw oem_2950 net_admin wifi
-    writepid /dev/cpuset/system-background/tasks
-
 service drmdiag /system/bin/drmdiagapp
     class late_start
     user root
