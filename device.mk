@@ -177,7 +177,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     gps.msm8994 \
     flp.conf \
-    gps.conf
+    gps.conf \
+    izat.conf \
+    sap.conf
 
 # HIDL
 PRODUCT_PACKAGES += \
