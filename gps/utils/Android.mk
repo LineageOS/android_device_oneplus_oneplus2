@@ -11,8 +11,8 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_SRC_FILES += \
     loc_log.cpp \
     loc_cfg.cpp \
-    msg_q.cpp \
-    linked_list.cpp \
+    msg_q.c \
+    linked_list.c \
     loc_target.cpp \
     platform_lib_abstractions/elapsed_millis_since_boot.cpp \
     LocHeap.cpp \
@@ -55,11 +55,8 @@ LOCAL_COPY_HEADERS:= \
     loc_misc_utils.h
 
 LOCAL_MODULE := libgps.utils
-<<<<<<< HEAD
 LOCAL_MODULE_OWNER := qcom
 LOCAL_VENDOR_MODULE := true
-=======
->>>>>>> 00d5282... ether: gps: Enabling CLANG compilation and fixing all resulting errors
 
 LOCAL_MODULE_TAGS := optional
 
