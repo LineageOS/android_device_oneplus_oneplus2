@@ -11,8 +11,8 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_SRC_FILES += \
     loc_log.cpp \
     loc_cfg.cpp \
-    msg_q.cpp \
-    linked_list.cpp \
+    msg_q.c \
+    linked_list.c \
     loc_target.cpp \
     platform_lib_abstractions/elapsed_millis_since_boot.cpp \
     LocHeap.cpp \
