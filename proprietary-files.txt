@@ -234,6 +234,7 @@ vendor/lib64/hw/gatekeeper.msm8994.so
 -lib64/libloc_api_v02.so
 -lib64/libloc_ds_api.so
 vendor/lib64/hw/flp.default.so
+vendor/lib64/libdataitems.so
 vendor/lib64/libflp.so
 vendor/lib64/libgeofence.so
 vendor/lib64/libizat_core.so
