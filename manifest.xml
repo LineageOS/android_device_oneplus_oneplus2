@@ -7,6 +7,10 @@
             <name>IDevicesFactory</name>
             <instance>default</instance>
         </interface>
+        <interface>
+            <name>IDevicesFactory</name>
+            <instance>msd</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.audio.effect</name>
