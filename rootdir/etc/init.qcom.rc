@@ -29,7 +29,6 @@ import /vendor/etc/init/hw/init.qcom.power.rc
 import /vendor/etc/init/hw/init.qcom.usb.rc
 
 on early-init
-    symlink /data/tombstones /tombstones
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
@@ -767,12 +766,6 @@ service ftm_ffbm /system/bin/ftmdaemon
 
 service cnss-daemon /system/vendor/bin/cnss-daemon -n -l
     class late_start
-
-service loc_launcher /system/vendor/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
-    class late_start
-    group gps inet net_raw oem_2950 net_admin wifi
-    writepid /dev/cpuset/system-background/tasks
 
 service drmdiag /system/bin/drmdiagapp
     class late_start

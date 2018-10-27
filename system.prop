@@ -64,12 +64,6 @@ dalvik.vm.boot-dex2oat-threads=4
 dalvik.vm.dex2oat-threads=2
 dalvik.vm.image-dex2oat-threads=4
 
-# GPS
-persist.gps.qc_nlp_in_use=1
-persist.loc.nlp_name=com.qualcomm.location
-ro.gps.agps_provider=1
-ro.pip.gated=0
-
 # Graphics
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
@@ -83,11 +77,6 @@ persist.metadata_dynfps.disable=true
 ro.opengles.version=196610
 ro.qualcomm.cabl=0
 ro.sf.lcd_density=480
-
-# IMS
-persist.dbg.ims_volte_enable=1
-persist.dbg.volte_avail_ovr=1
-persist.dbg.vt_avail_ovr=1
 
 # OEM Unlocking
 ro.oem_unlock_supported=1
