@@ -26,12 +26,7 @@ ro.config.vc_call_vol_steps=7
 
 # Bluetooth
 bluetooth.enable_timeout_ms=12000
-bluetooth.hfp.client=1
-bt.max.hfpclient.connections=1
 vendor.qcom.bluetooth.soc=rome
-ro.bluetooth.a4wp=true
-ro.bluetooth.emb_wp_mode=true
-ro.bluetooth.wipower=true
 
 # Camera
 camera.disable_zsl_mode=1
