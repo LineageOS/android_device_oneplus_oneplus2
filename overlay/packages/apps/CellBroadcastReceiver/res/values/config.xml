@@ -22,6 +22,4 @@
     <bool name="show_etws_settings">true</bool>
     <!-- Whether to enable CMAS settings (United States) -->
     <bool name="show_cmas_settings">true</bool>
-    <!-- Whether to enable channel 50 settings (Brazil) -->
-    <bool name="show_brazil_settings">true</bool>
 </resources>
