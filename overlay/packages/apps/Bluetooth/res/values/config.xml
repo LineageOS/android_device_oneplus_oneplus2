@@ -32,6 +32,13 @@
 <resources>
     <bool name="profile_supported_hfpclient">true</bool>
     <bool name="profile_supported_avrcp_controller">true</bool>
-    <bool name="profile_supported_a2dp_sink">false</bool>
     <bool name="profile_supported_sap">true</bool>
+
+    <!-- Configuring priorities of A2DP source codecs. Larger value means
+         higher priority. Value -1 means the codec is disabled.
+         Value 0 is reserved and should not be used here. Enabled codecs
+         should have priorities in the interval [1, 999999], and each priority
+         value should be unique. -->
+    <integer name="a2dp_source_codec_priority_aptx">-1</integer>
+    <integer name="a2dp_source_codec_priority_aptx_hd">-1</integer>
 </resources>
