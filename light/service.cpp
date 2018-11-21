@@ -33,8 +33,6 @@ using android::hardware::light::V2_0::implementation::Light;
 const static std::string kLcdBacklightPath = "/sys/class/leds/lcd-backlight/brightness";
 const static std::string kLcdMaxBacklightPath = "/sys/class/leds/lcd-backlight/max_brightness";
 const static std::string kButton1BacklightPath = "/sys/class/leds/button-backlight/brightness";
-const static std::string kButton2BacklightPath = "/sys/class/leds/button-backlight1/brightness";
-const static std::string kButton3BacklightPath = "/sys/class/leds/button-backlight2/brightness";
 const static std::string kRedLedPath = "/sys/class/leds/red/brightness";
 const static std::string kGreenLedPath = "/sys/class/leds/green/brightness";
 const static std::string kBlueLedPath = "/sys/class/leds/blue/brightness";
@@ -83,22 +81,6 @@ int main() {
         buttonBacklight.emplace_back(std::move(button1Backlight));
     } else {
         LOG(WARNING) << "Failed to open " << kButton1BacklightPath << ", error=" << errno
-                     << " (" << strerror(errno) << ")";
-    }
-
-    std::ofstream button2Backlight(kButton2BacklightPath);
-    if (button2Backlight) {
-        buttonBacklight.emplace_back(std::move(button2Backlight));
-    } else {
-        LOG(WARNING) << "Failed to open " << kButton2BacklightPath << ", error=" << errno
-                     << " (" << strerror(errno) << ")";
-    }
-
-    std::ofstream button3Backlight(kButton3BacklightPath);
-    if (button3Backlight) {
-        buttonBacklight.emplace_back(std::move(button3Backlight));
-    } else {
-        LOG(WARNING) << "Failed to open " << kButton3BacklightPath << ", error=" << errno
                      << " (" << strerror(errno) << ")";
     }
 
