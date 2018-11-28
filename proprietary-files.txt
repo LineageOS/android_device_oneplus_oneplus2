@@ -261,7 +261,6 @@ vendor/lib/libgsl.so|b90e66e879dfee14997282358ca4cf9cd3cbee83
 vendor/lib/libllvm-glnext.so|18ecddeb137e38ca12563a2b3a39dd2f6df1f68b
 vendor/lib/libllvm-qcom.so|ab8604edbedb9db19ac9f0cfbeb4473adf20b2c5
 vendor/lib/libllvm-qgl.so|ffd2e9c41d8976bf259b6463a1690a516daa458f
-vendor/lib/libmm-disp-apis.so|5475bf3d21201ce75597202ce81c4b15ce5b6868
 vendor/lib/librs_adreno.so|bb1d5cb84f14ed18fcbfb4815692cb196e44f180
 vendor/lib/librs_adreno_sha1.so|be8a817743950dac6e22b50cbd9657c2d35c35f2
 vendor/lib/libscale.so|9c1044395f1a93b10d3f85ce3123a73676b1bac5
@@ -282,7 +281,6 @@ vendor/lib64/libgsl.so|e6435ecf1baae08408a0cc43e1568ce42f1ddb56
 vendor/lib64/libllvm-glnext.so|abbf71eceb4048c63741cc43f2c15d4f8034bffa
 vendor/lib64/libllvm-qcom.so|10fe39e71615629bb5af03794fd0a970f4b700fc
 vendor/lib64/libllvm-qgl.so|192a30d29c1f0c5e2a6f38ca3df58118be85f346
-vendor/lib64/libmm-disp-apis.so|157a9d0e3229ae53ecae7a0dcf7cf9762804ff7f
 vendor/lib64/librs_adreno.so|18e913b6d8f79e4b8563a8c8a0b2475e609d4813
 vendor/lib64/librs_adreno_sha1.so|ef430803f5b7623d774166d7c6130012f5f24845
 vendor/lib64/libscale.so|248355dab3b68ad2fa320b173580cdf9410bdc66
@@ -358,10 +356,12 @@ vendor/lib/libdisp-aba.so
 vendor/lib/libmm-abl-oem.so
 -vendor/lib/libmm-abl.so
 vendor/lib/libmm-als.so
+vendor/lib/libmm-disp-apis.so
 vendor/lib/libmm-qdcm.so
 vendor/lib64/libdisp-aba.so
 vendor/lib64/libmm-abl-oem.so
 -vendor/lib64/libmm-abl.so
+vendor/lib64/libmm-disp-apis.so
 vendor/lib64/libmm-als.so
 vendor/lib64/libmm-qdcm.so
 
