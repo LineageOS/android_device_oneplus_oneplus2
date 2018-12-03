@@ -295,6 +295,7 @@ vendor/lib64/hw/keystore.msm8994.so
 
 # Media - OxygenOS 3.6.0
 vendor/lib/libDivxDrm.so
+vendor/lib/libFlacSwDec.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libOmxAacDec.so
 vendor/lib/libOmxAmrwbplusDec.so
@@ -305,6 +306,7 @@ vendor/lib/libSHIMDivxDrm.so
 vendor/lib/libmm-color-convertor.so
 vendor/lib/libmmosal.so
 vendor/lib64/libDivxDrm.so
+vendor/lib64/libFlacSwDec.so
 vendor/lib64/libI420colorconvert.so
 vendor/lib64/libOmxAacDec.so
 vendor/lib64/libOmxAmrwbplusDec.so
