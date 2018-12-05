@@ -290,8 +290,8 @@ etc/firmware/a420_pfp.fw
 etc/firmware/a420_pm4.fw
 
 # Keystore - OxygenOS 3.6.0
-vendor/lib/hw/keystore.msm8994.so
-vendor/lib64/hw/keystore.msm8994.so
+vendor/lib64/hw/keystore.msm8994.so|567487839c061bc76f020ddb7b3e4abe5b2bd93b
+vendor/lib64/libcrypto_keystore.so|a09a8832939b5e15be00386293854af667e031db
 
 # Media - OxygenOS 3.6.0
 vendor/lib/libDivxDrm.so
