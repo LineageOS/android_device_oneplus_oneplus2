@@ -166,10 +166,6 @@ on init
     write /proc/sys/vm/dirty_ratio 15
     write /proc/sys/vm/dirty_background_ratio 1
 
-    # Modify for drv2605 support
-    chmod 0666 /dev/drv2605
-    chown system system /dev/drv2605
-
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
