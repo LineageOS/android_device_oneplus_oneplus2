@@ -181,9 +181,6 @@ BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
 TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/libril-qc-qmi-1.so|rild_socket.so
 
-# VR
-USE_DEVICE_SPECIFIC_VR := true
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_WLAN_DEVICE := qcwcn
