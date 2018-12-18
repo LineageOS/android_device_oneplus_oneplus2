@@ -552,7 +552,6 @@
 
     <path name="audio-ull-playback speaker-and-headphones">
         <path name="audio-ull-playback" />
-        <path name="audio-ull-playback headphones" />
     </path>
 
     <path name="audio-ull-playback hdmi">
@@ -1018,7 +1017,6 @@
 
     <path name="audio-record-compress bt-sco-wb">
         <ctl name="AUX PCM SampleRate" value="16000" />
-        <path name="audio-record-compress bt-sco" />
     </path>
 
     <path name="audio-record-compress usb-headset-mic">
@@ -1031,7 +1029,6 @@
 
     <path name="low-latency-record bt-sco-wb">
         <ctl name="AUX PCM SampleRate" value="16000" />
-        <path name="low-latency-record bt-sco" />
     </path>
 
     <path name="fm-virtual-record capture-fm">
