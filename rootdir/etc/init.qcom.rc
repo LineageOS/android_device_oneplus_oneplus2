@@ -649,7 +649,6 @@ service sensors /system/vendor/bin/sensors.qcom
     user root
     group root system
     disabled
-    writepid /dev/cpuset/system-background/tasks
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
