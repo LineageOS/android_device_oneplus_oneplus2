@@ -1,0 +1,1 @@
+allow sensors self:capability net_raw;
