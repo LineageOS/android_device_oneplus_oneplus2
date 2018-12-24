@@ -49,8 +49,6 @@ on fs
     restorecon_recursive /persist
 
 on init
-    export LD_PRELOAD libshim_atomic.so
-
     start program_bdaddr
 
     chmod 0644 /proc/cmdline
