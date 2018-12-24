@@ -7,6 +7,3 @@ allow init self:netlink_route_socket { create nlmsg_read read write };
 allow init sysfs_scheduler:file { open setattr write };
 allow init sysfs_leds:lnk_file read;
 allow init sysfs_graphics:file setattr;
-
-# required for LD_SHIM_LIBS
-allow init { domain -lmkd -crash_dump }:process noatsecure;
