@@ -96,9 +96,6 @@ on init
     chown system system /sys/class/leds/led:torch_1/brightness
     chmod 0666 /sys/class/leds/led:torch_1/brightness
 
-    # Scheduler
-    chown system system /sys/module/cpu_boost/parameters/sysctl_thermal_aware_scheduling
-
     # Touchscreen
     chown system system /proc/touchpanel/double_swipe
     chmod 0660 /proc/touchpanel/double_swipe
