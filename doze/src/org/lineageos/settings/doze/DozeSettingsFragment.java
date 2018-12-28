@@ -96,7 +96,11 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         Switch switchWidget = switchBar.findViewById(android.R.id.switch_widget);
         switchWidget.setChecked(dozeEnabled);
         switchWidget.setOnCheckedChangeListener(this);
-        switchBar.setOnClickListener(v -> switchWidget.setChecked(!switchWidget.isChecked()));
+        switchBar.setActivated(dozeEnabled);
+        switchBar.setOnClickListener(v -> {
+            switchWidget.setChecked(!switchWidget.isChecked());
+            switchBar.setActivated(switchWidget.isChecked());
+        });
     }
 
     @Override
