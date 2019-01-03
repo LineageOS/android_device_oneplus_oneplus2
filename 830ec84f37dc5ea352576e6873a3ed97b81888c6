@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6721f039_33c7c7b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2019-01-03T08:02:48Z",
+      "side": 1,
+      "message": "\"keystore\"",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "830ec84f37dc5ea352576e6873a3ed97b81888c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55f5b1da_9cf66c9b",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2019-01-03T08:02:48Z",
+      "side": 1,
+      "message": "no need to mention this because we didn\u0027t do it for other blobs and the hax is mentioned in commit message and muppet commit",
+      "range": {
+        "startLine": 292,
+        "startChar": 28,
+        "endLine": 292,
+        "endChar": 35
+      },
+      "revId": "830ec84f37dc5ea352576e6873a3ed97b81888c6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
