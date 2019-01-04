@@ -31,7 +31,7 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
 
-LOCAL_C_INCLUDES += hardware/qcom/media/mm-core/inc
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-media)/mm-core/inc
 
 ifneq (1,$(filter 1,$(shell echo "$$(( $(PLATFORM_SDK_VERSION) >= 17 ))" )))
   LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/socket.h
