@@ -4372,6 +4372,7 @@ void QCamera2HardwareInterface::camEvtHandle(uint32_t /*camera_handle*/,
                         obj->mDeffCond.broadcast();
                         CDBG_HIGH("%s: broadcast mDeffCond signal\n", __func__);
                     }
+                    [[clang::fallthrough]];
                 default:
                     obj->processEvt(QCAMERA_SM_EVT_EVT_NOTIFY, payload);
                     break;
