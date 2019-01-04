@@ -540,10 +540,11 @@ int32_t QCameraStateMachine::procEvtPreviewStoppedState(qcamera_sm_evt_enum_t ev
         }
         break;
     case QCAMERA_SM_EVT_RELEASE_RECORIDNG_FRAME:
-    {
-        ALOGD("Free video handle %d %d", evt, m_state);
-        QCameraVideoMemory::closeNativeHandle((const void *)payload);
-    }
+        {
+            ALOGD("Free video handle %d %d", evt, m_state);
+            QCameraVideoMemory::closeNativeHandle((const void *)payload);
+        }
+        [[clang::fallthrough]];
     case QCAMERA_SM_EVT_START_RECORDING:
     case QCAMERA_SM_EVT_STOP_RECORDING:
     case QCAMERA_SM_EVT_PREPARE_SNAPSHOT:
@@ -895,10 +896,11 @@ int32_t QCameraStateMachine::procEvtPreviewReadyState(qcamera_sm_evt_enum_t evt,
         }
         break;
     case QCAMERA_SM_EVT_RELEASE_RECORIDNG_FRAME:
-    {
-        ALOGD("Free video handle %d %d", evt, m_state);
-        QCameraVideoMemory::closeNativeHandle((const void *)payload);
-    }
+        {
+            ALOGD("Free video handle %d %d", evt, m_state);
+            QCameraVideoMemory::closeNativeHandle((const void *)payload);
+        }
+        [[clang::fallthrough]];
     case QCAMERA_SM_EVT_START_NODISPLAY_PREVIEW:
     case QCAMERA_SM_EVT_START_RECORDING:
     case QCAMERA_SM_EVT_STOP_RECORDING:
@@ -1332,10 +1334,11 @@ int32_t QCameraStateMachine::procEvtPreviewingState(qcamera_sm_evt_enum_t evt,
         }
         break;
     case QCAMERA_SM_EVT_RELEASE_RECORIDNG_FRAME:
-    {
-        ALOGD("Free video handle %d %d", evt, m_state);
-        QCameraVideoMemory::closeNativeHandle((const void *)payload);
-    }
+        {
+            ALOGD("Free video handle %d %d", evt, m_state);
+            QCameraVideoMemory::closeNativeHandle((const void *)payload);
+        }
+        [[clang::fallthrough]];
     case QCAMERA_SM_EVT_CANCEL_PICTURE:
     case QCAMERA_SM_EVT_STOP_RECORDING:
     case QCAMERA_SM_EVT_RELEASE:
