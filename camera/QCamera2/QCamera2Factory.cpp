@@ -65,6 +65,13 @@ QCamera2Factory::QCamera2Factory()
     char prop[PROPERTY_VALUE_MAX];
     property_get("persist.camera.HAL3.enabled", prop, "1");
     int isHAL3Enabled = atoi(prop);
+    //Query camera at this point in order
+    //to avoid any delays during subsequent
+    //calls to 'getCameraInfo()'
+    for (int i = 0 ; i < mNumOfCameras ; i++) {
+        getCameraInfo(i, &info);
+    }
+    //
 
     if ((mNumOfCameras > 0) && (mNumOfCameras <= MM_CAMERA_MAX_NUM_SENSORS)) {
         mHalDescriptors = new hal_desc[mNumOfCameras];
@@ -78,10 +85,6 @@ QCamera2Factory::QCamera2Factory()
                 } else {
                     mHalDescriptors[i].device_version = CAMERA_DEVICE_API_VERSION_1_0;
                 }
-                //Query camera at this point in order
-                //to avoid any delays during subsequent
-                //calls to 'getCameraInfo()'
-                getCameraInfo(i, &info);
             }
         } else {
             ALOGE("%s: Not enough resources to allocate HAL descriptor table!",

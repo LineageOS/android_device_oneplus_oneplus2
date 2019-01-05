@@ -40,7 +40,7 @@ ProximitySensor::ProximitySensor()
 {
     //Added for debug
     LOGV("ProximitySensor::ProximitySensor gets called!");
-	
+
     mPendingEvent.version = sizeof(sensors_event_t);
     mPendingEvent.sensor = ID_P;
     mPendingEvent.type = SENSOR_TYPE_TIME_OF_FLIGHT;
@@ -76,7 +76,7 @@ int ProximitySensor::setInitialState() {
 		return 0;
     }
     else{
-		LOGV("%s:%d Pend event failed!", __func__, __LINE__);		
+		LOGV("%s:%d Pend event failed!", __func__, __LINE__);
     	return rc;
     }
 }
@@ -99,7 +99,7 @@ int ProximitySensor::enable(int32_t, int en) {
 		LOGE("%s:%d open %s failed(%s), try to open %s", __func__, __LINE__, PROXIMITY_ENABLE_FILENAME_CCI, strerror(errno), PROXIMITY_ENABLE_FILENAME_I2C);
 		fd = open(PROXIMITY_ENABLE_FILENAME_I2C, O_RDWR);
 	}
-	
+
         if (fd >= 0) {
             buf[1] = 0;
             if (flags) {
@@ -110,15 +110,15 @@ int ProximitySensor::enable(int32_t, int en) {
 	    LOGV("%s:%d fd = %d, flags = %d", __func__, __LINE__, fd, flags);
 
            err = write(fd, buf, sizeof(buf));
-	    LOGV("%s:%d after write", __func__, __LINE__, fd, flags);            
+	    LOGV("%s:%d after write", __func__, __LINE__, fd, flags);
 	    if(err <= 0){
 		LOGE("%s:%d write %d failed: %s", __func__, __LINE__, fd, strerror(errno));
-	       close(fd);			
+	       close(fd);
 		return err;
 	    }
 	    else
 		LOGV("%s:%d write successfully!", __func__, __LINE__, fd, flags);
-		
+
             close(fd);
             mEnabled = flags;
             setInitialState();
@@ -148,7 +148,7 @@ int ProximitySensor::batch(int handle, int flags, int64_t period_ns, int64_t tim
 	 	if(fd < 0){
 			LOGE("%s:%d open %s failed(%s), try to open %s", __func__, __LINE__, PROXIMITY_SET_DELAY_FILENAME_CCI, strerror(errno), PROXIMITY_SET_DELAY_FILENAME_I2C);
 			fd = open(PROXIMITY_SET_DELAY_FILENAME_I2C, O_RDWR);
-	 	}	 
+	 	}
         if (fd >= 0) {
 		   	char buf[80];
 			sprintf(buf,"%lld", period_ns / 1000000);
@@ -223,7 +223,7 @@ again:
 		    		mPendingEvent.data[0] = event->value;
 		    		LOGE("%s:%d mPendingEvent.data[0] = %d",__func__, __LINE__, event->value);
                 }
-            } 
+            }
 			/*
 	    	else if (event->code == ABS_X)
 				mPendingEvent.data[1] = event->value;
@@ -273,7 +273,7 @@ again:
 			}
 
             LOGV("ProximitySensor: gets one ps data event!");
-        } 
+        }
 		else if (type == EV_SYN) {
             mPendingEvent.timestamp = timevalToNano(event->time);
             if (mEnabled) {
@@ -290,11 +290,11 @@ again:
         mInputReader.next();
     }
 #if 0
-	LOGV("HAL: distance: %f cm tv_sec: %f tv_usec: %f " 
-      "distance: %fmm error_code: %x signalRate_mcps: %f " 
-      "rtnAmbRate(kcps): %f rtnConvTime: %f dmax_sq: %f", 
-      mPendingEvent.data[0], mPendingEvent.data[1], mPendingEvent.data[2], mPendingEvent.data[3], 
-      mPendingEvent.data[4], mPendingEvent.data[5], mPendingEvent.data[6],mPendingEvent.data[7], 
+	LOGV("HAL: distance: %f cm tv_sec: %f tv_usec: %f "
+      "distance: %fmm error_code: %x signalRate_mcps: %f "
+      "rtnAmbRate(kcps): %f rtnConvTime: %f dmax_sq: %f",
+      mPendingEvent.data[0], mPendingEvent.data[1], mPendingEvent.data[2], mPendingEvent.data[3],
+      mPendingEvent.data[4], mPendingEvent.data[5], mPendingEvent.data[6],mPendingEvent.data[7],
       mPendingEvent.data[8]);
 #endif
 

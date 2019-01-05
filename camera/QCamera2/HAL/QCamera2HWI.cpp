@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2016, The Linux Foundataion. All rights reserved.
+/* Copyright (c) 2012-2015, The Linux Foundataion. All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are
@@ -535,7 +535,6 @@ void QCamera2HardwareInterface::release_recording_frame(
             struct camera_device *device, const void *opaque)
 {
     ATRACE_CALL();
-    int32_t ret = NO_ERROR;
     QCamera2HardwareInterface *hw =
         reinterpret_cast<QCamera2HardwareInterface *>(device->priv);
     if (!hw) {
@@ -547,24 +546,9 @@ void QCamera2HardwareInterface::release_recording_frame(
         return;
     }
     CDBG_HIGH("%s: E", __func__);
-
-#ifdef USE_MEDIA_EXTENSIONS
-    //Close and delete duplicated native handle and FD's
-    if (hw->mVideoMem != NULL) {
-        ret = hw->mVideoMem->closeNativeHandle(opaque,
-              hw->mStoreMetaDataInFrame > 0);
-        if (ret != NO_ERROR) {
-            ALOGE("Invalid video metadata");
-            return;
-        }
-    } else {
-       ALOGW("Possible FD leak. Release recording called after stop");
-    }
-#endif
-
     hw->lockAPI();
     qcamera_api_result_t apiResult;
-    ret = hw->processAPI(QCAMERA_SM_EVT_RELEASE_RECORIDNG_FRAME, (void *)opaque);
+    int32_t ret = hw->processAPI(QCAMERA_SM_EVT_RELEASE_RECORIDNG_FRAME, (void *)opaque);
     if (ret == NO_ERROR) {
         hw->waitAPIResult(QCAMERA_SM_EVT_RELEASE_RECORIDNG_FRAME, &apiResult);
     }
@@ -595,12 +579,6 @@ int QCamera2HardwareInterface::auto_focus(struct camera_device *device)
         return BAD_VALUE;
     }
     CDBG_HIGH("[KPI Perf] %s : E PROFILE_AUTO_FOCUS", __func__);
-    if (hw->mParameters.isAFRunning()) {
-        CDBG_HIGH("[KPI_Perf] %s : X AutoFocus is already active, returning!!",
-                __func__);
-        return NO_ERROR;
-    }
-
     hw->lockAPI();
     qcamera_api_result_t apiResult;
     ret = hw->processAPI(QCAMERA_SM_EVT_START_AUTO_FOCUS, NULL);
@@ -1100,6 +1078,7 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(uint32_t cameraId)
       m_cbNotifier(this),
       m_bPreviewStarted(false),
       m_bRecordStarted(false),
+      m_currentFocusState(CAM_AF_SCANNING),
       m_pPowerModule(NULL),
       mDumpFrmCnt(0U),
       mDumpSkipCnt(0U),
@@ -1138,9 +1117,6 @@ QCamera2HardwareInterface::QCamera2HardwareInterface(uint32_t cameraId)
       mInputCount(0),
       mAdvancedCaptureConfigured(false),
       mHDRBracketingEnabled(false)
-#ifdef USE_MEDIA_EXTENSIONS
-      , mVideoMem(NULL)
-#endif
 {
     getLogLevel();
     ATRACE_CALL();
@@ -1752,15 +1728,13 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(
         {
             if (isNoDisplayMode()) {
                 mem = new QCameraStreamMemory(mGetMemory,
-			mCallbackCookie,
                         bCachedMem,
                         (bPoolMem) ? &m_memoryPool : NULL,
                         stream_type);
             } else {
                 cam_dimension_t dim;
-                QCameraGrallocMemory *grallocMemory = NULL;
-
-                grallocMemory = new QCameraGrallocMemory(mGetMemory, mCallbackCookie);
+                QCameraGrallocMemory *grallocMemory =
+                    new QCameraGrallocMemory(mGetMemory);
 
                 mParameters.getStreamDimension(stream_type, dim);
                 if (grallocMemory)
@@ -1774,11 +1748,11 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(
     case CAM_STREAM_TYPE_POSTVIEW:
         {
             if (isNoDisplayMode() || isPreviewRestartEnabled()) {
-                mem = new QCameraStreamMemory(mGetMemory, mCallbackCookie, bCachedMem);
+                mem = new QCameraStreamMemory(mGetMemory, bCachedMem);
             } else {
                 cam_dimension_t dim;
                 QCameraGrallocMemory *grallocMemory =
-                        new QCameraGrallocMemory(mGetMemory, mCallbackCookie);
+                        new QCameraGrallocMemory(mGetMemory);
 
                 mParameters.getStreamDimension(stream_type, dim);
                 if (grallocMemory)
@@ -1795,7 +1769,6 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(
     case CAM_STREAM_TYPE_METADATA:
     case CAM_STREAM_TYPE_OFFLINE_PROC:
         mem = new QCameraStreamMemory(mGetMemory,
-                mCallbackCookie,
                 bCachedMem,
                 (bPoolMem) ? &m_memoryPool : NULL,
                 stream_type);
@@ -1806,15 +1779,8 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamBuf(
             if (atoi(value) == 0) {
                 bCachedMem = QCAMERA_ION_USE_NOCACHE;
             }
-            CDBG_HIGH("%s: %s video buf allocated ", __func__,
-                    (bCachedMem == 0) ? "Uncached" : "Cached" );
-            QCameraVideoMemory *videoMemory =
-                    new QCameraVideoMemory(mGetMemory, mCallbackCookie, bCachedMem);
-
-            mem = videoMemory;
-#ifdef USE_MEDIA_EXTENSIONS
-            mVideoMem = videoMemory;
-#endif
+            CDBG_HIGH("%s: vidoe buf using cached memory = %d", __func__, bCachedMem);
+            mem = new QCameraVideoMemory(mGetMemory, bCachedMem);
         }
         break;
     case CAM_STREAM_TYPE_DEFAULT:
@@ -2115,7 +2081,7 @@ QCameraMemory *QCamera2HardwareInterface::allocateStreamUserBuf(
     switch (streamInfo->stream_type) {
     case CAM_STREAM_TYPE_VIDEO: {
         QCameraVideoMemory *video_mem = new QCameraVideoMemory(
-                mGetMemory, mCallbackCookie, FALSE, CAM_STREAM_BUF_TYPE_USERPTR);
+                mGetMemory, FALSE, CAM_STREAM_BUF_TYPE_USERPTR);
         video_mem->allocateMeta(streamInfo->num_bufs);
         mem = static_cast<QCameraMemory *>(video_mem);
     }
@@ -2384,10 +2350,6 @@ int QCamera2HardwareInterface::startRecording()
 {
     int32_t rc = NO_ERROR;
     CDBG_HIGH("%s: E", __func__);
-#ifdef USE_MEDIA_EXTENSIONS
-    mVideoMem = NULL;
-#endif
-
     if (mParameters.getRecordingHintValue() == false) {
         ALOGE("%s: start recording when hint is false, stop preview first", __func__);
         stopPreview();
@@ -2433,10 +2395,6 @@ int QCamera2HardwareInterface::stopRecording()
     CDBG_HIGH("%s: E", __func__);
     int rc = stopChannel(QCAMERA_CH_TYPE_VIDEO);
 
-#ifdef USE_MEDIA_EXTENSIONS
-    m_cbNotifier.flushVideoNotifications();
-    mVideoMem = NULL;
-#endif
 #ifdef HAS_MULTIMEDIA_HINTS
     if (m_pPowerModule) {
         if (m_pPowerModule->powerHint) {
@@ -4521,7 +4479,7 @@ int32_t QCamera2HardwareInterface::processAutoFocusEvent(cam_auto_focus_data_t &
     int32_t ret = NO_ERROR;
     CDBG_HIGH("%s: E",__func__);
 
-    mParameters.setFocusState(focus_data.focus_state);
+    m_currentFocusState = focus_data.focus_state;
 
     cam_focus_mode_type focusMode = mParameters.getFocusMode();
     switch (focusMode) {
@@ -7007,6 +6965,26 @@ bool QCamera2HardwareInterface::is4k2kResolution(cam_dimension_t* resolution)
       enabled = true;
    }
    return enabled;
+}
+
+
+/*===========================================================================
+ * FUNCTION   : isAFRunning
+ *
+ * DESCRIPTION: if AF is in progress while in Auto/Macro focus modes
+ *
+ * PARAMETERS : none
+ *
+ * RETURN     : true: AF in progress
+ *              false: AF not in progress
+ *==========================================================================*/
+bool QCamera2HardwareInterface::isAFRunning()
+{
+    bool isAFInProgress = (m_currentFocusState == CAM_AF_SCANNING &&
+            (mParameters.getFocusMode() == CAM_FOCUS_MODE_AUTO ||
+            mParameters.getFocusMode() == CAM_FOCUS_MODE_MACRO));
+
+    return isAFInProgress;
 }
 
 /*===========================================================================

@@ -52,7 +52,7 @@ LOCAL_SRC_FILES := \
     src/mm_jpegdec.c
 
 LOCAL_MODULE           := libmmjpeg_interface
-LOCAL_SHARED_LIBRARIES := liblog libdl libcutils liblog libqomx_core
+LOCAL_SHARED_LIBRARIES := libdl libcutils liblog libqomx_core
 LOCAL_MODULE_TAGS := optional
 
 LOCAL_32_BIT_ONLY := $(BOARD_QTI_CAMERA_32BIT_ONLY)
