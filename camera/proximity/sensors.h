@@ -81,12 +81,12 @@ __BEGIN_DECLS
 #define EVENT_TYPE_TEMP             ABS_GAS
 
 
-// under default setting in acc driver, Full Scale = 2G, 1000 LSG = 1G   
+// under default setting in acc driver, Full Scale = 2G, 1000 LSG = 1G
 #define LSG                 (1000.0f)
 
 // conversion of acceleration data to SI units (m/s^2)
 #define RANGE_A                     (2*GRAVITY_EARTH)
-#define CONVERT_A                   (GRAVITY_EARTH / LSG) 
+#define CONVERT_A                   (GRAVITY_EARTH / LSG)
 #define CONVERT_A_X                 (CONVERT_A)
 #define CONVERT_A_Y                 (CONVERT_A)
 #define CONVERT_A_Z                 (CONVERT_A)

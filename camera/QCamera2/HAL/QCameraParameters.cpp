@@ -832,8 +832,7 @@ QCameraParameters::QCameraParameters()
       m_bHDRModeSensor(true),
       mOfflineRAW(false),
       m_bTruePortraitOn(false),
-      mCds_mode(CAM_CDS_MODE_OFF),
-      mFocusState(CAM_AF_SCANNING)
+      mCds_mode(CAM_CDS_MODE_OFF)
 {
     char value[PROPERTY_VALUE_MAX];
     // TODO: may move to parameter instead of sysprop
@@ -936,8 +935,7 @@ QCameraParameters::QCameraParameters(const String8 &params)
     mOfflineRAW(false),
     m_bTruePortraitOn(false),
     mCds_mode(CAM_CDS_MODE_OFF),
-    mParmEffect(CAM_EFFECT_MODE_OFF),
-    mFocusState(CAM_AF_SCANNING)
+    mParmEffect(CAM_EFFECT_MODE_OFF)
 {
     memset(&m_LiveSnapshotSize, 0, sizeof(m_LiveSnapshotSize));
     memset(&m_default_fps_range, 0, sizeof(m_default_fps_range));
@@ -2020,15 +2018,8 @@ bool QCameraParameters::UpdateHFRFrameRate(const QCameraParameters& params)
     CDBG_HIGH("%s: Requested params - : minFps = %d, maxFps = %d ",
                 __func__, parm_minfps, parm_maxfps);
 
-    const char *hfrStr;
+    const char *hfrStr = params.get(KEY_QC_VIDEO_HIGH_FRAME_RATE);
     const char *hsrStr = params.get(KEY_QC_VIDEO_HIGH_SPEED_RECORDING);
-
-    // Set HFR for OnePlus Camera app (slow-motion)
-    if (parm_minfps == 120000 && parm_maxfps == 120000) {
-        hfrStr = "120";
-    } else {
-        hfrStr = params.get(KEY_QC_VIDEO_HIGH_FRAME_RATE);
-    }
 
     const char *prev_hfrStr = CameraParameters::get(KEY_QC_VIDEO_HIGH_FRAME_RATE);
     const char *prev_hsrStr = CameraParameters::get(KEY_QC_VIDEO_HIGH_SPEED_RECORDING);
@@ -2149,14 +2140,6 @@ int32_t QCameraParameters::setPreviewFrameRate(const QCameraParameters& params)
 {
     const char *str = params.get(KEY_PREVIEW_FRAME_RATE);
     const char *prev_str = get(KEY_PREVIEW_FRAME_RATE);
-    int width, height;
-
-    // Force better preview size for WeChat
-    if (!strcmp(str, "15")) {
-        params.getPreviewSize(&width, &height);
-        if (width == 320 && height == 240)
-            CameraParameters::setPreviewSize(640, 480);
-    }
 
     if ( str ) {
         if ( prev_str &&
@@ -8532,10 +8515,6 @@ int32_t QCameraParameters::updateFlash(bool commitSettings)
     }
 
     if (value != mFlashDaemonValue) {
-        if (isAFRunning()) {
-            CDBG("%s: AF is running, cancel AF before changing flash mode ", __func__);
-            m_pCamOpsTbl->ops->cancel_auto_focus(m_pCamOpsTbl->camera_handle);
-        }
         CDBG("%s: Setting Flash value %d", __func__, value);
         if (ADD_SET_PARAM_ENTRY_TO_BATCH(m_pParamBuf, CAM_INTF_PARM_LED_MODE, value)) {
             ALOGE("%s:Failed to set led mode", __func__);
@@ -9484,7 +9463,11 @@ uint8_t QCameraParameters::getBurstNum()
  *==========================================================================*/
 uint32_t QCameraParameters::getJpegQuality()
 {
-    return 100;
+    int quality = getInt(KEY_JPEG_QUALITY);
+    if (quality < 0) {
+        quality = 85; // set to default quality value
+    }
+    return (uint32_t)quality;
 }
 
 /*===========================================================================
@@ -12232,25 +12215,5 @@ int32_t QCameraParameters::setCDSMode(int32_t cds_mode, bool initCommit)
 
     return rc;
 }
-
-/*===========================================================================
- * FUNCTION   : isAFRunning
- *
- * DESCRIPTION: if AF is in progress while in Auto/Macro focus modes
- *
- * PARAMETERS : none
- *
- * RETURN     : true: AF in progress
- *              false: AF not in progress
- *==========================================================================*/
-bool QCameraParameters::isAFRunning()
-{
-    bool isAFInProgress = ((mFocusState == CAM_AF_SCANNING) &&
-            ((mFocusMode == CAM_FOCUS_MODE_AUTO) ||
-            (mFocusMode == CAM_FOCUS_MODE_MACRO)));
-
-    return isAFInProgress;
-}
-
 
 }; // namespace qcamera

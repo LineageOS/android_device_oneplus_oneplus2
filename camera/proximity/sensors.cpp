@@ -67,12 +67,12 @@
 static const struct sensor_t sSensorList[] = {
         { 	SENSOR_PROXIMITY_LABEL,
           	"STMicroelectronics",
-          	1, 
+          	1,
 			SENSORS_PROXIMITY_HANDLE,
-	  		SENSOR_TYPE_TIME_OF_FLIGHT, 
-			PROXIMITY_MAX_RANGE, 
-			1, 
-			PROXIMITY_POWER_CONSUMPTION, 
+	  		SENSOR_TYPE_TIME_OF_FLIGHT,
+			PROXIMITY_MAX_RANGE,
+			1,
+			PROXIMITY_POWER_CONSUMPTION,
 			PROXIMITY_MIN_DELAY,
 			PROXIMITY_FIFO_RESERVED_COUNT,
 			PROXIMITY_FIFO_MAX_COUNT,
@@ -88,7 +88,7 @@ static int open_sensors(const struct hw_module_t* module, const char* id, struct
 
 
 static int sensors__get_sensors_list(struct sensors_module_t* module,
-                                     struct sensor_t const** list) 
+                                     struct sensor_t const** list)
 {
         *list = sSensorList;
         return ARRAY_SIZE(sSensorList);
@@ -152,7 +152,7 @@ private:
 
 sensors_poll_context_t::sensors_poll_context_t()
 {
-    //for proximity sensor	 
+    //for proximity sensor
     mSensors[proximity] = new ProximitySensor();
     mPollFds[proximity].fd = mSensors[proximity]->getFd();
     mPollFds[proximity].events = POLLIN;
@@ -182,12 +182,12 @@ sensors_poll_context_t::~sensors_poll_context_t() {
 int sensors_poll_context_t::activate(int handle, int enabled) {
 	//Added for debug
 	LOGV("sensors_poll_context_t::activate gets called!index = %d enabled = %d", handleToDriver(handle), enabled);
-	
+
     int index = handleToDriver(handle);
-    if (index < 0) 
+    if (index < 0)
 		return index;
     int err = mSensors[index]->enable(handle, enabled);
-	LOGV("%s:%d enabled = %d, err = %d", __func__, __LINE__, enabled, err);	
+	LOGV("%s:%d enabled = %d, err = %d", __func__, __LINE__, enabled, err);
     if (enabled && !err) {
         const char wakeMessage(WAKE_MESSAGE);
         int result = write(mWritePipeFd, &wakeMessage, 1);
@@ -199,10 +199,10 @@ int sensors_poll_context_t::activate(int handle, int enabled) {
 int sensors_poll_context_t::setDelay(int handle, int64_t ns) {
     //Added for debug
     LOGV("sensors_poll_context_t::setDelay gets called!");
-	
+
     int index = handleToDriver(handle);
     if (index < 0) return index;
-    return 0; 
+    return 0;
 }
 
 int sensors_poll_context_t::pollEvents(sensors_event_t* data, int count)
@@ -212,13 +212,13 @@ int sensors_poll_context_t::pollEvents(sensors_event_t* data, int count)
 
 	//Added for debug
 	LOGV("sensors_poll_context_t::pollEvents gets called!");
-	
+
     do {
-        // see if we have some leftover from the last poll()     
-        for (int i=0 ; count && i<numSensorDrivers ; i++) {			
+        // see if we have some leftover from the last poll()
+        for (int i=0 ; count && i<numSensorDrivers ; i++) {
             SensorBase* const sensor(mSensors[i]);
             if ((mPollFds[i].revents & POLLIN) || (sensor->hasPendingEvents())) {
-                int nb = sensor->readEvents(data, count);	
+                int nb = sensor->readEvents(data, count);
                 if (nb < count) {
                     // no more data for this sensor
                     mPollFds[i].revents = 0;
@@ -237,7 +237,7 @@ int sensors_poll_context_t::pollEvents(sensors_event_t* data, int count)
             if (n<0) {
                 LOGE("poll() failed (%s)", strerror(errno));
                 return -errno;
-            }		
+            }
             if (mPollFds[wake].revents & POLLIN) {
                 char msg;
                 int result = read(mPollFds[wake].fd, &msg, 1);
@@ -335,7 +335,7 @@ static int open_sensors(const struct hw_module_t* module, const char* id,
         dev->device.poll            = poll__poll;
 
 	    /* Batch processing */
-	    dev->device.batch           = poll__batch; 
+	    dev->device.batch           = poll__batch;
 
         *device = &dev->device.common;
         status = 0;
