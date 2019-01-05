@@ -1973,19 +1973,9 @@ uint32_t mm_stream_get_v4l2_fmt(cam_format_t fmt)
         val = V4L2_PIX_FMT_NV21;
         break;
     case CAM_FORMAT_BAYER_QCOM_RAW_10BPP_GBRG:
-    case CAM_FORMAT_BAYER_MIPI_RAW_10BPP_GBRG:
-        val= V4L2_PIX_FMT_SGBRG10;
-        break;
     case CAM_FORMAT_BAYER_QCOM_RAW_10BPP_GRBG:
-    case CAM_FORMAT_BAYER_MIPI_RAW_10BPP_GRBG:
-        val= V4L2_PIX_FMT_SGRBG10;
-        break;
     case CAM_FORMAT_BAYER_QCOM_RAW_10BPP_RGGB:
-    case CAM_FORMAT_BAYER_MIPI_RAW_10BPP_RGGB:
-        val= V4L2_PIX_FMT_SRGGB10;
-        break;
     case CAM_FORMAT_BAYER_QCOM_RAW_10BPP_BGGR:
-    case CAM_FORMAT_BAYER_MIPI_RAW_10BPP_BGGR:
         val= V4L2_PIX_FMT_SBGGR10;
         break;
     case CAM_FORMAT_YUV_422_NV61:

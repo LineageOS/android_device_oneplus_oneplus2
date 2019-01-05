@@ -31,7 +31,7 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -DCAMERA_ION_HEAP_ID=ION_IOMMU_HEAP_ID
 
-LOCAL_C_INCLUDES += hardware/qcom/media/mm-core/inc
+LOCAL_C_INCLUDES += $(call project-path-for,qcom-media)/mm-core/inc
 
 ifneq (1,$(filter 1,$(shell echo "$$(( $(PLATFORM_SDK_VERSION) >= 17 ))" )))
   LOCAL_CFLAGS += -include bionic/libc/kernel/common/linux/socket.h
@@ -41,7 +41,7 @@ LOCAL_CFLAGS += -Wall -Wextra -Wno-address
 
 LOCAL_SRC_FILES := $(MM_CAM_FILES)
 LOCAL_MODULE           := libmmcamera_interface
-LOCAL_SHARED_LIBRARIES := liblog libdl libcutils liblog
+LOCAL_SHARED_LIBRARIES := libdl libcutils liblog
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
 LOCAL_MODULE_TAGS := optional
 
