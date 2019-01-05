@@ -670,6 +670,7 @@ public:
     uint8_t getMobicatMask();
 
     cam_focus_mode_type getFocusMode() const {return mFocusMode;};
+    bool isAFRunning();
     int32_t setNumOfSnapshot();
     int32_t adjustPreviewFpsRange(cam_fps_range_t *fpsRange);
     bool isJpegPictureFormat() {return (mPictureFormat == CAM_FORMAT_JPEG);};
@@ -780,7 +781,8 @@ public:
             { return m_captureFrameConfig; };
     void setJpegRotation(int rotation);
     uint32_t getJpegRotation() { return mJpegRotation;};
-
+    void setFocusState(cam_autofocus_state_t focusState) { mFocusState = focusState; };
+    cam_autofocus_state_t getFocusState() { return mFocusState; };
 private:
     int32_t setPreviewSize(const QCameraParameters& );
     int32_t setVideoSize(const QCameraParameters& );
@@ -1064,6 +1066,7 @@ private:
 
     uint32_t mRotation;
     uint32_t mJpegRotation;
+    cam_autofocus_state_t mFocusState;
 };
 
 }; // namespace qcamera

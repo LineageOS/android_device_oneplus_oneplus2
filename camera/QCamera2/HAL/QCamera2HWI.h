@@ -1,4 +1,4 @@
-/* Copyright (c) 2012-2015, The Linux Foundataion. All rights reserved.
+/* Copyright (c) 2012-2016, The Linux Foundataion. All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are
@@ -212,6 +212,9 @@ public:
     static bool matchSnapshotNotifications(void *data, void *user_data);
     static bool matchPreviewNotifications(void *data, void *user_data);
     virtual int32_t flushPreviewNotifications();
+    static bool matchTimestampNotifications(void *data, void *user_data);
+    virtual int32_t flushVideoNotifications();
+
 private:
 
     camera_notify_callback         mNotifyCb;
@@ -592,7 +595,6 @@ private:
     bool bRetroPicture;
     // Signifies AEC locked during zsl snapshots
     bool m_bLedAfAecLock;
-    cam_autofocus_state_t m_currentFocusState;
 
     power_module_t *m_pPowerModule;   // power module
 
@@ -686,6 +688,9 @@ private:
     uint32_t mInputCount;
     bool mAdvancedCaptureConfigured;
     bool mHDRBracketingEnabled;
+#ifdef USE_MEDIA_EXTENSIONS
+    QCameraVideoMemory *mVideoMem;
+#endif
 };
 
 }; // namespace qcamera
