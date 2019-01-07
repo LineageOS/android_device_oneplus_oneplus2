@@ -150,6 +150,7 @@
 /dev/msm_hweffects        0660   system     audio
 /dev/msm_cad              0660   system     audio
 /dev/msm_fm               0660   system     audio
+/dev/msm_mp3*             0660   system     audio
 /dev/msm_mvs              0660   system     audio
 /dev/msm_pcm_lp_dec       0660   system     audio
 /dev/msm_preproc_ctl      0660   system     audio
