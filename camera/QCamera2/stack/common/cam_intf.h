@@ -392,6 +392,18 @@ typedef struct{
 
     /* Max cpp batch size */
     uint8_t max_batch_bufs_supported;
+#ifdef VENDOR_EDIT
+    size_t hal3_fps_ranges_tbl_cnt;                              /* fps ranges table size */
+    cam_fps_range_t hal3_fps_ranges_tbl[MAX_SIZES_CNT];          /* fps ranges table */
+#endif
+#ifdef VENDOR_EDIT
+    /*liuyan 20150523 add, set hw level*/
+    uint8_t islowfps;
+#endif
+#ifdef VENDOR_EDIT
+    size_t hal3_preview_video_sizes_tbl_cnt;                             /* video sizes table size */
+    cam_dimension_t hal3_preview_video_sizes_tbl[MAX_SIZES_CNT];         /* video sizes table */
+#endif
 } cam_capability_t;
 
 typedef enum {
@@ -760,6 +772,9 @@ typedef struct {
     INCLUDE(CAM_INTF_META_IMGLIB,                       cam_intf_meta_imglib_t,      1);
     INCLUDE(CAM_INTF_PARM_CAPTURE_FRAME_CONFIG,         cam_capture_frame_config_t,  1);
     INCLUDE(CAM_INTF_PARM_FLIP,                         int32_t,                     1);
+    INCLUDE(CAM_INTF_PARM_RATIO,                        int32_t,                     1);
+    INCLUDE(CAM_INTF_META_URGENT_STREAM_ID,             cam_stream_ID_t,             1);
+    INCLUDE(CAM_INTF_META_BF_STATS,                     cam_af_stats_info_t,         1);
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to
