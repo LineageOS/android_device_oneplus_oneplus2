@@ -192,6 +192,9 @@ public:
     QCamera3Exif *getExifData();
     mm_jpeg_exif_params_t get3AExifParams();
     uint8_t getMobicatMask();
+    static void getFlashInfo(const int cameraId,
+            bool& hasFlash,
+            char (&flashNode)[QCAMERA_MAX_FILEPATH_LENGTH]);
 
     template <typename fwkType, typename halType> struct QCameraMap {
         fwkType fwk_name;
