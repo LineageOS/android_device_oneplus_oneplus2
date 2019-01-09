@@ -224,7 +224,8 @@ const int32_t available_thumbnail_sizes[] = {0, 0,
                                              432, 288,
                                              480, 288,
                                              512, 288,
-                                             512, 384};
+                                             512, 384,
+                                             480, 480};
 
 const QCamera3HardwareInterface::QCameraMap<
         camera_metadata_enum_android_sensor_test_pattern_mode_t,
