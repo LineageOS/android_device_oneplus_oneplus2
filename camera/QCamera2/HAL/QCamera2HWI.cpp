@@ -6768,12 +6768,21 @@ int QCamera2HardwareInterface::calcThermalLevel(
             // Set lowest min FPS for now
             adjustedRange.min_fps = minFPS/1000.0f;
             adjustedRange.max_fps = minFPS/1000.0f;
+#ifdef VENDOR_EDIT
+            for (size_t i = 0; i < gCamCaps[mCameraId]->hal3_fps_ranges_tbl_cnt; i++) {
+                if (gCamCaps[mCameraId]->hal3_fps_ranges_tbl[i].min_fps < adjustedRange.min_fps) {
+                    adjustedRange.min_fps = gCamCaps[mCameraId]->hal3_fps_ranges_tbl[i].min_fps;
+                    adjustedRange.max_fps = adjustedRange.min_fps;
+                }
+            }
+#else
             for (size_t i = 0; i < gCamCaps[mCameraId]->fps_ranges_tbl_cnt; i++) {
                 if (gCamCaps[mCameraId]->fps_ranges_tbl[i].min_fps < adjustedRange.min_fps) {
                     adjustedRange.min_fps = gCamCaps[mCameraId]->fps_ranges_tbl[i].min_fps;
                     adjustedRange.max_fps = adjustedRange.min_fps;
                 }
             }
+#endif
             skipPattern = MAX_SKIP;
             adjustedRange.video_min_fps = adjustedRange.min_fps;
             adjustedRange.video_max_fps = adjustedRange.max_fps;
