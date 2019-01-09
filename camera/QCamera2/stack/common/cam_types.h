@@ -1265,14 +1265,6 @@ typedef struct {
     char stats_buffer_private_debug_data[STATS_BUFFER_DEBUG_DATA_SIZE];
 } cam_stats_buffer_exif_debug_t;
 
-/* 3A version*/
-typedef struct {
-    uint16_t major_version;
-    uint16_t minor_version;
-    uint16_t patch_version;
-    uint16_t new_feature_des;
-} cam_q3a_version_t;
-
 typedef struct {
     uint32_t tuning_data_version;
     size_t tuning_sensor_data_size;
