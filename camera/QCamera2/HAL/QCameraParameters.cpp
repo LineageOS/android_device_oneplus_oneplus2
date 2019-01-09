@@ -288,6 +288,7 @@ const char QCameraParameters::ISO_400[] = "ISO400";
 const char QCameraParameters::ISO_800[] = "ISO800";
 const char QCameraParameters::ISO_1600[] = "ISO1600";
 const char QCameraParameters::ISO_3200[] = "ISO3200";
+const char QCameraParameters::ISO_6400[] = "ISO6400";
 const char QCameraParameters::ISO_MANUAL[] = "manual";
 
 
@@ -633,7 +634,8 @@ const QCameraParameters::QCameraMap<cam_iso_mode_type>
     { ISO_400,   CAM_ISO_MODE_400 },
     { ISO_800,   CAM_ISO_MODE_800 },
     { ISO_1600,  CAM_ISO_MODE_1600 },
-    { ISO_3200,  CAM_ISO_MODE_3200 }
+    { ISO_3200,  CAM_ISO_MODE_3200 },
+    { ISO_6400,  CAM_ISO_MODE_6400 }
 };
 
 const QCameraParameters::QCameraMap<cam_hfr_mode_t>
@@ -6332,7 +6334,46 @@ int32_t  QCameraParameters::setISOValue(const char *isoValue)
         if (value != NAME_NOT_FOUND) {
             CDBG_HIGH("%s: Setting ISO value %s", __func__, isoValue);
             updateParamEntry(KEY_QC_ISO_MODE, isoValue);
+            if (!strcmp(isoValue, "ISO6400")) {
+                CDBG_HIGH("%s:%d ISO6400, will set iso value to 6400", __func__, __LINE__);
+                value = 6400;
+            }
             if (ADD_SET_PARAM_ENTRY_TO_BATCH(m_pParamBuf, CAM_INTF_PARM_ISO, value)) {
+                return BAD_VALUE;
+            }
+            return NO_ERROR;
+        } else {
+            int continuous_iso = 100;
+            if (!strcmp(isoValue, "ISO125"))
+              continuous_iso = 125;
+            else if (!strcmp(isoValue, "ISO160"))
+              continuous_iso = 160;
+            else if (!strcmp(isoValue, "ISO250"))
+              continuous_iso = 250;
+            else if (!strcmp(isoValue, "ISO320"))
+              continuous_iso = 320;
+            else if (!strcmp(isoValue, "ISO500"))
+              continuous_iso = 500;
+            else if (!strcmp(isoValue, "ISO640"))
+              continuous_iso = 640;
+            else if (!strcmp(isoValue, "ISO1000"))
+              continuous_iso = 1000;
+            else if (!strcmp(isoValue, "ISO1250"))
+              continuous_iso = 1250;
+            else if (!strcmp(isoValue, "ISO2000"))
+              continuous_iso = 2000;
+            else if (!strcmp(isoValue, "ISO2500"))
+              continuous_iso = 2500;
+            else if (!strcmp(isoValue, "ISO4000"))
+              continuous_iso = 4000;
+            else if (!strcmp(isoValue, "ISO5000"))
+              continuous_iso = 5000;
+            else {
+              ALOGE("Invalid ISO value: %s",
+                    (isoValue == NULL) ? "NULL" : isoValue);
+              return BAD_VALUE;
+            }
+            if (ADD_SET_PARAM_ENTRY_TO_BATCH(m_pParamBuf, CAM_INTF_PARM_ISO, continuous_iso)) {
                 return BAD_VALUE;
             }
             return NO_ERROR;
@@ -9723,6 +9764,9 @@ uint16_t QCameraParameters::getExifIsoSpeed()
         break;
     case CAM_ISO_MODE_3200:
         isoSpeed = 3200;
+        break;
+    case CAM_ISO_MODE_6400:
+        isoSpeed = 6400;
         break;
     }
     return isoSpeed;
