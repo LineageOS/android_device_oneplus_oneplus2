@@ -971,17 +971,7 @@ OMX_ERRORTYPE mm_jpeg_session_config_thumbnail(mm_jpeg_job_session_t* p_session)
   thumbnail_info.output_width = (OMX_U32)p_thumb_dim->dst_dim.width;
   thumbnail_info.output_height = (OMX_U32)p_thumb_dim->dst_dim.height;
 
-  if (p_session->thumb_from_main) {
-    if ((p_session->params.thumb_rotation == 90 ||
-      p_session->params.thumb_rotation == 270) &&
-      (p_session->params.rotation == 0 ||
-      p_session->params.rotation == 180)) {
-
-      thumbnail_info.output_width = (OMX_U32)p_thumb_dim->dst_dim.height;
-      thumbnail_info.output_height = (OMX_U32)p_thumb_dim->dst_dim.width;
-      thumbnail_info.rotation = p_session->params.rotation;
-    }
-  } else if ((p_thumb_dim->dst_dim.width > p_thumb_dim->src_dim.width) ||
+  if ((p_thumb_dim->dst_dim.width > p_thumb_dim->src_dim.width) ||
     (p_thumb_dim->dst_dim.height > p_thumb_dim->src_dim.height)) {
     CDBG_ERROR("%s:%d] Incorrect thumbnail dim %dx%d resetting to %dx%d",
       __func__, __LINE__, p_thumb_dim->dst_dim.width,
