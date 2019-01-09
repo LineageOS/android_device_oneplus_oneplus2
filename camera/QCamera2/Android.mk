@@ -34,9 +34,7 @@ LOCAL_SRC_FILES += \
 LOCAL_CFLAGS := -Wall -Wextra -Werror
 LOCAL_CFLAGS += -DHAS_MULTIMEDIA_HINTS
 
-ifeq ($(TARGET_USES_AOSP),true)
-LOCAL_CFLAGS += -DVANILLA_HAL
-endif
+LOCAL_CFLAGS += -DVENDOR_EDIT
 
 #use media extension
 ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
