@@ -1,4 +1,4 @@
-/*Copyright (c) 2012-2015, The Linux Foundation. All rights reserved.
+/*Copyright (c) 2012-2014, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -126,28 +126,17 @@ typedef struct{
   exif_tag_id_t tag_id;
 } QEXIF_INFO_DATA;
 
-/** QEXTN_DATA
-*   The structure used to carry addtional payload
-*   meant to be in EXIF Appx marker fields.
-*   @sw_3a_version
-**/
-typedef struct {
-  uint16_t sw_3a_version[4];
-} QEXTN_DATA;
-
 /**QOMX_EXIF_INFO
 *  The structure contains an array of exif tag
 *  structures(qexif_info_data) and should be passed to the OMX
 *  layer by the OMX client using the extension index.
 *  @exif_data - Array of exif tags
 *  @numOfEntries - Number of exif tags entries being passed in
-*                  the array
-*  @debug_data - specific debug information for internal use
+*                 the array
 **/
 typedef struct {
   QEXIF_INFO_DATA *exif_data;
   OMX_U32 numOfEntries;
-  QEXTN_DATA debug_data;
 } QOMX_EXIF_INFO;
 
 /**QOMX_YUV_FRAME_INFO
