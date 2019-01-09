@@ -4973,6 +4973,39 @@ int QCamera3HardwareInterface::initStaticMetadata(uint32_t cameraId)
                 idx+=4;
             }
             break;
+#ifdef VENDOR_EDIT
+        case HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED:
+            for (size_t i = 0; i < gCamCapability[cameraId]->hal3_preview_video_sizes_tbl_cnt; i++) {
+            available_stream_configs[idx] = scalar_formats[j];
+            available_stream_configs[idx+1] = gCamCapability[cameraId]->hal3_preview_video_sizes_tbl[i].width;
+            available_stream_configs[idx+2] = gCamCapability[cameraId]->hal3_preview_video_sizes_tbl[i].height;
+            available_stream_configs[idx+3] = ANDROID_SCALER_AVAILABLE_STREAM_CONFIGURATIONS_OUTPUT;
+            idx+=4;
+            }
+            break;
+        case HAL_PIXEL_FORMAT_YCbCr_420_888:
+            if (gCamCapability[cameraId]->islowfps == 0){
+                for (size_t i = 0; i < gCamCapability[cameraId]->picture_sizes_tbl_cnt; i++) {
+                available_stream_configs[idx] = scalar_formats[j];
+                available_stream_configs[idx+1] =
+                  gCamCapability[cameraId]->picture_sizes_tbl[i].width;
+                available_stream_configs[idx+2] =
+                  gCamCapability[cameraId]->picture_sizes_tbl[i].height;
+                available_stream_configs[idx+3] =
+                  ANDROID_SCALER_AVAILABLE_STREAM_CONFIGURATIONS_OUTPUT;
+                idx+=4;
+                }
+            } else {
+                for (size_t i = 0; i < gCamCapability[cameraId]->hal3_preview_video_sizes_tbl_cnt; i++) {
+                  available_stream_configs[idx] = scalar_formats[j];
+                  available_stream_configs[idx+1] = gCamCapability[cameraId]->hal3_preview_video_sizes_tbl[i].width;
+                  available_stream_configs[idx+2] = gCamCapability[cameraId]->hal3_preview_video_sizes_tbl[i].height;
+                  available_stream_configs[idx+3] = ANDROID_SCALER_AVAILABLE_STREAM_CONFIGURATIONS_OUTPUT;
+                  idx+=4;
+                }
+            }
+            break;
+#endif
         default:
             for (size_t i = 0; i < gCamCapability[cameraId]->picture_sizes_tbl_cnt; i++) {
                 available_stream_configs[idx] = scalar_formats[j];
