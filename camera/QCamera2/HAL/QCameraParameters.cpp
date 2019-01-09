@@ -1951,10 +1951,17 @@ int32_t QCameraParameters::setPreviewFpsRange(const QCameraParameters& params)
             goto end;
         }
     }
+#ifdef VENDOR_EDIT
+    for(size_t i = 0; i < m_pCapability->hal3_fps_ranges_tbl_cnt; i++) {
+        // if the value is in the supported list
+        if (minFps >= m_pCapability->hal3_fps_ranges_tbl[i].min_fps * 1000 &&
+                maxFps <= m_pCapability->hal3_fps_ranges_tbl[i].max_fps * 1000) {
+#else
     for(size_t i = 0; i < m_pCapability->fps_ranges_tbl_cnt; i++) {
         // if the value is in the supported list
         if (minFps >= m_pCapability->fps_ranges_tbl[i].min_fps * 1000 &&
                 maxFps <= m_pCapability->fps_ranges_tbl[i].max_fps * 1000) {
+#endif
             found = true;
             CDBG_HIGH("%s: FPS i=%d : minFps = %d, maxFps = %d"
                     " vidMinFps = %d, vidMaxFps = %d",
@@ -4783,6 +4790,32 @@ int32_t QCameraParameters::initDefaultParameters()
     set(KEY_JPEG_THUMBNAIL_QUALITY, 85);
 
     // Set FPS ranges
+#ifdef VENDOR_EDIT
+    if (m_pCapability->hal3_fps_ranges_tbl_cnt > 0 &&
+        m_pCapability->hal3_fps_ranges_tbl_cnt <= MAX_SIZES_CNT) {
+        int default_fps_index = 0;
+        String8 fpsRangeValues = createFpsRangeString(m_pCapability->hal3_fps_ranges_tbl,
+                                                      m_pCapability->hal3_fps_ranges_tbl_cnt,
+                                                      default_fps_index);
+        set(KEY_SUPPORTED_PREVIEW_FPS_RANGE, fpsRangeValues.string());
+
+        int min_fps =
+            int(m_pCapability->hal3_fps_ranges_tbl[default_fps_index].min_fps * 1000);
+        int max_fps =
+            int(m_pCapability->hal3_fps_ranges_tbl[default_fps_index].max_fps * 1000);
+        m_default_fps_range = m_pCapability->hal3_fps_ranges_tbl[default_fps_index];
+        //Set video fps same as preview fps
+        setPreviewFpsRange(min_fps, max_fps, min_fps, max_fps);
+
+        // Set legacy preview fps
+        String8 fpsValues = createFpsString(m_pCapability->hal3_fps_ranges_tbl[default_fps_index]);
+        set(KEY_SUPPORTED_PREVIEW_FRAME_RATES, fpsValues.string());
+        CDBG_HIGH("%s: supported fps rates: %s", __func__, fpsValues.string());
+        CameraParameters::setPreviewFrameRate(int(m_pCapability->hal3_fps_ranges_tbl[default_fps_index].max_fps));
+    } else {
+        ALOGE("%s: supported fps ranges cnt is 0 or exceeds max!!!", __func__);
+    }
+#else
     if (m_pCapability->fps_ranges_tbl_cnt > 0 &&
         m_pCapability->fps_ranges_tbl_cnt <= MAX_SIZES_CNT) {
         int default_fps_index = 0;
@@ -4808,6 +4841,7 @@ int32_t QCameraParameters::initDefaultParameters()
         ALOGE("%s: supported fps ranges cnt is 0 or exceeds max!!!", __func__);
     }
 
+#endif
     // Set supported focus modes
     if (m_pCapability->supported_focus_modes_cnt > 0) {
         String8 focusModeValues = createValuesString(
