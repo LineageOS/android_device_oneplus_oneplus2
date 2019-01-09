@@ -38,6 +38,8 @@ ifeq ($(TARGET_USES_AOSP),true)
 LOCAL_CFLAGS += -DVANILLA_HAL
 endif
 
+LOCAL_CFLAGS += -DVENDOR_EDIT
+
 #use media extension
 ifeq ($(TARGET_USES_MEDIA_EXTENSIONS), true)
 LOCAL_CFLAGS += -DUSE_MEDIA_EXTENSIONS
@@ -63,6 +65,7 @@ LOCAL_C_INCLUDES += \
     $(call project-path-for,qcom-camera)/QCamera2/HAL
 
 LOCAL_HEADER_LIBRARIES := generated_kernel_headers
+
 
 LOCAL_SHARED_LIBRARIES := libcamera_client liblog libhardware libutils libcutils libdl
 LOCAL_SHARED_LIBRARIES += libmmcamera_interface libmmjpeg_interface libui libcamera_metadata
