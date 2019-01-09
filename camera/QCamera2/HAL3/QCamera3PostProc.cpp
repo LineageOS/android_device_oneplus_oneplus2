@@ -1190,7 +1190,7 @@ int32_t QCamera3PostProcessor::encodeData(qcamera_hal3_jpeg_data_t *jpeg_job_dat
        ALOGE("%s: m_parent is NULL, Error",__func__);
        return BAD_VALUE;
     }
-    bool needJpegRotation = false;
+    bool needJpegRotation = true;
 
     recvd_frame = jpeg_job_data->src_frame;
     metadata = jpeg_job_data->metadata;
@@ -1268,7 +1268,6 @@ int32_t QCamera3PostProcessor::encodeData(qcamera_hal3_jpeg_data_t *jpeg_job_dat
        return UNKNOWN_ERROR;
     }
 
-    needJpegRotation = hal_obj->needJpegRotation();
     CDBG_HIGH("%s: Need new session?:%d",__func__, needNewSess);
     if (needNewSess) {
         //creating a new session, so we must destroy the old one
