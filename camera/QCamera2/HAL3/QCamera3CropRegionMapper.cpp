@@ -129,10 +129,10 @@ void QCamera3CropRegionMapper::toActiveArray(int32_t& crop_left, int32_t& crop_t
         return;
     }
 
-    crop_left = crop_left * mActiveArrayW / mSensorW;
-    crop_top = crop_top * mActiveArrayH / mSensorH;
-    crop_width = crop_width * mActiveArrayW / mSensorW;
-    crop_height = crop_height * mActiveArrayH / mSensorH;
+    crop_left = crop_left * mActiveArrayW / (mSensorW * 1.0) + 0.5;
+    crop_top = crop_top * mActiveArrayH / (mSensorH * 1.0) + 0.5;
+    crop_width = crop_width * mActiveArrayW / (mSensorW * 1.0) + 0.5;
+    crop_height = crop_height * mActiveArrayH / (mSensorH * 1.0) + 0.5;
 
     boundToSize(crop_left, crop_top, crop_width, crop_height,
             mActiveArrayW, mActiveArrayH);
@@ -161,10 +161,10 @@ void QCamera3CropRegionMapper::toSensor(int32_t& crop_left, int32_t& crop_top,
         return;
     }
 
-    crop_left = crop_left * mSensorW / mActiveArrayW;
-    crop_top = crop_top * mSensorH / mActiveArrayH;
-    crop_width = crop_width * mSensorW / mActiveArrayW;
-    crop_height = crop_height * mSensorH / mActiveArrayH;
+    crop_left = crop_left * mSensorW / (mActiveArrayW * 1.0) + 0.5;
+    crop_top = crop_top * mSensorH / (mActiveArrayH * 1.0) + 0.5;
+    crop_width = crop_width * mSensorW / (mActiveArrayW * 1.0) + 0.5;
+    crop_height = crop_height * mSensorH / (mActiveArrayH * 1.0) + 0.5;
 
     CDBG("%s: before bounding left %d, top %d, width %d, height %d",
         __func__, crop_left, crop_top, crop_width, crop_height);
