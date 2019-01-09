@@ -1500,22 +1500,6 @@ int QCamera2HardwareInterface::getCapabilities(uint32_t cameraId,
 }
 
 /*===========================================================================
- * FUNCTION   : getCamHalCapabilities
- *
- * DESCRIPTION: get the HAL capabilities structure
- *
- * PARAMETERS :
- *   @cameraId  : camera Id
- *
- * RETURN     : capability structure of respective camera
- *
- *==========================================================================*/
-cam_capability_t* QCamera2HardwareInterface::getCamHalCapabilities()
-{
-    return gCamCaps[mCameraId];
-}
-
-/*===========================================================================
  * FUNCTION   : getBufNumRequired
  *
  * DESCRIPTION: return number of stream buffers needed for given stream type
