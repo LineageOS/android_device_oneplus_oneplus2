@@ -425,6 +425,7 @@ public:
     static const char ISO_800[];
     static const char ISO_1600[];
     static const char ISO_3200[];
+    static const char ISO_6400[];
     static const char ISO_MANUAL[];
 
     // Values for auto exposure settings.
