@@ -5,3 +5,4 @@ allow hal_graphics_composer_default qdisplay_service:service_manager { add find 
 allow hal_graphics_composer_default default_android_vndservice:service_manager { find add };
 allow hal_graphics_composer_default display_misc_file:dir create_dir_perms;
 allow hal_graphics_composer_default display_misc_file:file create_file_perms;
+allow hal_graphics_composer_default display_prop:property_service set;
