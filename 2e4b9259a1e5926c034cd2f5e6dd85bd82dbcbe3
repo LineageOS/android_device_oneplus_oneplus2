@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20cb56ca_a943418e",
+        "filename": "sepolicy/zygote.te",
+        "patchSetId": 26
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 18924
+      },
+      "writtenOn": "2019-01-13T21:47:28Z",
+      "side": 1,
+      "message": "why do you need this?",
+      "revId": "2e4b9259a1e5926c034cd2f5e6dd85bd82dbcbe3",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
