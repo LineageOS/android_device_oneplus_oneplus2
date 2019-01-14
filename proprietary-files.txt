@@ -334,7 +334,6 @@ etc/firmware/mbn_ota/mcfg_sw_TMO-Commercial.mbn
 bin/energy-awareness:vendor/bin/energy-awareness
 bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
-vendor/etc/msm_irqbalance.conf
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf
 vendor/etc/perf-profile2.conf
