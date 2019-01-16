@@ -389,6 +389,7 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     swapon_all /fstab.qcom
+    start perfd
     start tfa-sh
     restart cameraserver
     write /dev/kmsg "Boot completed "
@@ -416,6 +417,7 @@ service perfd /system/vendor/bin/perfd
     class main
     user root
     group root system readproc
+    disabled
     writepid /dev/cpuset/system-background/tasks
 
 service per_mgr /system/vendor/bin/pm-service
