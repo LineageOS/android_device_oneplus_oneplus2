@@ -29,7 +29,7 @@ bluetooth.enable_timeout_ms=12000
 vendor.qcom.bluetooth.soc=rome
 
 # Camera
-camera.disable.zsl_mode=true
+camera.disable_zsl_mode=true
 persist.camera.HAL3.enabled=1
 
 # CEC
