@@ -96,6 +96,9 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(PLATFORM_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 
+# Board
+TARGET_BOARD_INFO_FILE ?= $(DEVICE_PATH)/board-info.txt
+
 # Camera
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
@@ -165,10 +168,6 @@ TARGET_USES_INTERACTION_BOOST := true
 
 # QCOM hardware
 BOARD_USES_QCOM_HARDWARE := true
-
-# Releasetools
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus2
-TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # SELinux
 include device/qcom/sepolicy-legacy/sepolicy.mk
