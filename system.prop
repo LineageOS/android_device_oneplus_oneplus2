@@ -71,7 +71,6 @@ persist.mdpcomp_perfhint=50
 persist.metadata_dynfps.disable=true
 ro.opengles.version=196610
 ro.qualcomm.cabl=0
-ro.sf.lcd_density=480
 
 # OEM Unlocking
 ro.oem_unlock_supported=1
