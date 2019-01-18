@@ -38,13 +38,13 @@
 #define ALPHABET_LEN 256
 
 #ifdef USES_BOOTDEVICE_PATH
-#define MODEM_PART_PATH "/dev/block/bootdevice/by-name/modem"
+#define BASEBAND_PART_PATH "/dev/block/bootdevice/by-name/modem"
 #else
-#define MODEM_PART_PATH "/dev/block/platform/msm_sdcc.1/by-name/modem"
+#define BASEBAND_PART_PATH "/dev/block/platform/soc.0/f9824900.sdhci/by-name/modem"
 #endif
-#define MODEM_VER_STR "Time_Stamp\": \""
-#define MODEM_VER_STR_LEN 14
-#define MODEM_VER_BUF_LEN 20
+#define BASEBAND_VER_STR_START "QC_IMAGE_VERSION_STRING=MPSS.BO."
+#define BASEBAND_VER_STR_START_LEN 32
+#define BASEBAND_VER_BUF_LEN 255
 
 /* Boyer-Moore string search implementation from Wikipedia */
 
@@ -124,56 +124,57 @@ static char * bm_search(const char *str, size_t str_len, const char *pat,
     return NULL;
 }
 
-static int get_modem_version(char *ver_str, size_t len) {
+static int get_baseband_version(char *ver_str, size_t len) {
     int ret = 0;
     int fd;
-    int modem_size;
-    char *modem_data = NULL;
+    int baseband_size;
+    char *baseband_data = NULL;
     char *offset = NULL;
 
-    fd = open(MODEM_PART_PATH, O_RDONLY);
+    fd = open(BASEBAND_PART_PATH, O_RDONLY);
     if (fd < 0) {
         ret = errno;
         goto err_ret;
     }
 
-    modem_size = lseek64(fd, 0, SEEK_END);
-    if (modem_size == -1) {
+    baseband_size = lseek64(fd, 0, SEEK_END);
+    if (baseband_size == -1) {
         ret = errno;
         goto err_fd_close;
     }
 
-    modem_data = (char *) mmap(NULL, modem_size, PROT_READ, MAP_PRIVATE, fd, 0);
-    if (modem_data == (char *)-1) {
+    baseband_data = (char *) mmap(NULL, baseband_size, PROT_READ, MAP_PRIVATE, fd, 0);
+    if (baseband_data == (char *)-1) {
         ret = errno;
         goto err_fd_close;
     }
 
-    /* Do Boyer-Moore search across MODEM data */
-    offset = bm_search(modem_data, modem_size, MODEM_VER_STR, MODEM_VER_STR_LEN);
+    /* Do Boyer-Moore search across BASEBAND data */
+    offset = bm_search(baseband_data, baseband_size, BASEBAND_VER_STR_START,
+            BASEBAND_VER_STR_START_LEN);
     if (offset != NULL) {
-        snprintf(ver_str, len, "%s", offset + MODEM_VER_STR_LEN);
+        strncpy(ver_str, offset + BASEBAND_VER_STR_START_LEN, len);
     } else {
         ret = -ENOENT;
     }
 
-    munmap(modem_data, modem_size);
+    munmap(baseband_data, baseband_size);
 err_fd_close:
     close(fd);
 err_ret:
     return ret;
 }
 
-/* verify_modem("MODEM_VERSION") */
-Value* VerifyModemFn(const char *name, State *state, const std::vector<std::unique_ptr<Expr>>& argv) {
-    char current_modem_version[MODEM_VER_BUF_LEN];
+/* verify_baseband("BASEBAND_VERSION", "BASEBAND_VERSION", ...) */
+Value * VerifyBasebandFn(const char *name, State *state,
+                     const std::vector<std::unique_ptr<Expr>>& argv) {
+    char current_baseband_version[BASEBAND_VER_BUF_LEN];
     int ret;
-    struct tm tm1, tm2;
 
-    ret = get_modem_version(current_modem_version, MODEM_VER_BUF_LEN);
+    ret = get_baseband_version(current_baseband_version, BASEBAND_VER_BUF_LEN);
     if (ret) {
-        return ErrorAbort(state, kVendorFailure,
-                "%s() failed to read current MODEM build time-stamp: %d", name, ret);
+        return ErrorAbort(state, kFreadFailure, "%s() failed to read current baseband version: %d",
+                name, ret);
     }
 
     std::vector<std::string> args;
@@ -181,14 +182,10 @@ Value* VerifyModemFn(const char *name, State *state, const std::vector<std::uniq
         return ErrorAbort(state, kArgsParsingFailure, "%s() error parsing arguments", name);
     }
 
-    memset(&tm1, 0, sizeof(tm));
-    strptime(current_modem_version, "%Y-%m-%d %H:%M:%S", &tm1);
-
-    for (auto &modem_version : args) {
-        memset(&tm2, 0, sizeof(tm));
-        strptime(modem_version.c_str(), "%Y-%m-%d %H:%M:%S", &tm2);
-
-        if (mktime(&tm1) >= mktime(&tm2)) {
+    ret = 0;
+    for (auto &baseband_version : args) {
+        if (strncmp(baseband_version.c_str(), current_baseband_version,
+                strlen(baseband_version.c_str())) == 0) {
             ret = 1;
             break;
         }
@@ -198,5 +195,5 @@ Value* VerifyModemFn(const char *name, State *state, const std::vector<std::uniq
 }
 
 void Register_librecovery_updater_oneplus2() {
-    RegisterFunction("oneplus2.verify_modem", VerifyModemFn);
+    RegisterFunction("oneplus2.verify_baseband", VerifyBasebandFn);
 }
