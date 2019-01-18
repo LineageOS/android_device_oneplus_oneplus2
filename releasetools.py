@@ -19,19 +19,19 @@ import common
 import re
 
 def FullOTA_Assertions(info):
-  AddModemAssertion(info, info.input_zip)
+  AddBasebandAssertion(info, info.input_zip)
   return
 
 def IncrementalOTA_Assertions(info):
-  AddModemAssertion(info, info.target_zip)
+  AddBasebandAssertion(info, info.target_zip)
   return
 
-def AddModemAssertion(info, input_zip):
+def AddBasebandAssertion(info, input_zip):
   android_info = input_zip.read("OTA/android-info.txt")
-  m = re.search(r'require\s+version-modem\s*=\s*(.+)', android_info)
+  m = re.search(r'require\s+version-baseband\s*=\s*(.+)', android_info)
   if m:
     version = m.group(1).rstrip()
     if len(version) and '*' not in version:
-      cmd = 'assert(oneplus2.verify_modem("' + version + '") == "1");'
+      cmd = 'assert(oneplus2.verify_baseband("' + version + '") == "1");'
       info.script.AppendExtra(cmd)
   return
