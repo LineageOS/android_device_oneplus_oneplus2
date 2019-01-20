@@ -21,7 +21,6 @@
 # Core_ctl
 /(vendor|system/vendor)/bin/init\.oneplus2\.power\.sh                   u:object_r:init-power-sh_exec:s0
 /sys/devices/soc\.0/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+(/.*)? u:object_r:sysfs_devices_system_cpu:s0
-/sys/devices/soc\.0/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+/bw_hwmon(/.*)?     u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/soc\.0/qcom,mincpubw\.[0-9]+/devfreq/qcom,mincpubw\.[0-9]+(/.*)?        u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/virtual/net/rmnet_ipa0/queues/rx-0/rps_cpus                u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/soc\.0/qcom,gpubw\.[0-9]+/devfreq/qcom,gpubw\.[0-9]+(/.*)? u:object_r:sysfs_thermal:s0
