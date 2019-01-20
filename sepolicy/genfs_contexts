@@ -16,3 +16,4 @@ genfscon proc /touchpanel                             u:object_r:proc_touchpanel
 genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/stat u:object_r:sysfs_disk_stat:s0
 genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/scheduler u:object_r:sysfs_scheduler:s0
 genfscon sysfs /devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/iosched/slice_idle u:object_r:sysfs_scheduler:s0
+genfscon sysfs /devices/soc.0/qcom,cpubw.33/devfreq/qcom,cpubw.33/bw_hwmon/io_percent u:object_r:sysfs_devices_system_cpu:s0
