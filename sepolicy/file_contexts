@@ -50,14 +50,6 @@
 # Net
 /sys/devices/virtual/net/rmnet_data[0-7]+/mtu                           u:object_r:sysfs_net:s0
 
-# Power
-/sys/devices/soc\.0/f9200000\.ssusb/power_supply/usb(/.*)?              u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc\.0/qpnp-smbcharger-18/power_supply/battery(/.*)?       u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc\.0/qpnp-smbcharger-18/power_supply/dc(/.*)?            u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc\.0/qpnp-fg-19/power_supply/bms(/.*)?                   u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc\.0/msm-bcl-16/power_supply/fg_adc(/.*)?                u:object_r:sysfs_battery_supply:s0
-/sys/devices/soc\.0/qcom,bcl\.[0-9]+/power_supply/bcl(/.*)?             u:object_r:sysfs_battery_supply:s0
-
 # RIL
 /data/oemnvitems(/.*)?                                                  u:object_r:nv_data_file:s0
 /sys/devices/soc\.0/6200000\.qcom,nvbackup_sharedmem/uio/uio4(/.*)?     u:object_r:sysfs_nv:s0
