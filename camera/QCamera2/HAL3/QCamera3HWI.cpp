@@ -7687,12 +7687,6 @@ int32_t QCamera3HardwareInterface::extractSceneMode(
  *==========================================================================*/
 bool QCamera3HardwareInterface::needRotationReprocess()
 {
-    if ((gCamCapability[mCameraId]->qcom_supported_feature_mask & CAM_QCOM_FEATURE_ROTATION) > 0) {
-        // current rotation is not zero, and pp has the capability to process rotation
-        CDBG_HIGH("%s: need do reprocess for rotation", __func__);
-        return true;
-    }
-
     return false;
 }
 
@@ -7734,12 +7728,7 @@ bool QCamera3HardwareInterface::needReprocess(uint32_t postprocess_mask)
  *==========================================================================*/
 bool QCamera3HardwareInterface::needJpegRotation()
 {
-   /*If the pp does not have the ability to do rotation, enable jpeg rotation*/
-    if (!(gCamCapability[mCameraId]->qcom_supported_feature_mask & CAM_QCOM_FEATURE_ROTATION)) {
-       CDBG("%s: Need Jpeg to do the rotation", __func__);
-       return true;
-    }
-    return false;
+    return true;
 }
 
 /*===========================================================================
