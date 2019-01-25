@@ -7737,12 +7737,16 @@ bool QCamera3HardwareInterface::needReprocess(uint32_t postprocess_mask)
  *==========================================================================*/
 bool QCamera3HardwareInterface::needJpegRotation()
 {
-   /*If the pp does not have the ability to do rotation, enable jpeg rotation*/
+#ifdef HAL_ALWAYS_HANDLES_JPEG_ROTATION
+    return true;
+#else
+    /*If the pp does not have the ability to do rotation, enable jpeg rotation*/
     if (!(gCamCapability[mCameraId]->qcom_supported_feature_mask & CAM_QCOM_FEATURE_ROTATION)) {
        CDBG("%s: Need Jpeg to do the rotation", __func__);
        return true;
     }
     return false;
+#endif
 }
 
 /*===========================================================================
