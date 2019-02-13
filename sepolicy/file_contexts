@@ -29,9 +29,6 @@
 /sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel           u:object_r:sysfs_thermal:s0
 /sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk    u:object_r:sysfs_thermal:s0
 
-# Display
-/data/misc/display(/.*)?                                                u:object_r:display_misc_file:s0
-
 # Fingerprint
 /sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
 /data/fpc(/.*)?                                                         u:object_r:fpc_data_file:s0

@@ -1,4 +1,3 @@
-type display_misc_file, file_type;
 type fpc_data_file, file_type;
 type nv_data_file, file_type;
 type proc_kernel_sched, fs_type;
