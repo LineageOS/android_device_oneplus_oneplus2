@@ -33,10 +33,6 @@
 /sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
 /data/fpc(/.*)?                                                         u:object_r:fpc_data_file:s0
 
-# Graphics
-/sys/devices/virtual/graphics/fb0(/.*)?                                 u:object_r:sysfs_graphics:s0
-/sys/devices/virtual/graphics/fb1(/.*)?                                 u:object_r:sysfs_graphics:s0
-
 # Lights
 /sys/class/leds(/.*)?                                                   u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/leds-qpnp-(.*)?/leds(/.*)?                          u:object_r:sysfs_leds:s0
