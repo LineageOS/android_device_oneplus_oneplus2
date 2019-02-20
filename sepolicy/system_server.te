@@ -1,2 +1,0 @@
-allow system_server mm-pp-daemon:unix_stream_socket connectto;
-allow system_server pps_socket:sock_file write;
