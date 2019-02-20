@@ -11,12 +11,9 @@
 /(vendor|system/vendor)/bin/awk                                         u:object_r:awktool_exec:s0
 
 # Camera
-/sys/devices/soc\.0/fd8c0000\.qcom,msm-cam/video4linux(/.*)?            u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/fda0c000\.qcom,cci/2\.qcom,camera/video4linux(/.*)? u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/fd878000\.qcom,fd/video4linux(/.*)?                 u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/fda0c000\.qcom,cci/0\.qcom,camera/video4linux(/.*)? u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/f9928000\.i2c/i2c-6/6-0029(/.*)?                    u:object_r:sysfs_camera:s0
-/sys/bus/platform/devices/29.qcom,proximity(/.*)?                       u:object_r:sysfs_camera:s0
+/sys/devices/soc\.0/fd878000\.qcom,fd/video4linux(/.*)?                 u:object_r:sysfs_graphics:s0
+/sys/devices/soc\.0/f9928000\.i2c/i2c-6/6-0029(/.*)?                    u:object_r:sysfs_laser:s0
+/sys/bus/platform/devices/29.qcom,proximity(/.*)?                       u:object_r:sysfs_laser:s0
 
 # Core_ctl
 /(vendor|system/vendor)/bin/init\.oneplus2\.power\.sh                   u:object_r:init-power-sh_exec:s0
@@ -31,7 +28,8 @@
 
 # Fingerprint
 /sys/devices/soc\.0/f9968000\.spi/spi_master/spi12/spi12\.0(/.*)?       u:object_r:sysfs_fingerprint:s0
-/data/fpc(/.*)?                                                         u:object_r:fpc_data_file:s0
+/data/fpc(/.*)?                                                         u:object_r:fingerprintd_data_file:s0
+/data/fpc_images(/.*)?                                                  u:object_r:fingerprintd_data_file:s0
 
 # Lights
 /sys/class/leds(/.*)?                                                   u:object_r:sysfs_leds:s0
@@ -52,7 +50,7 @@
 /sys/devices/soc\.0/qcom,bcl\.[0-9]+/power_supply/bcl(/.*)?             u:object_r:sysfs_battery_supply:s0
 
 # RIL
-/data/oemnvitems(/.*)?                                                  u:object_r:nv_data_file:s0
+/data/oemnvitems(/.*)?                                                  u:object_r:radio_data_file:s0
 /sys/devices/soc\.0/6200000\.qcom,nvbackup_sharedmem/uio/uio4(/.*)?     u:object_r:sysfs_nv:s0
 
 # Touch features
