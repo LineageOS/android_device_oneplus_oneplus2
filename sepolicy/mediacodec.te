@@ -1,3 +1,0 @@
-allow mediacodec mpctl_socket:dir search;
-allow mediacodec mpctl_socket:sock_file write;
-allow mediacodec perfd:unix_stream_socket connectto;
