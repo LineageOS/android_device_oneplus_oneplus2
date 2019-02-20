@@ -1,2 +1,2 @@
-allow energyawareness sysfs_nv:dir { open read search };
-allow energyawareness sysfs_nv:file { getattr open read };
+allow energyawareness sysfs_nv:dir r_dir_perms;
+allow energyawareness sysfs_nv:file r_file_perms;
