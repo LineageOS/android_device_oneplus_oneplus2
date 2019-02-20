@@ -1,1 +1,0 @@
-allow fpc_data_file labeledfs:filesystem associate;

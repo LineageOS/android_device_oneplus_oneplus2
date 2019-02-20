@@ -1,17 +1,13 @@
-# Run init.qcom.bt.sh and init.program_bdaddr.sh
-allow bluetooth_loader qti_init_shell_exec:file { entrypoint };
-allow bluetooth_loader bluetooth_loader_exec:file { getattr open execute_no_trans };
-allow bluetooth_loader self:socket { create ioctl };
+type awktool_exec, exec_type, file_type;
 
-allow bluetooth_loader toolbox_exec:file { execute execute_no_trans getattr open read };
+# Run init.qcom.bt.sh and init.program_bdaddr.sh
+allow bluetooth_loader bluetooth_loader_exec:file rx_file_perms;
+allow bluetooth_loader self:socket { create ioctl };
+allow bluetooth_loader toolbox_exec:file rx_file_perms;
 allow bluetooth_loader btnvtool_exec:file execute_no_trans;
-allow bluetooth_loader smem_log_device:chr_file { ioctl open read write };
-allow bluetooth_loader persist_file:dir search;
-allow bluetooth_loader persist_bluetooth_file:dir search;
-allow bluetooth_loader persist_bluetooth_file:file { getattr open read setattr write };
-allow bluetooth_loader bluetooth_prop:property_service set;
-allow bluetooth_loader system_prop:property_service set;
-allow bluetooth_loader property_socket:sock_file write;
-allow bluetooth_loader init:unix_stream_socket connectto;
+allow bluetooth_loader smem_log_device:chr_file rw_file_perms;
 allow bluetooth_loader sysfs_bluetooth_writable:file write;
-allow bluetooth_loader awktool_exec:file { execute execute_no_trans getattr open read };
+allow bluetooth_loader awktool_exec:file rx_file_perms;
+
+allow bluetooth_loader persist_bluetooth_file:dir search;
+allow bluetooth_loader persist_bluetooth_file:file create_file_perms;

@@ -1,3 +1,2 @@
-allow rmt_storage sysfs_nv:file { getattr open read };
-allow rmt_storage sysfs_nv:dir { search open read };
+r_dir_file(rmt_storage, sysfs_nv)
 allow rmt_storage self:capability net_raw;
