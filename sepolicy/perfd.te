@@ -1,6 +1,1 @@
-allow perfd proc_kernel_sched:file { open read write };
-allow perfd self:capability kill;
-allow perfd system_server:process signull;
-allow perfd hal_power_default:process signull;
-allow perfd mediacodec:process signull;
-allow perfd surfaceflinger:process signull;
+allow perfd proc_kernel_sched:file rw_file_perms;
