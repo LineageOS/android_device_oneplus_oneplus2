@@ -1,2 +1,0 @@
-allow hal_wifi_default vendor_tombstone_data_file:file create_file_perms;
-allow hal_wifi_default vendor_tombstone_data_file:dir rw_dir_perms;
