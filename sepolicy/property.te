@@ -1,1 +1,2 @@
+type diag_prop, property_type;
 type display_prop, property_type;

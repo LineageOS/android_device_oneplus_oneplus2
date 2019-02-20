@@ -11,10 +11,6 @@
 /(vendor|system/vendor)/bin/awk                                         u:object_r:awktool_exec:s0
 
 # Camera
-/sys/devices/soc\.0/fd8c0000\.qcom,msm-cam/video4linux(/.*)?            u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/fda0c000\.qcom,cci/2\.qcom,camera/video4linux(/.*)? u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/fd878000\.qcom,fd/video4linux(/.*)?                 u:object_r:sysfs_camera:s0
-/sys/devices/soc\.0/fda0c000\.qcom,cci/0\.qcom,camera/video4linux(/.*)? u:object_r:sysfs_camera:s0
 /sys/devices/soc\.0/f9928000\.i2c/i2c-6/6-0029(/.*)?                    u:object_r:sysfs_camera:s0
 /sys/bus/platform/devices/29.qcom,proximity(/.*)?                       u:object_r:sysfs_camera:s0
 
