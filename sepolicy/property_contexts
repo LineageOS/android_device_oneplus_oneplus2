@@ -1,4 +1,1 @@
-hw.cabl.version                     u:object_r:display_prop:s0
-hw.cabl.yuv                         u:object_r:display_prop:s0
-hw.pp.cfg                           u:object_r:display_prop:s0
-persist.sys.diag.max.size           u:object_r:system_prop:s0
+persist.sys.diag.max.size           u:object_r:diag_prop:s0
