@@ -1,9 +1,0 @@
-allow init firmware_file:blk_file read;
-allow init fpc_data_file:dir create;
-allow init proc_dirty_ratio:file write;
-allow init ipa_dev:chr_file { ioctl open read };
-allow init proc_kernel_sched:file write;
-allow init self:netlink_route_socket { create nlmsg_read read write };
-allow init sysfs_scheduler:file { open setattr write };
-allow init sysfs_leds:lnk_file read;
-allow init sysfs_graphics:file setattr;

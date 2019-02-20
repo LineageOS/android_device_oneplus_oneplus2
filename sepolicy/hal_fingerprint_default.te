@@ -1,9 +1,8 @@
 allow hal_fingerprint_default fingerprintd_data_file:dir rw_dir_perms;
 allow hal_fingerprint_default fingerprintd_data_file:file create_file_perms;
+allow hal_fingerprint_default fingerprintd_data_file:sock_file { create unlink };
 allow hal_fingerprint_default firmware_file:dir search;
-allow hal_fingerprint_default firmware_file:file { getattr open read };
-allow hal_fingerprint_default fpc_data_file:dir { add_name remove_name search write };
-allow hal_fingerprint_default fpc_data_file:sock_file { create unlink };
-allow hal_fingerprint_default tee_device:chr_file { ioctl open read write };
-allow hal_fingerprint_default sysfs_fingerprint:dir { open read search };
-allow hal_fingerprint_default sysfs_fingerprint:file { open read write };
+allow hal_fingerprint_default firmware_file:file r_file_perms;
+allow hal_fingerprint_default tee_device:chr_file rw_file_perms;
+allow hal_fingerprint_default sysfs_fingerprint:dir r_dir_perms;
+allow hal_fingerprint_default sysfs_fingerprint:file rw_file_perms;
