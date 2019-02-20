@@ -1,2 +1,0 @@
-allow rild nv_data_file:file { create open write };
-allow rild nv_data_file:dir { add_name getattr search write };

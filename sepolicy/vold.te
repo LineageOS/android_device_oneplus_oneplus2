@@ -1,3 +1,2 @@
-allow vold persist_file:dir { ioctl open read };
-allow vold proc_touchpanel:dir { open read };
-allow vold system_data_file:file { ioctl open };
+allow vold proc_touchpanel:dir r_dir_perms;
+allow vold system_data_file:file r_file_perms;
