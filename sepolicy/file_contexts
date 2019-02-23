@@ -34,6 +34,7 @@
 # Lights
 /sys/class/leds(/.*)?                                                   u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/leds-qpnp-(.*)?/leds(/.*)?                          u:object_r:sysfs_leds:s0
+/sys/devices/soc\.0/qpnp-flash-led-(.*)?/leds(/.*)?                     u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/qpnp-wled-(.*)?/leds(/.*)?                          u:object_r:sysfs_leds:s0
 /sys/devices/soc\.0/[a-z0-9]+.qcom,mdss_mdp/[a-z0-9]+.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight(/.*)?    u:object_r:sysfs_leds:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service.oneplus2    u:object_r:hal_light_default_exec:s0
