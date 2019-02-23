@@ -1,1 +1,4 @@
 allow cameraserver camera_data_file:dir search;
+allow cameraserver sysfs_leds:dir search;
+allow cameraserver sysfs_leds:file write;
+allow cameraserver sysfs_leds:lnk_file read;
