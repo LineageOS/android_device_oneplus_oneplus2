@@ -7687,11 +7687,6 @@ int32_t QCamera3HardwareInterface::extractSceneMode(
  *==========================================================================*/
 bool QCamera3HardwareInterface::needRotationReprocess()
 {
-    if ((gCamCapability[mCameraId]->qcom_supported_feature_mask & CAM_QCOM_FEATURE_ROTATION) > 0) {
-        // current rotation is not zero, and pp has the capability to process rotation
-        CDBG_HIGH("%s: need do reprocess for rotation", __func__);
-        return true;
-    }
 
     return false;
 }
