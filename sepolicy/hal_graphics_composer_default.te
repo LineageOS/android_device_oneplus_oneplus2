@@ -1,3 +1,2 @@
 allow hal_graphics_composer_default mpctl_socket:dir search;
 allow hal_graphics_composer_default sysfs_graphics:lnk_file read;
-allow hal_graphics_composer_default qdisplay_vndservice:service_manager { find add };
