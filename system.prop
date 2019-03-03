@@ -40,17 +40,11 @@ persist.vendor.audio.speaker.prot.enable=false
 persist.vendor.audio.spkr.cal.duration=0
 qcom.hw.aac.encoder=true
 
-# CNE
-persist.cne.feature=0
-
 # Data modules
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
 persist.data.mode=concurrent
 ro.data.large_tcp_window_size=true
-
-# Data Power Manager (DPM)
-persist.dpm.feature=0
 
 # Dex2oat limits
 dalvik.vm.boot-dex2oat-threads=4
