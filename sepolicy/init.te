@@ -1,1 +1,0 @@
-allow init sysfs_leds:lnk_file read;
