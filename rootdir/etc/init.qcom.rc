@@ -68,7 +68,6 @@ on init
     write /dev/cpuctl/smsg/cpu.upmigrate_discourage 1
 
     # Add for fpc fingerprints permission
-    chmod -h 777 /dev/qseecom
     chmod 0664 /sys/bus/spi/devices/spi12.0/irq
     chown system system /sys/bus/spi/devices/spi12.0/irq
     chmod 0660 /sys/bus/spi/devices/spi12.0/report_home
