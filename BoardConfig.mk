@@ -105,6 +105,10 @@ TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 
+#KeyDisabler
+JAVA_SOURCE_OVERLAYS := \
+    org.pixelexperience.keydisabler|$(PLATFORM_PATH)/keydisabler|**/*.java
+
 # Filesystem
 TARGET_FS_CONFIG_GEN := $(PLATFORM_PATH)/config.fs
 

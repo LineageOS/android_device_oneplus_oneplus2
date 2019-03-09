@@ -14,4 +14,4 @@
 # limitations under the License.
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_oneplus2.mk
+    $(LOCAL_DIR)/aosp_oneplus2.mk

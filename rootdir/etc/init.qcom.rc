@@ -94,12 +94,35 @@ on init
     chmod 0666 /sys/class/leds/led:torch_1/brightness
 
     # Touchscreen
+    chown system system /proc/touchpanel/double_swipe
+    chmod 0660 /proc/touchpanel/double_swipe
     chown system system /proc/touchpanel/double_tap
     chmod 0660 /proc/touchpanel/double_tap
+    chown system system /proc/touchpanel/down_swipe
+    chmod 0660 /proc/touchpanel/down_swipe
+    chown system system /proc/touchpanel/draw_circle
+    chmod 0660 /proc/touchpanel/draw_circle
+    chown system system /proc/touchpanel/draw_left_v
+    chmod 0660 /proc/touchpanel/draw_left_v
+    chown system system /proc/touchpanel/draw_reversed_v
+    chmod 0660 /proc/touchpanel/draw_reversed_v
+    chown system system /proc/touchpanel/draw_right_v
+    chmod 0660 /proc/touchpanel/draw_right_v
+    chown system system /proc/touchpanel/draw_v
+    chmod 0660 /proc/touchpanel/draw_v
+    chown system system /proc/touchpanel/left_swipe
+    chmod 0660 /proc/touchpanel/left_swipe
+    chown system system /proc/touchpanel/right_swipe
+    chmod 0660 /proc/touchpanel/right_swipe
+    chown system system /proc/touchpanel/up_swipe
+    chmod 0660 /proc/touchpanel/up_swipe
 
     # Buttons
     chown system system /proc/s1302/key_rep
     chmod 0660 /proc/s1302/key_rep
+
+    chown system system /proc/s1302/virtual_key
+    chmod 0660 /proc/s1302/virtual_key
 
     chown system system /proc/tri-state-key/keyCode_top
     chmod 0660 /proc/tri-state-key/keyCode_top

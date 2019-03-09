@@ -53,6 +53,3 @@
 # RIL
 /data/oemnvitems(/.*)?                                                  u:object_r:radio_data_file:s0
 /sys/devices/soc\.0/6200000\.qcom,nvbackup_sharedmem/uio/uio4(/.*)?     u:object_r:sysfs_nv:s0
-
-# Touch features
-/(vendor|system/vendor)/bin/hw/vendor\.lineage\.touch@1\.0-service\.oneplus2     u:object_r:hal_lineage_touch_default_exec:s0
