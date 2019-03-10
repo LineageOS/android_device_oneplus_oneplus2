@@ -64,14 +64,14 @@ int main() {
     if (!lcdBacklight) {
         LOG(ERROR) << "Failed to open " << kLcdBacklightPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ifstream lcdMaxBacklight(kLcdMaxBacklightPath);
     if (!lcdMaxBacklight) {
         LOG(ERROR) << "Failed to open " << kLcdMaxBacklightPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     } else {
         lcdMaxBacklight >> lcdMaxBrightness;
     }
@@ -88,154 +88,154 @@ int main() {
     if (!redLed) {
         LOG(ERROR) << "Failed to open " << kRedLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenLed(kGreenLedPath);
     if (!greenLed) {
         LOG(ERROR) << "Failed to open " << kGreenLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream blueLed(kBlueLedPath);
     if (!blueLed) {
         LOG(ERROR) << "Failed to open " << kBlueLedPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream redDutyPcts(kRedDutyPctsPath);
     if (!redDutyPcts) {
         LOG(ERROR) << "Failed to open " << kRedDutyPctsPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenDutyPcts(kGreenDutyPctsPath);
     if (!greenDutyPcts) {
         LOG(ERROR) << "Failed to open " << kGreenDutyPctsPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream blueDutyPcts(kBlueDutyPctsPath);
     if (!blueDutyPcts) {
         LOG(ERROR) << "Failed to open " << kBlueDutyPctsPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream redStartIdx(kRedStartIdxPath);
     if (!redStartIdx) {
         LOG(ERROR) << "Failed to open " << kRedStartIdxPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenStartIdx(kGreenStartIdxPath);
     if (!greenStartIdx) {
         LOG(ERROR) << "Failed to open " << kGreenStartIdxPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream blueStartIdx(kBlueStartIdxPath);
     if (!blueStartIdx) {
         LOG(ERROR) << "Failed to open " << kBlueStartIdxPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream redPauseLo(kRedPauseLoPath);
     if (!redPauseLo) {
         LOG(ERROR) << "Failed to open " << kRedPauseLoPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenPauseLo(kGreenPauseLoPath);
     if (!greenPauseLo) {
         LOG(ERROR) << "Failed to open " << kGreenPauseLoPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream bluePauseLo(kBluePauseLoPath);
     if (!bluePauseLo) {
         LOG(ERROR) << "Failed to open " << kBluePauseLoPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream redPauseHi(kRedPauseHiPath);
     if (!redPauseHi) {
         LOG(ERROR) << "Failed to open " << kRedPauseHiPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenPauseHi(kGreenPauseHiPath);
     if (!greenPauseHi) {
         LOG(ERROR) << "Failed to open " << kGreenPauseHiPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream bluePauseHi(kBluePauseHiPath);
     if (!bluePauseHi) {
         LOG(ERROR) << "Failed to open " << kBluePauseHiPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream redRampStepMs(kRedRampStepMsPath);
     if (!redRampStepMs) {
         LOG(ERROR) << "Failed to open " << kRedRampStepMsPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenRampStepMs(kGreenRampStepMsPath);
     if (!greenRampStepMs) {
         LOG(ERROR) << "Failed to open " << kGreenRampStepMsPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream blueRampStepMs(kBlueRampStepMsPath);
     if (!blueRampStepMs) {
         LOG(ERROR) << "Failed to open " << kBlueRampStepMsPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream redBlink(kRedBlinkPath);
     if (!redBlink) {
         LOG(ERROR) << "Failed to open " << kRedBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream greenBlink(kGreenBlinkPath);
     if (!greenBlink) {
         LOG(ERROR) << "Failed to open " << kGreenBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream blueBlink(kBlueBlinkPath);
     if (!blueBlink) {
         LOG(ERROR) << "Failed to open " << kBlueBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     std::ofstream rgbBlink(kRgbBlinkPath);
     if (!rgbBlink) {
         LOG(ERROR) << "Failed to open " << kRgbBlinkPath << ", error=" << errno
                    << " (" << strerror(errno) << ")";
-        return -errno;
+        return 1;
     }
 
     android::sp<ILight> service = new Light(
