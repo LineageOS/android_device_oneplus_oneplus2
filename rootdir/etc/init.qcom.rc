@@ -110,9 +110,6 @@ on init
     chown system system /proc/tri-state-key/keyCode_bottom
     chmod 0660 /proc/tri-state-key/keyCode_bottom
 
-    # for product mode flashlight
-    chown system system /proc/qcom_flash
-
     # GPU Tuning
     chown root system /sys/class/kgsl/kgsl-3d0/dispatch/inflight
     chmod 0660 /sys/class/kgsl/kgsl-3d0/dispatch/inflight
