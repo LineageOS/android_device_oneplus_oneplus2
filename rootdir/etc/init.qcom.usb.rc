@@ -40,7 +40,7 @@ on fs
     setprop sys.usb.ffs.aio_compat 1
     setprop persist.adb.nonblocking_ffs 0
     setprop ro.adb.nonblocking_ffs 0
-    setprop sys.mtp.device_type 2
+    setprop sys.usb.mtp.device_type 2
 
 service qcom-usb-sh /vendor/bin/init.qcom.usb.sh
     class core
