@@ -169,7 +169,8 @@
     <!-- Boolean indicddating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true -->
     <bool name="skip_restoring_network_selection">true</bool>
-
+    <!-- True if the firmware supports Wi-Fi link probing -->
+    <bool name="config_wifi_link_probing_supported">true</bool>
     <!-- MMS user agent string -->
     <string name="config_mms_user_agent" translatable="false">Oneplus</string>
 
