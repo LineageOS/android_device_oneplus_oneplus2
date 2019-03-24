@@ -27,4 +27,4 @@ service charger /charger
     writepid /dev/cpuset/system-background/tasks
 
 on property:dev.bootcomplete=1
-    setprop sys.io.scheduler "bfq"
+    setprop sys.io.scheduler "noop"
