@@ -5726,6 +5726,12 @@ int32_t QCameraParameters::setPreviewFpsRange(int min_fps,
     char str[32];
     char value[PROPERTY_VALUE_MAX];
     int fixedFpsValue;
+
+    min_fps = 10000;
+    max_fps = 30000;
+    vid_min_fps = 10000;
+    vid_max_fps = 30000;
+
     /*This property get value should be the fps that user needs*/
     property_get("persist.debug.set.fixedfps", value, "0");
     fixedFpsValue = atoi(value);
