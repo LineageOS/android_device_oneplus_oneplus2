@@ -5744,8 +5744,8 @@ int32_t QCameraParameters::setPreviewFpsRange(int min_fps,
     memset(&fps_range, 0x00, sizeof(cam_fps_range_t));
     fps_range.min_fps = (float)min_fps / 1000.0f;
     fps_range.max_fps = (float)max_fps / 1000.0f;
-    fps_range.video_min_fps = (float)vid_min_fps / 1000.0f;
-    fps_range.video_max_fps = (float)vid_max_fps / 1000.0f;
+    fps_range.video_min_fps = 10;
+    fps_range.video_max_fps = 30;
 
     CDBG_HIGH("%s: Updated: minFps = %d, maxFps = %d ,"
             " vid minFps = %d, vid maxFps = %d",
