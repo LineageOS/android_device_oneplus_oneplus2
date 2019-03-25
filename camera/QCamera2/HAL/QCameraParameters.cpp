@@ -5737,15 +5737,15 @@ int32_t QCameraParameters::setPreviewFpsRange(int min_fps,
       min_fps = (int)fixedFpsValue*1000;
       max_fps = (int)fixedFpsValue*1000;
     }
-    snprintf(str, sizeof(str), "%d,%d", min_fps, max_fps);
+    snprintf(str, sizeof(str), "%d,%d", 10000, 30000);
     CDBG_HIGH("%s: Setting preview fps range %s", __func__, str);
     updateParamEntry(KEY_PREVIEW_FPS_RANGE, str);
     cam_fps_range_t fps_range;
     memset(&fps_range, 0x00, sizeof(cam_fps_range_t));
     fps_range.min_fps = (float)min_fps / 1000.0f;
     fps_range.max_fps = (float)max_fps / 1000.0f;
-    fps_range.video_min_fps = (float)vid_min_fps / 1000.0f;
-    fps_range.video_max_fps = (float)vid_max_fps / 1000.0f;
+    fps_range.video_min_fps = 10;
+    fps_range.video_max_fps = 30;
 
     CDBG_HIGH("%s: Updated: minFps = %d, maxFps = %d ,"
             " vid minFps = %d, vid maxFps = %d",
