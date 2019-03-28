@@ -6,7 +6,6 @@ allow vendor_init {
 allow vendor_init proc_dirty_ratio:file write;
 allow vendor_init proc_dirty:file write;
 allow vendor_init proc_kernel_sched:file write;
-allow vendor_init proc_swap:file write;
 
 # for creating dirs under root
 allow vendor_init rootfs:file create_file_perms;

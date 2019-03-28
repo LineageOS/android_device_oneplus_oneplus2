@@ -1,5 +1,4 @@
 type proc_kernel_sched, fs_type;
-type proc_swap, fs_type;
 type proc_touchpanel, fs_type;
 type sysfs_fingerprint, sysfs_type, fs_type;
 type sysfs_nv, sysfs_type, fs_type;
