@@ -235,7 +235,7 @@ vendor/lib64/liblocationservice.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/libulp2.so
 
-# Graphics - kanged from Angler OPM3.171019.019
+# Graphics - OxygenOS 3.6.1 + kanged from Angler OPM3.171019.019
 vendor/lib/egl/eglSubDriverAndroid.so|b88e4972d259e1e518793aa8fb9ab9ce7b574137
 vendor/lib/egl/libEGL_adreno.so|c34a55560cbe0dec10736ee48f1d3531b7eb30da
 vendor/lib/egl/libGLESv1_CM_adreno.so|12559bdb260be99259c5114eb18141a6f55ec5c6
@@ -245,6 +245,7 @@ vendor/lib/egl/libq3dtools_esx.so|a7e233d9d6c3d61fa9b762e5c4c1772a5223ba14
 vendor/lib/hw/vulkan.msm8994.so|8bd98116b5a586839aad4c93468fc04f044d4ef4
 vendor/lib/libC2D2.so|668aaec9820480a9f1b04a6994be28bc4fef5677
 vendor/lib/libCB.so|ced7d5bfdbb5b5c0cb2b69e67942d568bedff4d5
+vendor/lib/libOpenCL.so
 vendor/lib/libRSDriver_adreno.so|ee3386248adfa7d1a8c1107e051bcbbd3e8df0c1
 vendor/lib/libadreno_utils.so|4fd27f46943412ddbb69c4e32059a3a765db8b9a
 vendor/lib/libbccQTI.so|7cd380e1ce6c80fa57bec7d9f81f7826382ccea7
@@ -265,6 +266,7 @@ vendor/lib64/egl/libq3dtools_esx.so|82abcc5b16842e5ec32c1cdc6745c1e36f31d63e
 vendor/lib64/hw/vulkan.msm8994.so|123f72ad06ab296028dc5d14884453630676027f
 vendor/lib64/libC2D2.so|da5c955221f736361a3646870600744756a6bd87
 vendor/lib64/libCB.so|7bd8ce62b1f4e52b162481d89b9f4af5e94d588f
+vendor/lib64/libOpenCL.so
 vendor/lib64/libRSDriver_adreno.so|05d94ad793ba74c1f6635762eb7871a611001c9c
 vendor/lib64/libadreno_utils.so|6e6252196f0b510989a6f4f54a4bb3492f56e695
 vendor/lib64/libbccQTI.so|e39a9a997196757a9830dd217dba086581b35a4d
