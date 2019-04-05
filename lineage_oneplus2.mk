@@ -25,21 +25,15 @@ $(call inherit-product, device/oneplus/oneplus2/device.mk)
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_NAME := lineage_oneplus2
-PRODUCT_DEVICE := oneplus2
+PRODUCT_DEVICE := OnePlus2
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
-
-PRODUCT_GMS_CLIENTID_BASE := android-oneplus
-
-TARGET_VENDOR_PRODUCT_NAME := OnePlus2
-TARGET_VENDOR_DEVICE_NAME := OnePlus2
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus2 PRODUCT_NAME=OnePlus2
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="OnePlus2-user 6.0.1 MMB29M 7 dev-keys"
 
-BUILD_FINGERPRINT := OnePlus/OnePlus2/OnePlus2:6.0.1/MMB29M/1447858500:user/release-keys
+PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
+BUILD_FINGERPRINT := "OnePlus/OnePlus2/OnePlus2:6.0.1/MMB29M/1447858500:user/release-keys"
 
 TARGET_VENDOR := oneplus

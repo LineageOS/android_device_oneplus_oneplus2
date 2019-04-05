@@ -1,6 +1,6 @@
 /*
    Copyright (c) 2016, The CyanogenMod Project
-   Copyright (C) 2017-2018, The LineageOS Project
+   Copyright (C) 2017-2019, The LineageOS Project
 
    Redistribution and use in source and binary forms, with or without
    modification, are permitted provided that the following conditions are
@@ -27,74 +27,72 @@
    OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
-#include <stdlib.h>
-#include <sys/sysinfo.h>
-
+#include <android-base/logging.h>
 #include <android-base/properties.h>
+#define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
+#include <sys/_system_properties.h>
+#include <sys/sysinfo.h>
 
 #include "property_service.h"
 #include "vendor_init.h"
 
-using android::base::GetProperty;
 using android::init::property_set;
 
-std::string heapgrowthlimit;
-std::string heapsize;
+void property_override(char const prop[], char const value[])
+{
+    prop_info *pi;
 
-void init_variant_properties() {
+    pi = (prop_info*) __system_property_find(prop);
+    if (pi)
+        __system_property_update(pi, value, strlen(value));
+    else
+        __system_property_add(prop, strlen(prop), value, strlen(value));
+}
 
-    struct sysinfo sys;
-
-    sysinfo(&sys);
-
-    std::string platform;
-    std::string rf_version;
-
-    platform = GetProperty("ro.board.platform", "");
-    if (platform != ANDROID_TARGET)
-        return;
-
-    rf_version = GetProperty("ro.boot.rf_v1","");
-
-    if (rf_version == "14") {
-        /* Chinese */
-        property_set("ro.product.model", "ONE A2001");
-        property_set("ro.rf_version", "TDD_FDD_Ch_All");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("ro.telephony.default_network", "20,20");
-    } else if (rf_version == "24") {
-        /* Asia/Europe */
-        property_set("ro.product.model", "ONE A2003");
-        property_set("ro.rf_version", "TDD_FDD_Eu");
-        property_set("ro.telephony.default_network", "9,9");
-    } else if (rf_version == "34") {
-        /* America */
-        property_set("ro.product.model", "ONE A2005");
-        property_set("ro.rf_version", "TDD_FDD_Am");
-        property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("ro.telephony.default_network", "9,9");
-    }
-
-    /* Dalvik props */
-    if (sys.totalram > 3072ull * 1024 * 1024) {
-        /* Values for 4GB RAM vatiants */
-        heapgrowthlimit = "288m";
-        heapsize = "768m";
-    } else {
-        /* Values for 3GB RAM vatiants */
-        heapgrowthlimit = "192m";
-        heapsize = "512m";
-    }
+void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+{
+    property_override(system_prop, value);
+    property_override(vendor_prop, value);
 }
 
 void vendor_load_properties() {
-    init_variant_properties();
+    struct sysinfo sys;
+    int rf_version = stoi(android::base::GetProperty("ro.boot.rf_v1", ""));
 
-    property_set("dalvik.vm.heapstartsize", "16m");
-    property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
-    property_set("dalvik.vm.heapsize", heapsize);
-    property_set("dalvik.vm.heaptargetutilization", "0.75");
-    property_set("dalvik.vm.heapminfree", "2m");
-    property_set("dalvik.vm.heapmaxfree", "8m");
+    switch (rf_version) {
+    case 14:
+        /* China model */
+        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2001");
+        property_set("ro.rf_version", "TDD_FDD_Ch_All");
+        property_set("telephony.lteOnCdmaDevice", "1");
+        property_set("ro.telephony.default_network", "20,20");
+        break;
+    case 24:
+        /* Europe / Asia model */
+        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2003");
+        property_set("ro.rf_version", "TDD_FDD_Eu");
+        property_set("ro.telephony.default_network", "9,9");
+        break;
+    case 34:
+        /* America model */
+        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2005");
+        property_set("ro.rf_version", "TDD_FDD_Am");
+        property_set("telephony.lteOnCdmaDevice", "1");
+        property_set("ro.telephony.default_network", "9,9");
+        break;
+    default:
+        LOG(ERROR) << __func__ << ": unexcepted rf version!";
+    }
+
+    /* Dalvik props */
+    sysinfo(&sys);
+    if (sys.totalram > 3072ull * 1024 * 1024) {
+        /* Values for 4GB RAM vatiants */
+        property_set("dalvik.vm.heapgrowthlimit", "288m");
+        property_set("dalvik.vm.heapsize", "768m");
+    } else {
+        /* Values for 3GB RAM vatiants */
+        property_set("dalvik.vm.heapgrowthlimit", "192m");
+        property_set("dalvik.vm.heapsize", "512m");
+    }
 }
