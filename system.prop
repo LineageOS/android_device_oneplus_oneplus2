@@ -40,6 +40,12 @@ persist.vendor.audio.speaker.prot.enable=false
 persist.vendor.audio.spkr.cal.duration=0
 qcom.hw.aac.encoder=true
 
+# Dalvik heap
+dalvik.vm.heapstartsize=16m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=2m
+dalvik.vm.heapmaxfree=8m
+
 # Data modules
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=true
@@ -122,3 +128,6 @@ ro.qc.sdk.camera.facialproc=false
 
 # Time services
 persist.timed.enable=true
+
+# Vendor security patch level
+ro.lineage.build.vendor_security_patch=2017-10-01
