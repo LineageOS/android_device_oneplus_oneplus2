@@ -289,10 +289,6 @@ PRODUCT_PACKAGES += \
     android.hardware.vibrator@1.0-impl \
     android.hardware.vibrator@1.0-service
 
-# Vendor security patch level
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.build.vendor_security_patch=2017-10-01
-
 # WiFi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service
