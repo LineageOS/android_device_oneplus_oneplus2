@@ -37,9 +37,11 @@ namespace.default.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv
 
 namespace.platform.isolated = true
 
-namespace.platform.search.paths = /system/${LIB}
+namespace.platform.search.paths  = /system/${LIB}
+namespace.platform.search.paths += /apex/com.android.runtime/${LIB}
 namespace.platform.asan.search.paths  = /data/asan/system/${LIB}
 namespace.platform.asan.search.paths +=           /system/${LIB}
+namespace.platform.asan.search.paths += /apex/com.android.runtime/${LIB}
 
 # /system/lib/libc.so, etc are symlinks to /apex/com.android.lib/lib/bionic/libc.so, etc.
 # Add /apex/... pat to the permitted paths because linker uses realpath(3)
