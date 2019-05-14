@@ -187,10 +187,6 @@
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
                 </devicePort>
-                <devicePort tagName="BT SCO All" type="AUDIO_DEVICE_OUT_ALL_SCO" role="sink">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
-                </devicePort>
                 <devicePort tagName="BT SCO Car Kit" type="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT" role="sink">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000,16000" channelMasks="AUDIO_CHANNEL_OUT_MONO"/>
@@ -246,7 +242,11 @@
                        sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload"/>
                 <route type="mix" sink="Proxy"
                        sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload"/>
-                <route type="mix" sink="BT SCO All"
+                <route type="mix" sink="BT SCO"
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx"/>
+                <route type="mix" sink="BT SCO Headset"
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx"/>
+                <route type="mix" sink="BT SCO Car Kit"
                        sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx"/>
                 <route type="mix" sink="Telephony Tx"
                        sources="voice_tx"/>
