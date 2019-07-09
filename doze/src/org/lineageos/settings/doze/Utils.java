@@ -20,9 +20,9 @@ package org.lineageos.settings.doze;
 import android.content.Context;
 import android.content.Intent;
 import android.os.UserHandle;
-import android.support.v7.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
+import androidx.preference.PreferenceManager;
 
 import static android.provider.Settings.Secure.DOZE_ENABLED;
 
