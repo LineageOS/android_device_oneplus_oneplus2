@@ -76,6 +76,8 @@ ro.sf.lcd_density=480
 ro.oem_unlock_supported=1
 
 # Media
+debug.stagefright.omx_default_rank.sw-audio=1
+debug.stagefright.omx_default_rank=0
 media.stagefright.enable-aac=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-http=true
