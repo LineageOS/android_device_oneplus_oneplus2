@@ -29,7 +29,7 @@
 #define LOG_NDDEBUG 0
 #define LOG_TAG "LocSvc_MsgTask"
 
-#include <cutils/sched_policy.h>
+#include <processgroup/sched_policy.h>
 #include <unistd.h>
 #include <MsgTask.h>
 #include <msg_q.h>
