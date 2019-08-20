@@ -109,11 +109,6 @@
          capability can provide power savings when wifi needs to be always kept on. -->
     <bool translatable="false" name="config_wifi_background_scan_support">true</bool>
 
-    <!-- When true, the tethering upstream network follows the current default
-         Internet network (except when the current default network is mobile,
-         in which case a DUN network will be used if required). -->
-    <bool translatable="false" name="config_tether_upstream_automatic">true</bool>
-
     <!-- This string array should be overridden by the device to present a list of network
          attributes.  This is used by the connectivity manager to decide which networks can coexist
          based on the hardware -->
