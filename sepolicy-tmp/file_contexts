@@ -1,0 +1,3 @@
+/firmware(/.*)?     u:object_r:tmp_root_mount_file:s0
+/bt_firmware(/.*)?  u:object_r:tmp_root_mount_file:s0
+/persist(/.*)?      u:object_r:tmp_root_mount_file:s0
