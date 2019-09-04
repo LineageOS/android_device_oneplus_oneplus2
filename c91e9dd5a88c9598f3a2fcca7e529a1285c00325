@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80b1e209_ce8a817e",
+        "filename": "rootdir/etc/fstab.qcom",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2019-09-04T18:00:13Z",
+      "side": 1,
+      "message": "not sure if recoveryonly is still needed.",
+      "revId": "c91e9dd5a88c9598f3a2fcca7e529a1285c00325",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
