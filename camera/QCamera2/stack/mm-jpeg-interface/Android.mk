@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
+include $(LOCAL_PATH)/../../../common.mk
 include $(CLEAR_VARS)
 
 LOCAL_CFLAGS += -D_ANDROID_
@@ -13,6 +14,9 @@ LOCAL_C_INCLUDES += \
     $(LOCAL_PATH)/../../../ \
     $(LOCAL_PATH)/../../../mm-image-codec/qexif \
     $(LOCAL_PATH)/../../../mm-image-codec/qomx_core
+
+LOCAL_C_INCLUDES+= $(kernel_includes)
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 DUAL_JPEG_TARGET_LIST := msm8974
 DUAL_JPEG_TARGET_LIST += msm8994
