@@ -517,7 +517,7 @@ service start_hci_filter /vendor/bin/wcnss_filter
 service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     class core
     user root
-    seclabel u:r:bluetooth_loader:s0
+    #seclabel u:r:bluetooth_loader:s0
     oneshot
 
 service hciattach /vendor/bin/init.qcom.bt.sh
@@ -525,7 +525,7 @@ service hciattach /vendor/bin/init.qcom.bt.sh
     user bluetooth
     group bluetooth net_bt_admin
     disabled
-    seclabel u:r:bluetooth_loader:s0
+    #seclabel u:r:bluetooth_loader:s0
     oneshot
 
 on property:vendor.bluetooth.hciattach=true
@@ -733,7 +733,7 @@ service msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.
 service program_bdaddr /vendor/bin/init.program_bdaddr.sh
     user bluetooth
     group bluetooth
-    seclabel u:r:bluetooth_loader:s0
+    #seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
 

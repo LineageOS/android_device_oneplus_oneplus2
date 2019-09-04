@@ -54,7 +54,7 @@ TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 TARGET_USES_64_BIT_BINDER := true
 
 # Kernel
-BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 loop.max_part=7
+BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 loop.max_part=7 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
@@ -155,8 +155,9 @@ TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_oneplus2
 TARGET_RELEASETOOLS_EXTENSIONS := $(PLATFORM_PATH)
 
 # SELinux
-include device/qcom/sepolicy-legacy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy
+#include device/qcom/sepolicy-legacy/sepolicy.mk
+# We need include this for BOARD_ROOT_EXTRA_FOLDERS
+BOARD_SEPOLICY_DIRS += $(PLATFORM_PATH)/sepolicy-tmp
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
