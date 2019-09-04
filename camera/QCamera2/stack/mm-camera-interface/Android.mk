@@ -1,5 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
+include $(LOCAL_PATH)/../../../common.mk
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
@@ -26,6 +27,8 @@ LOCAL_C_INCLUDES := \
     $(call project-path-for,qcom-media)/mm-core/inc \
     system/media/camera/include
 
+LOCAL_C_INCLUDES+= $(kernel_includes)
+LOCAL_ADDITIONAL_DEPENDENCIES := $(common_deps)
 
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
