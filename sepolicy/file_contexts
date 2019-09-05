@@ -1,3 +1,7 @@
+# Root files
+/bt_firmware(/.*)?                                                      u:object_r:bt_firmware_file:s0
+/firmware(/.*)?                                                         u:object_r:firmware_file:s0
+
 # We have a couple of non-standard NV partitions
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/oem_dycnvbk          u:object_r:modem_efs_partition_device:s0
 /dev/block/platform/soc\.0/f9824900\.sdhci/by-name/oem_stanvbk          u:object_r:modem_efs_partition_device:s0
