@@ -100,6 +100,7 @@ TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
+    /system/bin/surfaceflinger=25 \
     /system/vendor/bin/mm-qcamera-daemon=22
 
 # Charger
