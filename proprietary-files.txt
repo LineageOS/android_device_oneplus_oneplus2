@@ -337,11 +337,10 @@ vendor/etc/perf-profile5.conf
 vendor/lib/libqti-perfd-client.so
 vendor/lib64/libqti-perfd-client.so
 
-# Peripheral manager - OxygenOS 3.6.0
+# Peripheral manager - OxygenOS 3.6.0 + angler OPM7.181105.004
 bin/pm-proxy:vendor/bin/pm-proxy
 bin/pm-service:vendor/bin/pm-service
-vendor/lib/libperipheral_client.so
-vendor/lib64/libperipheral_client.so
+vendor/lib64/libperipheral_client.so|ccbbf92dd661029864202375c19f1a2ff14bf864
 
 # Postprocessing - OxygenOS 3.6.0
 bin/mm-pp-daemon:vendor/bin/mm-pp-daemon
