@@ -337,11 +337,10 @@ vendor/etc/perf-profile5.conf
 vendor/lib/libqti-perfd-client.so
 vendor/lib64/libqti-perfd-client.so
 
-# Peripheral manager - OxygenOS 3.6.0
+# Peripheral manager - OxygenOS 3.6.0 + Lenovo MM A6020l36_S155_170212_LAS
 bin/pm-proxy:vendor/bin/pm-proxy
 bin/pm-service:vendor/bin/pm-service
-vendor/lib/libperipheral_client.so
-vendor/lib64/libperipheral_client.so
+vendor/lib64/libperipheral_client.so|03e75c730e067ce63ddbcd7fa0b1d035c6317398
 
 # Postprocessing - OxygenOS 3.6.0
 bin/mm-pp-daemon:vendor/bin/mm-pp-daemon
