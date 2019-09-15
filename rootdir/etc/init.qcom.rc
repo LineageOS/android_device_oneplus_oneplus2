@@ -357,7 +357,7 @@ on post-fs-data
 
 on property:sys.boot_completed=1
     setprop vendor.post_boot.parsed 1
-    swapon_all /fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
     start perfd
     start tfa-sh
     restart cameraserver
