@@ -736,3 +736,6 @@ service program_bdaddr /vendor/bin/init.program_bdaddr.sh
     #seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
+
+on property:apexd.status=ready
+    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
