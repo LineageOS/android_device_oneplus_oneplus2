@@ -1,0 +1,54 @@
+# Copyright (C) 2019 The Android Open Source Project
+#
+# Bionic loader config file for the media swcodec APEX.
+#
+# There are no versioned APEX paths here - this APEX module does not support
+# having several versions mounted.
+
+dir.swcodec = /apex/com.android.media.swcodec/bin/
+
+[swcodec]
+additional.namespaces = platform
+
+###############################################################################
+# "default" namespace
+#
+# This namespace is for the binaries and libraries on the swcodec APEX.
+###############################################################################
+
+namespace.default.isolated = true
+namespace.default.visible = true
+
+namespace.default.search.paths      = /apex/com.android.media.swcodec/${LIB}
+namespace.default.asan.search.paths = /apex/com.android.media.swcodec/${LIB}
+
+namespace.default.links = platform
+
+# TODO: replace the following when apex has a way to auto-generate this list
+# namespace.default.link.platform.shared_libs  = %LLNDK_LIBRARIES%
+# namespace.default.link.platform.shared_libs += %SANITIZER_RUNTIME_LIBRARIES%
+namespace.default.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libclang_rt.asan-i686-android.so:libclang_rt.asan-x86_64-android.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libsync.so:libvndksupport.so:libdl_android.so:libvulkan.so
+
+###############################################################################
+# "platform" namespace
+#
+# This namespace is for linking to LLNDK and ASAN libraries on the system.
+###############################################################################
+
+namespace.platform.isolated = true
+
+namespace.platform.search.paths = /system/${LIB}
+namespace.platform.asan.search.paths  = /data/asan/system/${LIB}
+namespace.platform.asan.search.paths +=           /system/${LIB}
+
+# /system/lib/libc.so, etc are symlinks to /apex/com.android.lib/lib/bionic/libc.so, etc.
+# Add /apex/... pat to the permitted paths because linker uses realpath(3)
+# to check the accessibility of the lib. We could add this to search.paths
+# instead but that makes the resolution of bionic libs be dependent on
+# the order of /system/lib and /apex/... in search.paths. If /apex/...
+# is after /system/lib, then /apex/... is never tried because libc.so
+# is always found in /system/lib but fails to pass the accessibility test
+# because of its realpath.  It's better to not depend on the ordering if
+# possible.
+namespace.platform.permitted.paths = /apex/com.android.runtime/${LIB}/bionic
+namespace.platform.asan.permitted.paths = /apex/com.android.runtime/${LIB}/bionic
