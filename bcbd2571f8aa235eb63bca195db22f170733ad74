@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd74c7a4_b25a0a05",
+        "filename": "configs/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2019-09-19T08:50:04Z",
+      "side": 1,
+      "message": "By reading this, and idea came to my mind... Why don\u0027t you simply add vndk-sp from CAF? Mi8996 uses it: https://github.com/LineageOS/android_device_xiaomi_msm8996-common/commits/lineage-17.0/vndk. If you want the full chain here it is (unused in Mi845): https://github.com/LineageOS/android_device_xiaomi_sdm845-common/commits/lineage-16.0/vndk",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "bcbd2571f8aa235eb63bca195db22f170733ad74",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
