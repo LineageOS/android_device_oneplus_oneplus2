@@ -86,6 +86,7 @@ media.stagefright.enable-player=true
 media.stagefright.enable-qcp=true
 media.stagefright.enable-scan=true
 media.stagefright.log-uri=1
+media.stagefright.thumbnail.prefer_hw_codecs=true
 mmp.enable.3g2=true
 vidc.debug.perf.mode=2
 vidc.dec.120fps.enabled=1
