@@ -149,8 +149,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Power
-TARGET_HAS_NO_WLAN_STATS := true
-TARGET_RPM_SYSTEM_STAT := /d/rpm_stats
 TARGET_TAP_TO_WAKE_NODE := "/proc/touchpanel/double_tap"
 
 # QCOM hardware
