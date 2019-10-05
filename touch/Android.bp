@@ -19,6 +19,7 @@ cc_binary {
     relative_install_path: "hw",
     vendor: true,
     srcs: [
+        "ButtonSwap.cpp",
         "KeyDisabler.cpp",
         "TouchscreenGesture.cpp",
         "service.cpp"
