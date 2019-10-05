@@ -20,22 +20,31 @@
 #include <binder/ProcessState.h>
 #include <hidl/HidlTransportSupport.h>
 
+#include "ButtonSwap.h"
 #include "KeyDisabler.h"
 #include "TouchscreenGesture.h"
 
 using android::sp;
 using android::OK;
 
+using ::vendor::lineage::touch::V1_0::IButtonSwap;
+using ::vendor::lineage::touch::V1_0::implementation::ButtonSwap;
 using ::vendor::lineage::touch::V1_0::IKeyDisabler;
 using ::vendor::lineage::touch::V1_0::implementation::KeyDisabler;
 using ::vendor::lineage::touch::V1_0::ITouchscreenGesture;
 using ::vendor::lineage::touch::V1_0::implementation::TouchscreenGesture;
 
 int main() {
+    sp<IButtonSwap> buttonSwap = new ButtonSwap();
     sp<IKeyDisabler> keyDisabler = new KeyDisabler();
     sp<ITouchscreenGesture> touchscreenGesture = new TouchscreenGesture();
 
     android::hardware::configureRpcThreadpool(1, true /*callerWillJoin*/);
+
+    if (buttonSwap->registerAsService() != OK) {
+        LOG(ERROR) << "Cannot register buttonswap HAL service.";
+        return 1;
+    }
 
     if (keyDisabler->registerAsService() != OK) {
         LOG(ERROR) << "Cannot register keydisabler HAL service.";
