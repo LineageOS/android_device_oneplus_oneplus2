@@ -352,7 +352,6 @@ static void loc_cleanup()
 {
     ENTRY_LOG();
 
-    loc_afw_data.adapter->setPowerVote(false);
     loc_afw_data.adapter->setGpsLockMsg(gps_conf.GPS_LOCK);
 
     loc_eng_cleanup(loc_afw_data);
