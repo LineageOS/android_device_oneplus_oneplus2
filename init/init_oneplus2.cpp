@@ -49,8 +49,9 @@ void property_override(char const prop[], char const value[])
         __system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
-void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
+void property_override_triple(char const product_prop[], char const system_prop[], char const vendor_prop[], char const value[])
 {
+    property_override(product_prop, value);
     property_override(system_prop, value);
     property_override(vendor_prop, value);
 }
@@ -62,20 +63,20 @@ void vendor_load_properties() {
     switch (rf_version) {
     case 14:
         /* China model */
-        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2001");
+        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "ONE A2001");
         property_set("ro.rf_version", "TDD_FDD_Ch_All");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "20,20");
         break;
     case 24:
         /* Europe / Asia model */
-        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2003");
+        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "ONE A2003");
         property_set("ro.rf_version", "TDD_FDD_Eu");
         property_set("ro.telephony.default_network", "9,9");
         break;
     case 34:
         /* America model */
-        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2005");
+        property_override_triple("ro.product.model", "ro.product.system.model", "ro.product.vendor.model", "ONE A2005");
         property_set("ro.rf_version", "TDD_FDD_Am");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "9,9");
@@ -85,7 +86,7 @@ void vendor_load_properties() {
     }
 
     property_override("ro.build.product", "OnePlus2");
-    property_override_dual("ro.product.device", "ro.product.vendor.device", "OnePlus2");
+    property_override_triple("ro.product.device", "ro.product.system.device", "ro.product.vendor.device", "OnePlus2");
 
     /* Dalvik props */
     sysinfo(&sys);
