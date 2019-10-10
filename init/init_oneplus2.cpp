@@ -38,44 +38,61 @@
 
 using android::init::property_set;
 
-void property_override(char const prop[], char const value[])
-{
-    prop_info *pi;
+// copied from build/tools/releasetools/ota_from_target_files.py
+// but with "." at the end and empty entry
+std::vector<std::string> ro_product_props_default_source_order = {
+    ".",
+    "product.",
+    "product_services.",
+    "odm.",
+    "vendor.",
+    "system.",
+};
 
-    pi = (prop_info*) __system_property_find(prop);
-    if (pi)
+void property_override(char const prop[], char const value[], bool add = true)
+{
+    auto pi = (prop_info *) __system_property_find(prop);
+
+    if (pi != nullptr) {
         __system_property_update(pi, value, strlen(value));
-    else
+    } else if (add) {
         __system_property_add(prop, strlen(prop), value, strlen(value));
-}
-
-void property_override_dual(char const system_prop[], char const vendor_prop[], char const value[])
-{
-    property_override(system_prop, value);
-    property_override(vendor_prop, value);
+    }
 }
 
 void vendor_load_properties() {
     struct sysinfo sys;
     int rf_version = stoi(android::base::GetProperty("ro.boot.rf_v1", ""));
 
+    const auto set_ro_product_prop = [](const std::string &source,
+            const std::string &prop, const std::string &value) {
+        auto prop_name = "ro.product." + source + prop;
+        property_override(prop_name.c_str(), value.c_str(), false);
+    };
+
     switch (rf_version) {
     case 14:
         /* China model */
-        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2001");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "ONE A2001");
+        }
         property_set("ro.rf_version", "TDD_FDD_Ch_All");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "20,20");
         break;
     case 24:
         /* Europe / Asia model */
-        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2003");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "ONE A2003");
+        }
         property_set("ro.rf_version", "TDD_FDD_Eu");
         property_set("ro.telephony.default_network", "9,9");
         break;
     case 34:
         /* America model */
-        property_override_dual("ro.product.model", "ro.product.vendor.model", "ONE A2005");
+        for (const auto &source : ro_product_props_default_source_order) {
+            set_ro_product_prop(source, "model", "ONE A2005");
+        }
         property_set("ro.rf_version", "TDD_FDD_Am");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "9,9");
@@ -85,7 +102,9 @@ void vendor_load_properties() {
     }
 
     property_override("ro.build.product", "OnePlus2");
-    property_override_dual("ro.product.device", "ro.product.vendor.device", "OnePlus2");
+    for (const auto &source : ro_product_props_default_source_order) {
+        set_ro_product_prop(source, "device", "OnePlus2");
+    }
 
     /* Dalvik props */
     sysinfo(&sys);
