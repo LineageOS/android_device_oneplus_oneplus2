@@ -16,6 +16,24 @@
       "revId": "5bcf54e5a7214bbd2a7d24068ae020d9f46a80f7",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e75d7e_ea8e25ea",
+        "filename": "init/init_oneplus2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2019-10-14T19:05:06Z",
+      "side": 1,
+      "message": "why?",
+      "parentUuid": "d1523233_b79650e2",
+      "revId": "5bcf54e5a7214bbd2a7d24068ae020d9f46a80f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
