@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1523233_b79650e2",
+        "filename": "init/init_oneplus2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 16208
+      },
+      "writtenOn": "2019-10-14T07:19:01Z",
+      "side": 1,
+      "message": "todo: convert these to property_override(3)",
+      "revId": "5bcf54e5a7214bbd2a7d24068ae020d9f46a80f7",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
