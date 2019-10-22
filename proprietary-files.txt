@@ -399,7 +399,6 @@ vendor/lib64/libsmemlog.so
 -app/QtiTelephonyService/QtiTelephonyService.apk|880d5c85178c4b3dd809a64e25f6108437c136fc
 bin/netmgrd:vendor/bin/netmgrd|6ca8f2e16d3078848808787c9a81cfc78dc27c58
 bin/qmuxd:vendor/bin/qmuxd
-bin/radish:vendor/bin/radish
 bin/rfs_access:vendor/bin/rfs_access
 vendor/bin/rmt_storage|59105701d95dec01f9028f86211630b3c45505fb
 etc/data/dsi_config.xml
