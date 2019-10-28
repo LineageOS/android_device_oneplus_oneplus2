@@ -281,6 +281,11 @@
          rmem_min,rmem_def,rmem_max,wmem_min,wmem_def,wmem_max -->
     <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,4194304,262144,524288,1048576</string>
 
+    <!-- The list of components which should be automatically disabled for a specific device. -->
+    <string-array name="config_deviceDisabledComponents" translatable="false">
+        <item>com.google.android.gms/com.google.android.gms.nearby.messages.service.NearbyMessagesService</item>
+    </string-array>
+
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
