@@ -89,6 +89,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.-->
         <!-- Emergency sms support -->
         <boolean name="emergency_sms_support_bool" value="false"/>
 
+        <boolean name="operator_selection_expand_bool" value="false"/>
     </carrier_config>
 
     <carrier_config mcc="001" mnc="01">
