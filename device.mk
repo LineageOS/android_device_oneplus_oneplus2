@@ -20,6 +20,8 @@ $(call inherit-product, vendor/oneplus/oneplus2/oneplus2-vendor.mk)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_ENFORCE_RRO_TARGETS := *
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
+    $(LOCAL_PATH)/overlay/lineage-sdk
 
 # Permissions
 PRODUCT_COPY_FILES += \
