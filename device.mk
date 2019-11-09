@@ -141,7 +141,6 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-service
 
 PRODUCT_PACKAGES += \
-    copybit.msm8994 \
     gralloc.msm8994 \
     hwcomposer.msm8994 \
     memtrack.msm8994 \
