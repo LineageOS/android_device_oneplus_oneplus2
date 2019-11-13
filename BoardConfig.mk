@@ -97,7 +97,6 @@ QCOM_BT_USE_BTNV := true
 TARGET_BOARD_INFO_FILE ?= $(PLATFORM_PATH)/board-info.txt
 
 # Camera
-TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=22
 
