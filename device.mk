@@ -152,7 +152,7 @@ PRODUCT_PACKAGES += \
 
 # Fingerprint sensor
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.0-service
+    android.hardware.biometrics.fingerprint@2.0-service.oneplus2
 
 # For config.fs
 PRODUCT_PACKAGES += \
