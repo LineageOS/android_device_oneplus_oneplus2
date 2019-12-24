@@ -14,10 +14,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 cc_binary {
-    name: "android.hardware.biometrics.fingerprint@2.0-service",
+    name: "android.hardware.biometrics.fingerprint@2.0-service.oneplus2",
     defaults: ["hidl_defaults"],
     relative_install_path: "hw",
-    init_rc: ["android.hardware.biometrics.fingerprint@2.0-service.rc"],
+    init_rc: ["android.hardware.biometrics.fingerprint@2.0-service.oneplus2.rc"],
     srcs: ["service.cpp", "BiometricsFingerprint.cpp"],
     shared_libs: [
         "libutils",
