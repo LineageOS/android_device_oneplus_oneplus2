@@ -21,7 +21,7 @@
 #include <unistd.h>
 #include <dirent.h>
 #include <sys/select.h>
-#include <cutils/log.h>
+#include <log/log.h>
 #include <linux/input.h>
 
 #include "SensorBase.h"
