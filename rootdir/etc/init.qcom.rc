@@ -45,6 +45,8 @@ on fs
     mount_all /vendor/etc/fstab.qcom
     restorecon_recursive /persist
 
+    mount none /system/etc/gps.conf /system/etc/gps_debug.conf bind
+
 on init
     start program_bdaddr
 
