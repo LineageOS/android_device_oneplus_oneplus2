@@ -57,6 +57,7 @@ private:
 
     const camera_module_callbacks_t *m_callbacks;
     int32_t m_flashFds[MM_CAMERA_MAX_NUM_SENSORS];
+    int32_t m_flashFds_2[MM_CAMERA_MAX_NUM_SENSORS];
     bool m_flashOn[MM_CAMERA_MAX_NUM_SENSORS];
     bool m_cameraOpen[MM_CAMERA_MAX_NUM_SENSORS];
 };
