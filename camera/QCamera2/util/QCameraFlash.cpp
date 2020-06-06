@@ -71,6 +71,7 @@ QCameraFlash::QCameraFlash() : m_callbacks(NULL)
     memset(&m_cameraOpen, 0, sizeof(m_cameraOpen));
     for (int pos = 0; pos < MM_CAMERA_MAX_NUM_SENSORS; pos++) {
         m_flashFds[pos] = -1;
+        m_flashFds_2[pos] = -1;
     }
 }
 
@@ -86,11 +87,17 @@ QCameraFlash::QCameraFlash() : m_callbacks(NULL)
 QCameraFlash::~QCameraFlash()
 {
     for (int pos = 0; pos < MM_CAMERA_MAX_NUM_SENSORS; pos++) {
-        if (m_flashFds[pos] >= 0)
+        if (m_flashFds[pos] >= 0 || m_flashFds_2[pos] >= 0)
             {
                 setFlashMode(pos, false);
-                close(m_flashFds[pos]);
-                m_flashFds[pos] = -1;
+                if (m_flashFds[pos] >= 0) {
+                    close(m_flashFds[pos]);
+                    m_flashFds[pos] = -1;
+                }
+                 if (m_flashFds_2[pos] >= 0) {
+                    close(m_flashFds_2[pos]);
+                    m_flashFds_2[pos] = -1;
+                }
             }
     }
 }
@@ -134,6 +141,7 @@ int32_t QCameraFlash::initFlash(const int camera_id)
 {
     int32_t retVal = 0;
     char flashPath[QCAMERA_MAX_FILEPATH_LENGTH] = "/sys/class/leds/led:torch_0/brightness";
+    char flashPath_2[QCAMERA_MAX_FILEPATH_LENGTH] = "/sys/class/leds/led:torch_1/brightness";
 
     if (camera_id < 0 || camera_id >= MM_CAMERA_MAX_NUM_SENSORS) {
         ALOGE("%s: Invalid camera id: %d", __func__, camera_id);
@@ -150,14 +158,15 @@ int32_t QCameraFlash::initFlash(const int camera_id)
                 __func__,
                 camera_id);
         retVal = -EBUSY;
-    } else if (m_flashFds[camera_id] >= 0) {
+    } else if (m_flashFds[camera_id] >= 0 || m_flashFds_2[camera_id] >= 0) {
         CDBG("%s: Flash is already inited for camera id: %d",
                 __func__,
                 camera_id);
     } else {
         m_flashFds[camera_id] = open(flashPath, O_RDWR | O_NONBLOCK);
+        m_flashFds_2[camera_id] = open(flashPath_2, O_RDWR | O_NONBLOCK);
 
-        if (m_flashFds[camera_id] < 0) {
+        if (m_flashFds[camera_id] < 0 || m_flashFds_2[camera_id] < 0) {
             ALOGE("%s: Unable to open node '%s'",
                     __func__,
                     flashPath);
@@ -202,7 +211,7 @@ int32_t QCameraFlash::setFlashMode(const int camera_id, const bool mode)
                 camera_id,
                 mode);
         retVal = -EALREADY;
-    } else if (m_flashFds[camera_id] < 0) {
+    } else if (m_flashFds[camera_id] < 0 || m_flashFds_2[camera_id] < 0) {
         ALOGE("%s: called for uninited flash: %d", __func__, camera_id);
         retVal = -EINVAL;
     } else {
@@ -216,9 +225,15 @@ int32_t QCameraFlash::setFlashMode(const int camera_id, const bool mode)
             ALOGE("%s: Unable to change flash mode to %d for camera id: %d",
                     __func__, mode, camera_id);
         } else {
-            m_flashOn[camera_id] = mode;
-            /* Hardcode retVal to 0 on success to keep API consistency */
-            retVal = 0;
+            retVal = write(m_flashFds_2[camera_id], buffer, (size_t)bytes);
+            if (retVal < 0) {
+                ALOGE("%s: Unable to change flash mode to %d for camera id: %d",
+                        __func__, mode, camera_id);
+            } else {
+                m_flashOn[camera_id] = mode;
+                /* Hardcode retVal to 0 on success to keep API consistency */
+                retVal = 0;
+            }
         }
     }
     return retVal;
@@ -245,13 +260,23 @@ int32_t QCameraFlash::deinitFlash(const int camera_id)
     if (camera_id < 0 || camera_id >= MM_CAMERA_MAX_NUM_SENSORS) {
         ALOGE("%s: Invalid camera id: %d", __func__, camera_id);
         retVal = -EINVAL;
-    } else if (m_flashFds[camera_id] < 0) {
+    } else if (m_flashFds[camera_id] < 0 && m_flashFds_2[camera_id] < 0) {
         ALOGE("%s: called deinitFlash for uninited flash", __func__);
         retVal = -EINVAL;
-    } else {
+    } else if (m_flashFds[camera_id] < 0 && m_flashFds_2[camera_id] >= 0) {
+        setFlashMode(camera_id, false);
+        close(m_flashFds_2[camera_id]);
+        m_flashFds_2[camera_id] = -1;
+    } else if (m_flashFds[camera_id] >= 0 && m_flashFds_2[camera_id] < 0) {
         setFlashMode(camera_id, false);
         close(m_flashFds[camera_id]);
         m_flashFds[camera_id] = -1;
+    } else {
+        setFlashMode(camera_id, false);
+        close(m_flashFds[camera_id]);
+        close(m_flashFds_2[camera_id]);
+        m_flashFds[camera_id] = -1;
+        m_flashFds_2[camera_id] = -1;
     }
 
     return retVal;
