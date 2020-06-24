@@ -243,6 +243,10 @@ void LocApiBase::reportPosition(UlpLocation &location,
              location.gpsLocation.bearing, location.gpsLocation.accuracy,
              location.gpsLocation.timestamp, location.rawDataSize,
              location.rawData, status, loc_technology_mask);
+
+        LOC_LOGE("week rollover fixed, timestamp: %lld.", location.gpsLocation.timestamp);
+
+
     // loop through adapters, and deliver to all adapters.
     TO_ALL_LOCADAPTERS(
         mLocAdapters[i]->reportPosition(location,
