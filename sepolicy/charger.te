@@ -1,0 +1,1 @@
+allow charger device:dir r_dir_perms;
