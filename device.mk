@@ -253,6 +253,7 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
+    libaudioclient_shim \
     libcnefeatureconfig \
     librmnetctl \
     libxml2 \
