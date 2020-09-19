@@ -22,12 +22,18 @@ namespace.default.visible = true
 namespace.default.search.paths      = /apex/com.android.media.swcodec/${LIB}
 namespace.default.asan.search.paths = /apex/com.android.media.swcodec/${LIB}
 
+# Below lines are required to be able to access libs in APEXes which are
+# actually symlinks to the files under /system/lib. The symlinks exist for
+# bundled APEXes to reduce space.
+namespace.default.permitted.paths   = /system/${LIB}
+namespace.default.asan.permitted.paths = /system/${LIB}
+
 namespace.default.links = platform
 
 # TODO: replace the following when apex has a way to auto-generate this list
 # namespace.default.link.platform.shared_libs  = %LLNDK_LIBRARIES%
 # namespace.default.link.platform.shared_libs += %SANITIZER_RUNTIME_LIBRARIES%
-namespace.default.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libclang_rt.asan-i686-android.so:libclang_rt.asan-x86_64-android.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libsync.so:libvndksupport.so:libdl_android.so:libvulkan.so
+namespace.default.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libclang_rt.asan-i686-android.so:libclang_rt.asan-x86_64-android.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libsync.so:libvndksupport.so:libdl_android.so:libvulkan.so:libbinder_ndk.so
 
 ###############################################################################
 # "platform" namespace
@@ -38,13 +44,18 @@ namespace.default.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv
 namespace.platform.isolated = true
 
 namespace.platform.search.paths  = /system/${LIB}
-namespace.platform.search.paths += /apex/com.android.runtime/${LIB}
 namespace.platform.asan.search.paths  = /data/asan/system/${LIB}
 namespace.platform.asan.search.paths +=           /system/${LIB}
+
+# TODO(b/140790209): These directories are wrong in R and later because they
+# only contain Bionic internal libraries dependencies that should not be
+# accessed from the outside. However, they may be necessary for APEX builds that
+# are pushed to Q. Remove them as soon as Q compatibility is no longer required.
+namespace.platform.search.paths += /apex/com.android.runtime/${LIB}
 namespace.platform.asan.search.paths += /apex/com.android.runtime/${LIB}
 
 # /system/lib/libc.so, etc are symlinks to /apex/com.android.lib/lib/bionic/libc.so, etc.
-# Add /apex/... pat to the permitted paths because linker uses realpath(3)
+# Add /apex/... path to the permitted paths because linker uses realpath(3)
 # to check the accessibility of the lib. We could add this to search.paths
 # instead but that makes the resolution of bionic libs be dependent on
 # the order of /system/lib and /apex/... in search.paths. If /apex/...
@@ -130,7 +141,13 @@ namespace.sphal.links = platform
 # TODO: replace the following when apex has a way to auto-generate this list
 # namespace.sphal.link.platform.shared_libs  = %LLNDK_LIBRARIES%
 # namespace.sphal.link.platform.shared_libs += %SANITIZER_RUNTIME_LIBRARIES%
-namespace.sphal.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libclang_rt.asan-i686-android.so:libclang_rt.asan-x86_64-android.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libsync.so:libvndksupport.so:libvulkan.so
+namespace.sphal.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv2.so:libGLESv3.so:libRS.so:libandroid_net.so:libc.so:libcgrouprc.so:libclang_rt.asan-aarch64-android.so:libclang_rt.asan-arm-android.so:libclang_rt.hwasan-aarch64-android.so:libclang_rt.asan-i686-android.so:libclang_rt.asan-x86_64-android.so:libdl.so:libft2.so:liblog.so:libm.so:libmediandk.so:libnativewindow.so:libneuralnetworks.so:libsync.so:libvndksupport.so:libvulkan.so:libbinder_ndk.so
 
 # Add a link for libz.so which is llndk on devices where VNDK is not enforced.
 namespace.sphal.link.platform.shared_libs += libz.so
+
+# With VNDK APEX, /system/${LIB}/vndk-sp${VNDK_VER} is a symlink to the following.
+# Add /apex/... path to the permitted paths because linker uses realpath(3)
+# to check the accessibility of the lib.
+namespace.sphal.permitted.paths += /apex/com.android.vndk.${VNDK_APEX_VER}/${LIB}
+namespace.sphal.asan.permitted.paths += /apex/com.android.vndk.${VNDK_APEX_VER}/${LIB}
