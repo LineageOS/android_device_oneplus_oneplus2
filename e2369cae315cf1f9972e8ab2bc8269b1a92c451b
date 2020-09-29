@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce4bfcf9_edd9ffce",
+        "filename": "libshims/Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-09-29T09:52:55Z",
+      "side": 1,
+      "message": "LOCAL_HEADER_LIBRARIES :\u003d libaudioclient_headers",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "e2369cae315cf1f9972e8ab2bc8269b1a92c451b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
