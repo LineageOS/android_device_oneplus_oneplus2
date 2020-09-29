@@ -22,6 +22,30 @@
       "revId": "e2369cae315cf1f9972e8ab2bc8269b1a92c451b",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b1bcf1_d74f2f03",
+        "filename": "libshims/Android.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2020-09-29T10:13:58Z",
+      "side": 1,
+      "message": "Nevermind, that doesn\u0027t seem to compile in the end.",
+      "parentUuid": "ce4bfcf9_edd9ffce",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 40
+      },
+      "revId": "e2369cae315cf1f9972e8ab2bc8269b1a92c451b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
     }
   ]
 }
