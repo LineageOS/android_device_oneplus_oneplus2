@@ -280,6 +280,8 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+    setprop init.svc.console stopped
+
 # msm specific files that need to be created on /data
 on post-fs-data
     mkdir /persist/data/sfs 0700 system system
