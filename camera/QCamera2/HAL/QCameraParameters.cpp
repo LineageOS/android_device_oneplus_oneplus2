@@ -5730,13 +5730,6 @@ int32_t QCameraParameters::setPreviewFpsRange(int min_fps,
     property_get("persist.debug.set.fixedfps", value, "0");
     fixedFpsValue = atoi(value);
 
-    // Don't allow function callers to request min fps same as max fps
-    // I mean SnapdragonCamera.
-    if (!isHfrMode() && max_fps >= 24000 && min_fps == max_fps) {
-        CDBG_HIGH("min_fps %d same as max_fps %d, setting min_fps to 7000", min_fps, max_fps);
-        min_fps = 7000;
-    }
-
     CDBG("%s: E minFps = %d, maxFps = %d , vid minFps = %d, vid maxFps = %d",
                 __func__, min_fps, max_fps, vid_min_fps, vid_max_fps);
 
